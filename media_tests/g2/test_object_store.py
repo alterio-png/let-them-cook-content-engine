@@ -206,6 +206,40 @@ class ObjectStoreTests(unittest.TestCase):
         self.assertEqual(7, fragments[0]["size_bytes"])
         self.assertTrue(fragments[0]["key"].endswith(".part-interrupted-upload"))
 
+    def test_staging_cleanup_is_scoped_conditional_and_never_deletes_objects(self):
+        self.store.put_file(self.org, self.key, self.source)
+        fragment_name = ".part-" + uuid4().hex
+        fragment = (self.root / self.key).parent / fragment_name
+        fragment.write_bytes(b"interrupted upload")
+        fragment.chmod(0o600)
+        observed = self.store.list_staging(self.org)[0]
+        for org, key in ((self.other, observed["key"]), (self.org, self.key),
+                         (self.org, observed["key"].replace(fragment_name, ".part-arbitrary"))):
+            with self.subTest(key=key), self.assertRaises(InvalidObjectKey):
+                self.store.delete_staging(org, key)
+        with self.assertRaises(ObjectConflict):
+            self.store.delete_staging(self.org, observed["key"], expected_size_bytes=0,
+                                      expected_modified_at=observed["modified_at"])
+        with self.assertRaises(ObjectConflict):
+            self.store.delete_staging(self.org, observed["key"],
+                                      expected_size_bytes=observed["size_bytes"],
+                                      expected_modified_at=observed["modified_at"] - 1)
+        self.store.delete_staging(self.org, observed["key"],
+                                  expected_size_bytes=observed["size_bytes"],
+                                  expected_modified_at=observed["modified_at"])
+        self.assertEqual([], self.store.list_staging(self.org))
+        self.assertEqual([self.key], self.store.list_keys(self.org))
+
+    def test_staging_cleanup_rejects_symlink_fragment(self):
+        self.store.put_file(self.org, self.key, self.source)
+        fragment_name = ".part-" + uuid4().hex
+        fragment = (self.root / self.key).parent / fragment_name
+        fragment.symlink_to(self.source)
+        key = self.key.rsplit("/", 1)[0] + "/" + fragment_name
+        with self.assertRaises(InvalidObjectKey):
+            self.store.delete_staging(self.org, key)
+        self.assertEqual(b"synthetic-local-media" * 100, self.source.read_bytes())
+
     def test_checksum_guarded_delete_and_missing_objects(self):
         metadata = self.store.put_file(self.org, self.key, self.source)
         with self.assertRaises(ObjectConflict):

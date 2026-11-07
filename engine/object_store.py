@@ -336,3 +336,30 @@ class LocalObjectStore:
         except ObjectMissing:
             return []
         return found
+
+    def delete_staging(self, org_id, key, *, expected_size_bytes=None,
+                       expected_modified_at=None):
+        """Remove one observed fragment after caller proves its generation stale.
+
+        This local maintenance API never accepts published names. The pipeline
+        holds the job row lock and protects live/authoritative fences before
+        invoking it. Optional metadata preconditions reject a changed fragment.
+        """
+        if not isinstance(key, str) or len(key) > 1024 or "/" not in key:
+            raise InvalidObjectKey("Invalid staging fragment key")
+        parent, name = key.rsplit("/", 1)
+        if not re.fullmatch(r"\.part-[0-9a-f]{32}", name):
+            raise InvalidObjectKey("Only generated staging fragment names may be removed")
+        parts = self._parts(org_id, parent + "/fragment")[:-1]
+        with self._directory(parts) as parent_fd:
+            fd = self._open_file(parent_fd, name)
+            try:
+                info = os.fstat(fd)
+                if (expected_size_bytes is not None and info.st_size != expected_size_bytes
+                        or expected_modified_at is not None
+                        and info.st_mtime != expected_modified_at):
+                    raise ObjectConflict("Staging fragment changed since inventory")
+                os.unlink(name, dir_fd=parent_fd)
+                os.fsync(parent_fd)
+            finally:
+                os.close(fd)
