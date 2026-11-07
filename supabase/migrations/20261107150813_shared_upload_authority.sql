@@ -126,11 +126,13 @@ LANGUAGE sql STABLE SET search_path='' AS $$
  FROM g3a1_private.upload_receipts r WHERE r.id=p_id
 $$;
 CREATE FUNCTION g3a1_private._reservation_json(p_id uuid) RETURNS jsonb
-LANGUAGE sql STABLE SET search_path='' AS $$
+LANGUAGE sql VOLATILE SET search_path='' AS $$
  SELECT jsonb_build_object('id',r.id,'organization_id',r.organization_id,'owner_user_id',r.owner_user_id,
   'request_key',r.request_key,'size_bytes',r.size_bytes,'sha256',r.sha256,'object_key',r.object_key,
   'state',r.state,'created_at',r.created_at,'expires_at',floor(extract(epoch FROM r.expires_at))::bigint,
   'lease_token',r.lease_token,'lease_expires_at',floor(extract(epoch FROM r.lease_expires_at))::bigint,
+  'lease_seconds',CASE WHEN r.lease_expires_at IS NULL THEN NULL
+   ELSE greatest(0,ceil(extract(epoch FROM r.lease_expires_at-clock_timestamp()))::integer) END,
   'fence',r.fence,'receipt',g3a1_private._receipt_json(r.id))
  FROM g3a1_private.upload_reservations r WHERE r.id=p_id
 $$;
