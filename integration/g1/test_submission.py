@@ -163,6 +163,15 @@ class SubmissionTests(unittest.TestCase):
             self.f.submit("second")
         self.assertEqual(1, self.f.counts()["jobs"])
 
+    def test_pixel_quota_bounds_output_presets_as_well_as_input(self):
+        with connect() as conn:
+            # Source 640x360 fits; the largest production rendition 1080x1920 does not.
+            conn.execute("UPDATE public.org_quotas SET max_pixels=500000 WHERE organization_id=%s", (self.f.org_a,))
+        with self.assertRaises(psycopg.errors.CheckViolation):
+            self.f.submit("production", quality="production")
+        self.assertEqual(0, self.f.counts()["reserved"])
+        self.assertEqual("queued", self.f.submit("smoke")["state"])
+
     def test_failure_in_any_transactional_insert_rolls_everything_back(self):
         # A real database trigger injects failure after preceding writes, unlike a mock.
         for table in ("render_jobs", "render_outbox", "audit_events"):
