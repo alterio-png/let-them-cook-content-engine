@@ -65,6 +65,41 @@ G3B can measure or claim physical bounds. The review template specifies one task
 parallelism one, API retry zero, timeout 300 seconds, CPU/memory caps and a pinned
 image. Independent provider-internal duplication cannot be excluded locally.
 
+## Queue-independent cloud recovery
+
+`LaunchController.sweep_once(limit=20)` is the cloud-safe recovery entrypoint.
+The integer limit is restricted to 1–100. Each pass first observes at most that
+many unresolved launch records, then discovers at most that many due G2 jobs by
+joining PostgreSQL media specs and their original outbox event. Discovery ignores
+outbox dispatched state and provider task history. It never calls an unrestricted
+G2 claim/worker and never resends an uncertain jobs.run request. Every new launch
+uses the same globally locked intent reservation as a task callback.
+
+Observations rotate touched_at under a short SKIP LOCKED transaction so an old
+unknown operation cannot permanently starve later terminal evidence when limit=1.
+Candidates with any unclosed launch are excluded. Saturated organizations are
+filtered before the candidate limit, while attempt-exhausted jobs remain eligible
+for safe terminalization. The preparation transaction rechecks all conditions.
+An unresolved older physical execution blocks every new fence for its job, even
+when its database lease expired and another global slot is free.
+
+The bounded report distinguishes provider-observed states, blocked observations,
+new network launch attempts, deferred existing/capacity work, terminal failures
+and errors. Its `launched` entries count only new controller network attempts;
+state=uncertain is not proof a container started. A concurrent callback returning
+an existing intent never increments that count. SQL/provider failures are recorded
+or raised, never silently converted to successful completion.
+
+After authenticated terminal provider execution evidence and G1 lease expiry,
+a due crashed job can obtain a new intent/fence through a later sweep. When the
+attempt cap is exhausted, the sweep marks the job failed, expires unfinished
+attempt records and adds one audit event atomically under organization/job locks,
+only after every physical reservation for that job is closed. It creates neither
+a logical job nor a render claim for this transition. A live lease or unknown
+physical execution prevents terminalization. Persistent scheduler invocation and
+its interval/ownership must be provisioned and validated in G3B; no scheduler
+resource is deployed here.
+
 ## Separate service authentication
 
 `GoogleServiceIdentityVerifier` accepts only configured public RSA signing keys,

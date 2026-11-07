@@ -139,8 +139,29 @@ class CloudLaunchControl(MediaControlPlane):
                 return None
             if job["state"] == "running" and job["live"]:
                 return None
+            unresolved_for_job = db.execute("""SELECT * FROM public.cloud_job_launches
+                    WHERE job_id=%s AND state<>'closed' ORDER BY created_at,id LIMIT 1""",
+                                            (job_id,)).fetchone()
+            if unresolved_for_job is not None:
+                # An expired database lease does not prove its physical provider
+                # execution stopped. Never overlap another launch for this job.
+                return {**unresolved_for_job, "new_intent": False}
             if job["attempt_count"] >= job["max_attempts"]:
-                return None  # The ordinary G2 sweep records the terminal G1 transition.
+                final = db.execute("""UPDATE public.render_jobs SET state='failed',
+                       last_error='attempts_exhausted',lease_token=NULL,lease_expires_at=NULL,
+                       updated_at=clock_timestamp() WHERE id=%s AND fence=%s
+                       AND state IN ('queued','running') AND attempt_count>=max_attempts
+                       AND available_at<=clock_timestamp()
+                       AND (lease_expires_at IS NULL OR lease_expires_at<=clock_timestamp())
+                       AND NOT EXISTS (SELECT 1 FROM public.cloud_job_launches l
+                                       WHERE l.job_id=render_jobs.id AND l.state<>'closed')
+                       RETURNING *""", (job_id, job["fence"])).fetchone()
+                if final is not None:
+                    db.execute("""UPDATE public.render_attempts SET ended_at=clock_timestamp(),
+                           result='expired' WHERE job_id=%s AND ended_at IS NULL""", (job_id,))
+                    _audit(db, final, "job_failed", {"error": "attempts_exhausted",
+                                                     "source": "cloud_sweep"})
+                return None
             fence = job["fence"] + 1
             previous = db.execute("""SELECT * FROM public.cloud_job_launches
                                    WHERE job_id=%s AND expected_fence=%s""", (job_id, fence)).fetchone()
@@ -168,6 +189,45 @@ class CloudLaunchControl(MediaControlPlane):
                              (uuid4(), organization_id, job_id, event_id, fence)).fetchone()
             _audit(db, row, "cloud_launch_intent", {"launch_id": str(row["id"]), "fence": fence})
             return {**row, "new_intent": True}
+
+    @staticmethod
+    def _sweep_limit(limit):
+        if type(limit) is not int or not 1 <= limit <= 100:
+            raise ValueError("Sweep limit must be an integer in 1..100")
+        return limit
+
+    def sweep_observations(self, limit):
+        """Rotate bounded observation work; an unknown old row cannot starve peers."""
+        limit = self._sweep_limit(limit)
+        with self.transaction() as db:
+            return db.execute("""WITH picked AS (
+                  SELECT id FROM public.cloud_job_launches WHERE state<>'closed'
+                  ORDER BY touched_at,created_at,id FOR UPDATE SKIP LOCKED LIMIT %s)
+                UPDATE public.cloud_job_launches l SET touched_at=clock_timestamp()
+                FROM picked WHERE l.id=picked.id RETURNING l.id""", (limit,)).fetchall()
+
+    def due_media_events(self, limit):
+        """Queue-independent discovery; excludes physically blocked/saturated jobs."""
+        limit = self._sweep_limit(limit)
+        with self.transaction() as db:
+            return db.execute("""SELECT j.id AS job_id,j.organization_id,o.id AS event_id
+                FROM public.render_jobs j
+                JOIN public.media_job_specs s ON s.job_id=j.id AND s.organization_id=j.organization_id
+                JOIN public.render_outbox o ON o.job_id=j.id AND o.organization_id=j.organization_id
+                JOIN public.org_quotas q ON q.organization_id=j.organization_id
+                WHERE o.event_type='render_requested' AND j.available_at<=clock_timestamp()
+                AND (j.state='queued' OR (j.state='running' AND j.lease_expires_at<=clock_timestamp()))
+                AND NOT EXISTS (SELECT 1 FROM public.cloud_job_launches l
+                                WHERE l.job_id=j.id AND l.state<>'closed')
+                AND (j.attempt_count>=j.max_attempts OR
+                  (SELECT count(*) FROM (
+                    SELECT l.job_id FROM public.cloud_job_launches l
+                       WHERE l.organization_id=j.organization_id AND l.state<>'closed'
+                    UNION
+                    SELECT active.id FROM public.render_jobs active
+                       WHERE active.organization_id=j.organization_id AND active.state='running'
+                       AND active.lease_expires_at>clock_timestamp()) reservations)<q.max_active_jobs)
+                ORDER BY j.available_at,j.created_at,j.id LIMIT %s""", (limit,)).fetchall()
 
     def record_response(self, launch_id, operation_name=None):
         with self.transaction() as db:
@@ -236,8 +296,54 @@ class LaunchController:
             operation = self.adapter.run_launch(intent)
         except Exception:
             self.control.record_response(intent["id"])
-            return self.control.get_launch(intent["id"])
-        return self.control.record_response(intent["id"], operation)
+            return {**self.control.get_launch(intent["id"]), "new_intent": True}
+        return {**self.control.record_response(intent["id"], operation), "new_intent": True}
+
+    def sweep_once(self, limit=20):
+        """One bounded cloud-safe recovery pass, independent of queue history.
+
+        Observe at most `limit` unresolved launches, then consider at most `limit`
+        due G2 operations. Every launch enters the same durable admission path;
+        this never starts a raw G2 worker or retries an uncertain jobs.run call.
+        A scheduler must persistently call it; provider outages appear as blocked
+        observations, and PostgreSQL/provider exceptions are explicit errors.
+        """
+        limit = self.control._sweep_limit(limit)
+        report = {"observed": [], "blocked": [], "launched": [], "deferred": [],
+                  "failed": [], "errors": []}
+        for observation in self.control.sweep_observations(limit):
+            launch_id = str(observation["id"])
+            try:
+                row = self.reconcile(launch_id)
+            except (LaunchUncertain, CloudTransportError, TimeoutError):
+                report["blocked"].append(launch_id)
+            except Exception:
+                report["errors"].append({"launch_id": launch_id, "stage": "observe"})
+            else:
+                report["observed"].append({"launch_id": launch_id,
+                                           "state": None if row is None else row["state"]})
+                if row is not None and row["state"] != "closed":
+                    report["blocked"].append(launch_id)
+        for candidate in self.control.due_media_events(limit):
+            job_id = str(candidate["job_id"])
+            try:
+                row = self.launch(candidate["job_id"], candidate["organization_id"], candidate["event_id"])
+                if row is not None and row["new_intent"]:
+                    # A network attempt, possibly uncertain, not proof of a live
+                    # container. Existing intents from concurrent callbacks are
+                    # deferred and never inflate launch-attempt observations.
+                    report["launched"].append({"job_id": job_id, "launch_id": str(row["id"]),
+                                               "state": row["state"]})
+                elif row is not None:
+                    report["deferred"].append(job_id)
+                else:
+                    job = self.control.get_job(candidate["job_id"])
+                    report["failed" if job is not None and job["state"] == "failed" else "deferred"].append(job_id)
+            except LaunchCapacity:
+                report["deferred"].append(job_id)
+            except Exception:
+                report["errors"].append({"job_id": job_id, "stage": "launch"})
+        return report
 
     def reconcile(self, launch_id):
         row = self.control.get_launch(launch_id)

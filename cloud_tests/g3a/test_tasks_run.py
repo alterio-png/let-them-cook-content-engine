@@ -213,6 +213,156 @@ class AsyncPostgresTests(unittest.TestCase):
             self.assertAlmostEqual(.8, metadata["duration_seconds"], delta=.15)
             self.assertEqual(output["sha256"], sha256_file(destination))
 
+    def finish_provider_execution(self, intent, suffix="stopped"):
+        execution = run_adapter(self.stub).job_name + "/executions/" + suffix
+        self.stub.operations[intent["operation_name"]] = {
+            "name": intent["operation_name"], "done": True, "response": {"name": execution}}
+        self.stub.operations[execution] = {"name": execution, "taskCount": 1, "failedCount": 1,
+                                           "completionTime": "2026-11-07T12:00:00Z"}
+
+    def test_cloud_safe_sweep_recovers_acked_lost_signal_after_provider_history_deleted(self):
+        self.assertEqual("dispatched", CloudDispatcher(self.f.dsn).dispatch_one(task_adapter(self.stub))["state"])
+        self.stub.expire_provider_history()  # No callback ever delivered; outbox already acknowledged.
+        report = self.controller.sweep_once(limit=1)
+        self.assertEqual([], report["errors"])
+        self.assertEqual(1, len(report["launched"]))
+        intent = self.controller.control.get_launch(report["launched"][0]["launch_id"])
+        self.assertEqual(self.event["id"], intent["event_id"])
+        self.assertEqual(1, self.stub.run_calls)
+        self.assert_real_outputs(run_bound_worker(self.f.dsn, self.f.store, self.f.scratch, intent))
+        self.assertEqual(1, self.f.counts()["jobs"])
+        self.assertEqual(1, self.f.counts()["outbox"])
+
+    def test_cloud_safe_sweep_never_retries_missing_operation_or_pre_network_crash(self):
+        intent = self.controller.control.prepare_launch(self.job["id"], self.f.org_a, self.event["id"])
+        self.assertEqual(0, self.stub.run_calls)
+        for _ in range(3):
+            report = self.controller.sweep_once(limit=1)
+            self.assertEqual([], report["launched"])
+            self.assertIn(str(intent["id"]), report["blocked"])
+        self.assertEqual(0, self.stub.run_calls)
+        other = self.f.submit_media(self.f.ingest(other=True), "lost-acceptance", other=True)
+        self.stub.lose_run_response = True
+        uncertain = self.launch(other, self.event_for(other))
+        for _ in range(3):
+            self.controller.sweep_once(limit=2)
+        self.assertEqual("uncertain", self.controller.control.get_launch(uncertain["id"])["state"])
+        self.assertEqual(1, self.stub.run_calls)
+
+    def test_cloud_safe_sweep_and_task_delivery_concurrently_create_one_intent(self):
+        def deliver(index):
+            return self.controller.sweep_once(limit=1) if index % 2 else self.launch()
+        with ThreadPoolExecutor(max_workers=20) as pool:
+            results = list(pool.map(deliver, range(20)))
+        self.assertEqual(1, sum(len(row["launched"]) if "launched" in row
+                                else int(row.get("new_intent", False)) for row in results))
+        self.assertEqual(1, self.stub.run_calls)
+        with connect() as db:
+            rows = db.execute("SELECT * FROM public.cloud_job_launches WHERE job_id=%s", (self.job["id"],)).fetchall()
+        self.assertEqual(1, len(rows))
+        claimed = LaunchBoundMediaControl(self.f.dsn, rows[0]).claim_job(self.job["id"])
+        self.assertEqual(1, claimed["fence"])
+        self.assertEqual(1, claimed["attempt_count"])
+
+    def test_cloud_safe_sweep_recovers_claimed_crash_only_after_provider_terminal(self):
+        intent = self.launch()
+        LaunchBoundMediaControl(self.f.dsn, intent).claim_job(self.job["id"])
+        self.f.expire(self.job)
+        self.controller.sweep_once(limit=1)
+        self.assertEqual(1, self.stub.run_calls)
+        self.assertEqual(intent["id"], self.launch()["id"])  # Even with a free global slot.
+        self.finish_provider_execution(intent)
+        report = self.controller.sweep_once(limit=1)
+        self.assertEqual([], report["errors"])
+        self.assertEqual(1, len(report["launched"]))
+        retry = self.controller.control.get_launch(report["launched"][0]["launch_id"])
+        self.assertEqual(2, retry["expected_fence"])
+        self.assertEqual(2, self.stub.run_calls)
+
+    def test_cloud_safe_sweep_exhaustion_is_terminal_only_after_physical_slot_closed(self):
+        with connect() as db:
+            db.execute("UPDATE public.render_jobs SET max_attempts=1 WHERE id=%s", (self.job["id"],))
+        intent = self.launch()
+        claim = LaunchBoundMediaControl(self.f.dsn, intent).claim_job(self.job["id"])
+        self.f.expire(self.job)
+        self.controller.sweep_once(limit=1)
+        self.assertEqual("running", self.f.row(self.job)["state"])
+        self.assertEqual(1, self.stub.run_calls)
+        self.finish_provider_execution(intent)
+        report = self.controller.sweep_once(limit=1)
+        self.assertEqual([str(self.job["id"])], report["failed"])
+        row = self.f.row(self.job)
+        self.assertEqual("failed", row["state"])
+        self.assertEqual("attempts_exhausted", row["last_error"])
+        self.assertIsNone(row["lease_token"])
+        self.assertEqual(claim["fence"], row["fence"])
+        self.assertEqual(1, row["attempt_count"])
+        self.assertEqual(1, self.stub.run_calls)
+        with connect() as db:
+            audits = db.execute("SELECT count(*) n FROM public.audit_events WHERE job_id=%s AND event_type='job_failed'",
+                                (self.job["id"],)).fetchone()["n"]
+            attempt = db.execute("SELECT result FROM public.render_attempts WHERE job_id=%s", (self.job["id"],)).fetchone()
+        self.assertEqual(1, audits)
+        self.assertEqual("expired", attempt["result"])
+        self.controller.sweep_once(limit=1)
+        self.assertEqual(1, self.stub.run_calls)
+
+    def test_cloud_safe_sweep_terminal_proof_cannot_exhaust_a_still_live_lease(self):
+        with connect() as db:
+            db.execute("UPDATE public.render_jobs SET max_attempts=1 WHERE id=%s", (self.job["id"],))
+        intent = self.launch()
+        LaunchBoundMediaControl(self.f.dsn, intent).claim_job(self.job["id"])
+        self.finish_provider_execution(intent)
+        report = self.controller.sweep_once(limit=1)
+        self.assertEqual([], report["failed"])
+        self.assertEqual("closed", self.controller.control.get_launch(intent["id"])["state"])
+        self.assertEqual("running", self.f.row(self.job)["state"])
+        self.f.expire(self.job)
+        self.assertEqual([str(self.job["id"])], self.controller.sweep_once(limit=1)["failed"])
+        self.assertEqual(1, self.stub.run_calls)
+
+    def test_concurrent_cloud_safe_sweeps_preserve_global_admission_cap(self):
+        asset_a = {"id": self.job["source_asset_id"]}
+        asset_b = self.f.ingest(other=True)
+        for index in range(4):
+            self.f.submit_media(asset_a, "sweep-a-" + str(index))
+            self.f.submit_media(asset_b, "sweep-b-" + str(index), other=True)
+        with ThreadPoolExecutor(max_workers=8) as pool:
+            reports = list(pool.map(lambda _: self.controller.sweep_once(limit=10), range(8)))
+        self.assertTrue(all(not report["errors"] for report in reports))
+        self.assertEqual(2, sum(len(report["launched"]) for report in reports))
+        self.assertEqual(2, self.stub.run_calls)
+        with connect() as db:
+            self.assertEqual(2, db.execute("SELECT count(*) n FROM public.cloud_job_launches WHERE state<>'closed'").fetchone()["n"])
+
+    def test_cloud_safe_sweep_rotates_unknown_observations_with_limit_one(self):
+        self.stub.lose_run_response = True
+        unknown = self.launch()
+        other = self.f.submit_media(self.f.ingest(other=True), "observed", other=True)
+        terminal = self.launch(other, self.event_for(other))
+        self.finish_provider_execution(terminal)
+        third = self.f.submit_media(self.f.ingest(), "ready-after-release")
+        first = self.controller.sweep_once(limit=1)
+        self.assertIn(str(unknown["id"]), first["blocked"])
+        self.assertEqual([], first["launched"])
+        second = self.controller.sweep_once(limit=1)
+        self.assertEqual("closed", self.controller.control.get_launch(terminal["id"])["state"])
+        self.assertEqual([str(third["id"])], [row["job_id"] for row in second["launched"]])
+        self.assertEqual(3, self.stub.run_calls)
+
+    def test_cloud_safe_sweep_skips_saturated_organization_before_candidate_limit(self):
+        with connect() as db:
+            db.execute("UPDATE public.org_quotas SET max_active_jobs=1 WHERE organization_id=%s", (self.f.org_a,))
+        self.launch()  # Reserves org A's only slot; older due A jobs cannot starve B.
+        self.f.submit_media(self.f.ingest(), "blocked-old-a")
+        other = self.f.submit_media(self.f.ingest(other=True), "ready-b", other=True)
+        report = self.controller.sweep_once(limit=1)
+        self.assertEqual([str(other["id"])], [row["job_id"] for row in report["launched"]])
+        self.assertEqual(2, self.stub.run_calls)
+        for value in (0, 101, True, "1"):
+            with self.subTest(limit=value), self.assertRaises(ValueError):
+                self.controller.sweep_once(limit=value)
+
     def test_lost_task_response_retry_history_expiry_duplicates_no_extra_job_or_claim(self):
         self.stub.lose_task_response = True
         dispatcher = CloudDispatcher(self.f.dsn)
