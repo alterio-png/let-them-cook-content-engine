@@ -48,6 +48,12 @@ def audit(config: dict) -> None:
     require(config["terraform"]["required_providers"]["google"] ==
             {"source": "hashicorp/google", "version": "= 8.10.0"},
             "reviewed official provider exact pin must be retained")
+    for name, definition in variables.items():
+        for validation in definition.get("validation", []):
+            condition = validation.get("condition", "")
+            require(condition.startswith("${") and condition.endswith("}") and
+                    ("var." + name) in condition,
+                    "JSON variable validation must contain an interpolated expression")
     require(variables["staging_authorized"].get("default") is False,
             "provisioning authorization must default false")
     require(variables["cloud_runtime_images_approved"].get("default") is False,
@@ -197,7 +203,8 @@ def audit(config: dict) -> None:
     budget = resource["google_billing_budget"]["sandbox"]
     require({x["threshold_percent"] for x in budget["threshold_rules"]} == {.5, .9, 1.0},
             "50/90/100 percent budget alerts required")
-    require(budget["all_updates_rule"][0]["disable_default_iam_recipients"] is False,
+    require(all(rule.get("disable_default_iam_recipients", False) is False
+                for rule in budget.get("all_updates_rule", [])),
             "billing administrators must receive delayed budget alerts")
     require(variables["output_retention_days"].get("default") == 30,
             "default documented output retention intent is30 days")
@@ -217,4 +224,4 @@ def _environment(value):
 
 if __name__ == "__main__":
     audit(load_configuration(Path(__file__).parent))
-    print("PASS: offline JSON security policy only; Terraform/provider/cloud NOT_VALIDATED")
+    print("PASS: offline JSON security policy; separate toolchain evidence required; Google Cloud NOT_VALIDATED")

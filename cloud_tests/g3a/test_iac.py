@@ -44,6 +44,10 @@ class CloudInfrastructurePolicyTests(unittest.TestCase):
     def test_provider_pin_cannot_float_without_review(self):
         self.reject(lambda c: c["terraform"]["required_providers"]["google"].update(version=">=8.0.0"))
 
+    def test_variable_validation_must_not_be_a_literal_json_string(self):
+        self.reject(lambda c: c["variable"]["worker_image"]["validation"][0]
+                    .update(condition='can(regex("@sha256", var.worker_image))'))
+
     def test_review_guard_cannot_be_preapproved(self):
         self.reject(lambda c: c["variable"]["staging_authorized"].update(default=True))
 
@@ -159,6 +163,10 @@ class CloudInfrastructurePolicyTests(unittest.TestCase):
     def test_budget_alerts_must_keep_all_three_thresholds(self):
         self.reject(lambda c: c["resource"]["google_billing_budget"]["sandbox"]
                     .update(threshold_rules=[{"threshold_percent": 1.0}]))
+
+    def test_budget_default_email_recipients_cannot_be_disabled(self):
+        self.reject(lambda c: c["resource"]["google_billing_budget"]["sandbox"].update(
+            all_updates_rule=[{"disable_default_iam_recipients": True}]))
 
     def test_container_proposal_is_nonroot_and_does_not_download_or_ship_binary(self):
         dockerfile = (IAC / "Dockerfile.worker.PROPOSAL").read_text()

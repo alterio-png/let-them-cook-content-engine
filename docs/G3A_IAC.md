@@ -11,15 +11,22 @@ topology. G0/G1/G2 files and Creative OS are untouched by this component.
 On 2026-11-07 the official Terraform Registry returned `hashicorp/google/8.10.0`,
 published `2026-11-03T19:22:30Z`. The configuration pins exactly `= 8.10.0` and
 requires Terraform `>=1.11.0,<2.0.0`. Provider resource documentation was read from
-the matching official Git tag. No provider, Terraform or third-party binary was
-installed or executed. Terraform/OpenTofu were absent in this environment.
+the matching official Git tag. Initially no Terraform/OpenTofu executable was
+installed. A later isolated local validation downloaded official Terraform1.17.1
+and its Google8.10.0 provider outside the repository. The official release ZIP
+SHA-256 was verified before execution. Terraform's BSL1.1 Additional Use Grant
+permits this internal validation; no executable is redistributed or embedded in
+a product. The Google provider is MPL2.0 and Terraform init verified its published
+HashiCorp signature. Exact sources, license hashes and checksums are recorded in
+`infra/g3a/provider_review.json`.
 
 | Check | Evidence/status |
 | --- | --- |
 | JSON parsing and local topology policy | Executed by `audit_policy.py` and tests |
 | Unsafe IAM, public ingress/storage, retries, retention, resources and secrets negative fixtures | Executed; see `infra/g3a/LOCAL_POLICY_RUN.txt` |
-| Terraform formatting / provider schema validation | **NOT_VALIDATED**: Terraform/provider unavailable |
-| Provider lockfile and authenticated API compatibility | **NOT_VALIDATED**: provider not installed |
+| Terraform formatting / provider schema validation | Executed with Terraform1.17.1/google8.10.0: `fmt -check` exit0; `validate -json` valid=true, errors0, warnings0 |
+| Provider initialization and dependency lock | Executed with backend disabled; signed Google8.10.0 pinned in `.terraform.lock.hcl` |
+| Authenticated provider API compatibility and effective IAM | **NOT_VALIDATED**: no cloud credentials or Google API calls |
 | Terraform remote plan / apply | **NOT_EXECUTED**: prohibited in G3A |
 | GCS, Cloud Tasks, Cloud Run Jobs, Secret Manager, IAM, billing in Google Cloud | **NOT_VALIDATED**: no cloud calls/resources |
 | Container build, vulnerability scan, codec distribution/license approval | **BLOCKED**: proposal only |
@@ -31,12 +38,32 @@ python3 infra/g3a/audit_policy.py
 python3 -m unittest discover -s cloud_tests/g3a -p test_iac.py -v
 ```
 
-The audit deliberately does not call Terraform or the cloud. It rejects concrete
-security regressions and cannot prove provider-schema correctness, IAM effective
-permissions, network reachability or runtime behavior. G3B must add an independently
-reviewed Terraform/toolchain pin and provider lockfile, then run authorized
-validation before any provisioning decision. Do not run `plan` or `apply` as part
-of G3A reproduction.
+The policy audit deliberately does not call Terraform or the cloud. It rejects
+concrete security regressions. Separate real toolchain validation is reproducible
+on Linux x86_64 with Python3 and internet access to official tool/provider hosts:
+
+```sh
+sh infra/g3a/validate_toolchain.sh
+```
+
+This script verifies the pinned official Terraform1.17.1 ZIP checksum, copies only
+Terraform JSON and the provider lock into a temporary directory, clears inherited
+credential selectors, disables metadata credential discovery, and executes only
+`version`, `fmt -check`, `init -backend=false -input=false -lockfile=readonly` and
+`validate -json`. It performs at most two provider initialization attempts and
+removes the binary/provider/cache/configuration copy on exit. Tool downloads need
+network access; provider schema validation runs locally. No Google API, backend,
+plan, apply or deploy is invoked. See `TOOLCHAIN_CLEAN_RUN.txt` for the final clean
+run and `TOOLCHAIN_VALIDATION.txt` for initial errors and their corrections.
+
+The real toolchain exposed two defects that the original policy-only audit missed:
+JSON variable conditions needed `${...}` interpolation; an unnecessary budget
+`all_updates_rule` required a notification channel/topic. Both were corrected and
+regression checks added. Standard billing-admin email notifications remain enabled
+without that custom block. Terraform schema validity still does not prove IAM,
+network reachability, executable cloud adapters or provider behavior. G3B must
+review and validate those integrations before any provisioning decision. Do not
+run `plan` or `apply` as part of G3A reproduction.
 
 ## Guarded target topology
 

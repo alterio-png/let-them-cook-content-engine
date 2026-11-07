@@ -5,7 +5,7 @@
       "type": "string",
       "validation": [
         {
-          "condition": "can(regex(\"^[a-z0-9.-]+/[A-Za-z0-9_./-]+@sha256:[a-f0-9]{64}$\", var.api_image))",
+          "condition": "${can(regex(\"^[a-z0-9.-]+/[A-Za-z0-9_./-]+@sha256:[a-f0-9]{64}$\", var.api_image))}",
           "error_message": "Immutable registry image sha256 digest required; tags/latest forbidden."
         }
       ]
@@ -15,7 +15,7 @@
       "type": "string",
       "validation": [
         {
-          "condition": "can(regex(\"^[A-F0-9]{6}-[A-F0-9]{6}-[A-F0-9]{6}$\", var.billing_account_id))",
+          "condition": "${can(regex(\"^[A-F0-9]{6}-[A-F0-9]{6}-[A-F0-9]{6}$\", var.billing_account_id))}",
           "error_message": "Existing billing account ID required."
         }
       ]
@@ -34,11 +34,11 @@
       "type": "map(string)",
       "validation": [
         {
-          "condition": "alltrue([for k in [\"api_auth\", \"api_user\", \"dispatcher\", \"orchestrator\", \"worker\"] : can(regex(\"^projects/[^/]+/secrets/[^/]+$\", var.database_secret_ids[k]))])",
+          "condition": "${alltrue([for k in [\"api_auth\", \"api_user\", \"dispatcher\", \"orchestrator\", \"worker\"] : can(regex(\"^projects/[^/]+/secrets/[^/]+$\", var.database_secret_ids[k]))])}",
           "error_message": "Supply existing Secret Manager resource IDs for all five DB roles."
         },
         {
-          "condition": "length(distinct([for k in [\"api_auth\", \"api_user\", \"dispatcher\", \"orchestrator\", \"worker\"] : var.database_secret_ids[k]])) == 5",
+          "condition": "${length(distinct([for k in [\"api_auth\", \"api_user\", \"dispatcher\", \"orchestrator\", \"worker\"] : var.database_secret_ids[k]])) == 5}",
           "error_message": "Each DB role must use a distinct existing secret reference."
         }
       ]
@@ -48,7 +48,7 @@
       "type": "map(string)",
       "validation": [
         {
-          "condition": "alltrue([for k in [\"api_auth\", \"api_user\", \"dispatcher\", \"orchestrator\", \"worker\"] : can(regex(\"^[1-9][0-9]*$\", var.database_secret_versions[k]))])",
+          "condition": "${alltrue([for k in [\"api_auth\", \"api_user\", \"dispatcher\", \"orchestrator\", \"worker\"] : can(regex(\"^[1-9][0-9]*$\", var.database_secret_versions[k]))])}",
           "error_message": "Pin numeric secret versions for all five DB roles."
         }
       ]
@@ -59,7 +59,7 @@
       "type": "number",
       "validation": [
         {
-          "condition": "var.monthly_budget_usd > 0 && var.monthly_budget_usd <= 100 && floor(var.monthly_budget_usd) == var.monthly_budget_usd",
+          "condition": "${var.monthly_budget_usd > 0 && var.monthly_budget_usd <= 100 && floor(var.monthly_budget_usd) == var.monthly_budget_usd}",
           "error_message": "G3B review budget must be an integer from1 to100 USD."
         }
       ]
@@ -69,7 +69,7 @@
       "type": "string",
       "validation": [
         {
-          "condition": "can(regex(\"^[a-z0-9.-]+/[A-Za-z0-9_./-]+@sha256:[a-f0-9]{64}$\", var.orchestrator_image))",
+          "condition": "${can(regex(\"^[a-z0-9.-]+/[A-Za-z0-9_./-]+@sha256:[a-f0-9]{64}$\", var.orchestrator_image))}",
           "error_message": "Immutable registry image sha256 digest required; tags/latest forbidden."
         }
       ]
@@ -80,7 +80,7 @@
       "type": "number",
       "validation": [
         {
-          "condition": "var.output_retention_days >= 1 && var.output_retention_days <= 365",
+          "condition": "${var.output_retention_days >= 1 && var.output_retention_days <= 365}",
           "error_message": "Retention intent must be 1-365 days."
         }
       ]
@@ -90,7 +90,7 @@
       "type": "string",
       "validation": [
         {
-          "condition": "can(regex(\"^[a-z][a-z0-9-]{4,28}[a-z0-9]$\", var.project_id))",
+          "condition": "${can(regex(\"^[a-z][a-z0-9-]{4,28}[a-z0-9]$\", var.project_id))}",
           "error_message": "Provide an existing sandbox project ID."
         }
       ]
@@ -100,7 +100,7 @@
       "type": "string",
       "validation": [
         {
-          "condition": "can(regex(\"^[0-9]+$\", var.project_number))",
+          "condition": "${can(regex(\"^[0-9]+$\", var.project_number))}",
           "error_message": "Project number must be numeric."
         }
       ]
@@ -120,7 +120,7 @@
       "type": "string",
       "validation": [
         {
-          "condition": "can(regex(\"^[a-z0-9.-]+/[A-Za-z0-9_./-]+@sha256:[a-f0-9]{64}$\", var.worker_image))",
+          "condition": "${can(regex(\"^[a-z0-9.-]+/[A-Za-z0-9_./-]+@sha256:[a-f0-9]{64}$\", var.worker_image))}",
           "error_message": "Immutable registry image sha256 digest required; tags/latest forbidden."
         }
       ]

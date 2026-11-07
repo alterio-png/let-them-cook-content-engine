@@ -2,11 +2,6 @@
   "resource": {
     "google_billing_budget": {
       "sandbox": {
-        "all_updates_rule": [
-          {
-            "disable_default_iam_recipients": false
-          }
-        ],
         "amount": [
           {
             "specified_amount": [

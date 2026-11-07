@@ -1,14 +1,16 @@
 G3A REVIEW-ONLY IaC local evidence
-2026-11-07T12:51:01.835617+00:00
-Terraform/OpenTofu: absent; provider schema/fmt/cloud NOT_VALIDATED
-No plan/apply/build/deploy/cloud calls executed.
+2026-11-07T12:59:10.970480+00:00
+Separate Terraform1.17.1/google8.10.0 local schema validation succeeded; see TOOLCHAIN_CLEAN_RUN.txt.
+Google Cloud, effective IAM and API integrations remain NOT_VALIDATED.
+No plan/apply/build/deploy/cloud API calls executed.
 $ python infra/g3a/audit_policy.py
-PASS: offline JSON security policy only; Terraform/provider/cloud NOT_VALIDATED
+PASS: offline JSON security policy; separate toolchain evidence required; Google Cloud NOT_VALIDATED
 exit_code=0
 $ python -m unittest discover -s cloud_tests/g3a -p test_iac.py -v
 test_api_cannot_gain_object_deletion_or_listing (test_iac.CloudInfrastructurePolicyTests.test_api_cannot_gain_object_deletion_or_listing) ... ok
 test_bucket_binding_cannot_be_elevated_to_storage_admin (test_iac.CloudInfrastructurePolicyTests.test_bucket_binding_cannot_be_elevated_to_storage_admin) ... ok
 test_budget_alerts_must_keep_all_three_thresholds (test_iac.CloudInfrastructurePolicyTests.test_budget_alerts_must_keep_all_three_thresholds) ... ok
+test_budget_default_email_recipients_cannot_be_disabled (test_iac.CloudInfrastructurePolicyTests.test_budget_default_email_recipients_cannot_be_disabled) ... ok
 test_cloud_http_cannot_disable_iam_or_expose_public_ingress (test_iac.CloudInfrastructurePolicyTests.test_cloud_http_cannot_disable_iam_or_expose_public_ingress) ... ok
 test_container_proposal_is_nonroot_and_does_not_download_or_ship_binary (test_iac.CloudInfrastructurePolicyTests.test_container_proposal_is_nonroot_and_does_not_download_or_ship_binary) ... ok
 test_destructive_bucket_teardown_is_rejected (test_iac.CloudInfrastructurePolicyTests.test_destructive_bucket_teardown_is_rejected) ... ok
@@ -35,11 +37,12 @@ test_side_resource_cannot_bypass_authorization (test_iac.CloudInfrastructurePoli
 test_token_minting_cannot_be_granted_to_api_or_worker (test_iac.CloudInfrastructurePolicyTests.test_token_minting_cannot_be_granted_to_api_or_worker) ... ok
 test_unreviewed_hcl_sidecar_cannot_bypass_json_policy (test_iac.CloudInfrastructurePolicyTests.test_unreviewed_hcl_sidecar_cannot_bypass_json_policy) ... ok
 test_unreviewed_runtime_artifact_gate_cannot_be_removed (test_iac.CloudInfrastructurePolicyTests.test_unreviewed_runtime_artifact_gate_cannot_be_removed) ... ok
+test_variable_validation_must_not_be_a_literal_json_string (test_iac.CloudInfrastructurePolicyTests.test_variable_validation_must_not_be_a_literal_json_string) ... ok
 test_worker_cannot_receive_arbitrary_command_or_environment (test_iac.CloudInfrastructurePolicyTests.test_worker_cannot_receive_arbitrary_command_or_environment) ... ok
 test_worker_cannot_update_existing_objects (test_iac.CloudInfrastructurePolicyTests.test_worker_cannot_update_existing_objects) ... ok
 
 ----------------------------------------------------------------------
-Ran 31 tests in 0.022s
+Ran 33 tests in 0.024s
 
 OK
 exit_code=0
