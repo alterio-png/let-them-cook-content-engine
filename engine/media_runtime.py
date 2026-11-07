@@ -82,7 +82,7 @@ def _run(binary, arguments, limits, *, cwd=None, cancel_event=None, heartbeat=No
     if seconds <= 0:
         raise MediaTimeout()
     command = [sys.executable, str(Path(__file__).with_name("media_sandbox.py")),
-               str(math.ceil(limits.cpu_seconds)), str(int(limits.memory_bytes)),
+               str(os.getpid()), str(math.ceil(limits.cpu_seconds)), str(int(limits.memory_bytes)),
                str(int(limits.max_output_bytes)), require_tool(binary), *arguments]
     started = time.monotonic()
     with tempfile.TemporaryFile() as stdout, tempfile.TemporaryFile() as stderr:

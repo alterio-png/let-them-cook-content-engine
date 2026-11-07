@@ -4,6 +4,7 @@ from pathlib import Path
 import signal
 import struct
 import subprocess
+import sys
 import tempfile
 import threading
 import time
@@ -165,6 +166,7 @@ class MediaRuntimeTests(unittest.TestCase):
                 self.render(cancel_event=cancel)
         self.assertTrue(processes)
         self.assertTrue(all(process.returncode is not None for process in processes))
+
         cancel.clear()
         calls = []
 
@@ -185,6 +187,63 @@ class MediaRuntimeTests(unittest.TestCase):
                 self.render(heartbeat=lost_lease)
         self.assertTrue(processes)
         self.assertTrue(all(process.returncode is not None for process in processes))
+
+    def test_hard_killing_worker_terminates_active_real_ffmpeg(self):
+        pid_path = Path(self.scratch.name) / "native.pid"
+        # The separate supervisor runs an actual FFmpeg process continuously
+        # decoding the generated source, then is killed without finally cleanup.
+        script = """import pathlib, subprocess, sys
+from engine.media_runtime import _run, Limits
+original = subprocess.Popen
+def observe(*args, **kwargs):
+    process = original(*args, **kwargs)
+    pathlib.Path(sys.argv[2]).write_text(str(process.pid))
+    return process
+subprocess.Popen = observe
+_run('ffmpeg', ['-nostdin','-v','error','-threads','1','-re',
+     '-stream_loop','-1','-i',sys.argv[1],'-f','null','-'],
+     Limits(timeout_seconds=30,cpu_seconds=30))
+"""
+        supervisor = subprocess.Popen([sys.executable, "-c", script, str(self.source), str(pid_path)],
+                                      stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+        native_pid = None
+        try:
+            deadline = time.monotonic() + 10
+            while time.monotonic() < deadline:
+                if pid_path.exists():
+                    try:
+                        native_pid = int(pid_path.read_text())
+                        if Path(f"/proc/{native_pid}/comm").read_text().strip() == "ffmpeg":
+                            break
+                    except (OSError, ValueError):
+                        pass
+                if supervisor.poll() is not None:
+                    self.fail("media supervisor exited before native FFmpeg execution")
+                time.sleep(0.02)
+            else:
+                self.fail("native FFmpeg did not start")
+            supervisor.kill()
+            supervisor.wait(timeout=5)
+            deadline = time.monotonic() + 5
+            while time.monotonic() < deadline:
+                try:
+                    state = Path(f"/proc/{native_pid}/stat").read_text().split(") ", 1)[1][0]
+                except FileNotFoundError:
+                    break
+                if state == "Z":
+                    break  # Container PID1 may defer reaping, but no decoder runs.
+                time.sleep(0.02)
+            else:
+                self.fail("native FFmpeg survived hard-killed worker")
+        finally:
+            if supervisor.poll() is None:
+                supervisor.kill()
+                supervisor.wait(timeout=5)
+            if native_pid is not None:
+                try:
+                    os.kill(native_pid, signal.SIGKILL)
+                except ProcessLookupError:
+                    pass
 
     def test_symlink_video_and_nonempty_output_are_rejected(self):
         linked = Path(self.scratch.name) / "linked.mp4"
