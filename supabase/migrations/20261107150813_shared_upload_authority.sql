@@ -130,6 +130,7 @@ LANGUAGE sql VOLATILE SET search_path='' AS $$
  SELECT jsonb_build_object('id',r.id,'organization_id',r.organization_id,'owner_user_id',r.owner_user_id,
   'request_key',r.request_key,'size_bytes',r.size_bytes,'sha256',r.sha256,'object_key',r.object_key,
   'state',r.state,'created_at',r.created_at,'expires_at',floor(extract(epoch FROM r.expires_at))::bigint,
+  'database_now',clock_timestamp(),
   'lease_token',r.lease_token,'lease_expires_at',floor(extract(epoch FROM r.lease_expires_at))::bigint,
   'lease_seconds',CASE WHEN r.lease_expires_at IS NULL THEN NULL
    ELSE greatest(0,ceil(extract(epoch FROM r.lease_expires_at-clock_timestamp()))::integer) END,
@@ -257,7 +258,8 @@ RETURNS jsonb LANGUAGE sql SECURITY DEFINER SET search_path='' AS $$
  SELECT g3a1_private._claim_upload(p_org,p_id,p_lease,true,true)
 $$;
 
-CREATE FUNCTION g3a1_private._heartbeat_upload(p_org uuid,p_id uuid,p_token uuid,p_fence bigint,p_lease integer,p_internal boolean)
+CREATE FUNCTION g3a1_private._heartbeat_upload(p_org uuid,p_id uuid,p_token uuid,p_fence bigint,p_lease integer,
+ p_internal boolean,p_operation_deadline timestamptz DEFAULT NULL)
 RETURNS boolean LANGUAGE plpgsql SET search_path='' AS $$
 DECLARE r g3a1_private.upload_reservations%ROWTYPE; max_lease integer;
 BEGIN
@@ -269,10 +271,12 @@ BEGIN
  IF NOT FOUND OR (NOT p_internal AND r.owner_user_id<>auth.uid()) THEN
   RAISE EXCEPTION 'upload not found' USING ERRCODE='P0002';
  END IF;
+ IF p_operation_deadline IS NOT NULL AND p_operation_deadline<=clock_timestamp() THEN RETURN false; END IF;
  IF r.state<>'publishing' OR p_token IS DISTINCT FROM r.lease_token
   OR p_fence IS DISTINCT FROM r.fence OR r.lease_expires_at<=clock_timestamp() THEN RETURN false; END IF;
  SELECT max_lease_seconds INTO max_lease FROM g3a1_private.upload_limits WHERE organization_id=p_org;
- UPDATE g3a1_private.upload_reservations SET lease_expires_at=clock_timestamp()+make_interval(secs=>least(p_lease,max_lease))
+ UPDATE g3a1_private.upload_reservations SET lease_expires_at=least(
+  clock_timestamp()+make_interval(secs=>least(p_lease,max_lease)),p_operation_deadline)
   WHERE id=r.id;
  INSERT INTO g3a1_private.upload_events(organization_id,reservation_id,event_type,fence)
   VALUES(p_org,r.id,'heartbeat',r.fence);
@@ -282,13 +286,23 @@ CREATE FUNCTION g3a1_private.heartbeat_upload(p_org uuid,p_id uuid,p_token uuid,
 RETURNS boolean LANGUAGE sql SECURITY DEFINER SET search_path='' AS $$
  SELECT g3a1_private._heartbeat_upload(p_org,p_id,p_token,p_fence,p_lease,false)
 $$;
+CREATE FUNCTION g3a1_private.heartbeat_upload_before(p_org uuid,p_id uuid,p_token uuid,p_fence bigint,
+ p_lease integer,p_operation_deadline timestamptz)
+RETURNS boolean LANGUAGE plpgsql SECURITY DEFINER SET search_path='' AS $$
+BEGIN
+ IF p_operation_deadline IS NULL OR NOT isfinite(p_operation_deadline) THEN
+  RAISE EXCEPTION 'finite operation deadline required' USING ERRCODE='22023';
+ END IF;
+ RETURN g3a1_private._heartbeat_upload(p_org,p_id,p_token,p_fence,p_lease,false,p_operation_deadline);
+END
+$$;
 CREATE FUNCTION g3a1_private.internal_heartbeat_upload(p_org uuid,p_id uuid,p_token uuid,p_fence bigint,p_lease integer)
 RETURNS boolean LANGUAGE sql SECURITY DEFINER SET search_path='' AS $$
  SELECT g3a1_private._heartbeat_upload(p_org,p_id,p_token,p_fence,p_lease,true)
 $$;
 
 CREATE FUNCTION g3a1_private._complete_upload(p_org uuid,p_id uuid,p_token uuid,p_fence bigint,
- p_key text,p_size bigint,p_sha text,p_generation text,p_internal boolean)
+ p_key text,p_size bigint,p_sha text,p_generation text,p_internal boolean,p_operation_deadline timestamptz DEFAULT NULL)
 RETURNS jsonb LANGUAGE plpgsql SET search_path='' AS $$
 DECLARE r g3a1_private.upload_reservations%ROWTYPE; receipt g3a1_private.upload_receipts%ROWTYPE;
 BEGIN
@@ -296,6 +310,9 @@ BEGIN
  SELECT * INTO r FROM g3a1_private.upload_reservations WHERE id=p_id AND organization_id=p_org FOR UPDATE;
  IF NOT FOUND OR (NOT p_internal AND r.owner_user_id<>auth.uid()) THEN
   RAISE EXCEPTION 'upload not found' USING ERRCODE='P0002';
+ END IF;
+ IF p_operation_deadline IS NOT NULL AND p_operation_deadline<=clock_timestamp() THEN
+  RAISE EXCEPTION 'upload operation deadline expired' USING ERRCODE='40001';
  END IF;
  IF p_key IS DISTINCT FROM r.object_key OR p_size IS DISTINCT FROM r.size_bytes OR p_sha IS DISTINCT FROM r.sha256
   OR (p_generation IS NOT NULL AND length(p_generation) NOT BETWEEN 1 AND 128) THEN
@@ -320,6 +337,10 @@ BEGIN
  UPDATE g3a1_private.upload_reservations SET state='uploaded',lease_token=NULL,lease_expires_at=NULL WHERE id=r.id;
  INSERT INTO g3a1_private.upload_events(organization_id,reservation_id,event_type,fence)
   VALUES(p_org,r.id,'uploaded',r.fence);
+ -- Also cover waits in receipt/audit constraints or triggers after admission.
+ IF p_operation_deadline IS NOT NULL AND p_operation_deadline<=clock_timestamp() THEN
+  RAISE EXCEPTION 'upload operation deadline expired' USING ERRCODE='40001';
+ END IF;
  -- Bytes/count remain charged: a durable object and receipt still occupy quota.
  RETURN g3a1_private._receipt_json(r.id);
 END $$;
@@ -327,6 +348,16 @@ CREATE FUNCTION g3a1_private.complete_upload(p_org uuid,p_id uuid,p_token uuid,p
  p_key text,p_size bigint,p_sha text,p_generation text DEFAULT NULL)
 RETURNS jsonb LANGUAGE sql SECURITY DEFINER SET search_path='' AS $$
  SELECT g3a1_private._complete_upload(p_org,p_id,p_token,p_fence,p_key,p_size,p_sha,p_generation,false)
+$$;
+CREATE FUNCTION g3a1_private.complete_upload_before(p_org uuid,p_id uuid,p_token uuid,p_fence bigint,
+ p_key text,p_size bigint,p_sha text,p_generation text,p_operation_deadline timestamptz)
+RETURNS jsonb LANGUAGE plpgsql SECURITY DEFINER SET search_path='' AS $$
+BEGIN
+ IF p_operation_deadline IS NULL OR NOT isfinite(p_operation_deadline) THEN
+  RAISE EXCEPTION 'finite operation deadline required' USING ERRCODE='22023';
+ END IF;
+ RETURN g3a1_private._complete_upload(p_org,p_id,p_token,p_fence,p_key,p_size,p_sha,p_generation,false,p_operation_deadline);
+END
 $$;
 CREATE FUNCTION g3a1_private.internal_complete_upload(p_org uuid,p_id uuid,p_token uuid,p_fence bigint,
  p_key text,p_size bigint,p_sha text,p_generation text DEFAULT NULL)
@@ -426,7 +457,9 @@ GRANT EXECUTE ON FUNCTION
  g3a1_private.claim_upload(uuid,uuid,integer),
  g3a1_private.reconcile_own_upload(uuid,uuid,integer),
  g3a1_private.heartbeat_upload(uuid,uuid,uuid,bigint,integer),
+ g3a1_private.heartbeat_upload_before(uuid,uuid,uuid,bigint,integer,timestamptz),
  g3a1_private.complete_upload(uuid,uuid,uuid,bigint,text,bigint,text,text),
+ g3a1_private.complete_upload_before(uuid,uuid,uuid,bigint,text,bigint,text,text,timestamptz),
  g3a1_private.mark_upload_uncertain(uuid,uuid,uuid,bigint,text),
  g3a1_private.get_upload(uuid,uuid),g3a1_private.get_upload_receipt(uuid,uuid),
  g3a1_private.expire_unused_uploads(uuid,integer),g3a1_private.upload_metrics(uuid)
