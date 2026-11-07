@@ -1,0 +1,674 @@
+[
+  {
+    "role": "anon",
+    "table": "upload_limits",
+    "privilege": "SELECT",
+    "granted": false
+  },
+  {
+    "role": "anon",
+    "table": "upload_limits",
+    "privilege": "INSERT",
+    "granted": false
+  },
+  {
+    "role": "anon",
+    "table": "upload_limits",
+    "privilege": "UPDATE",
+    "granted": false
+  },
+  {
+    "role": "anon",
+    "table": "upload_limits",
+    "privilege": "DELETE",
+    "granted": false
+  },
+  {
+    "role": "anon",
+    "table": "upload_limits",
+    "privilege": "TRUNCATE",
+    "granted": false
+  },
+  {
+    "role": "anon",
+    "table": "upload_limits",
+    "privilege": "REFERENCES",
+    "granted": false
+  },
+  {
+    "role": "anon",
+    "table": "upload_limits",
+    "privilege": "TRIGGER",
+    "granted": false
+  },
+  {
+    "role": "anon",
+    "table": "upload_reservations",
+    "privilege": "SELECT",
+    "granted": false
+  },
+  {
+    "role": "anon",
+    "table": "upload_reservations",
+    "privilege": "INSERT",
+    "granted": false
+  },
+  {
+    "role": "anon",
+    "table": "upload_reservations",
+    "privilege": "UPDATE",
+    "granted": false
+  },
+  {
+    "role": "anon",
+    "table": "upload_reservations",
+    "privilege": "DELETE",
+    "granted": false
+  },
+  {
+    "role": "anon",
+    "table": "upload_reservations",
+    "privilege": "TRUNCATE",
+    "granted": false
+  },
+  {
+    "role": "anon",
+    "table": "upload_reservations",
+    "privilege": "REFERENCES",
+    "granted": false
+  },
+  {
+    "role": "anon",
+    "table": "upload_reservations",
+    "privilege": "TRIGGER",
+    "granted": false
+  },
+  {
+    "role": "anon",
+    "table": "upload_receipts",
+    "privilege": "SELECT",
+    "granted": false
+  },
+  {
+    "role": "anon",
+    "table": "upload_receipts",
+    "privilege": "INSERT",
+    "granted": false
+  },
+  {
+    "role": "anon",
+    "table": "upload_receipts",
+    "privilege": "UPDATE",
+    "granted": false
+  },
+  {
+    "role": "anon",
+    "table": "upload_receipts",
+    "privilege": "DELETE",
+    "granted": false
+  },
+  {
+    "role": "anon",
+    "table": "upload_receipts",
+    "privilege": "TRUNCATE",
+    "granted": false
+  },
+  {
+    "role": "anon",
+    "table": "upload_receipts",
+    "privilege": "REFERENCES",
+    "granted": false
+  },
+  {
+    "role": "anon",
+    "table": "upload_receipts",
+    "privilege": "TRIGGER",
+    "granted": false
+  },
+  {
+    "role": "anon",
+    "table": "upload_events",
+    "privilege": "SELECT",
+    "granted": false
+  },
+  {
+    "role": "anon",
+    "table": "upload_events",
+    "privilege": "INSERT",
+    "granted": false
+  },
+  {
+    "role": "anon",
+    "table": "upload_events",
+    "privilege": "UPDATE",
+    "granted": false
+  },
+  {
+    "role": "anon",
+    "table": "upload_events",
+    "privilege": "DELETE",
+    "granted": false
+  },
+  {
+    "role": "anon",
+    "table": "upload_events",
+    "privilege": "TRUNCATE",
+    "granted": false
+  },
+  {
+    "role": "anon",
+    "table": "upload_events",
+    "privilege": "REFERENCES",
+    "granted": false
+  },
+  {
+    "role": "anon",
+    "table": "upload_events",
+    "privilege": "TRIGGER",
+    "granted": false
+  },
+  {
+    "role": "authenticated",
+    "table": "upload_limits",
+    "privilege": "SELECT",
+    "granted": true
+  },
+  {
+    "role": "authenticated",
+    "table": "upload_limits",
+    "privilege": "INSERT",
+    "granted": false
+  },
+  {
+    "role": "authenticated",
+    "table": "upload_limits",
+    "privilege": "UPDATE",
+    "granted": false
+  },
+  {
+    "role": "authenticated",
+    "table": "upload_limits",
+    "privilege": "DELETE",
+    "granted": false
+  },
+  {
+    "role": "authenticated",
+    "table": "upload_limits",
+    "privilege": "TRUNCATE",
+    "granted": false
+  },
+  {
+    "role": "authenticated",
+    "table": "upload_limits",
+    "privilege": "REFERENCES",
+    "granted": false
+  },
+  {
+    "role": "authenticated",
+    "table": "upload_limits",
+    "privilege": "TRIGGER",
+    "granted": false
+  },
+  {
+    "role": "authenticated",
+    "table": "upload_reservations",
+    "privilege": "SELECT",
+    "granted": true
+  },
+  {
+    "role": "authenticated",
+    "table": "upload_reservations",
+    "privilege": "INSERT",
+    "granted": false
+  },
+  {
+    "role": "authenticated",
+    "table": "upload_reservations",
+    "privilege": "UPDATE",
+    "granted": false
+  },
+  {
+    "role": "authenticated",
+    "table": "upload_reservations",
+    "privilege": "DELETE",
+    "granted": false
+  },
+  {
+    "role": "authenticated",
+    "table": "upload_reservations",
+    "privilege": "TRUNCATE",
+    "granted": false
+  },
+  {
+    "role": "authenticated",
+    "table": "upload_reservations",
+    "privilege": "REFERENCES",
+    "granted": false
+  },
+  {
+    "role": "authenticated",
+    "table": "upload_reservations",
+    "privilege": "TRIGGER",
+    "granted": false
+  },
+  {
+    "role": "authenticated",
+    "table": "upload_receipts",
+    "privilege": "SELECT",
+    "granted": true
+  },
+  {
+    "role": "authenticated",
+    "table": "upload_receipts",
+    "privilege": "INSERT",
+    "granted": false
+  },
+  {
+    "role": "authenticated",
+    "table": "upload_receipts",
+    "privilege": "UPDATE",
+    "granted": false
+  },
+  {
+    "role": "authenticated",
+    "table": "upload_receipts",
+    "privilege": "DELETE",
+    "granted": false
+  },
+  {
+    "role": "authenticated",
+    "table": "upload_receipts",
+    "privilege": "TRUNCATE",
+    "granted": false
+  },
+  {
+    "role": "authenticated",
+    "table": "upload_receipts",
+    "privilege": "REFERENCES",
+    "granted": false
+  },
+  {
+    "role": "authenticated",
+    "table": "upload_receipts",
+    "privilege": "TRIGGER",
+    "granted": false
+  },
+  {
+    "role": "authenticated",
+    "table": "upload_events",
+    "privilege": "SELECT",
+    "granted": false
+  },
+  {
+    "role": "authenticated",
+    "table": "upload_events",
+    "privilege": "INSERT",
+    "granted": false
+  },
+  {
+    "role": "authenticated",
+    "table": "upload_events",
+    "privilege": "UPDATE",
+    "granted": false
+  },
+  {
+    "role": "authenticated",
+    "table": "upload_events",
+    "privilege": "DELETE",
+    "granted": false
+  },
+  {
+    "role": "authenticated",
+    "table": "upload_events",
+    "privilege": "TRUNCATE",
+    "granted": false
+  },
+  {
+    "role": "authenticated",
+    "table": "upload_events",
+    "privilege": "REFERENCES",
+    "granted": false
+  },
+  {
+    "role": "authenticated",
+    "table": "upload_events",
+    "privilege": "TRIGGER",
+    "granted": false
+  },
+  {
+    "role": "engine_worker",
+    "table": "upload_limits",
+    "privilege": "SELECT",
+    "granted": false
+  },
+  {
+    "role": "engine_worker",
+    "table": "upload_limits",
+    "privilege": "INSERT",
+    "granted": false
+  },
+  {
+    "role": "engine_worker",
+    "table": "upload_limits",
+    "privilege": "UPDATE",
+    "granted": false
+  },
+  {
+    "role": "engine_worker",
+    "table": "upload_limits",
+    "privilege": "DELETE",
+    "granted": false
+  },
+  {
+    "role": "engine_worker",
+    "table": "upload_limits",
+    "privilege": "TRUNCATE",
+    "granted": false
+  },
+  {
+    "role": "engine_worker",
+    "table": "upload_limits",
+    "privilege": "REFERENCES",
+    "granted": false
+  },
+  {
+    "role": "engine_worker",
+    "table": "upload_limits",
+    "privilege": "TRIGGER",
+    "granted": false
+  },
+  {
+    "role": "engine_worker",
+    "table": "upload_reservations",
+    "privilege": "SELECT",
+    "granted": false
+  },
+  {
+    "role": "engine_worker",
+    "table": "upload_reservations",
+    "privilege": "INSERT",
+    "granted": false
+  },
+  {
+    "role": "engine_worker",
+    "table": "upload_reservations",
+    "privilege": "UPDATE",
+    "granted": false
+  },
+  {
+    "role": "engine_worker",
+    "table": "upload_reservations",
+    "privilege": "DELETE",
+    "granted": false
+  },
+  {
+    "role": "engine_worker",
+    "table": "upload_reservations",
+    "privilege": "TRUNCATE",
+    "granted": false
+  },
+  {
+    "role": "engine_worker",
+    "table": "upload_reservations",
+    "privilege": "REFERENCES",
+    "granted": false
+  },
+  {
+    "role": "engine_worker",
+    "table": "upload_reservations",
+    "privilege": "TRIGGER",
+    "granted": false
+  },
+  {
+    "role": "engine_worker",
+    "table": "upload_receipts",
+    "privilege": "SELECT",
+    "granted": false
+  },
+  {
+    "role": "engine_worker",
+    "table": "upload_receipts",
+    "privilege": "INSERT",
+    "granted": false
+  },
+  {
+    "role": "engine_worker",
+    "table": "upload_receipts",
+    "privilege": "UPDATE",
+    "granted": false
+  },
+  {
+    "role": "engine_worker",
+    "table": "upload_receipts",
+    "privilege": "DELETE",
+    "granted": false
+  },
+  {
+    "role": "engine_worker",
+    "table": "upload_receipts",
+    "privilege": "TRUNCATE",
+    "granted": false
+  },
+  {
+    "role": "engine_worker",
+    "table": "upload_receipts",
+    "privilege": "REFERENCES",
+    "granted": false
+  },
+  {
+    "role": "engine_worker",
+    "table": "upload_receipts",
+    "privilege": "TRIGGER",
+    "granted": false
+  },
+  {
+    "role": "engine_worker",
+    "table": "upload_events",
+    "privilege": "SELECT",
+    "granted": false
+  },
+  {
+    "role": "engine_worker",
+    "table": "upload_events",
+    "privilege": "INSERT",
+    "granted": false
+  },
+  {
+    "role": "engine_worker",
+    "table": "upload_events",
+    "privilege": "UPDATE",
+    "granted": false
+  },
+  {
+    "role": "engine_worker",
+    "table": "upload_events",
+    "privilege": "DELETE",
+    "granted": false
+  },
+  {
+    "role": "engine_worker",
+    "table": "upload_events",
+    "privilege": "TRUNCATE",
+    "granted": false
+  },
+  {
+    "role": "engine_worker",
+    "table": "upload_events",
+    "privilege": "REFERENCES",
+    "granted": false
+  },
+  {
+    "role": "engine_worker",
+    "table": "upload_events",
+    "privilege": "TRIGGER",
+    "granted": false
+  },
+  {
+    "role": "g3a1_upload_reconciler",
+    "table": "upload_limits",
+    "privilege": "SELECT",
+    "granted": false
+  },
+  {
+    "role": "g3a1_upload_reconciler",
+    "table": "upload_limits",
+    "privilege": "INSERT",
+    "granted": false
+  },
+  {
+    "role": "g3a1_upload_reconciler",
+    "table": "upload_limits",
+    "privilege": "UPDATE",
+    "granted": false
+  },
+  {
+    "role": "g3a1_upload_reconciler",
+    "table": "upload_limits",
+    "privilege": "DELETE",
+    "granted": false
+  },
+  {
+    "role": "g3a1_upload_reconciler",
+    "table": "upload_limits",
+    "privilege": "TRUNCATE",
+    "granted": false
+  },
+  {
+    "role": "g3a1_upload_reconciler",
+    "table": "upload_limits",
+    "privilege": "REFERENCES",
+    "granted": false
+  },
+  {
+    "role": "g3a1_upload_reconciler",
+    "table": "upload_limits",
+    "privilege": "TRIGGER",
+    "granted": false
+  },
+  {
+    "role": "g3a1_upload_reconciler",
+    "table": "upload_reservations",
+    "privilege": "SELECT",
+    "granted": false
+  },
+  {
+    "role": "g3a1_upload_reconciler",
+    "table": "upload_reservations",
+    "privilege": "INSERT",
+    "granted": false
+  },
+  {
+    "role": "g3a1_upload_reconciler",
+    "table": "upload_reservations",
+    "privilege": "UPDATE",
+    "granted": false
+  },
+  {
+    "role": "g3a1_upload_reconciler",
+    "table": "upload_reservations",
+    "privilege": "DELETE",
+    "granted": false
+  },
+  {
+    "role": "g3a1_upload_reconciler",
+    "table": "upload_reservations",
+    "privilege": "TRUNCATE",
+    "granted": false
+  },
+  {
+    "role": "g3a1_upload_reconciler",
+    "table": "upload_reservations",
+    "privilege": "REFERENCES",
+    "granted": false
+  },
+  {
+    "role": "g3a1_upload_reconciler",
+    "table": "upload_reservations",
+    "privilege": "TRIGGER",
+    "granted": false
+  },
+  {
+    "role": "g3a1_upload_reconciler",
+    "table": "upload_receipts",
+    "privilege": "SELECT",
+    "granted": false
+  },
+  {
+    "role": "g3a1_upload_reconciler",
+    "table": "upload_receipts",
+    "privilege": "INSERT",
+    "granted": false
+  },
+  {
+    "role": "g3a1_upload_reconciler",
+    "table": "upload_receipts",
+    "privilege": "UPDATE",
+    "granted": false
+  },
+  {
+    "role": "g3a1_upload_reconciler",
+    "table": "upload_receipts",
+    "privilege": "DELETE",
+    "granted": false
+  },
+  {
+    "role": "g3a1_upload_reconciler",
+    "table": "upload_receipts",
+    "privilege": "TRUNCATE",
+    "granted": false
+  },
+  {
+    "role": "g3a1_upload_reconciler",
+    "table": "upload_receipts",
+    "privilege": "REFERENCES",
+    "granted": false
+  },
+  {
+    "role": "g3a1_upload_reconciler",
+    "table": "upload_receipts",
+    "privilege": "TRIGGER",
+    "granted": false
+  },
+  {
+    "role": "g3a1_upload_reconciler",
+    "table": "upload_events",
+    "privilege": "SELECT",
+    "granted": false
+  },
+  {
+    "role": "g3a1_upload_reconciler",
+    "table": "upload_events",
+    "privilege": "INSERT",
+    "granted": false
+  },
+  {
+    "role": "g3a1_upload_reconciler",
+    "table": "upload_events",
+    "privilege": "UPDATE",
+    "granted": false
+  },
+  {
+    "role": "g3a1_upload_reconciler",
+    "table": "upload_events",
+    "privilege": "DELETE",
+    "granted": false
+  },
+  {
+    "role": "g3a1_upload_reconciler",
+    "table": "upload_events",
+    "privilege": "TRUNCATE",
+    "granted": false
+  },
+  {
+    "role": "g3a1_upload_reconciler",
+    "table": "upload_events",
+    "privilege": "REFERENCES",
+    "granted": false
+  },
+  {
+    "role": "g3a1_upload_reconciler",
+    "table": "upload_events",
+    "privilege": "TRIGGER",
+    "granted": false
+  }
+]

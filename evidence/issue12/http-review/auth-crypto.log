@@ -1,0 +1,14 @@
+test_algorithm_key_and_token_url_confusion_rejected_without_callback (cloud_tests.g3a.test_auth.AuthContracts.test_algorithm_key_and_token_url_confusion_rejected_without_callback) ... ok
+test_es256_and_rs256_public_jwks (cloud_tests.g3a.test_auth.AuthContracts.test_es256_and_rs256_public_jwks) ... ok
+test_issuer_audience_expiry_iat_required_claims_and_uuid (cloud_tests.g3a.test_auth.AuthContracts.test_issuer_audience_expiry_iat_required_claims_and_uuid) ... ok
+test_metadata_never_grants_identity_or_organization (cloud_tests.g3a.test_auth.AuthContracts.test_metadata_never_grants_identity_or_organization) ... ok
+test_public_jwk_rejects_secret_private_and_weak_keys (cloud_tests.g3a.test_auth.AuthContracts.test_public_jwk_rejects_secret_private_and_weak_keys) ... ok
+test_service_role_and_anonymous_signin_rejected (cloud_tests.g3a.test_auth.AuthContracts.test_service_role_and_anonymous_signin_rejected) ... ok
+test_session_store_unavailable_fails_closed (cloud_tests.g3a.test_auth.AuthContracts.test_session_store_unavailable_fails_closed) ... ok
+test_signed_token_and_uncached_revocation (cloud_tests.g3a.test_auth.AuthContracts.test_signed_token_and_uncached_revocation) ... ok
+test_size_bounds_and_malformed_tokens (cloud_tests.g3a.test_auth.AuthContracts.test_size_bounds_and_malformed_tokens) ... ok
+
+----------------------------------------------------------------------
+Ran 9 tests in 0.055s
+
+OK

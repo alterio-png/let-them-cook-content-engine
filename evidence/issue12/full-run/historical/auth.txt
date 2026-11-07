@@ -1,0 +1,22 @@
+Bootstrapped official Auth owner/roles only; no auth table fixture
+Applied unchanged sql/001_schema.sql
+Applied unchanged sql/002_g1_control_plane.sql
+Applied unchanged sql/003_media_execution.sql
+Applied new reviewed G3A migration supabase/migrations/20261107123845_g3a_cloud_contracts.sql
+Installed narrow session grant and non-bypass API login
+Official Supabase Auth component v2.197.0 + PostgreSQL 16.15, isolated local integration
+test_deleted_user_revokes_session (g3auth.test_official_auth.OfficialAuthIntegration.test_deleted_user_revokes_session) ... ok
+test_expired_retained_session_fails_closed (g3auth.test_official_auth.OfficialAuthIntegration.test_expired_retained_session_fails_closed) ... ok
+test_modified_real_token_signature_rejected (g3auth.test_official_auth.OfficialAuthIntegration.test_modified_real_token_signature_rejected) ... ok
+test_narrow_session_reader_cannot_read_passwords_or_metadata (g3auth.test_official_auth.OfficialAuthIntegration.test_narrow_session_reader_cannot_read_passwords_or_metadata) ... ok
+test_real_http_logout_and_service_role_rejected (g3auth.test_official_auth.OfficialAuthIntegration.test_real_http_logout_and_service_role_rejected) ... ok
+test_real_http_metadata_cross_tenant_and_membership_downgrade (g3auth.test_official_auth.OfficialAuthIntegration.test_real_http_metadata_cross_tenant_and_membership_downgrade) ... ok
+test_real_http_submit_idempotency_worker_status_and_private_download (g3auth.test_official_auth.OfficialAuthIntegration.test_real_http_submit_idempotency_worker_status_and_private_download) ... ok
+test_real_logout_revokes_still_unexpired_signed_access_token (g3auth.test_official_auth.OfficialAuthIntegration.test_real_logout_revokes_still_unexpired_signed_access_token) ... ok
+test_real_official_signup_signin_signature_and_session (g3auth.test_official_auth.OfficialAuthIntegration.test_real_official_signup_signin_signature_and_session) ... ok
+test_rls_uses_verified_identity_and_live_membership_not_user_metadata (g3auth.test_official_auth.OfficialAuthIntegration.test_rls_uses_verified_identity_and_live_membership_not_user_metadata) ... ok
+
+----------------------------------------------------------------------
+Ran 10 tests in 3.363s
+
+OK

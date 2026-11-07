@@ -1,0 +1,163 @@
+{
+  "checks": [
+    {
+      "check": "catalog: all 27 functions have empty search_path and no PUBLIC EXECUTE; four tables enforce RLS",
+      "status": "PASS"
+    },
+    {
+      "check": "matching retry retains grant/expiry and single quota charge",
+      "status": "PASS"
+    },
+    {
+      "check": "same org request key conflicting owner",
+      "status": "PASS",
+      "expected_sqlstate": "23505",
+      "observed_sqlstate": "23505"
+    },
+    {
+      "check": "same org request key conflicting SHA",
+      "status": "PASS",
+      "expected_sqlstate": "23505",
+      "observed_sqlstate": "23505"
+    },
+    {
+      "check": "same org request key conflicting size",
+      "status": "PASS",
+      "expected_sqlstate": "23505",
+      "observed_sqlstate": "23505"
+    },
+    {
+      "check": "viewer cannot reserve",
+      "status": "PASS",
+      "expected_sqlstate": "42501",
+      "observed_sqlstate": "42501"
+    },
+    {
+      "check": "null subject cannot claim",
+      "status": "PASS",
+      "expected_sqlstate": "42501",
+      "observed_sqlstate": "42501"
+    },
+    {
+      "check": "cross organization claim denied",
+      "status": "PASS",
+      "expected_sqlstate": "42501",
+      "observed_sqlstate": "42501"
+    },
+    {
+      "check": "authenticated raw mutation denied",
+      "status": "PASS",
+      "expected_sqlstate": "42501",
+      "observed_sqlstate": "42501"
+    },
+    {
+      "check": "authenticated internal claim denied",
+      "status": "PASS",
+      "expected_sqlstate": "42501",
+      "observed_sqlstate": "42501"
+    },
+    {
+      "check": "authenticated private helper denied",
+      "status": "PASS",
+      "expected_sqlstate": "42501",
+      "observed_sqlstate": "42501"
+    },
+    {
+      "check": "service raw SELECT denied",
+      "status": "PASS",
+      "expected_sqlstate": "42501",
+      "observed_sqlstate": "42501"
+    },
+    {
+      "check": "service user-facing reserve denied",
+      "status": "PASS",
+      "expected_sqlstate": "42501",
+      "observed_sqlstate": "42501"
+    },
+    {
+      "check": "temp schema/function shadows cannot hijack definer builtins",
+      "status": "PASS"
+    },
+    {
+      "check": "RLS hides same-org other-owner reservation",
+      "status": "PASS"
+    },
+    {
+      "check": "stale fence cannot complete",
+      "status": "PASS",
+      "expected_sqlstate": "40001",
+      "observed_sqlstate": "40001"
+    },
+    {
+      "check": "fresh fenced completion/replay has single immutable receipt; uploaded/uncertain retain charge",
+      "status": "PASS"
+    },
+    {
+      "check": "deadline rechecked after actual quota row lock wait",
+      "status": "PASS",
+      "expected_sqlstate": "40001",
+      "observed_sqlstate": "40001"
+    },
+    {
+      "check": "overdue completion leaves no receipt after lock wait",
+      "status": "PASS"
+    },
+    {
+      "check": "deadline rechecked after delayed audit write",
+      "status": "PASS",
+      "expected_sqlstate": "40001",
+      "observed_sqlstate": "40001"
+    },
+    {
+      "check": "post-write deadline failure atomically rolls back receipt/state/audit",
+      "status": "PASS"
+    },
+    {
+      "check": "expiry audit failure rejects whole refund transaction",
+      "status": "PASS",
+      "expected_sqlstate": "23514",
+      "observed_sqlstate": "23514"
+    },
+    {
+      "check": "unused expiry refunds exactly once; expired fingerprint remains tombstone",
+      "status": "PASS"
+    },
+    {
+      "check": "current downgraded owner cannot mutate held claim",
+      "status": "PASS",
+      "expected_sqlstate": "42501",
+      "observed_sqlstate": "42501"
+    },
+    {
+      "check": "membership FOR SHARE delays downgrade until authorized transaction commits",
+      "status": "PASS"
+    },
+    {
+      "check": "deleted auth owner loses get access",
+      "status": "PASS",
+      "expected_sqlstate": "42501",
+      "observed_sqlstate": "42501"
+    },
+    {
+      "check": "deleted-owner historical receipt retained and accessible to isolated recovery role; exact cumulative counters",
+      "status": "PASS",
+      "final_counters": {
+        "used_bytes": 155,
+        "used_count": 5,
+        "receipts": 1,
+        "events": 13,
+        "retained_bytes": "155",
+        "retained_count": 5
+      }
+    }
+  ],
+  "count": 27,
+  "final_counters": {
+    "used_bytes": 155,
+    "used_count": 5,
+    "receipts": 1,
+    "events": 13,
+    "retained_bytes": "155",
+    "retained_count": 5
+  }
+}

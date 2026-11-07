@@ -1,0 +1,2951 @@
+{
+  "cases": [
+    {
+      "actual_object_hashes_verified": true,
+      "application_reservation_units": 3,
+      "artifacts": [
+        {
+          "fence": 1,
+          "job_id": "91c24a52-2cf9-49d4-a8f3-9c4202b9631f",
+          "organization_id": "cc65f7a8-ab6b-47e3-9961-acdeb3cf0690",
+          "outputs": [
+            {
+              "duration_seconds": 0.3,
+              "has_audio": true,
+              "height": 480,
+              "key": "cc65f7a8-ab6b-47e3-9961-acdeb3cf0690/91c24a52-2cf9-49d4-a8f3-9c4202b9631f/1/vertical.mp4",
+              "preset": "vertical",
+              "sha256": "8755e04f94b78d9a8537fcca0fdebfdf7f1566832afd3cd38117a5b4099d655e",
+              "size_bytes": 12863,
+              "width": 270
+            },
+            {
+              "duration_seconds": 0.3,
+              "has_audio": true,
+              "height": 320,
+              "key": "cc65f7a8-ab6b-47e3-9961-acdeb3cf0690/91c24a52-2cf9-49d4-a8f3-9c4202b9631f/1/square.mp4",
+              "preset": "square",
+              "sha256": "669464abef4e36e812b7afee581134b7c51245d91e7a3e034ed1bcb513ce0879",
+              "size_bytes": 13099,
+              "width": 320
+            },
+            {
+              "duration_seconds": 0.3,
+              "has_audio": true,
+              "height": 400,
+              "key": "cc65f7a8-ab6b-47e3-9961-acdeb3cf0690/91c24a52-2cf9-49d4-a8f3-9c4202b9631f/1/feed.mp4",
+              "preset": "feed",
+              "sha256": "4edb85a9226cb97fa618c8a2258a5ab0f2c4c8a7f7bb032bd5374df5acc9027a",
+              "size_bytes": 13281,
+              "width": 320
+            }
+          ]
+        }
+      ],
+      "attempt_io_bytes_read": 544923,
+      "attempt_io_bytes_written": 40800,
+      "boundary": "authenticated PostgreSQL function; not HTTP",
+      "case": "concurrent_duplicate_sql_submissions",
+      "completed": 1,
+      "completed_replay_ffprobe_verified": true,
+      "end_to_end_latency_seconds": {
+        "observations": 1,
+        "p50": 1.959401,
+        "p95": 1.959401,
+        "p99": 1.959401
+      },
+      "errors": 0,
+      "one_job_outbox_spec_completion_each": true,
+      "output_video_bytes": 39243,
+      "queue_latency_seconds": {
+        "observations": 1,
+        "p50": 0.513936,
+        "p95": 0.513936,
+        "p99": 0.513936
+      },
+      "requests": 100,
+      "reservation_equals_sum_immutable_requests": true,
+      "retry_attempts": 0,
+      "submission_elapsed_seconds": 0.4895465959998546
+    },
+    {
+      "actual_object_hashes_verified": true,
+      "application_reservation_units": 60,
+      "artifacts": [
+        {
+          "fence": 1,
+          "job_id": "a08bd0c3-873a-4c63-b3e2-e87b9bab5294",
+          "organization_id": "9a0bf103-319d-4d8e-b621-780fe2e25d65",
+          "outputs": [
+            {
+              "duration_seconds": 0.3,
+              "has_audio": true,
+              "height": 480,
+              "key": "9a0bf103-319d-4d8e-b621-780fe2e25d65/a08bd0c3-873a-4c63-b3e2-e87b9bab5294/1/vertical.mp4",
+              "preset": "vertical",
+              "sha256": "8755e04f94b78d9a8537fcca0fdebfdf7f1566832afd3cd38117a5b4099d655e",
+              "size_bytes": 12863,
+              "width": 270
+            },
+            {
+              "duration_seconds": 0.3,
+              "has_audio": true,
+              "height": 320,
+              "key": "9a0bf103-319d-4d8e-b621-780fe2e25d65/a08bd0c3-873a-4c63-b3e2-e87b9bab5294/1/square.mp4",
+              "preset": "square",
+              "sha256": "669464abef4e36e812b7afee581134b7c51245d91e7a3e034ed1bcb513ce0879",
+              "size_bytes": 13099,
+              "width": 320
+            },
+            {
+              "duration_seconds": 0.3,
+              "has_audio": true,
+              "height": 400,
+              "key": "9a0bf103-319d-4d8e-b621-780fe2e25d65/a08bd0c3-873a-4c63-b3e2-e87b9bab5294/1/feed.mp4",
+              "preset": "feed",
+              "sha256": "4edb85a9226cb97fa618c8a2258a5ab0f2c4c8a7f7bb032bd5374df5acc9027a",
+              "size_bytes": 13281,
+              "width": 320
+            }
+          ]
+        },
+        {
+          "fence": 1,
+          "job_id": "b857b655-687c-49c1-b216-f914f4251eac",
+          "organization_id": "e8aa7c98-f523-41bf-a535-066ea3c2958d",
+          "outputs": [
+            {
+              "duration_seconds": 0.3,
+              "has_audio": true,
+              "height": 480,
+              "key": "e8aa7c98-f523-41bf-a535-066ea3c2958d/b857b655-687c-49c1-b216-f914f4251eac/1/vertical.mp4",
+              "preset": "vertical",
+              "sha256": "8755e04f94b78d9a8537fcca0fdebfdf7f1566832afd3cd38117a5b4099d655e",
+              "size_bytes": 12863,
+              "width": 270
+            },
+            {
+              "duration_seconds": 0.3,
+              "has_audio": true,
+              "height": 320,
+              "key": "e8aa7c98-f523-41bf-a535-066ea3c2958d/b857b655-687c-49c1-b216-f914f4251eac/1/square.mp4",
+              "preset": "square",
+              "sha256": "669464abef4e36e812b7afee581134b7c51245d91e7a3e034ed1bcb513ce0879",
+              "size_bytes": 13099,
+              "width": 320
+            },
+            {
+              "duration_seconds": 0.3,
+              "has_audio": true,
+              "height": 400,
+              "key": "e8aa7c98-f523-41bf-a535-066ea3c2958d/b857b655-687c-49c1-b216-f914f4251eac/1/feed.mp4",
+              "preset": "feed",
+              "sha256": "4edb85a9226cb97fa618c8a2258a5ab0f2c4c8a7f7bb032bd5374df5acc9027a",
+              "size_bytes": 13281,
+              "width": 320
+            }
+          ]
+        },
+        {
+          "fence": 1,
+          "job_id": "c53d02cf-c32b-41e4-930b-c678f08a4ffe",
+          "organization_id": "9a0bf103-319d-4d8e-b621-780fe2e25d65",
+          "outputs": [
+            {
+              "duration_seconds": 0.3,
+              "has_audio": true,
+              "height": 480,
+              "key": "9a0bf103-319d-4d8e-b621-780fe2e25d65/c53d02cf-c32b-41e4-930b-c678f08a4ffe/1/vertical.mp4",
+              "preset": "vertical",
+              "sha256": "8755e04f94b78d9a8537fcca0fdebfdf7f1566832afd3cd38117a5b4099d655e",
+              "size_bytes": 12863,
+              "width": 270
+            },
+            {
+              "duration_seconds": 0.3,
+              "has_audio": true,
+              "height": 320,
+              "key": "9a0bf103-319d-4d8e-b621-780fe2e25d65/c53d02cf-c32b-41e4-930b-c678f08a4ffe/1/square.mp4",
+              "preset": "square",
+              "sha256": "669464abef4e36e812b7afee581134b7c51245d91e7a3e034ed1bcb513ce0879",
+              "size_bytes": 13099,
+              "width": 320
+            },
+            {
+              "duration_seconds": 0.3,
+              "has_audio": true,
+              "height": 400,
+              "key": "9a0bf103-319d-4d8e-b621-780fe2e25d65/c53d02cf-c32b-41e4-930b-c678f08a4ffe/1/feed.mp4",
+              "preset": "feed",
+              "sha256": "4edb85a9226cb97fa618c8a2258a5ab0f2c4c8a7f7bb032bd5374df5acc9027a",
+              "size_bytes": 13281,
+              "width": 320
+            }
+          ]
+        },
+        {
+          "fence": 1,
+          "job_id": "06c15b61-05ac-4e3a-91e0-0c734d6f5f13",
+          "organization_id": "e8aa7c98-f523-41bf-a535-066ea3c2958d",
+          "outputs": [
+            {
+              "duration_seconds": 0.3,
+              "has_audio": true,
+              "height": 480,
+              "key": "e8aa7c98-f523-41bf-a535-066ea3c2958d/06c15b61-05ac-4e3a-91e0-0c734d6f5f13/1/vertical.mp4",
+              "preset": "vertical",
+              "sha256": "8755e04f94b78d9a8537fcca0fdebfdf7f1566832afd3cd38117a5b4099d655e",
+              "size_bytes": 12863,
+              "width": 270
+            },
+            {
+              "duration_seconds": 0.3,
+              "has_audio": true,
+              "height": 320,
+              "key": "e8aa7c98-f523-41bf-a535-066ea3c2958d/06c15b61-05ac-4e3a-91e0-0c734d6f5f13/1/square.mp4",
+              "preset": "square",
+              "sha256": "669464abef4e36e812b7afee581134b7c51245d91e7a3e034ed1bcb513ce0879",
+              "size_bytes": 13099,
+              "width": 320
+            },
+            {
+              "duration_seconds": 0.3,
+              "has_audio": true,
+              "height": 400,
+              "key": "e8aa7c98-f523-41bf-a535-066ea3c2958d/06c15b61-05ac-4e3a-91e0-0c734d6f5f13/1/feed.mp4",
+              "preset": "feed",
+              "sha256": "4edb85a9226cb97fa618c8a2258a5ab0f2c4c8a7f7bb032bd5374df5acc9027a",
+              "size_bytes": 13281,
+              "width": 320
+            }
+          ]
+        },
+        {
+          "fence": 1,
+          "job_id": "3a7ce574-a117-460e-aa20-bc85d3a6c1db",
+          "organization_id": "9a0bf103-319d-4d8e-b621-780fe2e25d65",
+          "outputs": [
+            {
+              "duration_seconds": 0.3,
+              "has_audio": true,
+              "height": 480,
+              "key": "9a0bf103-319d-4d8e-b621-780fe2e25d65/3a7ce574-a117-460e-aa20-bc85d3a6c1db/1/vertical.mp4",
+              "preset": "vertical",
+              "sha256": "8755e04f94b78d9a8537fcca0fdebfdf7f1566832afd3cd38117a5b4099d655e",
+              "size_bytes": 12863,
+              "width": 270
+            },
+            {
+              "duration_seconds": 0.3,
+              "has_audio": true,
+              "height": 320,
+              "key": "9a0bf103-319d-4d8e-b621-780fe2e25d65/3a7ce574-a117-460e-aa20-bc85d3a6c1db/1/square.mp4",
+              "preset": "square",
+              "sha256": "669464abef4e36e812b7afee581134b7c51245d91e7a3e034ed1bcb513ce0879",
+              "size_bytes": 13099,
+              "width": 320
+            },
+            {
+              "duration_seconds": 0.3,
+              "has_audio": true,
+              "height": 400,
+              "key": "9a0bf103-319d-4d8e-b621-780fe2e25d65/3a7ce574-a117-460e-aa20-bc85d3a6c1db/1/feed.mp4",
+              "preset": "feed",
+              "sha256": "4edb85a9226cb97fa618c8a2258a5ab0f2c4c8a7f7bb032bd5374df5acc9027a",
+              "size_bytes": 13281,
+              "width": 320
+            }
+          ]
+        },
+        {
+          "fence": 1,
+          "job_id": "27a07049-a7b4-4206-837a-62dbb352a3a5",
+          "organization_id": "e8aa7c98-f523-41bf-a535-066ea3c2958d",
+          "outputs": [
+            {
+              "duration_seconds": 0.3,
+              "has_audio": true,
+              "height": 480,
+              "key": "e8aa7c98-f523-41bf-a535-066ea3c2958d/27a07049-a7b4-4206-837a-62dbb352a3a5/1/vertical.mp4",
+              "preset": "vertical",
+              "sha256": "8755e04f94b78d9a8537fcca0fdebfdf7f1566832afd3cd38117a5b4099d655e",
+              "size_bytes": 12863,
+              "width": 270
+            },
+            {
+              "duration_seconds": 0.3,
+              "has_audio": true,
+              "height": 320,
+              "key": "e8aa7c98-f523-41bf-a535-066ea3c2958d/27a07049-a7b4-4206-837a-62dbb352a3a5/1/square.mp4",
+              "preset": "square",
+              "sha256": "669464abef4e36e812b7afee581134b7c51245d91e7a3e034ed1bcb513ce0879",
+              "size_bytes": 13099,
+              "width": 320
+            },
+            {
+              "duration_seconds": 0.3,
+              "has_audio": true,
+              "height": 400,
+              "key": "e8aa7c98-f523-41bf-a535-066ea3c2958d/27a07049-a7b4-4206-837a-62dbb352a3a5/1/feed.mp4",
+              "preset": "feed",
+              "sha256": "4edb85a9226cb97fa618c8a2258a5ab0f2c4c8a7f7bb032bd5374df5acc9027a",
+              "size_bytes": 13281,
+              "width": 320
+            }
+          ]
+        },
+        {
+          "fence": 1,
+          "job_id": "37d5407e-304d-4514-a187-b391e79f95a2",
+          "organization_id": "9a0bf103-319d-4d8e-b621-780fe2e25d65",
+          "outputs": [
+            {
+              "duration_seconds": 0.3,
+              "has_audio": true,
+              "height": 480,
+              "key": "9a0bf103-319d-4d8e-b621-780fe2e25d65/37d5407e-304d-4514-a187-b391e79f95a2/1/vertical.mp4",
+              "preset": "vertical",
+              "sha256": "8755e04f94b78d9a8537fcca0fdebfdf7f1566832afd3cd38117a5b4099d655e",
+              "size_bytes": 12863,
+              "width": 270
+            },
+            {
+              "duration_seconds": 0.3,
+              "has_audio": true,
+              "height": 320,
+              "key": "9a0bf103-319d-4d8e-b621-780fe2e25d65/37d5407e-304d-4514-a187-b391e79f95a2/1/square.mp4",
+              "preset": "square",
+              "sha256": "669464abef4e36e812b7afee581134b7c51245d91e7a3e034ed1bcb513ce0879",
+              "size_bytes": 13099,
+              "width": 320
+            },
+            {
+              "duration_seconds": 0.3,
+              "has_audio": true,
+              "height": 400,
+              "key": "9a0bf103-319d-4d8e-b621-780fe2e25d65/37d5407e-304d-4514-a187-b391e79f95a2/1/feed.mp4",
+              "preset": "feed",
+              "sha256": "4edb85a9226cb97fa618c8a2258a5ab0f2c4c8a7f7bb032bd5374df5acc9027a",
+              "size_bytes": 13281,
+              "width": 320
+            }
+          ]
+        },
+        {
+          "fence": 1,
+          "job_id": "98b64ba0-4d22-47ac-9b1f-465b7d97e189",
+          "organization_id": "e8aa7c98-f523-41bf-a535-066ea3c2958d",
+          "outputs": [
+            {
+              "duration_seconds": 0.3,
+              "has_audio": true,
+              "height": 480,
+              "key": "e8aa7c98-f523-41bf-a535-066ea3c2958d/98b64ba0-4d22-47ac-9b1f-465b7d97e189/1/vertical.mp4",
+              "preset": "vertical",
+              "sha256": "8755e04f94b78d9a8537fcca0fdebfdf7f1566832afd3cd38117a5b4099d655e",
+              "size_bytes": 12863,
+              "width": 270
+            },
+            {
+              "duration_seconds": 0.3,
+              "has_audio": true,
+              "height": 320,
+              "key": "e8aa7c98-f523-41bf-a535-066ea3c2958d/98b64ba0-4d22-47ac-9b1f-465b7d97e189/1/square.mp4",
+              "preset": "square",
+              "sha256": "669464abef4e36e812b7afee581134b7c51245d91e7a3e034ed1bcb513ce0879",
+              "size_bytes": 13099,
+              "width": 320
+            },
+            {
+              "duration_seconds": 0.3,
+              "has_audio": true,
+              "height": 400,
+              "key": "e8aa7c98-f523-41bf-a535-066ea3c2958d/98b64ba0-4d22-47ac-9b1f-465b7d97e189/1/feed.mp4",
+              "preset": "feed",
+              "sha256": "4edb85a9226cb97fa618c8a2258a5ab0f2c4c8a7f7bb032bd5374df5acc9027a",
+              "size_bytes": 13281,
+              "width": 320
+            }
+          ]
+        },
+        {
+          "fence": 1,
+          "job_id": "0367257c-db28-4a10-8e6c-54bdca5f48c4",
+          "organization_id": "9a0bf103-319d-4d8e-b621-780fe2e25d65",
+          "outputs": [
+            {
+              "duration_seconds": 0.3,
+              "has_audio": true,
+              "height": 480,
+              "key": "9a0bf103-319d-4d8e-b621-780fe2e25d65/0367257c-db28-4a10-8e6c-54bdca5f48c4/1/vertical.mp4",
+              "preset": "vertical",
+              "sha256": "8755e04f94b78d9a8537fcca0fdebfdf7f1566832afd3cd38117a5b4099d655e",
+              "size_bytes": 12863,
+              "width": 270
+            },
+            {
+              "duration_seconds": 0.3,
+              "has_audio": true,
+              "height": 320,
+              "key": "9a0bf103-319d-4d8e-b621-780fe2e25d65/0367257c-db28-4a10-8e6c-54bdca5f48c4/1/square.mp4",
+              "preset": "square",
+              "sha256": "669464abef4e36e812b7afee581134b7c51245d91e7a3e034ed1bcb513ce0879",
+              "size_bytes": 13099,
+              "width": 320
+            },
+            {
+              "duration_seconds": 0.3,
+              "has_audio": true,
+              "height": 400,
+              "key": "9a0bf103-319d-4d8e-b621-780fe2e25d65/0367257c-db28-4a10-8e6c-54bdca5f48c4/1/feed.mp4",
+              "preset": "feed",
+              "sha256": "4edb85a9226cb97fa618c8a2258a5ab0f2c4c8a7f7bb032bd5374df5acc9027a",
+              "size_bytes": 13281,
+              "width": 320
+            }
+          ]
+        },
+        {
+          "fence": 1,
+          "job_id": "b193186f-8a3e-47df-a971-e5f035a813e0",
+          "organization_id": "e8aa7c98-f523-41bf-a535-066ea3c2958d",
+          "outputs": [
+            {
+              "duration_seconds": 0.3,
+              "has_audio": true,
+              "height": 480,
+              "key": "e8aa7c98-f523-41bf-a535-066ea3c2958d/b193186f-8a3e-47df-a971-e5f035a813e0/1/vertical.mp4",
+              "preset": "vertical",
+              "sha256": "8755e04f94b78d9a8537fcca0fdebfdf7f1566832afd3cd38117a5b4099d655e",
+              "size_bytes": 12863,
+              "width": 270
+            },
+            {
+              "duration_seconds": 0.3,
+              "has_audio": true,
+              "height": 320,
+              "key": "e8aa7c98-f523-41bf-a535-066ea3c2958d/b193186f-8a3e-47df-a971-e5f035a813e0/1/square.mp4",
+              "preset": "square",
+              "sha256": "669464abef4e36e812b7afee581134b7c51245d91e7a3e034ed1bcb513ce0879",
+              "size_bytes": 13099,
+              "width": 320
+            },
+            {
+              "duration_seconds": 0.3,
+              "has_audio": true,
+              "height": 400,
+              "key": "e8aa7c98-f523-41bf-a535-066ea3c2958d/b193186f-8a3e-47df-a971-e5f035a813e0/1/feed.mp4",
+              "preset": "feed",
+              "sha256": "4edb85a9226cb97fa618c8a2258a5ab0f2c4c8a7f7bb032bd5374df5acc9027a",
+              "size_bytes": 13281,
+              "width": 320
+            }
+          ]
+        },
+        {
+          "fence": 1,
+          "job_id": "b0bd8236-f50f-4189-bcfd-3ec9b42786d6",
+          "organization_id": "9a0bf103-319d-4d8e-b621-780fe2e25d65",
+          "outputs": [
+            {
+              "duration_seconds": 0.3,
+              "has_audio": true,
+              "height": 480,
+              "key": "9a0bf103-319d-4d8e-b621-780fe2e25d65/b0bd8236-f50f-4189-bcfd-3ec9b42786d6/1/vertical.mp4",
+              "preset": "vertical",
+              "sha256": "8755e04f94b78d9a8537fcca0fdebfdf7f1566832afd3cd38117a5b4099d655e",
+              "size_bytes": 12863,
+              "width": 270
+            },
+            {
+              "duration_seconds": 0.3,
+              "has_audio": true,
+              "height": 320,
+              "key": "9a0bf103-319d-4d8e-b621-780fe2e25d65/b0bd8236-f50f-4189-bcfd-3ec9b42786d6/1/square.mp4",
+              "preset": "square",
+              "sha256": "669464abef4e36e812b7afee581134b7c51245d91e7a3e034ed1bcb513ce0879",
+              "size_bytes": 13099,
+              "width": 320
+            },
+            {
+              "duration_seconds": 0.3,
+              "has_audio": true,
+              "height": 400,
+              "key": "9a0bf103-319d-4d8e-b621-780fe2e25d65/b0bd8236-f50f-4189-bcfd-3ec9b42786d6/1/feed.mp4",
+              "preset": "feed",
+              "sha256": "4edb85a9226cb97fa618c8a2258a5ab0f2c4c8a7f7bb032bd5374df5acc9027a",
+              "size_bytes": 13281,
+              "width": 320
+            }
+          ]
+        },
+        {
+          "fence": 1,
+          "job_id": "8cf4399b-d49a-4632-99db-3f056f444865",
+          "organization_id": "e8aa7c98-f523-41bf-a535-066ea3c2958d",
+          "outputs": [
+            {
+              "duration_seconds": 0.3,
+              "has_audio": true,
+              "height": 480,
+              "key": "e8aa7c98-f523-41bf-a535-066ea3c2958d/8cf4399b-d49a-4632-99db-3f056f444865/1/vertical.mp4",
+              "preset": "vertical",
+              "sha256": "8755e04f94b78d9a8537fcca0fdebfdf7f1566832afd3cd38117a5b4099d655e",
+              "size_bytes": 12863,
+              "width": 270
+            },
+            {
+              "duration_seconds": 0.3,
+              "has_audio": true,
+              "height": 320,
+              "key": "e8aa7c98-f523-41bf-a535-066ea3c2958d/8cf4399b-d49a-4632-99db-3f056f444865/1/square.mp4",
+              "preset": "square",
+              "sha256": "669464abef4e36e812b7afee581134b7c51245d91e7a3e034ed1bcb513ce0879",
+              "size_bytes": 13099,
+              "width": 320
+            },
+            {
+              "duration_seconds": 0.3,
+              "has_audio": true,
+              "height": 400,
+              "key": "e8aa7c98-f523-41bf-a535-066ea3c2958d/8cf4399b-d49a-4632-99db-3f056f444865/1/feed.mp4",
+              "preset": "feed",
+              "sha256": "4edb85a9226cb97fa618c8a2258a5ab0f2c4c8a7f7bb032bd5374df5acc9027a",
+              "size_bytes": 13281,
+              "width": 320
+            }
+          ]
+        },
+        {
+          "fence": 1,
+          "job_id": "a32de61d-9b48-4beb-9f20-ba6297aa0db7",
+          "organization_id": "9a0bf103-319d-4d8e-b621-780fe2e25d65",
+          "outputs": [
+            {
+              "duration_seconds": 0.3,
+              "has_audio": true,
+              "height": 480,
+              "key": "9a0bf103-319d-4d8e-b621-780fe2e25d65/a32de61d-9b48-4beb-9f20-ba6297aa0db7/1/vertical.mp4",
+              "preset": "vertical",
+              "sha256": "8755e04f94b78d9a8537fcca0fdebfdf7f1566832afd3cd38117a5b4099d655e",
+              "size_bytes": 12863,
+              "width": 270
+            },
+            {
+              "duration_seconds": 0.3,
+              "has_audio": true,
+              "height": 320,
+              "key": "9a0bf103-319d-4d8e-b621-780fe2e25d65/a32de61d-9b48-4beb-9f20-ba6297aa0db7/1/square.mp4",
+              "preset": "square",
+              "sha256": "669464abef4e36e812b7afee581134b7c51245d91e7a3e034ed1bcb513ce0879",
+              "size_bytes": 13099,
+              "width": 320
+            },
+            {
+              "duration_seconds": 0.3,
+              "has_audio": true,
+              "height": 400,
+              "key": "9a0bf103-319d-4d8e-b621-780fe2e25d65/a32de61d-9b48-4beb-9f20-ba6297aa0db7/1/feed.mp4",
+              "preset": "feed",
+              "sha256": "4edb85a9226cb97fa618c8a2258a5ab0f2c4c8a7f7bb032bd5374df5acc9027a",
+              "size_bytes": 13281,
+              "width": 320
+            }
+          ]
+        },
+        {
+          "fence": 1,
+          "job_id": "7ad5b7f2-9738-4c5f-967c-3f742bc85f6f",
+          "organization_id": "e8aa7c98-f523-41bf-a535-066ea3c2958d",
+          "outputs": [
+            {
+              "duration_seconds": 0.3,
+              "has_audio": true,
+              "height": 480,
+              "key": "e8aa7c98-f523-41bf-a535-066ea3c2958d/7ad5b7f2-9738-4c5f-967c-3f742bc85f6f/1/vertical.mp4",
+              "preset": "vertical",
+              "sha256": "8755e04f94b78d9a8537fcca0fdebfdf7f1566832afd3cd38117a5b4099d655e",
+              "size_bytes": 12863,
+              "width": 270
+            },
+            {
+              "duration_seconds": 0.3,
+              "has_audio": true,
+              "height": 320,
+              "key": "e8aa7c98-f523-41bf-a535-066ea3c2958d/7ad5b7f2-9738-4c5f-967c-3f742bc85f6f/1/square.mp4",
+              "preset": "square",
+              "sha256": "669464abef4e36e812b7afee581134b7c51245d91e7a3e034ed1bcb513ce0879",
+              "size_bytes": 13099,
+              "width": 320
+            },
+            {
+              "duration_seconds": 0.3,
+              "has_audio": true,
+              "height": 400,
+              "key": "e8aa7c98-f523-41bf-a535-066ea3c2958d/7ad5b7f2-9738-4c5f-967c-3f742bc85f6f/1/feed.mp4",
+              "preset": "feed",
+              "sha256": "4edb85a9226cb97fa618c8a2258a5ab0f2c4c8a7f7bb032bd5374df5acc9027a",
+              "size_bytes": 13281,
+              "width": 320
+            }
+          ]
+        },
+        {
+          "fence": 1,
+          "job_id": "a095d256-05bd-4fdb-8925-4b1b87f57546",
+          "organization_id": "9a0bf103-319d-4d8e-b621-780fe2e25d65",
+          "outputs": [
+            {
+              "duration_seconds": 0.3,
+              "has_audio": true,
+              "height": 480,
+              "key": "9a0bf103-319d-4d8e-b621-780fe2e25d65/a095d256-05bd-4fdb-8925-4b1b87f57546/1/vertical.mp4",
+              "preset": "vertical",
+              "sha256": "8755e04f94b78d9a8537fcca0fdebfdf7f1566832afd3cd38117a5b4099d655e",
+              "size_bytes": 12863,
+              "width": 270
+            },
+            {
+              "duration_seconds": 0.3,
+              "has_audio": true,
+              "height": 320,
+              "key": "9a0bf103-319d-4d8e-b621-780fe2e25d65/a095d256-05bd-4fdb-8925-4b1b87f57546/1/square.mp4",
+              "preset": "square",
+              "sha256": "669464abef4e36e812b7afee581134b7c51245d91e7a3e034ed1bcb513ce0879",
+              "size_bytes": 13099,
+              "width": 320
+            },
+            {
+              "duration_seconds": 0.3,
+              "has_audio": true,
+              "height": 400,
+              "key": "9a0bf103-319d-4d8e-b621-780fe2e25d65/a095d256-05bd-4fdb-8925-4b1b87f57546/1/feed.mp4",
+              "preset": "feed",
+              "sha256": "4edb85a9226cb97fa618c8a2258a5ab0f2c4c8a7f7bb032bd5374df5acc9027a",
+              "size_bytes": 13281,
+              "width": 320
+            }
+          ]
+        },
+        {
+          "fence": 1,
+          "job_id": "69d6e851-ee59-41d7-a0bb-c80fe0d8d56c",
+          "organization_id": "e8aa7c98-f523-41bf-a535-066ea3c2958d",
+          "outputs": [
+            {
+              "duration_seconds": 0.3,
+              "has_audio": true,
+              "height": 480,
+              "key": "e8aa7c98-f523-41bf-a535-066ea3c2958d/69d6e851-ee59-41d7-a0bb-c80fe0d8d56c/1/vertical.mp4",
+              "preset": "vertical",
+              "sha256": "8755e04f94b78d9a8537fcca0fdebfdf7f1566832afd3cd38117a5b4099d655e",
+              "size_bytes": 12863,
+              "width": 270
+            },
+            {
+              "duration_seconds": 0.3,
+              "has_audio": true,
+              "height": 320,
+              "key": "e8aa7c98-f523-41bf-a535-066ea3c2958d/69d6e851-ee59-41d7-a0bb-c80fe0d8d56c/1/square.mp4",
+              "preset": "square",
+              "sha256": "669464abef4e36e812b7afee581134b7c51245d91e7a3e034ed1bcb513ce0879",
+              "size_bytes": 13099,
+              "width": 320
+            },
+            {
+              "duration_seconds": 0.3,
+              "has_audio": true,
+              "height": 400,
+              "key": "e8aa7c98-f523-41bf-a535-066ea3c2958d/69d6e851-ee59-41d7-a0bb-c80fe0d8d56c/1/feed.mp4",
+              "preset": "feed",
+              "sha256": "4edb85a9226cb97fa618c8a2258a5ab0f2c4c8a7f7bb032bd5374df5acc9027a",
+              "size_bytes": 13281,
+              "width": 320
+            }
+          ]
+        },
+        {
+          "fence": 1,
+          "job_id": "8be30b53-24ad-4de9-bb1c-b1fd18d36138",
+          "organization_id": "9a0bf103-319d-4d8e-b621-780fe2e25d65",
+          "outputs": [
+            {
+              "duration_seconds": 0.3,
+              "has_audio": true,
+              "height": 480,
+              "key": "9a0bf103-319d-4d8e-b621-780fe2e25d65/8be30b53-24ad-4de9-bb1c-b1fd18d36138/1/vertical.mp4",
+              "preset": "vertical",
+              "sha256": "8755e04f94b78d9a8537fcca0fdebfdf7f1566832afd3cd38117a5b4099d655e",
+              "size_bytes": 12863,
+              "width": 270
+            },
+            {
+              "duration_seconds": 0.3,
+              "has_audio": true,
+              "height": 320,
+              "key": "9a0bf103-319d-4d8e-b621-780fe2e25d65/8be30b53-24ad-4de9-bb1c-b1fd18d36138/1/square.mp4",
+              "preset": "square",
+              "sha256": "669464abef4e36e812b7afee581134b7c51245d91e7a3e034ed1bcb513ce0879",
+              "size_bytes": 13099,
+              "width": 320
+            },
+            {
+              "duration_seconds": 0.3,
+              "has_audio": true,
+              "height": 400,
+              "key": "9a0bf103-319d-4d8e-b621-780fe2e25d65/8be30b53-24ad-4de9-bb1c-b1fd18d36138/1/feed.mp4",
+              "preset": "feed",
+              "sha256": "4edb85a9226cb97fa618c8a2258a5ab0f2c4c8a7f7bb032bd5374df5acc9027a",
+              "size_bytes": 13281,
+              "width": 320
+            }
+          ]
+        },
+        {
+          "fence": 1,
+          "job_id": "994c8327-7540-437e-a2ba-a44c8adb35e0",
+          "organization_id": "e8aa7c98-f523-41bf-a535-066ea3c2958d",
+          "outputs": [
+            {
+              "duration_seconds": 0.3,
+              "has_audio": true,
+              "height": 480,
+              "key": "e8aa7c98-f523-41bf-a535-066ea3c2958d/994c8327-7540-437e-a2ba-a44c8adb35e0/1/vertical.mp4",
+              "preset": "vertical",
+              "sha256": "8755e04f94b78d9a8537fcca0fdebfdf7f1566832afd3cd38117a5b4099d655e",
+              "size_bytes": 12863,
+              "width": 270
+            },
+            {
+              "duration_seconds": 0.3,
+              "has_audio": true,
+              "height": 320,
+              "key": "e8aa7c98-f523-41bf-a535-066ea3c2958d/994c8327-7540-437e-a2ba-a44c8adb35e0/1/square.mp4",
+              "preset": "square",
+              "sha256": "669464abef4e36e812b7afee581134b7c51245d91e7a3e034ed1bcb513ce0879",
+              "size_bytes": 13099,
+              "width": 320
+            },
+            {
+              "duration_seconds": 0.3,
+              "has_audio": true,
+              "height": 400,
+              "key": "e8aa7c98-f523-41bf-a535-066ea3c2958d/994c8327-7540-437e-a2ba-a44c8adb35e0/1/feed.mp4",
+              "preset": "feed",
+              "sha256": "4edb85a9226cb97fa618c8a2258a5ab0f2c4c8a7f7bb032bd5374df5acc9027a",
+              "size_bytes": 13281,
+              "width": 320
+            }
+          ]
+        },
+        {
+          "fence": 1,
+          "job_id": "4c4bf55b-f8be-4005-96d3-9c3a234eab7a",
+          "organization_id": "9a0bf103-319d-4d8e-b621-780fe2e25d65",
+          "outputs": [
+            {
+              "duration_seconds": 0.3,
+              "has_audio": true,
+              "height": 480,
+              "key": "9a0bf103-319d-4d8e-b621-780fe2e25d65/4c4bf55b-f8be-4005-96d3-9c3a234eab7a/1/vertical.mp4",
+              "preset": "vertical",
+              "sha256": "8755e04f94b78d9a8537fcca0fdebfdf7f1566832afd3cd38117a5b4099d655e",
+              "size_bytes": 12863,
+              "width": 270
+            },
+            {
+              "duration_seconds": 0.3,
+              "has_audio": true,
+              "height": 320,
+              "key": "9a0bf103-319d-4d8e-b621-780fe2e25d65/4c4bf55b-f8be-4005-96d3-9c3a234eab7a/1/square.mp4",
+              "preset": "square",
+              "sha256": "669464abef4e36e812b7afee581134b7c51245d91e7a3e034ed1bcb513ce0879",
+              "size_bytes": 13099,
+              "width": 320
+            },
+            {
+              "duration_seconds": 0.3,
+              "has_audio": true,
+              "height": 400,
+              "key": "9a0bf103-319d-4d8e-b621-780fe2e25d65/4c4bf55b-f8be-4005-96d3-9c3a234eab7a/1/feed.mp4",
+              "preset": "feed",
+              "sha256": "4edb85a9226cb97fa618c8a2258a5ab0f2c4c8a7f7bb032bd5374df5acc9027a",
+              "size_bytes": 13281,
+              "width": 320
+            }
+          ]
+        },
+        {
+          "fence": 1,
+          "job_id": "5db80b97-a37b-4101-9fb3-3dbc25837534",
+          "organization_id": "e8aa7c98-f523-41bf-a535-066ea3c2958d",
+          "outputs": [
+            {
+              "duration_seconds": 0.3,
+              "has_audio": true,
+              "height": 480,
+              "key": "e8aa7c98-f523-41bf-a535-066ea3c2958d/5db80b97-a37b-4101-9fb3-3dbc25837534/1/vertical.mp4",
+              "preset": "vertical",
+              "sha256": "8755e04f94b78d9a8537fcca0fdebfdf7f1566832afd3cd38117a5b4099d655e",
+              "size_bytes": 12863,
+              "width": 270
+            },
+            {
+              "duration_seconds": 0.3,
+              "has_audio": true,
+              "height": 320,
+              "key": "e8aa7c98-f523-41bf-a535-066ea3c2958d/5db80b97-a37b-4101-9fb3-3dbc25837534/1/square.mp4",
+              "preset": "square",
+              "sha256": "669464abef4e36e812b7afee581134b7c51245d91e7a3e034ed1bcb513ce0879",
+              "size_bytes": 13099,
+              "width": 320
+            },
+            {
+              "duration_seconds": 0.3,
+              "has_audio": true,
+              "height": 400,
+              "key": "e8aa7c98-f523-41bf-a535-066ea3c2958d/5db80b97-a37b-4101-9fb3-3dbc25837534/1/feed.mp4",
+              "preset": "feed",
+              "sha256": "4edb85a9226cb97fa618c8a2258a5ab0f2c4c8a7f7bb032bd5374df5acc9027a",
+              "size_bytes": 13281,
+              "width": 320
+            }
+          ]
+        }
+      ],
+      "attempt_io_bytes_read": 10898458,
+      "attempt_io_bytes_written": 815998,
+      "case": "queued_20_jobs",
+      "claimed_worker_highwater": 2,
+      "completed": 20,
+      "completed_replay_ffprobe_verified": true,
+      "concurrency_caps_verified": true,
+      "end_to_end_latency_seconds": {
+        "observations": 20,
+        "p50": 8.3567815,
+        "p95": 14.6467796,
+        "p99": 14.70980792
+      },
+      "errors": 0,
+      "global_worker_limit": 2,
+      "local_unit_measurements": {
+        "cpu_seconds_per_completed_job": 1.1810527,
+        "currency": null,
+        "monetary_cost_per_job": null,
+        "price_status": "UNKNOWN_NO_PRICE_OR_CLOUD_BILLING_MEASURED",
+        "video_bytes_per_completed_job": 39243.0
+      },
+      "one_job_outbox_spec_completion_each": true,
+      "organizations": 2,
+      "output_video_bytes": 784860,
+      "per_org_active_limit": 1,
+      "queue_latency_seconds": {
+        "observations": 20,
+        "p50": 6.946518,
+        "p95": 13.2901785,
+        "p99": 13.3325181
+      },
+      "reservation_equals_sum_immutable_requests": true,
+      "resources": {
+        "aggregate_process_rss_peak_bytes": 162021376,
+        "elapsed_seconds": 14.380043425997428,
+        "ffmpeg_process_count_peak": 2,
+        "native_media_process_count_peak": 2,
+        "postgres_active_jobs_peak": 2,
+        "postgres_active_jobs_peak_by_org": {
+          "9a0bf103-319d-4d8e-b621-780fe2e25d65": 1,
+          "e8aa7c98-f523-41bf-a535-066ea3c2958d": 1
+        },
+        "process_count_peak": 3,
+        "reaped_children_system_seconds": 5.937586,
+        "reaped_children_user_seconds": 14.768039,
+        "samples": 255,
+        "sampling_interval_seconds": 0.05,
+        "self_system_seconds": 0.906527,
+        "self_user_seconds": 2.008902
+      },
+      "retry_attempts": 0,
+      "submitted_distinct": 20,
+      "throughput_jobs_per_second": 1.3908163840341643
+    },
+    {
+      "actual_object_hashes_verified": true,
+      "application_reservation_units": 150,
+      "artifacts": [
+        {
+          "fence": 1,
+          "job_id": "94f7fe36-7e87-4ad1-a31a-46b0f2a88a6f",
+          "organization_id": "9b875409-9640-4df8-b86b-4188d98fd453",
+          "outputs": [
+            {
+              "duration_seconds": 0.3,
+              "has_audio": true,
+              "height": 480,
+              "key": "9b875409-9640-4df8-b86b-4188d98fd453/94f7fe36-7e87-4ad1-a31a-46b0f2a88a6f/1/vertical.mp4",
+              "preset": "vertical",
+              "sha256": "8755e04f94b78d9a8537fcca0fdebfdf7f1566832afd3cd38117a5b4099d655e",
+              "size_bytes": 12863,
+              "width": 270
+            },
+            {
+              "duration_seconds": 0.3,
+              "has_audio": true,
+              "height": 320,
+              "key": "9b875409-9640-4df8-b86b-4188d98fd453/94f7fe36-7e87-4ad1-a31a-46b0f2a88a6f/1/square.mp4",
+              "preset": "square",
+              "sha256": "669464abef4e36e812b7afee581134b7c51245d91e7a3e034ed1bcb513ce0879",
+              "size_bytes": 13099,
+              "width": 320
+            },
+            {
+              "duration_seconds": 0.3,
+              "has_audio": true,
+              "height": 400,
+              "key": "9b875409-9640-4df8-b86b-4188d98fd453/94f7fe36-7e87-4ad1-a31a-46b0f2a88a6f/1/feed.mp4",
+              "preset": "feed",
+              "sha256": "4edb85a9226cb97fa618c8a2258a5ab0f2c4c8a7f7bb032bd5374df5acc9027a",
+              "size_bytes": 13281,
+              "width": 320
+            }
+          ]
+        },
+        {
+          "fence": 1,
+          "job_id": "f325aec5-a625-4970-a344-baecf8dfebdf",
+          "organization_id": "44b1f848-8430-4265-aeb1-2c1c3146879f",
+          "outputs": [
+            {
+              "duration_seconds": 0.3,
+              "has_audio": true,
+              "height": 480,
+              "key": "44b1f848-8430-4265-aeb1-2c1c3146879f/f325aec5-a625-4970-a344-baecf8dfebdf/1/vertical.mp4",
+              "preset": "vertical",
+              "sha256": "8755e04f94b78d9a8537fcca0fdebfdf7f1566832afd3cd38117a5b4099d655e",
+              "size_bytes": 12863,
+              "width": 270
+            },
+            {
+              "duration_seconds": 0.3,
+              "has_audio": true,
+              "height": 320,
+              "key": "44b1f848-8430-4265-aeb1-2c1c3146879f/f325aec5-a625-4970-a344-baecf8dfebdf/1/square.mp4",
+              "preset": "square",
+              "sha256": "669464abef4e36e812b7afee581134b7c51245d91e7a3e034ed1bcb513ce0879",
+              "size_bytes": 13099,
+              "width": 320
+            },
+            {
+              "duration_seconds": 0.3,
+              "has_audio": true,
+              "height": 400,
+              "key": "44b1f848-8430-4265-aeb1-2c1c3146879f/f325aec5-a625-4970-a344-baecf8dfebdf/1/feed.mp4",
+              "preset": "feed",
+              "sha256": "4edb85a9226cb97fa618c8a2258a5ab0f2c4c8a7f7bb032bd5374df5acc9027a",
+              "size_bytes": 13281,
+              "width": 320
+            }
+          ]
+        },
+        {
+          "fence": 1,
+          "job_id": "66fed1ea-f90f-4ea0-bd26-78f53bf6203c",
+          "organization_id": "9b875409-9640-4df8-b86b-4188d98fd453",
+          "outputs": [
+            {
+              "duration_seconds": 0.3,
+              "has_audio": true,
+              "height": 480,
+              "key": "9b875409-9640-4df8-b86b-4188d98fd453/66fed1ea-f90f-4ea0-bd26-78f53bf6203c/1/vertical.mp4",
+              "preset": "vertical",
+              "sha256": "8755e04f94b78d9a8537fcca0fdebfdf7f1566832afd3cd38117a5b4099d655e",
+              "size_bytes": 12863,
+              "width": 270
+            },
+            {
+              "duration_seconds": 0.3,
+              "has_audio": true,
+              "height": 320,
+              "key": "9b875409-9640-4df8-b86b-4188d98fd453/66fed1ea-f90f-4ea0-bd26-78f53bf6203c/1/square.mp4",
+              "preset": "square",
+              "sha256": "669464abef4e36e812b7afee581134b7c51245d91e7a3e034ed1bcb513ce0879",
+              "size_bytes": 13099,
+              "width": 320
+            },
+            {
+              "duration_seconds": 0.3,
+              "has_audio": true,
+              "height": 400,
+              "key": "9b875409-9640-4df8-b86b-4188d98fd453/66fed1ea-f90f-4ea0-bd26-78f53bf6203c/1/feed.mp4",
+              "preset": "feed",
+              "sha256": "4edb85a9226cb97fa618c8a2258a5ab0f2c4c8a7f7bb032bd5374df5acc9027a",
+              "size_bytes": 13281,
+              "width": 320
+            }
+          ]
+        },
+        {
+          "fence": 1,
+          "job_id": "55d6d437-9076-47a1-8a62-cf9a24a83002",
+          "organization_id": "44b1f848-8430-4265-aeb1-2c1c3146879f",
+          "outputs": [
+            {
+              "duration_seconds": 0.3,
+              "has_audio": true,
+              "height": 480,
+              "key": "44b1f848-8430-4265-aeb1-2c1c3146879f/55d6d437-9076-47a1-8a62-cf9a24a83002/1/vertical.mp4",
+              "preset": "vertical",
+              "sha256": "8755e04f94b78d9a8537fcca0fdebfdf7f1566832afd3cd38117a5b4099d655e",
+              "size_bytes": 12863,
+              "width": 270
+            },
+            {
+              "duration_seconds": 0.3,
+              "has_audio": true,
+              "height": 320,
+              "key": "44b1f848-8430-4265-aeb1-2c1c3146879f/55d6d437-9076-47a1-8a62-cf9a24a83002/1/square.mp4",
+              "preset": "square",
+              "sha256": "669464abef4e36e812b7afee581134b7c51245d91e7a3e034ed1bcb513ce0879",
+              "size_bytes": 13099,
+              "width": 320
+            },
+            {
+              "duration_seconds": 0.3,
+              "has_audio": true,
+              "height": 400,
+              "key": "44b1f848-8430-4265-aeb1-2c1c3146879f/55d6d437-9076-47a1-8a62-cf9a24a83002/1/feed.mp4",
+              "preset": "feed",
+              "sha256": "4edb85a9226cb97fa618c8a2258a5ab0f2c4c8a7f7bb032bd5374df5acc9027a",
+              "size_bytes": 13281,
+              "width": 320
+            }
+          ]
+        },
+        {
+          "fence": 1,
+          "job_id": "597456ac-2012-4e02-8ecb-e60fd81221e6",
+          "organization_id": "9b875409-9640-4df8-b86b-4188d98fd453",
+          "outputs": [
+            {
+              "duration_seconds": 0.3,
+              "has_audio": true,
+              "height": 480,
+              "key": "9b875409-9640-4df8-b86b-4188d98fd453/597456ac-2012-4e02-8ecb-e60fd81221e6/1/vertical.mp4",
+              "preset": "vertical",
+              "sha256": "8755e04f94b78d9a8537fcca0fdebfdf7f1566832afd3cd38117a5b4099d655e",
+              "size_bytes": 12863,
+              "width": 270
+            },
+            {
+              "duration_seconds": 0.3,
+              "has_audio": true,
+              "height": 320,
+              "key": "9b875409-9640-4df8-b86b-4188d98fd453/597456ac-2012-4e02-8ecb-e60fd81221e6/1/square.mp4",
+              "preset": "square",
+              "sha256": "669464abef4e36e812b7afee581134b7c51245d91e7a3e034ed1bcb513ce0879",
+              "size_bytes": 13099,
+              "width": 320
+            },
+            {
+              "duration_seconds": 0.3,
+              "has_audio": true,
+              "height": 400,
+              "key": "9b875409-9640-4df8-b86b-4188d98fd453/597456ac-2012-4e02-8ecb-e60fd81221e6/1/feed.mp4",
+              "preset": "feed",
+              "sha256": "4edb85a9226cb97fa618c8a2258a5ab0f2c4c8a7f7bb032bd5374df5acc9027a",
+              "size_bytes": 13281,
+              "width": 320
+            }
+          ]
+        },
+        {
+          "fence": 1,
+          "job_id": "1f686857-a578-4311-97cb-dd3285b5bf7c",
+          "organization_id": "44b1f848-8430-4265-aeb1-2c1c3146879f",
+          "outputs": [
+            {
+              "duration_seconds": 0.3,
+              "has_audio": true,
+              "height": 480,
+              "key": "44b1f848-8430-4265-aeb1-2c1c3146879f/1f686857-a578-4311-97cb-dd3285b5bf7c/1/vertical.mp4",
+              "preset": "vertical",
+              "sha256": "8755e04f94b78d9a8537fcca0fdebfdf7f1566832afd3cd38117a5b4099d655e",
+              "size_bytes": 12863,
+              "width": 270
+            },
+            {
+              "duration_seconds": 0.3,
+              "has_audio": true,
+              "height": 320,
+              "key": "44b1f848-8430-4265-aeb1-2c1c3146879f/1f686857-a578-4311-97cb-dd3285b5bf7c/1/square.mp4",
+              "preset": "square",
+              "sha256": "669464abef4e36e812b7afee581134b7c51245d91e7a3e034ed1bcb513ce0879",
+              "size_bytes": 13099,
+              "width": 320
+            },
+            {
+              "duration_seconds": 0.3,
+              "has_audio": true,
+              "height": 400,
+              "key": "44b1f848-8430-4265-aeb1-2c1c3146879f/1f686857-a578-4311-97cb-dd3285b5bf7c/1/feed.mp4",
+              "preset": "feed",
+              "sha256": "4edb85a9226cb97fa618c8a2258a5ab0f2c4c8a7f7bb032bd5374df5acc9027a",
+              "size_bytes": 13281,
+              "width": 320
+            }
+          ]
+        },
+        {
+          "fence": 1,
+          "job_id": "54453c44-094d-4b74-aa1d-e76d58674f57",
+          "organization_id": "9b875409-9640-4df8-b86b-4188d98fd453",
+          "outputs": [
+            {
+              "duration_seconds": 0.3,
+              "has_audio": true,
+              "height": 480,
+              "key": "9b875409-9640-4df8-b86b-4188d98fd453/54453c44-094d-4b74-aa1d-e76d58674f57/1/vertical.mp4",
+              "preset": "vertical",
+              "sha256": "8755e04f94b78d9a8537fcca0fdebfdf7f1566832afd3cd38117a5b4099d655e",
+              "size_bytes": 12863,
+              "width": 270
+            },
+            {
+              "duration_seconds": 0.3,
+              "has_audio": true,
+              "height": 320,
+              "key": "9b875409-9640-4df8-b86b-4188d98fd453/54453c44-094d-4b74-aa1d-e76d58674f57/1/square.mp4",
+              "preset": "square",
+              "sha256": "669464abef4e36e812b7afee581134b7c51245d91e7a3e034ed1bcb513ce0879",
+              "size_bytes": 13099,
+              "width": 320
+            },
+            {
+              "duration_seconds": 0.3,
+              "has_audio": true,
+              "height": 400,
+              "key": "9b875409-9640-4df8-b86b-4188d98fd453/54453c44-094d-4b74-aa1d-e76d58674f57/1/feed.mp4",
+              "preset": "feed",
+              "sha256": "4edb85a9226cb97fa618c8a2258a5ab0f2c4c8a7f7bb032bd5374df5acc9027a",
+              "size_bytes": 13281,
+              "width": 320
+            }
+          ]
+        },
+        {
+          "fence": 1,
+          "job_id": "e8c44fcb-bb4c-4c1a-8efd-52b8c23756d5",
+          "organization_id": "44b1f848-8430-4265-aeb1-2c1c3146879f",
+          "outputs": [
+            {
+              "duration_seconds": 0.3,
+              "has_audio": true,
+              "height": 480,
+              "key": "44b1f848-8430-4265-aeb1-2c1c3146879f/e8c44fcb-bb4c-4c1a-8efd-52b8c23756d5/1/vertical.mp4",
+              "preset": "vertical",
+              "sha256": "8755e04f94b78d9a8537fcca0fdebfdf7f1566832afd3cd38117a5b4099d655e",
+              "size_bytes": 12863,
+              "width": 270
+            },
+            {
+              "duration_seconds": 0.3,
+              "has_audio": true,
+              "height": 320,
+              "key": "44b1f848-8430-4265-aeb1-2c1c3146879f/e8c44fcb-bb4c-4c1a-8efd-52b8c23756d5/1/square.mp4",
+              "preset": "square",
+              "sha256": "669464abef4e36e812b7afee581134b7c51245d91e7a3e034ed1bcb513ce0879",
+              "size_bytes": 13099,
+              "width": 320
+            },
+            {
+              "duration_seconds": 0.3,
+              "has_audio": true,
+              "height": 400,
+              "key": "44b1f848-8430-4265-aeb1-2c1c3146879f/e8c44fcb-bb4c-4c1a-8efd-52b8c23756d5/1/feed.mp4",
+              "preset": "feed",
+              "sha256": "4edb85a9226cb97fa618c8a2258a5ab0f2c4c8a7f7bb032bd5374df5acc9027a",
+              "size_bytes": 13281,
+              "width": 320
+            }
+          ]
+        },
+        {
+          "fence": 1,
+          "job_id": "a7c5ce31-e175-4d00-b954-8b557afa4219",
+          "organization_id": "9b875409-9640-4df8-b86b-4188d98fd453",
+          "outputs": [
+            {
+              "duration_seconds": 0.3,
+              "has_audio": true,
+              "height": 480,
+              "key": "9b875409-9640-4df8-b86b-4188d98fd453/a7c5ce31-e175-4d00-b954-8b557afa4219/1/vertical.mp4",
+              "preset": "vertical",
+              "sha256": "8755e04f94b78d9a8537fcca0fdebfdf7f1566832afd3cd38117a5b4099d655e",
+              "size_bytes": 12863,
+              "width": 270
+            },
+            {
+              "duration_seconds": 0.3,
+              "has_audio": true,
+              "height": 320,
+              "key": "9b875409-9640-4df8-b86b-4188d98fd453/a7c5ce31-e175-4d00-b954-8b557afa4219/1/square.mp4",
+              "preset": "square",
+              "sha256": "669464abef4e36e812b7afee581134b7c51245d91e7a3e034ed1bcb513ce0879",
+              "size_bytes": 13099,
+              "width": 320
+            },
+            {
+              "duration_seconds": 0.3,
+              "has_audio": true,
+              "height": 400,
+              "key": "9b875409-9640-4df8-b86b-4188d98fd453/a7c5ce31-e175-4d00-b954-8b557afa4219/1/feed.mp4",
+              "preset": "feed",
+              "sha256": "4edb85a9226cb97fa618c8a2258a5ab0f2c4c8a7f7bb032bd5374df5acc9027a",
+              "size_bytes": 13281,
+              "width": 320
+            }
+          ]
+        },
+        {
+          "fence": 1,
+          "job_id": "5fa49abd-259b-4e56-866a-f5f8775ca978",
+          "organization_id": "44b1f848-8430-4265-aeb1-2c1c3146879f",
+          "outputs": [
+            {
+              "duration_seconds": 0.3,
+              "has_audio": true,
+              "height": 480,
+              "key": "44b1f848-8430-4265-aeb1-2c1c3146879f/5fa49abd-259b-4e56-866a-f5f8775ca978/1/vertical.mp4",
+              "preset": "vertical",
+              "sha256": "8755e04f94b78d9a8537fcca0fdebfdf7f1566832afd3cd38117a5b4099d655e",
+              "size_bytes": 12863,
+              "width": 270
+            },
+            {
+              "duration_seconds": 0.3,
+              "has_audio": true,
+              "height": 320,
+              "key": "44b1f848-8430-4265-aeb1-2c1c3146879f/5fa49abd-259b-4e56-866a-f5f8775ca978/1/square.mp4",
+              "preset": "square",
+              "sha256": "669464abef4e36e812b7afee581134b7c51245d91e7a3e034ed1bcb513ce0879",
+              "size_bytes": 13099,
+              "width": 320
+            },
+            {
+              "duration_seconds": 0.3,
+              "has_audio": true,
+              "height": 400,
+              "key": "44b1f848-8430-4265-aeb1-2c1c3146879f/5fa49abd-259b-4e56-866a-f5f8775ca978/1/feed.mp4",
+              "preset": "feed",
+              "sha256": "4edb85a9226cb97fa618c8a2258a5ab0f2c4c8a7f7bb032bd5374df5acc9027a",
+              "size_bytes": 13281,
+              "width": 320
+            }
+          ]
+        },
+        {
+          "fence": 1,
+          "job_id": "c14bd6b4-1556-4648-93fe-345d3c16579a",
+          "organization_id": "9b875409-9640-4df8-b86b-4188d98fd453",
+          "outputs": [
+            {
+              "duration_seconds": 0.3,
+              "has_audio": true,
+              "height": 480,
+              "key": "9b875409-9640-4df8-b86b-4188d98fd453/c14bd6b4-1556-4648-93fe-345d3c16579a/1/vertical.mp4",
+              "preset": "vertical",
+              "sha256": "8755e04f94b78d9a8537fcca0fdebfdf7f1566832afd3cd38117a5b4099d655e",
+              "size_bytes": 12863,
+              "width": 270
+            },
+            {
+              "duration_seconds": 0.3,
+              "has_audio": true,
+              "height": 320,
+              "key": "9b875409-9640-4df8-b86b-4188d98fd453/c14bd6b4-1556-4648-93fe-345d3c16579a/1/square.mp4",
+              "preset": "square",
+              "sha256": "669464abef4e36e812b7afee581134b7c51245d91e7a3e034ed1bcb513ce0879",
+              "size_bytes": 13099,
+              "width": 320
+            },
+            {
+              "duration_seconds": 0.3,
+              "has_audio": true,
+              "height": 400,
+              "key": "9b875409-9640-4df8-b86b-4188d98fd453/c14bd6b4-1556-4648-93fe-345d3c16579a/1/feed.mp4",
+              "preset": "feed",
+              "sha256": "4edb85a9226cb97fa618c8a2258a5ab0f2c4c8a7f7bb032bd5374df5acc9027a",
+              "size_bytes": 13281,
+              "width": 320
+            }
+          ]
+        },
+        {
+          "fence": 1,
+          "job_id": "326956a8-9195-4f1b-af27-9b202fa301c7",
+          "organization_id": "44b1f848-8430-4265-aeb1-2c1c3146879f",
+          "outputs": [
+            {
+              "duration_seconds": 0.3,
+              "has_audio": true,
+              "height": 480,
+              "key": "44b1f848-8430-4265-aeb1-2c1c3146879f/326956a8-9195-4f1b-af27-9b202fa301c7/1/vertical.mp4",
+              "preset": "vertical",
+              "sha256": "8755e04f94b78d9a8537fcca0fdebfdf7f1566832afd3cd38117a5b4099d655e",
+              "size_bytes": 12863,
+              "width": 270
+            },
+            {
+              "duration_seconds": 0.3,
+              "has_audio": true,
+              "height": 320,
+              "key": "44b1f848-8430-4265-aeb1-2c1c3146879f/326956a8-9195-4f1b-af27-9b202fa301c7/1/square.mp4",
+              "preset": "square",
+              "sha256": "669464abef4e36e812b7afee581134b7c51245d91e7a3e034ed1bcb513ce0879",
+              "size_bytes": 13099,
+              "width": 320
+            },
+            {
+              "duration_seconds": 0.3,
+              "has_audio": true,
+              "height": 400,
+              "key": "44b1f848-8430-4265-aeb1-2c1c3146879f/326956a8-9195-4f1b-af27-9b202fa301c7/1/feed.mp4",
+              "preset": "feed",
+              "sha256": "4edb85a9226cb97fa618c8a2258a5ab0f2c4c8a7f7bb032bd5374df5acc9027a",
+              "size_bytes": 13281,
+              "width": 320
+            }
+          ]
+        },
+        {
+          "fence": 1,
+          "job_id": "a23cca09-13de-46f8-8d70-c3680f9573b7",
+          "organization_id": "9b875409-9640-4df8-b86b-4188d98fd453",
+          "outputs": [
+            {
+              "duration_seconds": 0.3,
+              "has_audio": true,
+              "height": 480,
+              "key": "9b875409-9640-4df8-b86b-4188d98fd453/a23cca09-13de-46f8-8d70-c3680f9573b7/1/vertical.mp4",
+              "preset": "vertical",
+              "sha256": "8755e04f94b78d9a8537fcca0fdebfdf7f1566832afd3cd38117a5b4099d655e",
+              "size_bytes": 12863,
+              "width": 270
+            },
+            {
+              "duration_seconds": 0.3,
+              "has_audio": true,
+              "height": 320,
+              "key": "9b875409-9640-4df8-b86b-4188d98fd453/a23cca09-13de-46f8-8d70-c3680f9573b7/1/square.mp4",
+              "preset": "square",
+              "sha256": "669464abef4e36e812b7afee581134b7c51245d91e7a3e034ed1bcb513ce0879",
+              "size_bytes": 13099,
+              "width": 320
+            },
+            {
+              "duration_seconds": 0.3,
+              "has_audio": true,
+              "height": 400,
+              "key": "9b875409-9640-4df8-b86b-4188d98fd453/a23cca09-13de-46f8-8d70-c3680f9573b7/1/feed.mp4",
+              "preset": "feed",
+              "sha256": "4edb85a9226cb97fa618c8a2258a5ab0f2c4c8a7f7bb032bd5374df5acc9027a",
+              "size_bytes": 13281,
+              "width": 320
+            }
+          ]
+        },
+        {
+          "fence": 1,
+          "job_id": "e72d788f-a70d-4a3d-8434-358ce8849f20",
+          "organization_id": "44b1f848-8430-4265-aeb1-2c1c3146879f",
+          "outputs": [
+            {
+              "duration_seconds": 0.3,
+              "has_audio": true,
+              "height": 480,
+              "key": "44b1f848-8430-4265-aeb1-2c1c3146879f/e72d788f-a70d-4a3d-8434-358ce8849f20/1/vertical.mp4",
+              "preset": "vertical",
+              "sha256": "8755e04f94b78d9a8537fcca0fdebfdf7f1566832afd3cd38117a5b4099d655e",
+              "size_bytes": 12863,
+              "width": 270
+            },
+            {
+              "duration_seconds": 0.3,
+              "has_audio": true,
+              "height": 320,
+              "key": "44b1f848-8430-4265-aeb1-2c1c3146879f/e72d788f-a70d-4a3d-8434-358ce8849f20/1/square.mp4",
+              "preset": "square",
+              "sha256": "669464abef4e36e812b7afee581134b7c51245d91e7a3e034ed1bcb513ce0879",
+              "size_bytes": 13099,
+              "width": 320
+            },
+            {
+              "duration_seconds": 0.3,
+              "has_audio": true,
+              "height": 400,
+              "key": "44b1f848-8430-4265-aeb1-2c1c3146879f/e72d788f-a70d-4a3d-8434-358ce8849f20/1/feed.mp4",
+              "preset": "feed",
+              "sha256": "4edb85a9226cb97fa618c8a2258a5ab0f2c4c8a7f7bb032bd5374df5acc9027a",
+              "size_bytes": 13281,
+              "width": 320
+            }
+          ]
+        },
+        {
+          "fence": 1,
+          "job_id": "ab6c2acf-80d8-40b4-b907-3e958be32763",
+          "organization_id": "9b875409-9640-4df8-b86b-4188d98fd453",
+          "outputs": [
+            {
+              "duration_seconds": 0.3,
+              "has_audio": true,
+              "height": 480,
+              "key": "9b875409-9640-4df8-b86b-4188d98fd453/ab6c2acf-80d8-40b4-b907-3e958be32763/1/vertical.mp4",
+              "preset": "vertical",
+              "sha256": "8755e04f94b78d9a8537fcca0fdebfdf7f1566832afd3cd38117a5b4099d655e",
+              "size_bytes": 12863,
+              "width": 270
+            },
+            {
+              "duration_seconds": 0.3,
+              "has_audio": true,
+              "height": 320,
+              "key": "9b875409-9640-4df8-b86b-4188d98fd453/ab6c2acf-80d8-40b4-b907-3e958be32763/1/square.mp4",
+              "preset": "square",
+              "sha256": "669464abef4e36e812b7afee581134b7c51245d91e7a3e034ed1bcb513ce0879",
+              "size_bytes": 13099,
+              "width": 320
+            },
+            {
+              "duration_seconds": 0.3,
+              "has_audio": true,
+              "height": 400,
+              "key": "9b875409-9640-4df8-b86b-4188d98fd453/ab6c2acf-80d8-40b4-b907-3e958be32763/1/feed.mp4",
+              "preset": "feed",
+              "sha256": "4edb85a9226cb97fa618c8a2258a5ab0f2c4c8a7f7bb032bd5374df5acc9027a",
+              "size_bytes": 13281,
+              "width": 320
+            }
+          ]
+        },
+        {
+          "fence": 1,
+          "job_id": "06ffda1c-64a4-4023-9672-e46ea88cfe85",
+          "organization_id": "44b1f848-8430-4265-aeb1-2c1c3146879f",
+          "outputs": [
+            {
+              "duration_seconds": 0.3,
+              "has_audio": true,
+              "height": 480,
+              "key": "44b1f848-8430-4265-aeb1-2c1c3146879f/06ffda1c-64a4-4023-9672-e46ea88cfe85/1/vertical.mp4",
+              "preset": "vertical",
+              "sha256": "8755e04f94b78d9a8537fcca0fdebfdf7f1566832afd3cd38117a5b4099d655e",
+              "size_bytes": 12863,
+              "width": 270
+            },
+            {
+              "duration_seconds": 0.3,
+              "has_audio": true,
+              "height": 320,
+              "key": "44b1f848-8430-4265-aeb1-2c1c3146879f/06ffda1c-64a4-4023-9672-e46ea88cfe85/1/square.mp4",
+              "preset": "square",
+              "sha256": "669464abef4e36e812b7afee581134b7c51245d91e7a3e034ed1bcb513ce0879",
+              "size_bytes": 13099,
+              "width": 320
+            },
+            {
+              "duration_seconds": 0.3,
+              "has_audio": true,
+              "height": 400,
+              "key": "44b1f848-8430-4265-aeb1-2c1c3146879f/06ffda1c-64a4-4023-9672-e46ea88cfe85/1/feed.mp4",
+              "preset": "feed",
+              "sha256": "4edb85a9226cb97fa618c8a2258a5ab0f2c4c8a7f7bb032bd5374df5acc9027a",
+              "size_bytes": 13281,
+              "width": 320
+            }
+          ]
+        },
+        {
+          "fence": 1,
+          "job_id": "c0d04cb9-1b94-4669-ab2f-f5c27107e468",
+          "organization_id": "9b875409-9640-4df8-b86b-4188d98fd453",
+          "outputs": [
+            {
+              "duration_seconds": 0.3,
+              "has_audio": true,
+              "height": 480,
+              "key": "9b875409-9640-4df8-b86b-4188d98fd453/c0d04cb9-1b94-4669-ab2f-f5c27107e468/1/vertical.mp4",
+              "preset": "vertical",
+              "sha256": "8755e04f94b78d9a8537fcca0fdebfdf7f1566832afd3cd38117a5b4099d655e",
+              "size_bytes": 12863,
+              "width": 270
+            },
+            {
+              "duration_seconds": 0.3,
+              "has_audio": true,
+              "height": 320,
+              "key": "9b875409-9640-4df8-b86b-4188d98fd453/c0d04cb9-1b94-4669-ab2f-f5c27107e468/1/square.mp4",
+              "preset": "square",
+              "sha256": "669464abef4e36e812b7afee581134b7c51245d91e7a3e034ed1bcb513ce0879",
+              "size_bytes": 13099,
+              "width": 320
+            },
+            {
+              "duration_seconds": 0.3,
+              "has_audio": true,
+              "height": 400,
+              "key": "9b875409-9640-4df8-b86b-4188d98fd453/c0d04cb9-1b94-4669-ab2f-f5c27107e468/1/feed.mp4",
+              "preset": "feed",
+              "sha256": "4edb85a9226cb97fa618c8a2258a5ab0f2c4c8a7f7bb032bd5374df5acc9027a",
+              "size_bytes": 13281,
+              "width": 320
+            }
+          ]
+        },
+        {
+          "fence": 1,
+          "job_id": "c29b270c-3a90-4269-8f27-ca8d13fffe83",
+          "organization_id": "44b1f848-8430-4265-aeb1-2c1c3146879f",
+          "outputs": [
+            {
+              "duration_seconds": 0.3,
+              "has_audio": true,
+              "height": 480,
+              "key": "44b1f848-8430-4265-aeb1-2c1c3146879f/c29b270c-3a90-4269-8f27-ca8d13fffe83/1/vertical.mp4",
+              "preset": "vertical",
+              "sha256": "8755e04f94b78d9a8537fcca0fdebfdf7f1566832afd3cd38117a5b4099d655e",
+              "size_bytes": 12863,
+              "width": 270
+            },
+            {
+              "duration_seconds": 0.3,
+              "has_audio": true,
+              "height": 320,
+              "key": "44b1f848-8430-4265-aeb1-2c1c3146879f/c29b270c-3a90-4269-8f27-ca8d13fffe83/1/square.mp4",
+              "preset": "square",
+              "sha256": "669464abef4e36e812b7afee581134b7c51245d91e7a3e034ed1bcb513ce0879",
+              "size_bytes": 13099,
+              "width": 320
+            },
+            {
+              "duration_seconds": 0.3,
+              "has_audio": true,
+              "height": 400,
+              "key": "44b1f848-8430-4265-aeb1-2c1c3146879f/c29b270c-3a90-4269-8f27-ca8d13fffe83/1/feed.mp4",
+              "preset": "feed",
+              "sha256": "4edb85a9226cb97fa618c8a2258a5ab0f2c4c8a7f7bb032bd5374df5acc9027a",
+              "size_bytes": 13281,
+              "width": 320
+            }
+          ]
+        },
+        {
+          "fence": 1,
+          "job_id": "fa2cc72a-30f6-4acc-9f31-52121aed7588",
+          "organization_id": "9b875409-9640-4df8-b86b-4188d98fd453",
+          "outputs": [
+            {
+              "duration_seconds": 0.3,
+              "has_audio": true,
+              "height": 480,
+              "key": "9b875409-9640-4df8-b86b-4188d98fd453/fa2cc72a-30f6-4acc-9f31-52121aed7588/1/vertical.mp4",
+              "preset": "vertical",
+              "sha256": "8755e04f94b78d9a8537fcca0fdebfdf7f1566832afd3cd38117a5b4099d655e",
+              "size_bytes": 12863,
+              "width": 270
+            },
+            {
+              "duration_seconds": 0.3,
+              "has_audio": true,
+              "height": 320,
+              "key": "9b875409-9640-4df8-b86b-4188d98fd453/fa2cc72a-30f6-4acc-9f31-52121aed7588/1/square.mp4",
+              "preset": "square",
+              "sha256": "669464abef4e36e812b7afee581134b7c51245d91e7a3e034ed1bcb513ce0879",
+              "size_bytes": 13099,
+              "width": 320
+            },
+            {
+              "duration_seconds": 0.3,
+              "has_audio": true,
+              "height": 400,
+              "key": "9b875409-9640-4df8-b86b-4188d98fd453/fa2cc72a-30f6-4acc-9f31-52121aed7588/1/feed.mp4",
+              "preset": "feed",
+              "sha256": "4edb85a9226cb97fa618c8a2258a5ab0f2c4c8a7f7bb032bd5374df5acc9027a",
+              "size_bytes": 13281,
+              "width": 320
+            }
+          ]
+        },
+        {
+          "fence": 1,
+          "job_id": "a8f908c7-cddc-48c5-be67-8df84d195e38",
+          "organization_id": "44b1f848-8430-4265-aeb1-2c1c3146879f",
+          "outputs": [
+            {
+              "duration_seconds": 0.3,
+              "has_audio": true,
+              "height": 480,
+              "key": "44b1f848-8430-4265-aeb1-2c1c3146879f/a8f908c7-cddc-48c5-be67-8df84d195e38/1/vertical.mp4",
+              "preset": "vertical",
+              "sha256": "8755e04f94b78d9a8537fcca0fdebfdf7f1566832afd3cd38117a5b4099d655e",
+              "size_bytes": 12863,
+              "width": 270
+            },
+            {
+              "duration_seconds": 0.3,
+              "has_audio": true,
+              "height": 320,
+              "key": "44b1f848-8430-4265-aeb1-2c1c3146879f/a8f908c7-cddc-48c5-be67-8df84d195e38/1/square.mp4",
+              "preset": "square",
+              "sha256": "669464abef4e36e812b7afee581134b7c51245d91e7a3e034ed1bcb513ce0879",
+              "size_bytes": 13099,
+              "width": 320
+            },
+            {
+              "duration_seconds": 0.3,
+              "has_audio": true,
+              "height": 400,
+              "key": "44b1f848-8430-4265-aeb1-2c1c3146879f/a8f908c7-cddc-48c5-be67-8df84d195e38/1/feed.mp4",
+              "preset": "feed",
+              "sha256": "4edb85a9226cb97fa618c8a2258a5ab0f2c4c8a7f7bb032bd5374df5acc9027a",
+              "size_bytes": 13281,
+              "width": 320
+            }
+          ]
+        },
+        {
+          "fence": 1,
+          "job_id": "2ca7bdf2-a3fe-4b94-912c-ce47ffab858b",
+          "organization_id": "9b875409-9640-4df8-b86b-4188d98fd453",
+          "outputs": [
+            {
+              "duration_seconds": 0.3,
+              "has_audio": true,
+              "height": 480,
+              "key": "9b875409-9640-4df8-b86b-4188d98fd453/2ca7bdf2-a3fe-4b94-912c-ce47ffab858b/1/vertical.mp4",
+              "preset": "vertical",
+              "sha256": "8755e04f94b78d9a8537fcca0fdebfdf7f1566832afd3cd38117a5b4099d655e",
+              "size_bytes": 12863,
+              "width": 270
+            },
+            {
+              "duration_seconds": 0.3,
+              "has_audio": true,
+              "height": 320,
+              "key": "9b875409-9640-4df8-b86b-4188d98fd453/2ca7bdf2-a3fe-4b94-912c-ce47ffab858b/1/square.mp4",
+              "preset": "square",
+              "sha256": "669464abef4e36e812b7afee581134b7c51245d91e7a3e034ed1bcb513ce0879",
+              "size_bytes": 13099,
+              "width": 320
+            },
+            {
+              "duration_seconds": 0.3,
+              "has_audio": true,
+              "height": 400,
+              "key": "9b875409-9640-4df8-b86b-4188d98fd453/2ca7bdf2-a3fe-4b94-912c-ce47ffab858b/1/feed.mp4",
+              "preset": "feed",
+              "sha256": "4edb85a9226cb97fa618c8a2258a5ab0f2c4c8a7f7bb032bd5374df5acc9027a",
+              "size_bytes": 13281,
+              "width": 320
+            }
+          ]
+        },
+        {
+          "fence": 1,
+          "job_id": "ae3021a5-be37-46b4-8529-3aed5c0649f8",
+          "organization_id": "44b1f848-8430-4265-aeb1-2c1c3146879f",
+          "outputs": [
+            {
+              "duration_seconds": 0.3,
+              "has_audio": true,
+              "height": 480,
+              "key": "44b1f848-8430-4265-aeb1-2c1c3146879f/ae3021a5-be37-46b4-8529-3aed5c0649f8/1/vertical.mp4",
+              "preset": "vertical",
+              "sha256": "8755e04f94b78d9a8537fcca0fdebfdf7f1566832afd3cd38117a5b4099d655e",
+              "size_bytes": 12863,
+              "width": 270
+            },
+            {
+              "duration_seconds": 0.3,
+              "has_audio": true,
+              "height": 320,
+              "key": "44b1f848-8430-4265-aeb1-2c1c3146879f/ae3021a5-be37-46b4-8529-3aed5c0649f8/1/square.mp4",
+              "preset": "square",
+              "sha256": "669464abef4e36e812b7afee581134b7c51245d91e7a3e034ed1bcb513ce0879",
+              "size_bytes": 13099,
+              "width": 320
+            },
+            {
+              "duration_seconds": 0.3,
+              "has_audio": true,
+              "height": 400,
+              "key": "44b1f848-8430-4265-aeb1-2c1c3146879f/ae3021a5-be37-46b4-8529-3aed5c0649f8/1/feed.mp4",
+              "preset": "feed",
+              "sha256": "4edb85a9226cb97fa618c8a2258a5ab0f2c4c8a7f7bb032bd5374df5acc9027a",
+              "size_bytes": 13281,
+              "width": 320
+            }
+          ]
+        },
+        {
+          "fence": 1,
+          "job_id": "0e0bde2e-d660-4cfd-b04c-9f42bf8e29d2",
+          "organization_id": "9b875409-9640-4df8-b86b-4188d98fd453",
+          "outputs": [
+            {
+              "duration_seconds": 0.3,
+              "has_audio": true,
+              "height": 480,
+              "key": "9b875409-9640-4df8-b86b-4188d98fd453/0e0bde2e-d660-4cfd-b04c-9f42bf8e29d2/1/vertical.mp4",
+              "preset": "vertical",
+              "sha256": "8755e04f94b78d9a8537fcca0fdebfdf7f1566832afd3cd38117a5b4099d655e",
+              "size_bytes": 12863,
+              "width": 270
+            },
+            {
+              "duration_seconds": 0.3,
+              "has_audio": true,
+              "height": 320,
+              "key": "9b875409-9640-4df8-b86b-4188d98fd453/0e0bde2e-d660-4cfd-b04c-9f42bf8e29d2/1/square.mp4",
+              "preset": "square",
+              "sha256": "669464abef4e36e812b7afee581134b7c51245d91e7a3e034ed1bcb513ce0879",
+              "size_bytes": 13099,
+              "width": 320
+            },
+            {
+              "duration_seconds": 0.3,
+              "has_audio": true,
+              "height": 400,
+              "key": "9b875409-9640-4df8-b86b-4188d98fd453/0e0bde2e-d660-4cfd-b04c-9f42bf8e29d2/1/feed.mp4",
+              "preset": "feed",
+              "sha256": "4edb85a9226cb97fa618c8a2258a5ab0f2c4c8a7f7bb032bd5374df5acc9027a",
+              "size_bytes": 13281,
+              "width": 320
+            }
+          ]
+        },
+        {
+          "fence": 1,
+          "job_id": "cf56eb2d-9842-4dff-b219-8c8d32659b18",
+          "organization_id": "44b1f848-8430-4265-aeb1-2c1c3146879f",
+          "outputs": [
+            {
+              "duration_seconds": 0.3,
+              "has_audio": true,
+              "height": 480,
+              "key": "44b1f848-8430-4265-aeb1-2c1c3146879f/cf56eb2d-9842-4dff-b219-8c8d32659b18/1/vertical.mp4",
+              "preset": "vertical",
+              "sha256": "8755e04f94b78d9a8537fcca0fdebfdf7f1566832afd3cd38117a5b4099d655e",
+              "size_bytes": 12863,
+              "width": 270
+            },
+            {
+              "duration_seconds": 0.3,
+              "has_audio": true,
+              "height": 320,
+              "key": "44b1f848-8430-4265-aeb1-2c1c3146879f/cf56eb2d-9842-4dff-b219-8c8d32659b18/1/square.mp4",
+              "preset": "square",
+              "sha256": "669464abef4e36e812b7afee581134b7c51245d91e7a3e034ed1bcb513ce0879",
+              "size_bytes": 13099,
+              "width": 320
+            },
+            {
+              "duration_seconds": 0.3,
+              "has_audio": true,
+              "height": 400,
+              "key": "44b1f848-8430-4265-aeb1-2c1c3146879f/cf56eb2d-9842-4dff-b219-8c8d32659b18/1/feed.mp4",
+              "preset": "feed",
+              "sha256": "4edb85a9226cb97fa618c8a2258a5ab0f2c4c8a7f7bb032bd5374df5acc9027a",
+              "size_bytes": 13281,
+              "width": 320
+            }
+          ]
+        },
+        {
+          "fence": 1,
+          "job_id": "6d47afba-8a42-49ee-8558-fd2bd91b1bb8",
+          "organization_id": "9b875409-9640-4df8-b86b-4188d98fd453",
+          "outputs": [
+            {
+              "duration_seconds": 0.3,
+              "has_audio": true,
+              "height": 480,
+              "key": "9b875409-9640-4df8-b86b-4188d98fd453/6d47afba-8a42-49ee-8558-fd2bd91b1bb8/1/vertical.mp4",
+              "preset": "vertical",
+              "sha256": "8755e04f94b78d9a8537fcca0fdebfdf7f1566832afd3cd38117a5b4099d655e",
+              "size_bytes": 12863,
+              "width": 270
+            },
+            {
+              "duration_seconds": 0.3,
+              "has_audio": true,
+              "height": 320,
+              "key": "9b875409-9640-4df8-b86b-4188d98fd453/6d47afba-8a42-49ee-8558-fd2bd91b1bb8/1/square.mp4",
+              "preset": "square",
+              "sha256": "669464abef4e36e812b7afee581134b7c51245d91e7a3e034ed1bcb513ce0879",
+              "size_bytes": 13099,
+              "width": 320
+            },
+            {
+              "duration_seconds": 0.3,
+              "has_audio": true,
+              "height": 400,
+              "key": "9b875409-9640-4df8-b86b-4188d98fd453/6d47afba-8a42-49ee-8558-fd2bd91b1bb8/1/feed.mp4",
+              "preset": "feed",
+              "sha256": "4edb85a9226cb97fa618c8a2258a5ab0f2c4c8a7f7bb032bd5374df5acc9027a",
+              "size_bytes": 13281,
+              "width": 320
+            }
+          ]
+        },
+        {
+          "fence": 1,
+          "job_id": "ab7eb679-11df-4cff-b4da-a9840e04a204",
+          "organization_id": "44b1f848-8430-4265-aeb1-2c1c3146879f",
+          "outputs": [
+            {
+              "duration_seconds": 0.3,
+              "has_audio": true,
+              "height": 480,
+              "key": "44b1f848-8430-4265-aeb1-2c1c3146879f/ab7eb679-11df-4cff-b4da-a9840e04a204/1/vertical.mp4",
+              "preset": "vertical",
+              "sha256": "8755e04f94b78d9a8537fcca0fdebfdf7f1566832afd3cd38117a5b4099d655e",
+              "size_bytes": 12863,
+              "width": 270
+            },
+            {
+              "duration_seconds": 0.3,
+              "has_audio": true,
+              "height": 320,
+              "key": "44b1f848-8430-4265-aeb1-2c1c3146879f/ab7eb679-11df-4cff-b4da-a9840e04a204/1/square.mp4",
+              "preset": "square",
+              "sha256": "669464abef4e36e812b7afee581134b7c51245d91e7a3e034ed1bcb513ce0879",
+              "size_bytes": 13099,
+              "width": 320
+            },
+            {
+              "duration_seconds": 0.3,
+              "has_audio": true,
+              "height": 400,
+              "key": "44b1f848-8430-4265-aeb1-2c1c3146879f/ab7eb679-11df-4cff-b4da-a9840e04a204/1/feed.mp4",
+              "preset": "feed",
+              "sha256": "4edb85a9226cb97fa618c8a2258a5ab0f2c4c8a7f7bb032bd5374df5acc9027a",
+              "size_bytes": 13281,
+              "width": 320
+            }
+          ]
+        },
+        {
+          "fence": 1,
+          "job_id": "7cc110ad-9e61-49e1-88f9-4c1be84297a5",
+          "organization_id": "9b875409-9640-4df8-b86b-4188d98fd453",
+          "outputs": [
+            {
+              "duration_seconds": 0.3,
+              "has_audio": true,
+              "height": 480,
+              "key": "9b875409-9640-4df8-b86b-4188d98fd453/7cc110ad-9e61-49e1-88f9-4c1be84297a5/1/vertical.mp4",
+              "preset": "vertical",
+              "sha256": "8755e04f94b78d9a8537fcca0fdebfdf7f1566832afd3cd38117a5b4099d655e",
+              "size_bytes": 12863,
+              "width": 270
+            },
+            {
+              "duration_seconds": 0.3,
+              "has_audio": true,
+              "height": 320,
+              "key": "9b875409-9640-4df8-b86b-4188d98fd453/7cc110ad-9e61-49e1-88f9-4c1be84297a5/1/square.mp4",
+              "preset": "square",
+              "sha256": "669464abef4e36e812b7afee581134b7c51245d91e7a3e034ed1bcb513ce0879",
+              "size_bytes": 13099,
+              "width": 320
+            },
+            {
+              "duration_seconds": 0.3,
+              "has_audio": true,
+              "height": 400,
+              "key": "9b875409-9640-4df8-b86b-4188d98fd453/7cc110ad-9e61-49e1-88f9-4c1be84297a5/1/feed.mp4",
+              "preset": "feed",
+              "sha256": "4edb85a9226cb97fa618c8a2258a5ab0f2c4c8a7f7bb032bd5374df5acc9027a",
+              "size_bytes": 13281,
+              "width": 320
+            }
+          ]
+        },
+        {
+          "fence": 1,
+          "job_id": "46a3dfbc-3164-4b30-8da0-1457887bb73f",
+          "organization_id": "44b1f848-8430-4265-aeb1-2c1c3146879f",
+          "outputs": [
+            {
+              "duration_seconds": 0.3,
+              "has_audio": true,
+              "height": 480,
+              "key": "44b1f848-8430-4265-aeb1-2c1c3146879f/46a3dfbc-3164-4b30-8da0-1457887bb73f/1/vertical.mp4",
+              "preset": "vertical",
+              "sha256": "8755e04f94b78d9a8537fcca0fdebfdf7f1566832afd3cd38117a5b4099d655e",
+              "size_bytes": 12863,
+              "width": 270
+            },
+            {
+              "duration_seconds": 0.3,
+              "has_audio": true,
+              "height": 320,
+              "key": "44b1f848-8430-4265-aeb1-2c1c3146879f/46a3dfbc-3164-4b30-8da0-1457887bb73f/1/square.mp4",
+              "preset": "square",
+              "sha256": "669464abef4e36e812b7afee581134b7c51245d91e7a3e034ed1bcb513ce0879",
+              "size_bytes": 13099,
+              "width": 320
+            },
+            {
+              "duration_seconds": 0.3,
+              "has_audio": true,
+              "height": 400,
+              "key": "44b1f848-8430-4265-aeb1-2c1c3146879f/46a3dfbc-3164-4b30-8da0-1457887bb73f/1/feed.mp4",
+              "preset": "feed",
+              "sha256": "4edb85a9226cb97fa618c8a2258a5ab0f2c4c8a7f7bb032bd5374df5acc9027a",
+              "size_bytes": 13281,
+              "width": 320
+            }
+          ]
+        },
+        {
+          "fence": 1,
+          "job_id": "2baa216b-31aa-4006-b1ad-127bd08b1c86",
+          "organization_id": "9b875409-9640-4df8-b86b-4188d98fd453",
+          "outputs": [
+            {
+              "duration_seconds": 0.3,
+              "has_audio": true,
+              "height": 480,
+              "key": "9b875409-9640-4df8-b86b-4188d98fd453/2baa216b-31aa-4006-b1ad-127bd08b1c86/1/vertical.mp4",
+              "preset": "vertical",
+              "sha256": "8755e04f94b78d9a8537fcca0fdebfdf7f1566832afd3cd38117a5b4099d655e",
+              "size_bytes": 12863,
+              "width": 270
+            },
+            {
+              "duration_seconds": 0.3,
+              "has_audio": true,
+              "height": 320,
+              "key": "9b875409-9640-4df8-b86b-4188d98fd453/2baa216b-31aa-4006-b1ad-127bd08b1c86/1/square.mp4",
+              "preset": "square",
+              "sha256": "669464abef4e36e812b7afee581134b7c51245d91e7a3e034ed1bcb513ce0879",
+              "size_bytes": 13099,
+              "width": 320
+            },
+            {
+              "duration_seconds": 0.3,
+              "has_audio": true,
+              "height": 400,
+              "key": "9b875409-9640-4df8-b86b-4188d98fd453/2baa216b-31aa-4006-b1ad-127bd08b1c86/1/feed.mp4",
+              "preset": "feed",
+              "sha256": "4edb85a9226cb97fa618c8a2258a5ab0f2c4c8a7f7bb032bd5374df5acc9027a",
+              "size_bytes": 13281,
+              "width": 320
+            }
+          ]
+        },
+        {
+          "fence": 1,
+          "job_id": "0023199d-3ef2-4a1e-99d2-d1244a92bb6e",
+          "organization_id": "44b1f848-8430-4265-aeb1-2c1c3146879f",
+          "outputs": [
+            {
+              "duration_seconds": 0.3,
+              "has_audio": true,
+              "height": 480,
+              "key": "44b1f848-8430-4265-aeb1-2c1c3146879f/0023199d-3ef2-4a1e-99d2-d1244a92bb6e/1/vertical.mp4",
+              "preset": "vertical",
+              "sha256": "8755e04f94b78d9a8537fcca0fdebfdf7f1566832afd3cd38117a5b4099d655e",
+              "size_bytes": 12863,
+              "width": 270
+            },
+            {
+              "duration_seconds": 0.3,
+              "has_audio": true,
+              "height": 320,
+              "key": "44b1f848-8430-4265-aeb1-2c1c3146879f/0023199d-3ef2-4a1e-99d2-d1244a92bb6e/1/square.mp4",
+              "preset": "square",
+              "sha256": "669464abef4e36e812b7afee581134b7c51245d91e7a3e034ed1bcb513ce0879",
+              "size_bytes": 13099,
+              "width": 320
+            },
+            {
+              "duration_seconds": 0.3,
+              "has_audio": true,
+              "height": 400,
+              "key": "44b1f848-8430-4265-aeb1-2c1c3146879f/0023199d-3ef2-4a1e-99d2-d1244a92bb6e/1/feed.mp4",
+              "preset": "feed",
+              "sha256": "4edb85a9226cb97fa618c8a2258a5ab0f2c4c8a7f7bb032bd5374df5acc9027a",
+              "size_bytes": 13281,
+              "width": 320
+            }
+          ]
+        },
+        {
+          "fence": 1,
+          "job_id": "0103eb24-409e-4c42-ac4d-36beba9bcf1a",
+          "organization_id": "9b875409-9640-4df8-b86b-4188d98fd453",
+          "outputs": [
+            {
+              "duration_seconds": 0.3,
+              "has_audio": true,
+              "height": 480,
+              "key": "9b875409-9640-4df8-b86b-4188d98fd453/0103eb24-409e-4c42-ac4d-36beba9bcf1a/1/vertical.mp4",
+              "preset": "vertical",
+              "sha256": "8755e04f94b78d9a8537fcca0fdebfdf7f1566832afd3cd38117a5b4099d655e",
+              "size_bytes": 12863,
+              "width": 270
+            },
+            {
+              "duration_seconds": 0.3,
+              "has_audio": true,
+              "height": 320,
+              "key": "9b875409-9640-4df8-b86b-4188d98fd453/0103eb24-409e-4c42-ac4d-36beba9bcf1a/1/square.mp4",
+              "preset": "square",
+              "sha256": "669464abef4e36e812b7afee581134b7c51245d91e7a3e034ed1bcb513ce0879",
+              "size_bytes": 13099,
+              "width": 320
+            },
+            {
+              "duration_seconds": 0.3,
+              "has_audio": true,
+              "height": 400,
+              "key": "9b875409-9640-4df8-b86b-4188d98fd453/0103eb24-409e-4c42-ac4d-36beba9bcf1a/1/feed.mp4",
+              "preset": "feed",
+              "sha256": "4edb85a9226cb97fa618c8a2258a5ab0f2c4c8a7f7bb032bd5374df5acc9027a",
+              "size_bytes": 13281,
+              "width": 320
+            }
+          ]
+        },
+        {
+          "fence": 1,
+          "job_id": "77228a4b-50d3-4c30-a43a-99c7eea9c9cb",
+          "organization_id": "44b1f848-8430-4265-aeb1-2c1c3146879f",
+          "outputs": [
+            {
+              "duration_seconds": 0.3,
+              "has_audio": true,
+              "height": 480,
+              "key": "44b1f848-8430-4265-aeb1-2c1c3146879f/77228a4b-50d3-4c30-a43a-99c7eea9c9cb/1/vertical.mp4",
+              "preset": "vertical",
+              "sha256": "8755e04f94b78d9a8537fcca0fdebfdf7f1566832afd3cd38117a5b4099d655e",
+              "size_bytes": 12863,
+              "width": 270
+            },
+            {
+              "duration_seconds": 0.3,
+              "has_audio": true,
+              "height": 320,
+              "key": "44b1f848-8430-4265-aeb1-2c1c3146879f/77228a4b-50d3-4c30-a43a-99c7eea9c9cb/1/square.mp4",
+              "preset": "square",
+              "sha256": "669464abef4e36e812b7afee581134b7c51245d91e7a3e034ed1bcb513ce0879",
+              "size_bytes": 13099,
+              "width": 320
+            },
+            {
+              "duration_seconds": 0.3,
+              "has_audio": true,
+              "height": 400,
+              "key": "44b1f848-8430-4265-aeb1-2c1c3146879f/77228a4b-50d3-4c30-a43a-99c7eea9c9cb/1/feed.mp4",
+              "preset": "feed",
+              "sha256": "4edb85a9226cb97fa618c8a2258a5ab0f2c4c8a7f7bb032bd5374df5acc9027a",
+              "size_bytes": 13281,
+              "width": 320
+            }
+          ]
+        },
+        {
+          "fence": 1,
+          "job_id": "1f702c63-3e16-4498-9b95-68773e9a4f6d",
+          "organization_id": "9b875409-9640-4df8-b86b-4188d98fd453",
+          "outputs": [
+            {
+              "duration_seconds": 0.3,
+              "has_audio": true,
+              "height": 480,
+              "key": "9b875409-9640-4df8-b86b-4188d98fd453/1f702c63-3e16-4498-9b95-68773e9a4f6d/1/vertical.mp4",
+              "preset": "vertical",
+              "sha256": "8755e04f94b78d9a8537fcca0fdebfdf7f1566832afd3cd38117a5b4099d655e",
+              "size_bytes": 12863,
+              "width": 270
+            },
+            {
+              "duration_seconds": 0.3,
+              "has_audio": true,
+              "height": 320,
+              "key": "9b875409-9640-4df8-b86b-4188d98fd453/1f702c63-3e16-4498-9b95-68773e9a4f6d/1/square.mp4",
+              "preset": "square",
+              "sha256": "669464abef4e36e812b7afee581134b7c51245d91e7a3e034ed1bcb513ce0879",
+              "size_bytes": 13099,
+              "width": 320
+            },
+            {
+              "duration_seconds": 0.3,
+              "has_audio": true,
+              "height": 400,
+              "key": "9b875409-9640-4df8-b86b-4188d98fd453/1f702c63-3e16-4498-9b95-68773e9a4f6d/1/feed.mp4",
+              "preset": "feed",
+              "sha256": "4edb85a9226cb97fa618c8a2258a5ab0f2c4c8a7f7bb032bd5374df5acc9027a",
+              "size_bytes": 13281,
+              "width": 320
+            }
+          ]
+        },
+        {
+          "fence": 1,
+          "job_id": "b662527c-2209-43d5-9770-7ab96e8fd310",
+          "organization_id": "44b1f848-8430-4265-aeb1-2c1c3146879f",
+          "outputs": [
+            {
+              "duration_seconds": 0.3,
+              "has_audio": true,
+              "height": 480,
+              "key": "44b1f848-8430-4265-aeb1-2c1c3146879f/b662527c-2209-43d5-9770-7ab96e8fd310/1/vertical.mp4",
+              "preset": "vertical",
+              "sha256": "8755e04f94b78d9a8537fcca0fdebfdf7f1566832afd3cd38117a5b4099d655e",
+              "size_bytes": 12863,
+              "width": 270
+            },
+            {
+              "duration_seconds": 0.3,
+              "has_audio": true,
+              "height": 320,
+              "key": "44b1f848-8430-4265-aeb1-2c1c3146879f/b662527c-2209-43d5-9770-7ab96e8fd310/1/square.mp4",
+              "preset": "square",
+              "sha256": "669464abef4e36e812b7afee581134b7c51245d91e7a3e034ed1bcb513ce0879",
+              "size_bytes": 13099,
+              "width": 320
+            },
+            {
+              "duration_seconds": 0.3,
+              "has_audio": true,
+              "height": 400,
+              "key": "44b1f848-8430-4265-aeb1-2c1c3146879f/b662527c-2209-43d5-9770-7ab96e8fd310/1/feed.mp4",
+              "preset": "feed",
+              "sha256": "4edb85a9226cb97fa618c8a2258a5ab0f2c4c8a7f7bb032bd5374df5acc9027a",
+              "size_bytes": 13281,
+              "width": 320
+            }
+          ]
+        },
+        {
+          "fence": 1,
+          "job_id": "2a5179f8-35da-4d05-a4b5-5072c756e2a4",
+          "organization_id": "9b875409-9640-4df8-b86b-4188d98fd453",
+          "outputs": [
+            {
+              "duration_seconds": 0.3,
+              "has_audio": true,
+              "height": 480,
+              "key": "9b875409-9640-4df8-b86b-4188d98fd453/2a5179f8-35da-4d05-a4b5-5072c756e2a4/1/vertical.mp4",
+              "preset": "vertical",
+              "sha256": "8755e04f94b78d9a8537fcca0fdebfdf7f1566832afd3cd38117a5b4099d655e",
+              "size_bytes": 12863,
+              "width": 270
+            },
+            {
+              "duration_seconds": 0.3,
+              "has_audio": true,
+              "height": 320,
+              "key": "9b875409-9640-4df8-b86b-4188d98fd453/2a5179f8-35da-4d05-a4b5-5072c756e2a4/1/square.mp4",
+              "preset": "square",
+              "sha256": "669464abef4e36e812b7afee581134b7c51245d91e7a3e034ed1bcb513ce0879",
+              "size_bytes": 13099,
+              "width": 320
+            },
+            {
+              "duration_seconds": 0.3,
+              "has_audio": true,
+              "height": 400,
+              "key": "9b875409-9640-4df8-b86b-4188d98fd453/2a5179f8-35da-4d05-a4b5-5072c756e2a4/1/feed.mp4",
+              "preset": "feed",
+              "sha256": "4edb85a9226cb97fa618c8a2258a5ab0f2c4c8a7f7bb032bd5374df5acc9027a",
+              "size_bytes": 13281,
+              "width": 320
+            }
+          ]
+        },
+        {
+          "fence": 1,
+          "job_id": "070d9531-b7ff-4c29-bd33-586148715cfb",
+          "organization_id": "44b1f848-8430-4265-aeb1-2c1c3146879f",
+          "outputs": [
+            {
+              "duration_seconds": 0.3,
+              "has_audio": true,
+              "height": 480,
+              "key": "44b1f848-8430-4265-aeb1-2c1c3146879f/070d9531-b7ff-4c29-bd33-586148715cfb/1/vertical.mp4",
+              "preset": "vertical",
+              "sha256": "8755e04f94b78d9a8537fcca0fdebfdf7f1566832afd3cd38117a5b4099d655e",
+              "size_bytes": 12863,
+              "width": 270
+            },
+            {
+              "duration_seconds": 0.3,
+              "has_audio": true,
+              "height": 320,
+              "key": "44b1f848-8430-4265-aeb1-2c1c3146879f/070d9531-b7ff-4c29-bd33-586148715cfb/1/square.mp4",
+              "preset": "square",
+              "sha256": "669464abef4e36e812b7afee581134b7c51245d91e7a3e034ed1bcb513ce0879",
+              "size_bytes": 13099,
+              "width": 320
+            },
+            {
+              "duration_seconds": 0.3,
+              "has_audio": true,
+              "height": 400,
+              "key": "44b1f848-8430-4265-aeb1-2c1c3146879f/070d9531-b7ff-4c29-bd33-586148715cfb/1/feed.mp4",
+              "preset": "feed",
+              "sha256": "4edb85a9226cb97fa618c8a2258a5ab0f2c4c8a7f7bb032bd5374df5acc9027a",
+              "size_bytes": 13281,
+              "width": 320
+            }
+          ]
+        },
+        {
+          "fence": 1,
+          "job_id": "585dfdb5-09a1-48cb-98e8-b0fdfb45d76f",
+          "organization_id": "9b875409-9640-4df8-b86b-4188d98fd453",
+          "outputs": [
+            {
+              "duration_seconds": 0.3,
+              "has_audio": true,
+              "height": 480,
+              "key": "9b875409-9640-4df8-b86b-4188d98fd453/585dfdb5-09a1-48cb-98e8-b0fdfb45d76f/1/vertical.mp4",
+              "preset": "vertical",
+              "sha256": "8755e04f94b78d9a8537fcca0fdebfdf7f1566832afd3cd38117a5b4099d655e",
+              "size_bytes": 12863,
+              "width": 270
+            },
+            {
+              "duration_seconds": 0.3,
+              "has_audio": true,
+              "height": 320,
+              "key": "9b875409-9640-4df8-b86b-4188d98fd453/585dfdb5-09a1-48cb-98e8-b0fdfb45d76f/1/square.mp4",
+              "preset": "square",
+              "sha256": "669464abef4e36e812b7afee581134b7c51245d91e7a3e034ed1bcb513ce0879",
+              "size_bytes": 13099,
+              "width": 320
+            },
+            {
+              "duration_seconds": 0.3,
+              "has_audio": true,
+              "height": 400,
+              "key": "9b875409-9640-4df8-b86b-4188d98fd453/585dfdb5-09a1-48cb-98e8-b0fdfb45d76f/1/feed.mp4",
+              "preset": "feed",
+              "sha256": "4edb85a9226cb97fa618c8a2258a5ab0f2c4c8a7f7bb032bd5374df5acc9027a",
+              "size_bytes": 13281,
+              "width": 320
+            }
+          ]
+        },
+        {
+          "fence": 1,
+          "job_id": "8111fb23-1d85-4719-afa9-85d068daadce",
+          "organization_id": "44b1f848-8430-4265-aeb1-2c1c3146879f",
+          "outputs": [
+            {
+              "duration_seconds": 0.3,
+              "has_audio": true,
+              "height": 480,
+              "key": "44b1f848-8430-4265-aeb1-2c1c3146879f/8111fb23-1d85-4719-afa9-85d068daadce/1/vertical.mp4",
+              "preset": "vertical",
+              "sha256": "8755e04f94b78d9a8537fcca0fdebfdf7f1566832afd3cd38117a5b4099d655e",
+              "size_bytes": 12863,
+              "width": 270
+            },
+            {
+              "duration_seconds": 0.3,
+              "has_audio": true,
+              "height": 320,
+              "key": "44b1f848-8430-4265-aeb1-2c1c3146879f/8111fb23-1d85-4719-afa9-85d068daadce/1/square.mp4",
+              "preset": "square",
+              "sha256": "669464abef4e36e812b7afee581134b7c51245d91e7a3e034ed1bcb513ce0879",
+              "size_bytes": 13099,
+              "width": 320
+            },
+            {
+              "duration_seconds": 0.3,
+              "has_audio": true,
+              "height": 400,
+              "key": "44b1f848-8430-4265-aeb1-2c1c3146879f/8111fb23-1d85-4719-afa9-85d068daadce/1/feed.mp4",
+              "preset": "feed",
+              "sha256": "4edb85a9226cb97fa618c8a2258a5ab0f2c4c8a7f7bb032bd5374df5acc9027a",
+              "size_bytes": 13281,
+              "width": 320
+            }
+          ]
+        },
+        {
+          "fence": 1,
+          "job_id": "265271a5-68bc-4359-aa5a-0c666deeb8db",
+          "organization_id": "9b875409-9640-4df8-b86b-4188d98fd453",
+          "outputs": [
+            {
+              "duration_seconds": 0.3,
+              "has_audio": true,
+              "height": 480,
+              "key": "9b875409-9640-4df8-b86b-4188d98fd453/265271a5-68bc-4359-aa5a-0c666deeb8db/1/vertical.mp4",
+              "preset": "vertical",
+              "sha256": "8755e04f94b78d9a8537fcca0fdebfdf7f1566832afd3cd38117a5b4099d655e",
+              "size_bytes": 12863,
+              "width": 270
+            },
+            {
+              "duration_seconds": 0.3,
+              "has_audio": true,
+              "height": 320,
+              "key": "9b875409-9640-4df8-b86b-4188d98fd453/265271a5-68bc-4359-aa5a-0c666deeb8db/1/square.mp4",
+              "preset": "square",
+              "sha256": "669464abef4e36e812b7afee581134b7c51245d91e7a3e034ed1bcb513ce0879",
+              "size_bytes": 13099,
+              "width": 320
+            },
+            {
+              "duration_seconds": 0.3,
+              "has_audio": true,
+              "height": 400,
+              "key": "9b875409-9640-4df8-b86b-4188d98fd453/265271a5-68bc-4359-aa5a-0c666deeb8db/1/feed.mp4",
+              "preset": "feed",
+              "sha256": "4edb85a9226cb97fa618c8a2258a5ab0f2c4c8a7f7bb032bd5374df5acc9027a",
+              "size_bytes": 13281,
+              "width": 320
+            }
+          ]
+        },
+        {
+          "fence": 1,
+          "job_id": "e5a5e7c4-bb06-4939-9816-16ddd3734cd8",
+          "organization_id": "44b1f848-8430-4265-aeb1-2c1c3146879f",
+          "outputs": [
+            {
+              "duration_seconds": 0.3,
+              "has_audio": true,
+              "height": 480,
+              "key": "44b1f848-8430-4265-aeb1-2c1c3146879f/e5a5e7c4-bb06-4939-9816-16ddd3734cd8/1/vertical.mp4",
+              "preset": "vertical",
+              "sha256": "8755e04f94b78d9a8537fcca0fdebfdf7f1566832afd3cd38117a5b4099d655e",
+              "size_bytes": 12863,
+              "width": 270
+            },
+            {
+              "duration_seconds": 0.3,
+              "has_audio": true,
+              "height": 320,
+              "key": "44b1f848-8430-4265-aeb1-2c1c3146879f/e5a5e7c4-bb06-4939-9816-16ddd3734cd8/1/square.mp4",
+              "preset": "square",
+              "sha256": "669464abef4e36e812b7afee581134b7c51245d91e7a3e034ed1bcb513ce0879",
+              "size_bytes": 13099,
+              "width": 320
+            },
+            {
+              "duration_seconds": 0.3,
+              "has_audio": true,
+              "height": 400,
+              "key": "44b1f848-8430-4265-aeb1-2c1c3146879f/e5a5e7c4-bb06-4939-9816-16ddd3734cd8/1/feed.mp4",
+              "preset": "feed",
+              "sha256": "4edb85a9226cb97fa618c8a2258a5ab0f2c4c8a7f7bb032bd5374df5acc9027a",
+              "size_bytes": 13281,
+              "width": 320
+            }
+          ]
+        },
+        {
+          "fence": 1,
+          "job_id": "699919f0-a612-4feb-bf69-096bc0806eb0",
+          "organization_id": "9b875409-9640-4df8-b86b-4188d98fd453",
+          "outputs": [
+            {
+              "duration_seconds": 0.3,
+              "has_audio": true,
+              "height": 480,
+              "key": "9b875409-9640-4df8-b86b-4188d98fd453/699919f0-a612-4feb-bf69-096bc0806eb0/1/vertical.mp4",
+              "preset": "vertical",
+              "sha256": "8755e04f94b78d9a8537fcca0fdebfdf7f1566832afd3cd38117a5b4099d655e",
+              "size_bytes": 12863,
+              "width": 270
+            },
+            {
+              "duration_seconds": 0.3,
+              "has_audio": true,
+              "height": 320,
+              "key": "9b875409-9640-4df8-b86b-4188d98fd453/699919f0-a612-4feb-bf69-096bc0806eb0/1/square.mp4",
+              "preset": "square",
+              "sha256": "669464abef4e36e812b7afee581134b7c51245d91e7a3e034ed1bcb513ce0879",
+              "size_bytes": 13099,
+              "width": 320
+            },
+            {
+              "duration_seconds": 0.3,
+              "has_audio": true,
+              "height": 400,
+              "key": "9b875409-9640-4df8-b86b-4188d98fd453/699919f0-a612-4feb-bf69-096bc0806eb0/1/feed.mp4",
+              "preset": "feed",
+              "sha256": "4edb85a9226cb97fa618c8a2258a5ab0f2c4c8a7f7bb032bd5374df5acc9027a",
+              "size_bytes": 13281,
+              "width": 320
+            }
+          ]
+        },
+        {
+          "fence": 1,
+          "job_id": "e5b45fea-470a-412b-960c-fe92f1c59d5d",
+          "organization_id": "44b1f848-8430-4265-aeb1-2c1c3146879f",
+          "outputs": [
+            {
+              "duration_seconds": 0.3,
+              "has_audio": true,
+              "height": 480,
+              "key": "44b1f848-8430-4265-aeb1-2c1c3146879f/e5b45fea-470a-412b-960c-fe92f1c59d5d/1/vertical.mp4",
+              "preset": "vertical",
+              "sha256": "8755e04f94b78d9a8537fcca0fdebfdf7f1566832afd3cd38117a5b4099d655e",
+              "size_bytes": 12863,
+              "width": 270
+            },
+            {
+              "duration_seconds": 0.3,
+              "has_audio": true,
+              "height": 320,
+              "key": "44b1f848-8430-4265-aeb1-2c1c3146879f/e5b45fea-470a-412b-960c-fe92f1c59d5d/1/square.mp4",
+              "preset": "square",
+              "sha256": "669464abef4e36e812b7afee581134b7c51245d91e7a3e034ed1bcb513ce0879",
+              "size_bytes": 13099,
+              "width": 320
+            },
+            {
+              "duration_seconds": 0.3,
+              "has_audio": true,
+              "height": 400,
+              "key": "44b1f848-8430-4265-aeb1-2c1c3146879f/e5b45fea-470a-412b-960c-fe92f1c59d5d/1/feed.mp4",
+              "preset": "feed",
+              "sha256": "4edb85a9226cb97fa618c8a2258a5ab0f2c4c8a7f7bb032bd5374df5acc9027a",
+              "size_bytes": 13281,
+              "width": 320
+            }
+          ]
+        },
+        {
+          "fence": 1,
+          "job_id": "7b0ca296-f006-40f0-9f64-b6b9980daa64",
+          "organization_id": "9b875409-9640-4df8-b86b-4188d98fd453",
+          "outputs": [
+            {
+              "duration_seconds": 0.3,
+              "has_audio": true,
+              "height": 480,
+              "key": "9b875409-9640-4df8-b86b-4188d98fd453/7b0ca296-f006-40f0-9f64-b6b9980daa64/1/vertical.mp4",
+              "preset": "vertical",
+              "sha256": "8755e04f94b78d9a8537fcca0fdebfdf7f1566832afd3cd38117a5b4099d655e",
+              "size_bytes": 12863,
+              "width": 270
+            },
+            {
+              "duration_seconds": 0.3,
+              "has_audio": true,
+              "height": 320,
+              "key": "9b875409-9640-4df8-b86b-4188d98fd453/7b0ca296-f006-40f0-9f64-b6b9980daa64/1/square.mp4",
+              "preset": "square",
+              "sha256": "669464abef4e36e812b7afee581134b7c51245d91e7a3e034ed1bcb513ce0879",
+              "size_bytes": 13099,
+              "width": 320
+            },
+            {
+              "duration_seconds": 0.3,
+              "has_audio": true,
+              "height": 400,
+              "key": "9b875409-9640-4df8-b86b-4188d98fd453/7b0ca296-f006-40f0-9f64-b6b9980daa64/1/feed.mp4",
+              "preset": "feed",
+              "sha256": "4edb85a9226cb97fa618c8a2258a5ab0f2c4c8a7f7bb032bd5374df5acc9027a",
+              "size_bytes": 13281,
+              "width": 320
+            }
+          ]
+        },
+        {
+          "fence": 1,
+          "job_id": "1464b914-22a5-474a-a6d3-fde057b17786",
+          "organization_id": "44b1f848-8430-4265-aeb1-2c1c3146879f",
+          "outputs": [
+            {
+              "duration_seconds": 0.3,
+              "has_audio": true,
+              "height": 480,
+              "key": "44b1f848-8430-4265-aeb1-2c1c3146879f/1464b914-22a5-474a-a6d3-fde057b17786/1/vertical.mp4",
+              "preset": "vertical",
+              "sha256": "8755e04f94b78d9a8537fcca0fdebfdf7f1566832afd3cd38117a5b4099d655e",
+              "size_bytes": 12863,
+              "width": 270
+            },
+            {
+              "duration_seconds": 0.3,
+              "has_audio": true,
+              "height": 320,
+              "key": "44b1f848-8430-4265-aeb1-2c1c3146879f/1464b914-22a5-474a-a6d3-fde057b17786/1/square.mp4",
+              "preset": "square",
+              "sha256": "669464abef4e36e812b7afee581134b7c51245d91e7a3e034ed1bcb513ce0879",
+              "size_bytes": 13099,
+              "width": 320
+            },
+            {
+              "duration_seconds": 0.3,
+              "has_audio": true,
+              "height": 400,
+              "key": "44b1f848-8430-4265-aeb1-2c1c3146879f/1464b914-22a5-474a-a6d3-fde057b17786/1/feed.mp4",
+              "preset": "feed",
+              "sha256": "4edb85a9226cb97fa618c8a2258a5ab0f2c4c8a7f7bb032bd5374df5acc9027a",
+              "size_bytes": 13281,
+              "width": 320
+            }
+          ]
+        },
+        {
+          "fence": 1,
+          "job_id": "6754608a-ab75-41d2-be14-78b3c9674e10",
+          "organization_id": "9b875409-9640-4df8-b86b-4188d98fd453",
+          "outputs": [
+            {
+              "duration_seconds": 0.3,
+              "has_audio": true,
+              "height": 480,
+              "key": "9b875409-9640-4df8-b86b-4188d98fd453/6754608a-ab75-41d2-be14-78b3c9674e10/1/vertical.mp4",
+              "preset": "vertical",
+              "sha256": "8755e04f94b78d9a8537fcca0fdebfdf7f1566832afd3cd38117a5b4099d655e",
+              "size_bytes": 12863,
+              "width": 270
+            },
+            {
+              "duration_seconds": 0.3,
+              "has_audio": true,
+              "height": 320,
+              "key": "9b875409-9640-4df8-b86b-4188d98fd453/6754608a-ab75-41d2-be14-78b3c9674e10/1/square.mp4",
+              "preset": "square",
+              "sha256": "669464abef4e36e812b7afee581134b7c51245d91e7a3e034ed1bcb513ce0879",
+              "size_bytes": 13099,
+              "width": 320
+            },
+            {
+              "duration_seconds": 0.3,
+              "has_audio": true,
+              "height": 400,
+              "key": "9b875409-9640-4df8-b86b-4188d98fd453/6754608a-ab75-41d2-be14-78b3c9674e10/1/feed.mp4",
+              "preset": "feed",
+              "sha256": "4edb85a9226cb97fa618c8a2258a5ab0f2c4c8a7f7bb032bd5374df5acc9027a",
+              "size_bytes": 13281,
+              "width": 320
+            }
+          ]
+        },
+        {
+          "fence": 1,
+          "job_id": "7faac83d-1843-4c8d-99bb-79e8d90b8929",
+          "organization_id": "44b1f848-8430-4265-aeb1-2c1c3146879f",
+          "outputs": [
+            {
+              "duration_seconds": 0.3,
+              "has_audio": true,
+              "height": 480,
+              "key": "44b1f848-8430-4265-aeb1-2c1c3146879f/7faac83d-1843-4c8d-99bb-79e8d90b8929/1/vertical.mp4",
+              "preset": "vertical",
+              "sha256": "8755e04f94b78d9a8537fcca0fdebfdf7f1566832afd3cd38117a5b4099d655e",
+              "size_bytes": 12863,
+              "width": 270
+            },
+            {
+              "duration_seconds": 0.3,
+              "has_audio": true,
+              "height": 320,
+              "key": "44b1f848-8430-4265-aeb1-2c1c3146879f/7faac83d-1843-4c8d-99bb-79e8d90b8929/1/square.mp4",
+              "preset": "square",
+              "sha256": "669464abef4e36e812b7afee581134b7c51245d91e7a3e034ed1bcb513ce0879",
+              "size_bytes": 13099,
+              "width": 320
+            },
+            {
+              "duration_seconds": 0.3,
+              "has_audio": true,
+              "height": 400,
+              "key": "44b1f848-8430-4265-aeb1-2c1c3146879f/7faac83d-1843-4c8d-99bb-79e8d90b8929/1/feed.mp4",
+              "preset": "feed",
+              "sha256": "4edb85a9226cb97fa618c8a2258a5ab0f2c4c8a7f7bb032bd5374df5acc9027a",
+              "size_bytes": 13281,
+              "width": 320
+            }
+          ]
+        },
+        {
+          "fence": 1,
+          "job_id": "e084eebb-2f32-4d88-b10b-87af8610b156",
+          "organization_id": "9b875409-9640-4df8-b86b-4188d98fd453",
+          "outputs": [
+            {
+              "duration_seconds": 0.3,
+              "has_audio": true,
+              "height": 480,
+              "key": "9b875409-9640-4df8-b86b-4188d98fd453/e084eebb-2f32-4d88-b10b-87af8610b156/1/vertical.mp4",
+              "preset": "vertical",
+              "sha256": "8755e04f94b78d9a8537fcca0fdebfdf7f1566832afd3cd38117a5b4099d655e",
+              "size_bytes": 12863,
+              "width": 270
+            },
+            {
+              "duration_seconds": 0.3,
+              "has_audio": true,
+              "height": 320,
+              "key": "9b875409-9640-4df8-b86b-4188d98fd453/e084eebb-2f32-4d88-b10b-87af8610b156/1/square.mp4",
+              "preset": "square",
+              "sha256": "669464abef4e36e812b7afee581134b7c51245d91e7a3e034ed1bcb513ce0879",
+              "size_bytes": 13099,
+              "width": 320
+            },
+            {
+              "duration_seconds": 0.3,
+              "has_audio": true,
+              "height": 400,
+              "key": "9b875409-9640-4df8-b86b-4188d98fd453/e084eebb-2f32-4d88-b10b-87af8610b156/1/feed.mp4",
+              "preset": "feed",
+              "sha256": "4edb85a9226cb97fa618c8a2258a5ab0f2c4c8a7f7bb032bd5374df5acc9027a",
+              "size_bytes": 13281,
+              "width": 320
+            }
+          ]
+        },
+        {
+          "fence": 1,
+          "job_id": "0db6865e-92ef-4daf-babd-cb388f3f9d64",
+          "organization_id": "44b1f848-8430-4265-aeb1-2c1c3146879f",
+          "outputs": [
+            {
+              "duration_seconds": 0.3,
+              "has_audio": true,
+              "height": 480,
+              "key": "44b1f848-8430-4265-aeb1-2c1c3146879f/0db6865e-92ef-4daf-babd-cb388f3f9d64/1/vertical.mp4",
+              "preset": "vertical",
+              "sha256": "8755e04f94b78d9a8537fcca0fdebfdf7f1566832afd3cd38117a5b4099d655e",
+              "size_bytes": 12863,
+              "width": 270
+            },
+            {
+              "duration_seconds": 0.3,
+              "has_audio": true,
+              "height": 320,
+              "key": "44b1f848-8430-4265-aeb1-2c1c3146879f/0db6865e-92ef-4daf-babd-cb388f3f9d64/1/square.mp4",
+              "preset": "square",
+              "sha256": "669464abef4e36e812b7afee581134b7c51245d91e7a3e034ed1bcb513ce0879",
+              "size_bytes": 13099,
+              "width": 320
+            },
+            {
+              "duration_seconds": 0.3,
+              "has_audio": true,
+              "height": 400,
+              "key": "44b1f848-8430-4265-aeb1-2c1c3146879f/0db6865e-92ef-4daf-babd-cb388f3f9d64/1/feed.mp4",
+              "preset": "feed",
+              "sha256": "4edb85a9226cb97fa618c8a2258a5ab0f2c4c8a7f7bb032bd5374df5acc9027a",
+              "size_bytes": 13281,
+              "width": 320
+            }
+          ]
+        },
+        {
+          "fence": 1,
+          "job_id": "27ce7232-af23-4bc1-aa17-8362e5200922",
+          "organization_id": "9b875409-9640-4df8-b86b-4188d98fd453",
+          "outputs": [
+            {
+              "duration_seconds": 0.3,
+              "has_audio": true,
+              "height": 480,
+              "key": "9b875409-9640-4df8-b86b-4188d98fd453/27ce7232-af23-4bc1-aa17-8362e5200922/1/vertical.mp4",
+              "preset": "vertical",
+              "sha256": "8755e04f94b78d9a8537fcca0fdebfdf7f1566832afd3cd38117a5b4099d655e",
+              "size_bytes": 12863,
+              "width": 270
+            },
+            {
+              "duration_seconds": 0.3,
+              "has_audio": true,
+              "height": 320,
+              "key": "9b875409-9640-4df8-b86b-4188d98fd453/27ce7232-af23-4bc1-aa17-8362e5200922/1/square.mp4",
+              "preset": "square",
+              "sha256": "669464abef4e36e812b7afee581134b7c51245d91e7a3e034ed1bcb513ce0879",
+              "size_bytes": 13099,
+              "width": 320
+            },
+            {
+              "duration_seconds": 0.3,
+              "has_audio": true,
+              "height": 400,
+              "key": "9b875409-9640-4df8-b86b-4188d98fd453/27ce7232-af23-4bc1-aa17-8362e5200922/1/feed.mp4",
+              "preset": "feed",
+              "sha256": "4edb85a9226cb97fa618c8a2258a5ab0f2c4c8a7f7bb032bd5374df5acc9027a",
+              "size_bytes": 13281,
+              "width": 320
+            }
+          ]
+        },
+        {
+          "fence": 1,
+          "job_id": "76ff4b16-4a1c-45e3-9e5b-5b266ca23c11",
+          "organization_id": "44b1f848-8430-4265-aeb1-2c1c3146879f",
+          "outputs": [
+            {
+              "duration_seconds": 0.3,
+              "has_audio": true,
+              "height": 480,
+              "key": "44b1f848-8430-4265-aeb1-2c1c3146879f/76ff4b16-4a1c-45e3-9e5b-5b266ca23c11/1/vertical.mp4",
+              "preset": "vertical",
+              "sha256": "8755e04f94b78d9a8537fcca0fdebfdf7f1566832afd3cd38117a5b4099d655e",
+              "size_bytes": 12863,
+              "width": 270
+            },
+            {
+              "duration_seconds": 0.3,
+              "has_audio": true,
+              "height": 320,
+              "key": "44b1f848-8430-4265-aeb1-2c1c3146879f/76ff4b16-4a1c-45e3-9e5b-5b266ca23c11/1/square.mp4",
+              "preset": "square",
+              "sha256": "669464abef4e36e812b7afee581134b7c51245d91e7a3e034ed1bcb513ce0879",
+              "size_bytes": 13099,
+              "width": 320
+            },
+            {
+              "duration_seconds": 0.3,
+              "has_audio": true,
+              "height": 400,
+              "key": "44b1f848-8430-4265-aeb1-2c1c3146879f/76ff4b16-4a1c-45e3-9e5b-5b266ca23c11/1/feed.mp4",
+              "preset": "feed",
+              "sha256": "4edb85a9226cb97fa618c8a2258a5ab0f2c4c8a7f7bb032bd5374df5acc9027a",
+              "size_bytes": 13281,
+              "width": 320
+            }
+          ]
+        }
+      ],
+      "attempt_io_bytes_read": 27246146,
+      "attempt_io_bytes_written": 2039996,
+      "case": "queued_50_jobs",
+      "claimed_worker_highwater": 2,
+      "completed": 50,
+      "completed_replay_ffprobe_verified": true,
+      "concurrency_caps_verified": true,
+      "end_to_end_latency_seconds": {
+        "observations": 50,
+        "p50": 20.660173999999998,
+        "p95": 36.23965595,
+        "p99": 37.64955047
+      },
+      "errors": 0,
+      "global_worker_limit": 2,
+      "local_unit_measurements": {
+        "cpu_seconds_per_completed_job": 1.1954898400000002,
+        "currency": null,
+        "monetary_cost_per_job": null,
+        "price_status": "UNKNOWN_NO_PRICE_OR_CLOUD_BILLING_MEASURED",
+        "video_bytes_per_completed_job": 39243.0
+      },
+      "one_job_outbox_spec_completion_each": true,
+      "organizations": 2,
+      "output_video_bytes": 1962150,
+      "per_org_active_limit": 1,
+      "queue_latency_seconds": {
+        "observations": 50,
+        "p50": 19.131763499999998,
+        "p95": 34.8202217,
+        "p99": 36.24969702
+      },
+      "reservation_equals_sum_immutable_requests": true,
+      "resources": {
+        "aggregate_process_rss_peak_bytes": 169852928,
+        "elapsed_seconds": 36.833712388001004,
+        "ffmpeg_process_count_peak": 2,
+        "native_media_process_count_peak": 2,
+        "postgres_active_jobs_peak": 2,
+        "postgres_active_jobs_peak_by_org": {
+          "44b1f848-8430-4265-aeb1-2c1c3146879f": 1,
+          "9b875409-9640-4df8-b86b-4188d98fd453": 1
+        },
+        "process_count_peak": 3,
+        "reaped_children_system_seconds": 14.563554,
+        "reaped_children_user_seconds": 37.57176200000001,
+        "samples": 646,
+        "sampling_interval_seconds": 0.05,
+        "self_system_seconds": 2.003774,
+        "self_user_seconds": 5.635401999999999
+      },
+      "retry_attempts": 0,
+      "submitted_distinct": 50,
+      "throughput_jobs_per_second": 1.3574520937044636
+    },
+    {
+      "actual_object_hashes_verified": true,
+      "application_reservation_units": 9,
+      "artifacts": [
+        {
+          "fence": 1,
+          "job_id": "ad1c4c01-6875-4050-8f31-c11a4d7e105f",
+          "organization_id": "ae790351-4712-4b69-b689-96a44041359f",
+          "outputs": [
+            {
+              "duration_seconds": 0.3,
+              "has_audio": true,
+              "height": 480,
+              "key": "ae790351-4712-4b69-b689-96a44041359f/ad1c4c01-6875-4050-8f31-c11a4d7e105f/1/vertical.mp4",
+              "preset": "vertical",
+              "sha256": "8755e04f94b78d9a8537fcca0fdebfdf7f1566832afd3cd38117a5b4099d655e",
+              "size_bytes": 12863,
+              "width": 270
+            },
+            {
+              "duration_seconds": 0.3,
+              "has_audio": true,
+              "height": 320,
+              "key": "ae790351-4712-4b69-b689-96a44041359f/ad1c4c01-6875-4050-8f31-c11a4d7e105f/1/square.mp4",
+              "preset": "square",
+              "sha256": "669464abef4e36e812b7afee581134b7c51245d91e7a3e034ed1bcb513ce0879",
+              "size_bytes": 13099,
+              "width": 320
+            },
+            {
+              "duration_seconds": 0.3,
+              "has_audio": true,
+              "height": 400,
+              "key": "ae790351-4712-4b69-b689-96a44041359f/ad1c4c01-6875-4050-8f31-c11a4d7e105f/1/feed.mp4",
+              "preset": "feed",
+              "sha256": "4edb85a9226cb97fa618c8a2258a5ab0f2c4c8a7f7bb032bd5374df5acc9027a",
+              "size_bytes": 13281,
+              "width": 320
+            }
+          ]
+        },
+        {
+          "fence": 2,
+          "job_id": "a776f5b1-ba88-4d32-9615-f2133b099297",
+          "organization_id": "ae790351-4712-4b69-b689-96a44041359f",
+          "outputs": [
+            {
+              "duration_seconds": 0.3,
+              "has_audio": true,
+              "height": 480,
+              "key": "ae790351-4712-4b69-b689-96a44041359f/a776f5b1-ba88-4d32-9615-f2133b099297/2/vertical.mp4",
+              "preset": "vertical",
+              "sha256": "8755e04f94b78d9a8537fcca0fdebfdf7f1566832afd3cd38117a5b4099d655e",
+              "size_bytes": 12863,
+              "width": 270
+            },
+            {
+              "duration_seconds": 0.3,
+              "has_audio": true,
+              "height": 320,
+              "key": "ae790351-4712-4b69-b689-96a44041359f/a776f5b1-ba88-4d32-9615-f2133b099297/2/square.mp4",
+              "preset": "square",
+              "sha256": "669464abef4e36e812b7afee581134b7c51245d91e7a3e034ed1bcb513ce0879",
+              "size_bytes": 13099,
+              "width": 320
+            },
+            {
+              "duration_seconds": 0.3,
+              "has_audio": true,
+              "height": 400,
+              "key": "ae790351-4712-4b69-b689-96a44041359f/a776f5b1-ba88-4d32-9615-f2133b099297/2/feed.mp4",
+              "preset": "feed",
+              "sha256": "4edb85a9226cb97fa618c8a2258a5ab0f2c4c8a7f7bb032bd5374df5acc9027a",
+              "size_bytes": 13281,
+              "width": 320
+            }
+          ]
+        },
+        {
+          "fence": 2,
+          "job_id": "08fa0315-d12f-48e6-90d5-c87b8722460e",
+          "organization_id": "ae790351-4712-4b69-b689-96a44041359f",
+          "outputs": [
+            {
+              "duration_seconds": 0.3,
+              "has_audio": true,
+              "height": 480,
+              "key": "ae790351-4712-4b69-b689-96a44041359f/08fa0315-d12f-48e6-90d5-c87b8722460e/2/vertical.mp4",
+              "preset": "vertical",
+              "sha256": "8755e04f94b78d9a8537fcca0fdebfdf7f1566832afd3cd38117a5b4099d655e",
+              "size_bytes": 12863,
+              "width": 270
+            },
+            {
+              "duration_seconds": 0.3,
+              "has_audio": true,
+              "height": 320,
+              "key": "ae790351-4712-4b69-b689-96a44041359f/08fa0315-d12f-48e6-90d5-c87b8722460e/2/square.mp4",
+              "preset": "square",
+              "sha256": "669464abef4e36e812b7afee581134b7c51245d91e7a3e034ed1bcb513ce0879",
+              "size_bytes": 13099,
+              "width": 320
+            },
+            {
+              "duration_seconds": 0.3,
+              "has_audio": true,
+              "height": 400,
+              "key": "ae790351-4712-4b69-b689-96a44041359f/08fa0315-d12f-48e6-90d5-c87b8722460e/2/feed.mp4",
+              "preset": "feed",
+              "sha256": "4edb85a9226cb97fa618c8a2258a5ab0f2c4c8a7f7bb032bd5374df5acc9027a",
+              "size_bytes": 13281,
+              "width": 320
+            }
+          ]
+        }
+      ],
+      "attempt_io_bytes_read": 2643012,
+      "attempt_io_bytes_written": 135260,
+      "case": "controlled_local_recovery",
+      "completed": 3,
+      "completed_replay_ffprobe_verified": true,
+      "end_to_end_latency_seconds": {
+        "observations": 3,
+        "p50": 2.294279,
+        "p95": 2.3414183,
+        "p99": 2.34560846
+      },
+      "errors": 0,
+      "hard_kill_status": "NOT_RUN_HERE; separate unchanged G2 SIGKILL integration tests required",
+      "obsolete_fence_completion_rejected": true,
+      "one_job_outbox_spec_completion_each": true,
+      "orphan_objects_deleted": 1,
+      "orphan_reconciliation_idempotent": true,
+      "output_video_bytes": 117729,
+      "queue_acceptance_response_lost_reconciled": true,
+      "queue_backoff_verified": true,
+      "queue_latency_seconds": {
+        "observations": 3,
+        "p50": 0.026744,
+        "p95": 0.060699199999999995,
+        "p99": 0.06371744
+      },
+      "queue_named_tasks_after_retry": 1,
+      "reservation_equals_sum_immutable_requests": true,
+      "retry_attempts": 2,
+      "retry_clock": "available_at moved into past after verifying real backoff; accelerated laboratory scheduling",
+      "storage_backoff_verified": true,
+      "storage_write_error_once_recovered": true,
+      "worker_exception_after_durable_object_recovered": true
+    }
+  ],
+  "cloud_services": "NOT_VALIDATED",
+  "finished_at": "2026-11-07T19:45:17.406756+00:00",
+  "measurement_bounds": "CPU self plus reaped children; sampled summed RSS includes native media descendants, excludes separate PostgreSQL container and kernel/cgroup overhead; short-lived process peaks may be missed",
+  "monetary_cost": "UNKNOWN",
+  "own_rows_and_temporary_files_cleaned": true,
+  "reservation_note": "G1 cost_cents is an existing synthetic admission reservation, not measured monetary cost",
+  "runtime": {
+    "ffmpeg": "ffmpeg version 7.1.5-0+deb13u1 Copyright (c) 2000-2026 the FFmpeg developers",
+    "ffprobe": "ffprobe version 7.1.5-0+deb13u1 Copyright (c) 2007-2026 the FFmpeg developers",
+    "logical_cpus": 5,
+    "platform": "Linux-6.18.57-x86_64-with-glibc2.41",
+    "postgres": "PostgreSQL 16.15 (Debian 16.15-1.pgdg12+2) on x86_64-pc-linux-gnu, compiled by gcc (Debian 12.2.0-14+deb12u1) 12.2.0, 64-bit",
+    "python": "3.12.14",
+    "source_sha": "e40357d08fa3c0b258b63c0d3a811cbab2b23206"
+  },
+  "schema_version": 1,
+  "scope": "REAL_LOCAL_POSTGRESQL_AND_FFMPEG; NOT_CLOUD_LOAD",
+  "started_at": "2026-11-07T19:43:50.006762+00:00",
+  "status": "PASS_LOCAL_ONLY"
+}
