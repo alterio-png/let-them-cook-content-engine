@@ -193,6 +193,7 @@ BEGIN
     OR asset.duration_ms > quota.max_duration_ms
     OR p_duration_ms > quota.max_duration_ms
     OR asset.width::bigint * asset.height::bigint > quota.max_pixels
+    OR (CASE p_quality WHEN 'production' THEN 2073600 ELSE 129600 END) > quota.max_pixels
     OR asset.bytes > quota.max_bytes THEN
   RAISE EXCEPTION 'asset rights or media limits rejected' USING ERRCODE = '23514';
  END IF;
