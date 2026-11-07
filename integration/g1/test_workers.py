@@ -1,8 +1,11 @@
 """Real PostgreSQL fault/lease tests; only the remote queue is a local stub."""
-from concurrent.futures import ThreadPoolExecutor
+from concurrent.futures import ThreadPoolExecutor, TimeoutError as FutureTimeoutError
+from contextlib import contextmanager
 import threading
 import unittest
 import os
+import time
+from unittest.mock import patch
 from uuid import uuid4
 
 import psycopg
@@ -45,13 +48,9 @@ class DurableQueue:
 class WorkerTests(unittest.TestCase):
     def setUp(self):
         self.fixture = Fixture()
+        self.addCleanup(self.fixture.cleanup)
         self.worker = ControlPlane(os.environ["G1_TEST_DSN"])
         self.dispatcher = Dispatcher(os.environ["G1_TEST_DSN"])
-        # The dispatcher intentionally scans all tenants. Other test fixtures are
-        # completed here so this test's event is the only pending queue work.
-        with connect() as db:
-            db.execute("UPDATE public.render_outbox SET dispatched_at=clock_timestamp(), "
-                       "state='dispatched' WHERE state='pending'")
 
     def submit(self, key="worker", **kwargs):
         return self.fixture.submit(key=key, **kwargs)
@@ -111,6 +110,60 @@ class WorkerTests(unittest.TestCase):
                             user=self.fixture.user_b, asset=self.fixture.asset_b)
         self.assertIsNotNone(self.worker.claim_job(other["id"]))
 
+    def test_sweep_skips_capped_org_before_scan_limit(self):
+        with connect() as db:
+            db.execute("UPDATE public.org_quotas SET max_active_jobs=1 WHERE organization_id=%s",
+                       (self.fixture.org_a,))
+        first = self.submit(key="running")
+        self.worker.claim_job(first["id"])
+        for n in range(3):
+            self.submit(key=f"blocked-{n}")
+        other = self.submit(key="ready-other", org=self.fixture.org_b,
+                            user=self.fixture.user_b, asset=self.fixture.asset_b)
+        claim = self.worker.claim_next_job(scan_limit=2)
+        self.assertIsNotNone(claim)
+        self.assertEqual(other["id"], claim["id"])
+
+    def test_uncommitted_renewal_cannot_oversubscribe_org_cap(self):
+        with connect() as db:
+            db.execute("UPDATE public.org_quotas SET max_active_jobs=1 WHERE organization_id=%s",
+                       (self.fixture.org_a,))
+        first = self.worker.claim_job(self.submit(key="first")["id"], lease_seconds=1)
+        second = self.submit(key="second")
+        before_commit = threading.Event()
+        release_commit = threading.Event()
+
+        class PausedCommitWorker(ControlPlane):
+            @contextmanager
+            def transaction(worker_self):
+                with super().transaction() as db:
+                    yield db
+                    before_commit.set()
+                    if not release_commit.wait(timeout=10):
+                        raise RuntimeError("test did not release renewal commit")
+
+        renewing = PausedCommitWorker(os.environ["G1_TEST_DSN"])
+        with ThreadPoolExecutor(max_workers=2) as pool:
+            renewed = pool.submit(renewing.renew_lease, first["id"], first["lease_token"],
+                                  first["fence"], 10)
+            self.assertTrue(before_commit.wait(timeout=5))
+            # Other transactions see the old expiry until renewal commits.
+            time.sleep(1.1)
+            competing = pool.submit(self.worker.claim_job, second["id"])
+            try:
+                with self.assertRaises(FutureTimeoutError):
+                    competing.result(timeout=0.2)
+                release_commit.set()
+                self.assertEqual(first["fence"], renewed.result(timeout=10)["fence"])
+                self.assertIsNone(competing.result(timeout=10))
+            finally:
+                release_commit.set()
+        with connect() as db:
+            active = db.execute("SELECT count(*) AS n FROM public.render_jobs WHERE organization_id=%s "
+                                "AND state='running' AND lease_expires_at>clock_timestamp()",
+                                (self.fixture.org_a,)).fetchone()["n"]
+        self.assertEqual(1, active)
+
     def test_expired_owner_cannot_commit_even_before_takeover(self):
         claim = self.worker.claim_job(self.submit()["id"])
         self.expire_job(claim)
@@ -158,6 +211,53 @@ class WorkerTests(unittest.TestCase):
             counts = db.execute("SELECT count(*) AS n FROM public.render_attempts WHERE job_id=%s",
                                 (claim["id"],)).fetchone()
         self.assertEqual(1, counts["n"])
+        with connect() as db:
+            completions = db.execute("SELECT count(*) AS n FROM public.audit_events "
+                                     "WHERE job_id=%s AND event_type='job_completed'",
+                                     (claim["id"],)).fetchone()["n"]
+        self.assertEqual(1, completions)
+
+    def test_lease_expiring_during_validation_cannot_commit(self):
+        claim = self.worker.claim_job(self.submit()["id"], lease_seconds=1)
+        validate = ControlPlane._validate_manifest
+
+        def slow_validate(row, manifest):
+            validate(row, manifest)
+            time.sleep(1.1)  # Real expiry while the transaction holds its row lock.
+
+        with patch.object(ControlPlane, "_validate_manifest", side_effect=slow_validate):
+            with self.assertRaises(StaleLease):
+                self.worker.finish_job(claim["id"], claim["lease_token"], claim["fence"],
+                                       self.manifest(claim))
+        row = self.worker.get_job(claim["id"])
+        self.assertEqual("running", row["state"])
+        self.assertIsNone(row["output_manifest"])
+
+    def test_durable_sweep_recovers_retry_after_initial_event_dispatched(self):
+        job = self.submit()
+        queue = DurableQueue()
+        self.assertEqual("dispatched", self.dispatcher.dispatch_one(queue)["state"])
+        first = self.worker.claim_job(job["id"])
+        self.worker.fail_job(job["id"], first["lease_token"], first["fence"], error_code="timeout")
+        self.assertIsNone(self.worker.claim_next_job())  # Backoff is enforced.
+        self.ready_job(job)
+        retried = self.worker.claim_next_job()
+        self.assertEqual(job["id"], retried["id"])
+        self.assertGreater(retried["fence"], first["fence"])
+        self.assertEqual(1, queue.effects)
+        self.assertIsNone(self.dispatcher.dispatch_one(queue))
+
+    def test_durable_sweep_recovers_crash_after_initial_event_dispatched(self):
+        job = self.submit()
+        queue = DurableQueue()
+        self.dispatcher.dispatch_one(queue)
+        first = self.worker.claim_job(job["id"])
+        self.expire_job(first)  # Worker died; no fail_job call or queue redelivery.
+        recovered = self.worker.claim_next_job()
+        self.assertEqual(job["id"], recovered["id"])
+        self.assertGreater(recovered["fence"], first["fence"])
+        self.assertEqual(1, queue.effects)
+        self.assertIsNone(self.dispatcher.dispatch_one(queue))
 
     def test_crash_before_completion_commit_rolls_back_then_recovers(self):
         claim = self.worker.claim_job(self.submit()["id"])
