@@ -12,6 +12,7 @@ from g1.support import Fixture, connect
 class SubmissionTests(unittest.TestCase):
     def setUp(self):
         self.f = Fixture()
+        self.addCleanup(self.f.cleanup)
 
     def test_100_simultaneous_submissions_create_one_logical_operation(self):
         barrier = threading.Barrier(100)

@@ -60,3 +60,14 @@ class Fixture:
                     sql.Identifier(table)), (self.org_a,)).fetchone()["n"]
             row["reserved"] = conn.execute("SELECT reserved_cents FROM public.org_quotas WHERE organization_id=%s", (self.org_a,)).fetchone()["reserved_cents"]
             return row
+
+    def cleanup(self):
+        """Delete only this fixture's records, preserving isolation between tests."""
+        with connect() as conn:
+            orgs = [self.org_a, self.org_b]
+            for table in ("audit_events", "render_attempts", "render_outbox", "render_jobs",
+                          "assets", "org_quotas", "memberships", "organizations"):
+                column = "id" if table == "organizations" else "organization_id"
+                conn.execute(sql.SQL("DELETE FROM public.{} WHERE {} = ANY(%s)").format(
+                    sql.Identifier(table), sql.Identifier(column)), (orgs,))
+            conn.execute("DELETE FROM auth.users WHERE id=ANY(%s)", ([self.user_a, self.user_b],))
