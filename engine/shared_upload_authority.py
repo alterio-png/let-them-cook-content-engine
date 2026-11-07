@@ -71,13 +71,20 @@ class _Lease:
 
     def __init__(self, authority, user, grant):
         self.authority, self.user, self.grant = authority, user, grant
+        self.lease_seconds = grant.get("lease_seconds")
+        if type(self.lease_seconds) is not int or self.lease_seconds <= 0:
+            raise UploadBusy("database upload lease is no longer usable")
         self.stop = threading.Event()
         self.lost = threading.Event()
+        self.deadline = time.monotonic() + authority.operation_timeout_seconds
         self.thread = threading.Thread(target=self._run, name="upload-lease", daemon=True)
 
     def _run(self):
-        interval = max(0.1, self.authority.lease_seconds / 3)
-        while not self.stop.wait(interval):
+        interval = max(0.1, min(5, self.lease_seconds / 3))
+        while not self.stop.wait(min(interval, max(0, self.deadline - time.monotonic()))):
+            if time.monotonic() >= self.deadline:
+                self.lost.set()
+                return
             try:
                 valid = self.authority._call(self.user, "heartbeat_upload",
                                              self.grant["organization_id"], self.grant["id"],
@@ -97,7 +104,7 @@ class _Lease:
         return self
 
     def check(self):
-        if self.lost.is_set():
+        if self.lost.is_set() or time.monotonic() >= self.deadline:
             raise UploadBusy("upload lease lost; reconcile before retrying")
 
     def __exit__(self, *_):
@@ -112,6 +119,9 @@ class PostgresUploadAuthority:
     organization limits provisioned by a trusted administrator in PostgreSQL.
     ``receipt`` is a database view; HTTP callers must use ``verified_receipt``
     or ``reconcile`` to verify that a completed receipt still has its bytes.
+    Lease renewal has a wall-clock budget; after it elapses, this attempt cannot
+    commit. A process supervisor is still needed to terminate blocked kernel or
+    provider I/O: Python cannot safely interrupt an arbitrary storage call.
     Fault hooks receive a checkpoint and non-secret identifiers, and are meant
     only for isolated process-kill tests. No exceptions inheriting directly
     from BaseException are intercepted.
@@ -121,18 +131,20 @@ class PostgresUploadAuthority:
 
     def __init__(self, dsn, signing_key: bytes, *, max_upload_bytes=1048576,
                  max_db_connections=4, lease_seconds=30, ttl_seconds=120,
-                 fault_hook=None):
+                 operation_timeout_seconds=30, fault_hook=None):
         if not isinstance(signing_key, bytes) or len(signing_key) < 32:
             raise ValueError("a server-owned signing key of at least 32 bytes is required")
         if (type(max_upload_bytes) is not int or max_upload_bytes <= 0
                 or type(max_db_connections) is not int or not 1 <= max_db_connections <= 64
                 or type(lease_seconds) is not int or not 1 <= lease_seconds <= 300
                 or type(ttl_seconds) is not int or not 1 <= ttl_seconds <= 300
+                or type(operation_timeout_seconds) is not int or not 1 <= operation_timeout_seconds <= 300
                 or fault_hook is not None and not callable(fault_hook)):
             raise ValueError("positive bounded upload, connection, lease and TTL limits required")
         self.dsn, self.signing_key = dsn, signing_key
         self.max_upload_bytes, self.max_db_connections = max_upload_bytes, max_db_connections
         self.lease_seconds, self.ttl_seconds, self.fault_hook = lease_seconds, ttl_seconds, fault_hook
+        self.operation_timeout_seconds = operation_timeout_seconds
         self.clock = time.time  # Download capability compatibility; upload time comes from PostgreSQL.
         self._db_slots = threading.BoundedSemaphore(max_db_connections)
         self._validate_principal()
@@ -353,9 +365,11 @@ class PostgresUploadAuthority:
 
     def _publish_claim(self, user_id, grant, frozen_source, store):
         try:
-            self._checkpoint("after_claim", grant)
             with _Lease(self, user_id, grant) as lease:
+                self._checkpoint("after_claim", grant)
+                lease.check()
                 self._checkpoint("before_store", grant)
+                lease.check()
                 stored = store.put_file(grant["organization_id"], grant["object_key"], frozen_source)
                 self._checkpoint("after_store", grant)
                 verified = self._read_stored(grant, store)
@@ -367,6 +381,7 @@ class PostgresUploadAuthority:
                     raise CapabilityError("storage publication receipt mismatch")
                 lease.check()
                 self._checkpoint("before_commit", grant)
+                lease.check()
                 receipt = self._call(user_id, "complete_upload", grant["organization_id"], grant["id"],
                                      grant["lease_token"], grant["fence"], grant["object_key"],
                                      verified["size_bytes"], verified["sha256"], verified.get("generation"))
