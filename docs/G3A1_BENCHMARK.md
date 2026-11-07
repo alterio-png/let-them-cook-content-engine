@@ -34,9 +34,12 @@ the exception class, without recording database exception details.
   with the same immutable request key, size and SHA-256, split between the two
   servers. All logical operations must obtain the identical grant, expiry and
   signed upload path. Actual PostgreSQL rows must contain one charged
-  reservation, exactly 128 reserved bytes and no receipt yet. There are no
-  one-hundred-connection PostgreSQL calls hidden behind this claim: each API
-  replica bounds database use to four connections.
+  reservation, exactly 128 reserved bytes and no receipt yet. Each replica's
+  upload-ledger pool permits at most four concurrent PostgreSQL connections in
+  this LOCAL_CRYPTO workload, including its upload lease heartbeats. The
+  inherited render routes have a separate pool, and real Auth session checks
+  open separate short connections. Their combined database connection budget
+  is not measured by this benchmark; four is not a blanket server limit.
 - Twenty distinct keys cross a second barrier against a different organization's
   shared limit of ten grants and 1,280 bytes. Exactly ten HTTP operations must
   return 201 and ten must return quota status 429. Actual counters must equal
