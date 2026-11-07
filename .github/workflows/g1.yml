@@ -1,0 +1,30 @@
+name: G1 PostgreSQL isolation and reliability
+on:
+  push:
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  g1:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install pinned test driver and FFmpeg
+        run: |
+          python -m pip install --require-hashes --only-binary=:all: -r requirements-g1.lock
+          sudo apt-get update -qq
+          sudo apt-get install -y --no-install-recommends ffmpeg
+      - name: Real PostgreSQL migrations, concurrency and synthetic FFmpeg regression
+        run: |
+          set -o pipefail
+          G1_PYTHON=python sh scripts/run_g1_local.sh 2>&1 | tee g1-tests.txt
+      - name: Retain evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: g1-evidence-${{ github.sha }}
+          path: g1-tests.txt
