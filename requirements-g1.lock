@@ -1,0 +1,8 @@
+# Local G1 proof only. Python 3.12, Linux x86_64; binary wheel includes libpq.
+# Install using pip --require-hashes --only-binary=:all: -r requirements-g1.lock
+psycopg==3.2.13 \
+    --hash=sha256:a481374514f2da627157f767a9336705ebefe93ea7a0522a6cbacba165da179a
+psycopg-binary==3.2.13 \
+    --hash=sha256:8f1189dc78553ef4b2e55d9e116fc74870191bc6a9a5f4442412a703c4cc6c3b
+typing-extensions==4.16.0 \
+    --hash=sha256:481caa481374e813c1b176ada14e97f1f67a4539ce9cfeb3f350d78d6370c2e8
