@@ -1,0 +1,32 @@
+name: G3A local Auth and cloud contracts
+on:
+  push:
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  g3a:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install reviewed hash-locked dependencies and FFmpeg
+        run: |
+          python -m pip install --require-hashes --only-binary=:all: -r requirements-g3a.lock
+          sudo apt-get update -qq
+          sudo apt-get install -y --no-install-recommends ffmpeg
+      - name: Local regressions, contracts, official Auth and benchmarks
+        run: |
+          set -o pipefail
+          G3A_PYTHON=python G3A_EVIDENCE_DIR=/tmp/ltc-g3a-evidence bash scripts/run_g3a_local.sh 2>&1 | tee g3a-tests.txt
+      - name: Retain local evidence (no cloud validation claim)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: g3a-local-evidence-${{ github.sha }}
+          path: |
+            g3a-tests.txt
+            /tmp/ltc-g3a-evidence/
