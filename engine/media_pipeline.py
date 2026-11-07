@@ -36,6 +36,8 @@ def _private_directory(path):
     fd = os.open("/", os.O_RDONLY | os.O_DIRECTORY | os.O_NOFOLLOW)
     try:
         for component in path.parts[1:]:
+            if component in {"", ".", ".."}:
+                raise ValueError("scratch paths must not traverse directories")
             try:
                 os.mkdir(component, 0o700, dir_fd=fd)
             except FileExistsError:
