@@ -1,0 +1,10 @@
+# DOCUMENTATION ONLY. Not built/audited or authorized for deployment.
+# Pin base image by digest and validate FFmpeg LGPL/GPL configuration before use.
+FROM python:3.12-slim-bookworm
+RUN apt-get update && apt-get install -y --no-install-recommends ffmpeg ca-certificates \
+ && rm -rf /var/lib/apt/lists/*
+RUN useradd --create-home --uid 10001 worker
+WORKDIR /app
+COPY engine/ /app/engine/
+USER worker
+ENTRYPOINT ["python", "-m", "engine.cli"]

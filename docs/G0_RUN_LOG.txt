@@ -1,0 +1,17 @@
+test_bad_idempotency_key (test_core.ContractTests.test_bad_idempotency_key) ... ok
+test_bad_tenant (test_core.ContractTests.test_bad_tenant) ... ok
+test_missing_job (test_core.ContractTests.test_missing_job) ... ok
+test_no_cross_tenant (test_core.ContractTests.test_no_cross_tenant) ... ok
+test_no_symlink_escape (test_core.ContractTests.test_no_symlink_escape) ... ok
+test_sha (test_core.ContractTests.test_sha) ... ok
+test_sqlite_unique (test_core.ContractTests.test_sqlite_unique) ... ok
+test_01_three_render_formats_with_audio_and_captions (test_core.VideoRenderTests.test_01_three_render_formats_with_audio_and_captions) ... ok
+test_02_retry_same_key_is_cached (test_core.VideoRenderTests.test_02_retry_same_key_is_cached) ... ok
+test_03_conflicting_request_is_rejected (test_core.VideoRenderTests.test_03_conflicting_request_is_rejected) ... ok
+test_04_corrupted_artifact_requires_manual_reconcile (test_core.VideoRenderTests.test_04_corrupted_artifact_requires_manual_reconcile) ... ok
+test_05_parallel_duplicate_requests_do_not_duplicate_render (test_core.VideoRenderTests.test_05_parallel_duplicate_requests_do_not_duplicate_render) ... ok
+
+----------------------------------------------------------------------
+Ran 12 tests in 1.744s
+
+OK
