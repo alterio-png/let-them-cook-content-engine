@@ -339,7 +339,10 @@ class MediaWorker:
                         continue
                     report["staging"].append(key)
                     if delete:
-                        self.store.delete_staging(org, key)
+                        self.store.delete_staging(
+                            org, key, expected_size_bytes=item["size_bytes"],
+                            expected_modified_at=item["modified_at"],
+                        )
             parent = self.scratch_root / org / job
             if parent.exists():
                 _private_directory(_private_directory(self.scratch_root / org) / job)
