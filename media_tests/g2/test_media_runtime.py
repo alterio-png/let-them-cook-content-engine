@@ -2,6 +2,7 @@
 import os
 from pathlib import Path
 import signal
+import struct
 import subprocess
 import tempfile
 import threading
@@ -54,6 +55,15 @@ class MediaRuntimeTests(unittest.TestCase):
             self.assertAlmostEqual(1.2, media["duration_seconds"], delta=0.15)
             self.assertTrue(media["has_audio"])
             self.assertEqual(0o600, path.stat().st_mode & 0o777)
+            pcm = subprocess.run(
+                ["ffmpeg", "-v", "error", "-threads", "1", "-i", str(path),
+                 "-t", "0.8", "-vn", "-ac", "1", "-ar", "44100", "-f", "s16le", "pipe:1"],
+                check=True, capture_output=True, timeout=10,
+            ).stdout
+            samples = struct.unpack(f"<{len(pcm) // 2}h", pcm)
+            self.assertGreater(sum(sample * sample for sample in samples) / len(samples), 100000)
+            crossings = sum(left <= 0 < right for left, right in zip(samples, samples[1:]))
+            self.assertAlmostEqual(440, crossings / (len(samples) / 44100), delta=5)
         self.assertEqual(0o700, self.out.stat().st_mode & 0o777)
         self.assertFalse((self.out / "captions.srt").exists())
 
