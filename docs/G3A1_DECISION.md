@@ -14,7 +14,9 @@ merged and all four post-merge historical workflows successful. Implementation
 and tests were committed at `1eacb889fbef95650998f7136e1d481e97c9f047`, then
 cloned using `git clone --no-local` into an independent clean checkout. The
 benchmark confirms that exact source SHA and `source_worktree_clean: true`.
-Later delivery commits add only documentation/evidence. The PR must identify
+Later delivery commits add documentation/evidence and move CI logs outside the
+checkout to preserve clean-source provenance; authority and test logic are
+unchanged. The PR must identify
 the exact final head and successful CI runs; final-head CI artifacts repeat
 the tests and record their own source SHA.
 

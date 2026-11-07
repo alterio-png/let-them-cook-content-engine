@@ -21,17 +21,17 @@ jobs:
       - name: Historical IaC validation without provisioning
         run: |
           set -o pipefail
-          sh infra/g3a/validate_toolchain.sh 2>&1 | tee g3a1-iac.txt
+          mkdir -p /tmp/ltc-g3a1-ci
+          sh infra/g3a/validate_toolchain.sh 2>&1 | tee /tmp/ltc-g3a1-ci/g3a1-iac.txt
       - name: Historical regressions and shared authority multiprocess proof
         run: |
           set -o pipefail
-          G3A1_PYTHON=python G3A1_EVIDENCE_DIR=/tmp/ltc-g3a1-evidence bash scripts/run_g3a1_local.sh 2>&1 | tee g3a1-tests.txt
+          G3A1_PYTHON=python G3A1_EVIDENCE_DIR=/tmp/ltc-g3a1-evidence bash scripts/run_g3a1_local.sh 2>&1 | tee /tmp/ltc-g3a1-ci/g3a1-tests.txt
       - name: Retain reproducible local evidence
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: g3a1-local-evidence-${{ github.sha }}
           path: |
-            g3a1-tests.txt
-            g3a1-iac.txt
+            /tmp/ltc-g3a1-ci/
             /tmp/ltc-g3a1-evidence/
