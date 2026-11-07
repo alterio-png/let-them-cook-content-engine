@@ -33,6 +33,7 @@ proof; `UNKNOWN` = a value or accountable decision has not been established.
 | S13 | Existing hash-locked dependencies and reviewed local image digests | `PASS` for those historical pins; deployable image/signature/SBOM `BLOCKED` | Produce reviewed immutable image digests, build provenance, SBOM/transitive vulnerability inventory, signer identity and signed attestations. Demonstrate the chosen enforcement rejects unapproved/unsigned images without breakglass. No image was built, signed or approved by this P0. |
 | S14 | Historical FFmpeg binary enables GPL/libx264/libass; parser resource controls were locally exercised | Legal distribution/codec review and hostile-media runtime `NOT_VALIDATED` | Review exact binary build, linked libraries, LICENSE/NOTICE/source obligations and relevant codec/patent jurisdictions with the data/legal owner. Review sandbox, native-process kill behavior and temporary-file bounds. Synthetic-only staging does not clear commercial distribution or authorize customer media. |
 | S15 | No selected provider account, project, region, residency decision, approver or spend authority | `UNKNOWN` / P1 `BLOCKED` | Identify isolated nonproduction tenancy, approved geography, IAM admin/operator, emergency actor, retention/backup scope and conditional cost/stop policy. Public rate research and USD 10 proposal do not grant spending authority. |
+| S16 | Current Tasks retry semantics and manual `tasks.run` behavior are publicly documented; trial-wide callback admission/stop enforcement is not implemented | `BLOCKED` before any Tasks-enabled P1 | Independently review retry exhaustion semantics, implement/test the proposed application/operator callback budget, deny `cloudtasks.tasks.run` to routine runtime principals and verify the stop path. Queue retry parameters, rate limits and pause are not by themselves a hard total callback/cost cap. |
 
 Supabase's current session guidance distinguishes JWT signature validity from
 session existence; strict logout checking must consult the corresponding live
@@ -54,7 +55,7 @@ split already exists.
 | --- | --- | --- |
 | End user | Own verified session; current authorized membership; owner-scoped grant/receipt operations | No DSN, `service_role`, Google credential, metadata role, arbitrary organization prefix, raw ledger DML or worker/ingest authority. |
 | HTTP API + session reader | Restricted NOINHERIT nonowner login, `authenticated` transaction context and only narrow `g3a_session_reader`; private create/read objects required by the API | No `engine_worker`, upload service-reconciler role, quota provisioning, `jobs.run`, password/refresh-token reads or raw upload-table writes. Existing bucket access spans service-owned organization prefixes; object IAM does not itself implement tenant membership. |
-| Dispatcher / task caller | Dispatcher reads/leases due outbox; enqueues only the approved queue and may act as only the approved task caller; task caller invokes only the controller | No render execution, bucket delete, API-user impersonation or arbitrary service-account impersonation. Separate queue/service-agent IAM needs real denial tests. |
+| Dispatcher / task caller | Dispatcher reads/leases due outbox; enqueues only the approved queue and may act as only the approved task caller; task caller invokes only the controller | No render execution, bucket delete, API-user impersonation, arbitrary service-account impersonation or `cloudtasks.tasks.run`. Separate queue/service-agent IAM and denial of debug dispatch need real tests. |
 | Launch controller / bounded sweep | Reserve launch intent and observe exact operations/executions; exclusive permission to launch the fixed approved Job with reviewed immutable overrides | No arbitrary image/command/source URL; no bypass through a second scheduler, console launcher or generic retry path. `jobs.run` overrides make controller integrity particularly important. |
 | Render worker | Consume its bound launch/job/org/fence, short lease transactions, fetch verified inputs, create/read immutable outputs and metrics | No enqueue/launch permission, Auth administration or credentials for other services. Broad trusted historical SQL and prepared storage list/delete need explicit review before use; do not infer per-job cloud isolation from a key prefix. |
 | Upload reconciler | Dedicated service login granted only the NOLOGIN `g3a1_upload_reconciler` SQL role and approved private-object verification operations | Not an HTTP login; no raw table DML or automatic quota release/object deletion. Recovering a revoked/deleted historical owner does not grant a new end-user session. |
@@ -108,6 +109,33 @@ is not a complete deployment database budget. Its two-CPU CI cohort needed
 sustained capacity did not become validated. Never solve saturation by
 unbounded retries, new replicas or duplicated database pools.
 
+The proposed serial trial additionally caps **four physical executions total
+across three logical jobs**, one task/parallelism one, 1 vCPU/2 GiB, application
+deadline 120 seconds, provider timeout 300 seconds and zero platform retries,
+inside a window of at most two hours. Every number is **UNAPPROVED**. A timeout
+or manual retry does not replenish that trial-wide execution budget; a stopped
+execution still counts. The runbook's operator must be able to stop admission,
+then terminate/reconcile the exact in-flight execution without losing the ledger.
+
+If Cloud Tasks is selected, its existing `maxAttempts=5` and
+`maxRetryDuration=300s` proposal must **not** be presented as a five-callback
+hard bound: the current REST reference requires both exhaustion conditions,
+unless the task succeeds. The proposed **20 callback HTTP attempts total** is
+an unapproved future application/operator budget, not a limit derived from
+those provider fields and not implemented by P0. Count duplicate deliveries,
+retries and rejected attempts; stop admissions and the trial through the
+reviewed queue/runtime policy when that budget is reached, allowing for
+in-flight attempts and delayed telemetry/cost. Prove that policy before a
+Tasks-enabled trial, or leave Tasks disabled. [Current RetryConfig semantics](https://docs.cloud.google.com/tasks/docs/reference/rest/v2/RetryConfig).
+
+The manual `tasks.run` API can dispatch despite a running task, rate limits
+or a paused queue. Deny its `cloudtasks.tasks.run` permission to normal
+application/dispatcher/operator paths; any emergency exception needs separate
+explicit authorization and must consume the trial's callback/execution budgets.
+Queue pause alone is not a security boundary against a principal with that
+permission. Review inherited/effective grants and include a denial test, rather
+than assume a role label enforces this. [Official manual-dispatch method](https://docs.cloud.google.com/tasks/docs/reference/rest/v2/projects.locations.queues.tasks/run).
+
 Prefer attached short-lived workload identities; use secret-level access for
 each necessary DSN/signing key and explicit reviewed secret versions. Keep
 credentials out of source, Terraform variables/state payloads, image layers,
@@ -143,6 +171,8 @@ with the exact digest, an approved signer and enforced verification policy;
 test rejection of an unapproved artifact in the future isolated trial. Google's
 Binary Authorization is a possible control to evaluate, not a configured
 feature of this repository. [Official control](https://docs.cloud.google.com/run/docs/securing/binary-authorization).
+Verify support and enforcement for the exact selected Job/service resource;
+a service example does not establish identical Job behavior.
 Review the actual FFmpeg build and codec obligations independently; no
 permissive application license clears every linked library or codec patent.
 [FFmpeg legal guidance](https://ffmpeg.org/legal.html).
@@ -152,6 +182,7 @@ permissive application license clears every linked library or codec patent.
 | Missing/wrong user JWT; metadata/header-selected organization; another tenant/owner's grant | Authentication/authorization denied; no new object/charge/receipt | Any auth or tenant-isolation bypass. |
 | Logout, membership revocation, role downgrade or user deletion during/after admission | Later operations denied; in-flight boundary respected; private uncertain effect stays charged/recoverable | Unauthorized completion or receipt disclosure. |
 | Google caller missing/wrong audience/subject/email, queue headers forged, user token sent to internal callback | Platform/application service checks deny; no launch intent or execution | Identity substitution or alternate unprotected invocation route. |
+| Callback retry exhaustion or manual debug dispatch despite queue pause/rate limits | Independently enforced trial callback budget; routine `cloudtasks.tasks.run` denied; no renewed execution budget | Retry parameters treated as a hard five-attempt cap, unexplained callback growth or debug-dispatch permission bypass. |
 | Concurrent duplicate wake signals and repeated operator invocation | Existing intent/fence reused; no second physical launch | Duplicate physical launch or multiple Jobs without the authoritative fence. |
 | Lost `jobs.run` response; expired provider history; blocked operation lookup | Slot retained, admission stopped, investigation recorded | Blind launch retry or slot release without terminal evidence. |
 | Storage success with lost response; changed generation; corrupt/missing bytes; stale writer | No invalid receipt/manifest; exact generation reconciled; uncertain quota held | Object/receipt divergence, unauthorized overwrite/delete or unproved quota refund. |

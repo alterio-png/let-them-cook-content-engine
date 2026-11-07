@@ -144,7 +144,7 @@ Qualquer mudança exige nova revisão de custo, segurança e ligação ao códig
 | Total do ensaio | Até quatro execuções físicas cumulativas, em três jobs lógicos, dentro de uma janela de até duas horas | Dois jobs normais com fontes de 1/5 minutos; um terceiro job de 1 minuto com interrupção e recuperação pode consumir duas execuções. Um slot simultâneo não limita sozinho o total acumulado. Qualquer execução adicional exige parar e nova autorização. |
 | CPU/RAM do Job | 1 vCPU / 2 GiB como primeira configuração herdada da proposta IaC | Recursos reais, memória do filesystem/scratch e picos FFmpeg precisam ser medidos. Imagem/SBOM/licença não aprovados. |
 | Tempo | Timeout provider 300 s; app G2 mantém timeout de 120 s e native memory de 1 GiB atuais | Viabilidade do cenário de 5 minutos `BLOCKED` até comprovar fixture sob limites atuais. Não assumir que 300 s de vídeo cabem em 120 s de render, nem que o timeout provider eleva o limite da aplicação. A mídia sintética de 1/5 minutos tem duração diferente de wall time faturado. |
-| Fila, se escolhida | 1 sinal/s, uma entrega concorrente; até cinco deliveries e backoff limitado | Proposta reduz os dois sinais/s e duas callbacks históricos. O sinal 503 é backpressure a medir; não é permissão para launch duplicado. |
+| Fila, se escolhida | 1 sinal/s, uma entrega concorrente; alvo de cinco deliveries/evento e 20 callbacks no ensaio inteiro | Orçamento futuro independente, ainda não implementado/aprovado. A combinação histórica `maxAttempts=5`/`maxRetryDuration=300s` não garante máximo de cinco deliveries. Contar atrasados/in-flight e prever stop/margem; 503 é backpressure, não permissão para launch duplicado. |
 | Dispatcher/sweep | Uma passagem limitada por vez; dispatcher e sweep serializados; sem scheduler presumido | Scheduler/supervisor, persistência, frequência e dono precisam de implementação/revisão. Não usar loop de background sem CPU/vida garantida. |
 | Upload/reconciler | Cota administrativa por organização, TTL/lease pelo banco; um reconciler de serviço por vez | O papel de recuperação não pertence ao login HTTP. Não reembolsar uploads já reclamados ou recibos concluídos automaticamente. |
 | Store | Bucket privado e generation preconditions; cap inicial compatível com HTTP/GCS/G2 | GCS tem default de leitura integral de objeto de 128 MiB e chunk 8 MiB; tamanho por objeto, readback e RAM devem ser coerentes. Versionamento/soft-delete elevam bytes retidos. |
@@ -241,6 +241,15 @@ estão em [PREFLIGHT](G3B_P0_PREFLIGHT.md),
 [SECURITY_GATES](G3B_P0_SECURITY_GATES.md) e
 [STAGING_RUNBOOK](G3B_P0_STAGING_RUNBOOK.md).
 
+Outra correção futura é a interpretação de retries. A referência REST atual
+condiciona a parada à satisfação dos limites de tentativas **e** duração;
+`5 + 300s` não estabelece cinco callbacks máximos. O limite cumulativo de
+20 callbacks e o de quatro execuções físicas precisam de controles duráveis
+e stop independentes, além de margem para trabalho já em trânsito. A operação
+de debug `tasks.run` pode forçar dispatch apesar de pausa/rate limits; negar
+`cloudtasks.tasks.run` às identidades de rotina e revisar os caminhos de bypass.
+Essa análise é leitura pública, sem chamar a operação no provedor.
+
 ## 6. Evidências e referências auditadas
 
 Arquivos observados no main: `engine/cloud_http.py` (`HTTPConfig`, listener),
@@ -271,6 +280,10 @@ Fontes oficiais consultadas em **2026-11-07**, apenas páginas públicas:
 - [Cloud Tasks HTTP targets](https://docs.cloud.google.com/tasks/docs/creating-http-target-tasks#token):
   alvo e identidade OIDC são configuração explícita; o handler recebe somente
   sinal curto e revalida a autoridade PostgreSQL.
+- [Cloud Tasks RetryConfig](https://docs.cloud.google.com/tasks/docs/reference/rest/v2/RetryConfig)
+  e [tasks.run](https://docs.cloud.google.com/tasks/docs/reference/rest/v2/projects.locations.queues.tasks/run):
+  semântica de limites combinados e dispatch de debug; não tratar rate limits
+  ou o número histórico de tentativas como o orçamento total do ensaio.
 - [GCS request preconditions](https://docs.cloud.google.com/storage/docs/request-preconditions):
   publicação create-only e deleção condicionada à geração impedem substituições
   acidentais; integridade exige também bytes reais.
