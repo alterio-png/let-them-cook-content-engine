@@ -80,6 +80,11 @@ insufficient. These provider semantics/IAM are only locally tested contracts.
 Only the bound worker may consume the launch intent, and it rechecks identity,
 job/organization/fence and G1 quotas before rendering. G1/G2 leases and fencing
 protect authoritative manifests. Exactly-once physical execution is not promised.
+The unchanged G2 sweep remains a local recovery implementation. In staging it
+must not start cloud workers outside launch admission or free an unresolved
+physical slot: a logical PostgreSQL retry is not permission to create another
+provider execution. Route every staging wake-up/retry through the launch ledger
+and terminal-execution reconciliation, with IAM denying direct bypass.
 Direct GCS/Tasks/Run calls remain NOT_VALIDATED until separately authorized G3B.
 
 ## Storage and retention
