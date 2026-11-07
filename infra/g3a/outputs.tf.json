@@ -1,0 +1,26 @@
+{
+  "output": {
+    "orchestrator_url": {
+      "value": "${google_cloud_run_v2_service.orchestrator.uri}"
+    },
+    "output_retention_intent_days": {
+      "description": "Intent only; never a claim that authoritative object expiry is implemented.",
+      "value": "${var.output_retention_days}"
+    },
+    "private_media_bucket": {
+      "value": "${google_storage_bucket.media.name}"
+    },
+    "review_status": {
+      "value": "G3A_REVIEW_ONLY_CLOUD_NOT_VALIDATED"
+    },
+    "tasks_oidc_audience": {
+      "value": "${google_cloud_run_v2_service.orchestrator.uri}"
+    },
+    "tasks_oidc_service_account": {
+      "value": "${google_service_account.task_caller.email}"
+    },
+    "worker_job": {
+      "value": "${google_cloud_run_v2_job.worker.id}"
+    }
+  }
+}

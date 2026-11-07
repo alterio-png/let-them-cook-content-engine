@@ -1,0 +1,285 @@
+G3A local toolchain validation. Terraform1.17.1 linux_amd64.
+Official zip SHA2564638628058e71a55212b1c563712eac03b902128f40740f3dc8174df12135061 verified.
+Isolated CLI configuration/plugin cache/data; Google credentials absent from child environment.
+Only fmt/init-backend=false/validate authorized. No plan/apply or GoogleAPI calls.
+$ terraform fmt -check -diff -no-color
+exit_code=0
+$ terraform init -backend=false -input=false -no-color
+
+Error: Terraform encountered problems during initialisation, including problems
+with the configuration, described below.
+
+The Terraform configuration must be valid before initialization so that
+Terraform can determine which modules and providers need to be installed.
+
+
+Error: Invalid validation expression
+
+  on variables.tf.json line 8, in variable.api_image.validation[0]:
+   8:           "condition": "can(regex(\"^[a-z0-9.-]+/[A-Za-z0-9_./-]+@sha256:[a-f0-9]{64}$\", var.api_image))",
+
+The condition expression must refer to at least one object from elsewhere in
+the configuration, or else its result would not be checking anything.
+
+Error: Invalid variable validation condition
+
+  on variables.tf.json line 8, in variable.api_image.validation[0]:
+   8:           "condition": "can(regex(\"^[a-z0-9.-]+/[A-Za-z0-9_./-]+@sha256:[a-f0-9]{64}$\", var.api_image))",
+
+The condition for variable "api_image" must refer to var.api_image in order
+to test incoming values.
+
+Error: Invalid validation expression
+
+  on variables.tf.json line 18, in variable.billing_account_id.validation[0]:
+  18:           "condition": "can(regex(\"^[A-F0-9]{6}-[A-F0-9]{6}-[A-F0-9]{6}$\", var.billing_account_id))",
+
+The condition expression must refer to at least one object from elsewhere in
+the configuration, or else its result would not be checking anything.
+
+Error: Invalid variable validation condition
+
+  on variables.tf.json line 18, in variable.billing_account_id.validation[0]:
+  18:           "condition": "can(regex(\"^[A-F0-9]{6}-[A-F0-9]{6}-[A-F0-9]{6}$\", var.billing_account_id))",
+
+The condition for variable "billing_account_id" must refer to
+var.billing_account_id in order to test incoming values.
+
+Error: Invalid validation expression
+
+  on variables.tf.json line 37, in variable.database_secret_ids.validation[0]:
+  37:           "condition": "alltrue([for k in [\"api_auth\", \"api_user\", \"dispatcher\", \"orchestrator\", \"worker\"] : can(regex(\"^projects/[^/]+/secrets/[^/]+$\", var.database_secret_ids[k]))])",
+
+The condition expression must refer to at least one object from elsewhere in
+the configuration, or else its result would not be checking anything.
+
+Error: Invalid variable validation condition
+
+  on variables.tf.json line 37, in variable.database_secret_ids.validation[0]:
+  37:           "condition": "alltrue([for k in [\"api_auth\", \"api_user\", \"dispatcher\", \"orchestrator\", \"worker\"] : can(regex(\"^projects/[^/]+/secrets/[^/]+$\", var.database_secret_ids[k]))])",
+
+The condition for variable "database_secret_ids" must refer to
+var.database_secret_ids in order to test incoming values.
+
+Error: Invalid validation expression
+
+  on variables.tf.json line 41, in variable.database_secret_ids.validation[1]:
+  41:           "condition": "length(distinct([for k in [\"api_auth\", \"api_user\", \"dispatcher\", \"orchestrator\", \"worker\"] : var.database_secret_ids[k]])) == 5",
+
+The condition expression must refer to at least one object from elsewhere in
+the configuration, or else its result would not be checking anything.
+
+Error: Invalid variable validation condition
+
+  on variables.tf.json line 41, in variable.database_secret_ids.validation[1]:
+  41:           "condition": "length(distinct([for k in [\"api_auth\", \"api_user\", \"dispatcher\", \"orchestrator\", \"worker\"] : var.database_secret_ids[k]])) == 5",
+
+The condition for variable "database_secret_ids" must refer to
+var.database_secret_ids in order to test incoming values.
+
+Error: Invalid validation expression
+
+  on variables.tf.json line 51, in variable.database_secret_versions.validation[0]:
+  51:           "condition": "alltrue([for k in [\"api_auth\", \"api_user\", \"dispatcher\", \"orchestrator\", \"worker\"] : can(regex(\"^[1-9][0-9]*$\", var.database_secret_versions[k]))])",
+
+The condition expression must refer to at least one object from elsewhere in
+the configuration, or else its result would not be checking anything.
+
+Error: Invalid variable validation condition
+
+  on variables.tf.json line 51, in variable.database_secret_versions.validation[0]:
+  51:           "condition": "alltrue([for k in [\"api_auth\", \"api_user\", \"dispatcher\", \"orchestrator\", \"worker\"] : can(regex(\"^[1-9][0-9]*$\", var.database_secret_versions[k]))])",
+
+The condition for variable "database_secret_versions" must refer to
+var.database_secret_versions in order to test incoming values.
+
+Error: Invalid validation expression
+
+  on variables.tf.json line 62, in variable.monthly_budget_usd.validation[0]:
+  62:           "condition": "var.monthly_budget_usd > 0 && var.monthly_budget_usd <= 100 && floor(var.monthly_budget_usd) == var.monthly_budget_usd",
+
+The condition expression must refer to at least one object from elsewhere in
+the configuration, or else its result would not be checking anything.
+
+Error: Invalid variable validation condition
+
+  on variables.tf.json line 62, in variable.monthly_budget_usd.validation[0]:
+  62:           "condition": "var.monthly_budget_usd > 0 && var.monthly_budget_usd <= 100 && floor(var.monthly_budget_usd) == var.monthly_budget_usd",
+
+The condition for variable "monthly_budget_usd" must refer to
+var.monthly_budget_usd in order to test incoming values.
+
+Error: Invalid validation expression
+
+  on variables.tf.json line 72, in variable.orchestrator_image.validation[0]:
+  72:           "condition": "can(regex(\"^[a-z0-9.-]+/[A-Za-z0-9_./-]+@sha256:[a-f0-9]{64}$\", var.orchestrator_image))",
+
+The condition expression must refer to at least one object from elsewhere in
+the configuration, or else its result would not be checking anything.
+
+Error: Invalid variable validation condition
+
+  on variables.tf.json line 72, in variable.orchestrator_image.validation[0]:
+  72:           "condition": "can(regex(\"^[a-z0-9.-]+/[A-Za-z0-9_./-]+@sha256:[a-f0-9]{64}$\", var.orchestrator_image))",
+
+The condition for variable "orchestrator_image" must refer to
+var.orchestrator_image in order to test incoming values.
+
+Error: Invalid validation expression
+
+  on variables.tf.json line 83, in variable.output_retention_days.validation[0]:
+  83:           "condition": "var.output_retention_days >= 1 && var.output_retention_days <= 365",
+
+The condition expression must refer to at least one object from elsewhere in
+the configuration, or else its result would not be checking anything.
+
+Error: Invalid variable validation condition
+
+  on variables.tf.json line 83, in variable.output_retention_days.validation[0]:
+  83:           "condition": "var.output_retention_days >= 1 && var.output_retention_days <= 365",
+
+The condition for variable "output_retention_days" must refer to
+var.output_retention_days in order to test incoming values.
+
+Error: Invalid validation expression
+
+  on variables.tf.json line 93, in variable.project_id.validation[0]:
+  93:           "condition": "can(regex(\"^[a-z][a-z0-9-]{4,28}[a-z0-9]$\", var.project_id))",
+
+The condition expression must refer to at least one object from elsewhere in
+the configuration, or else its result would not be checking anything.
+
+Error: Invalid variable validation condition
+
+  on variables.tf.json line 93, in variable.project_id.validation[0]:
+  93:           "condition": "can(regex(\"^[a-z][a-z0-9-]{4,28}[a-z0-9]$\", var.project_id))",
+
+The condition for variable "project_id" must refer to var.project_id in order
+to test incoming values.
+
+Error: Invalid validation expression
+
+  on variables.tf.json line 103, in variable.project_number.validation[0]:
+ 103:           "condition": "can(regex(\"^[0-9]+$\", var.project_number))",
+
+The condition expression must refer to at least one object from elsewhere in
+the configuration, or else its result would not be checking anything.
+
+Error: Invalid variable validation condition
+
+  on variables.tf.json line 103, in variable.project_number.validation[0]:
+ 103:           "condition": "can(regex(\"^[0-9]+$\", var.project_number))",
+
+The condition for variable "project_number" must refer to var.project_number
+in order to test incoming values.
+
+Error: Invalid validation expression
+
+  on variables.tf.json line 123, in variable.worker_image.validation[0]:
+ 123:           "condition": "can(regex(\"^[a-z0-9.-]+/[A-Za-z0-9_./-]+@sha256:[a-f0-9]{64}$\", var.worker_image))",
+
+The condition expression must refer to at least one object from elsewhere in
+the configuration, or else its result would not be checking anything.
+
+Error: Invalid variable validation condition
+
+  on variables.tf.json line 123, in variable.worker_image.validation[0]:
+ 123:           "condition": "can(regex(\"^[a-z0-9.-]+/[A-Za-z0-9_./-]+@sha256:[a-f0-9]{64}$\", var.worker_image))",
+
+The condition for variable "worker_image" must refer to var.worker_image in
+order to test incoming values.
+exit_code=1
+
+Correction: wrap JSON variable validation conditions in interpolation expressions; regression test added.
+$ terraform init -backend=false -input=false -no-color
+Initializing provider plugins...
+- terraform.io/builtin/terraform is built in to Terraform
+- Finding hashicorp/google versions matching "8.10.0"...
+- Installing hashicorp/google v8.10.0...
+- Installed hashicorp/google v8.10.0 (signed by HashiCorp)
+
+Terraform has created a lock file .terraform.lock.hcl to record the provider
+selections it made above. Include this file in your version control repository
+so that Terraform can guarantee to make the same selections by default when
+you run "terraform init" in the future.
+
+Terraform has been successfully initialized!
+exit_code=0
+
+$ terraform validate -json -no-color
+{
+  "format_version": "1.0",
+  "valid": false,
+  "error_count": 2,
+  "warning_count": 0,
+  "diagnostics": [
+    {
+      "severity": "error",
+      "summary": "Missing required argument",
+      "detail": "\"all_updates_rule.0.monitoring_notification_channels\": one of `all_updates_rule.0.monitoring_notification_channels,all_updates_rule.0.pubsub_topic` must be specified",
+      "address": "google_billing_budget.sandbox",
+      "range": {
+        "filename": "main.tf.json",
+        "start": {
+          "line": 8,
+          "column": 11,
+          "byte": 172
+        },
+        "end": {
+          "line": 8,
+          "column": 12,
+          "byte": 173
+        }
+      },
+      "snippet": {
+        "context": "resource.google_billing_budget.sandbox.all_updates_rule[0]",
+        "code": "          }",
+        "start_line": 8,
+        "highlight_start_offset": 10,
+        "highlight_end_offset": 11,
+        "values": []
+      }
+    },
+    {
+      "severity": "error",
+      "summary": "Missing required argument",
+      "detail": "\"all_updates_rule.0.pubsub_topic\": one of `all_updates_rule.0.monitoring_notification_channels,all_updates_rule.0.pubsub_topic` must be specified",
+      "address": "google_billing_budget.sandbox",
+      "range": {
+        "filename": "main.tf.json",
+        "start": {
+          "line": 8,
+          "column": 11,
+          "byte": 172
+        },
+        "end": {
+          "line": 8,
+          "column": 12,
+          "byte": 173
+        }
+      },
+      "snippet": {
+        "context": "resource.google_billing_budget.sandbox.all_updates_rule[0]",
+        "code": "          }",
+        "start_line": 8,
+        "highlight_start_offset": 10,
+        "highlight_end_offset": 11,
+        "values": []
+      }
+    }
+  ]
+}
+
+exit_code=1
+
+Correction: remove custom all_updates_rule without channel/topic; standard billing-admin email notifications remain enabled by default.
+$ terraform validate -json -no-color
+{
+  "format_version": "1.0",
+  "valid": true,
+  "error_count": 0,
+  "warning_count": 0,
+  "diagnostics": []
+}
+
+exit_code=0

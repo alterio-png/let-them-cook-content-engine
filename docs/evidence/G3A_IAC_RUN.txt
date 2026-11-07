@@ -1,0 +1,32 @@
+Verified Terraform 1.17.1 official ZIP sha256=4638628058e71a55212b1c563712eac03b902128f40740f3dc8174df12135061
+Isolated local validation; no backend, cloud credentials or Google API access.
+$ terraform version -json
+{
+  "format_version": "1.0",
+  "terraform_version": "1.17.1",
+  "platform": "linux_amd64",
+  "provider_selections": {
+    "registry.terraform.io/hashicorp/google": "8.10.0"
+  },
+  "terraform_outdated": false
+}
+
+$ terraform fmt -check -diff -no-color
+$ terraform init -backend=false -input=false -lockfile=readonly -no-color
+Initializing provider plugins...
+- terraform.io/builtin/terraform is built in to Terraform
+- Reusing version 8.10.0 of hashicorp/google from the dependency lock file
+- Installing hashicorp/google v8.10.0...
+- Installed hashicorp/google v8.10.0 (signed by HashiCorp)
+
+Terraform has been successfully initialized!
+$ terraform validate -json -no-color
+{
+  "format_version": "1.0",
+  "valid": true,
+  "error_count": 0,
+  "warning_count": 0,
+  "diagnostics": []
+}
+
+PASS: local Terraform/provider schema validation only; Google Cloud NOT_VALIDATED.

@@ -1,0 +1,210 @@
+{
+  "cases": [
+    {
+      "actual_object_hashes_verified": true,
+      "application_reservation_units": 3,
+      "artifacts_in_full_ci_report": 1,
+      "attempt_io_bytes_read": 544922,
+      "attempt_io_bytes_written": 40799,
+      "boundary": "authenticated PostgreSQL function; not HTTP",
+      "case": "concurrent_duplicate_sql_submissions",
+      "completed": 1,
+      "completed_replay_ffprobe_verified": true,
+      "end_to_end_latency_seconds": {
+        "observations": 1,
+        "p50": 1.798018,
+        "p95": 1.798018,
+        "p99": 1.798018
+      },
+      "errors": 0,
+      "one_job_outbox_spec_completion_each": true,
+      "output_video_bytes": 39243,
+      "queue_latency_seconds": {
+        "observations": 1,
+        "p50": 0.472622,
+        "p95": 0.472622,
+        "p99": 0.472622
+      },
+      "requests": 100,
+      "reservation_equals_sum_immutable_requests": true,
+      "retry_attempts": 0,
+      "submission_elapsed_seconds": 0.44664200299939694
+    },
+    {
+      "actual_object_hashes_verified": true,
+      "application_reservation_units": 60,
+      "artifacts_in_full_ci_report": 20,
+      "attempt_io_bytes_read": 10898457,
+      "attempt_io_bytes_written": 815997,
+      "case": "queued_20_jobs",
+      "claimed_worker_highwater": 2,
+      "completed": 20,
+      "completed_replay_ffprobe_verified": true,
+      "concurrency_caps_verified": true,
+      "end_to_end_latency_seconds": {
+        "observations": 20,
+        "p50": 8.4276585,
+        "p95": 14.59961525,
+        "p99": 14.64529505
+      },
+      "errors": 0,
+      "global_worker_limit": 2,
+      "local_unit_measurements": {
+        "cpu_seconds_per_completed_job": 1.17739825,
+        "currency": null,
+        "monetary_cost_per_job": null,
+        "price_status": "UNKNOWN_NO_PRICE_OR_CLOUD_BILLING_MEASURED",
+        "video_bytes_per_completed_job": 39243.0
+      },
+      "one_job_outbox_spec_completion_each": true,
+      "organizations": 2,
+      "output_video_bytes": 784860,
+      "per_org_active_limit": 1,
+      "queue_latency_seconds": {
+        "observations": 20,
+        "p50": 7.0415980000000005,
+        "p95": 13.2543991,
+        "p99": 13.29641342
+      },
+      "reservation_equals_sum_immutable_requests": true,
+      "resources": {
+        "aggregate_process_rss_peak_bytes": 155422720,
+        "elapsed_seconds": 14.315977023000414,
+        "ffmpeg_process_count_peak": 2,
+        "native_media_process_count_peak": 2,
+        "postgres_active_jobs_peak": 2,
+        "postgres_active_jobs_peak_by_org": {
+          "1e7c9cb9-8b61-4b3e-8984-3001ee3ba0c5": 1,
+          "d4821b50-0cfb-440d-8735-7a68d1594cd8": 1
+        },
+        "process_count_peak": 3,
+        "reaped_children_system_seconds": 5.919384,
+        "reaped_children_user_seconds": 15.167572,
+        "samples": 262,
+        "sampling_interval_seconds": 0.05,
+        "self_system_seconds": 0.692309,
+        "self_user_seconds": 1.7687
+      },
+      "retry_attempts": 0,
+      "submitted_distinct": 20,
+      "throughput_jobs_per_second": 1.3970405210812709
+    },
+    {
+      "actual_object_hashes_verified": true,
+      "application_reservation_units": 150,
+      "artifacts_in_full_ci_report": 50,
+      "attempt_io_bytes_read": 27246143,
+      "attempt_io_bytes_written": 2039993,
+      "case": "queued_50_jobs",
+      "claimed_worker_highwater": 2,
+      "completed": 50,
+      "completed_replay_ffprobe_verified": true,
+      "concurrency_caps_verified": true,
+      "end_to_end_latency_seconds": {
+        "observations": 50,
+        "p50": 19.5590305,
+        "p95": 34.8671497,
+        "p99": 36.2515293
+      },
+      "errors": 0,
+      "global_worker_limit": 2,
+      "local_unit_measurements": {
+        "cpu_seconds_per_completed_job": 1.14249398,
+        "currency": null,
+        "monetary_cost_per_job": null,
+        "price_status": "UNKNOWN_NO_PRICE_OR_CLOUD_BILLING_MEASURED",
+        "video_bytes_per_completed_job": 39243.0
+      },
+      "one_job_outbox_spec_completion_each": true,
+      "organizations": 2,
+      "output_video_bytes": 1962150,
+      "per_org_active_limit": 1,
+      "queue_latency_seconds": {
+        "observations": 50,
+        "p50": 18.1600525,
+        "p95": 33.48302075,
+        "p99": 34.87327263
+      },
+      "reservation_equals_sum_immutable_requests": true,
+      "resources": {
+        "aggregate_process_rss_peak_bytes": 167993344,
+        "elapsed_seconds": 35.42105714100035,
+        "ffmpeg_process_count_peak": 2,
+        "native_media_process_count_peak": 2,
+        "postgres_active_jobs_peak": 2,
+        "postgres_active_jobs_peak_by_org": {
+          "53ef4c71-5071-42a8-b406-43bb86872c48": 1,
+          "6c4583a6-7b8d-4885-b499-08b978de80e0": 1
+        },
+        "process_count_peak": 3,
+        "reaped_children_system_seconds": 14.393619999999999,
+        "reaped_children_user_seconds": 36.681618,
+        "samples": 647,
+        "sampling_interval_seconds": 0.05,
+        "self_system_seconds": 1.373585,
+        "self_user_seconds": 4.675875999999999
+      },
+      "retry_attempts": 0,
+      "submitted_distinct": 50,
+      "throughput_jobs_per_second": 1.4115897162799338
+    },
+    {
+      "actual_object_hashes_verified": true,
+      "application_reservation_units": 9,
+      "artifacts_in_full_ci_report": 3,
+      "attempt_io_bytes_read": 2643012,
+      "attempt_io_bytes_written": 135260,
+      "case": "controlled_local_recovery",
+      "completed": 3,
+      "completed_replay_ffprobe_verified": true,
+      "end_to_end_latency_seconds": {
+        "observations": 3,
+        "p50": 2.299591,
+        "p95": 2.3001121,
+        "p99": 2.3001584200000003
+      },
+      "errors": 0,
+      "hard_kill_status": "NOT_RUN_HERE; separate unchanged G2 SIGKILL integration tests required",
+      "obsolete_fence_completion_rejected": true,
+      "one_job_outbox_spec_completion_each": true,
+      "orphan_objects_deleted": 1,
+      "orphan_reconciliation_idempotent": true,
+      "output_video_bytes": 117729,
+      "queue_acceptance_response_lost_reconciled": true,
+      "queue_backoff_verified": true,
+      "queue_latency_seconds": {
+        "observations": 3,
+        "p50": 0.018939,
+        "p95": 0.0577686,
+        "p99": 0.06122012
+      },
+      "queue_named_tasks_after_retry": 1,
+      "reservation_equals_sum_immutable_requests": true,
+      "retry_attempts": 2,
+      "retry_clock": "available_at moved into past after verifying real backoff; accelerated laboratory scheduling",
+      "storage_backoff_verified": true,
+      "storage_write_error_once_recovered": true,
+      "worker_exception_after_durable_object_recovered": true
+    }
+  ],
+  "cloud_services": "NOT_VALIDATED",
+  "evidence_note": "Compact copy of clean-clone report: actual per-object artifact hashes and events.jsonl are retained in the full CI evidence artifact.",
+  "finished_at": "2026-11-07T13:03:12.911429+00:00",
+  "measurement_bounds": "CPU self plus reaped children; sampled summed RSS includes native media descendants, excludes separate PostgreSQL container and kernel/cgroup overhead; short-lived process peaks may be missed",
+  "monetary_cost": "UNKNOWN",
+  "own_rows_and_temporary_files_cleaned": true,
+  "reservation_note": "G1 cost_cents is an existing synthetic admission reservation, not measured monetary cost",
+  "runtime": {
+    "ffmpeg": "ffmpeg version 7.1.5-0+deb13u1 Copyright (c) 2000-2026 the FFmpeg developers",
+    "ffprobe": "ffprobe version 7.1.5-0+deb13u1 Copyright (c) 2007-2026 the FFmpeg developers",
+    "logical_cpus": 5,
+    "platform": "Linux-6.18.57-x86_64-with-glibc2.41",
+    "postgres": "PostgreSQL 16.15 (Debian 16.15-1.pgdg12+2) on x86_64-pc-linux-gnu, compiled by gcc (Debian 12.2.0-14+deb12u1) 12.2.0, 64-bit",
+    "python": "3.12.14",
+    "source_sha": "4cc282befdd6e6b44c52e5b66f6e58ff3173b19a"
+  },
+  "schema_version": 1,
+  "scope": "REAL_LOCAL_POSTGRESQL_AND_FFMPEG; NOT_CLOUD_LOAD",
+  "started_at": "2026-11-07T13:01:47.119469+00:00",
+  "status": "PASS_LOCAL_ONLY"
+}
