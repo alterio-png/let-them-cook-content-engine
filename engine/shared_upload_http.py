@@ -24,7 +24,7 @@ from .upload_authority import CapabilityError, UploadAlreadyUsed, UploadQuotaExc
 
 
 class SharedMediaHTTPApplication(MediaHTTPApplication):
-    """Shared upload authority; use ``local_http_server`` for local execution.
+    """Shared upload authority; use ``shared_http_server`` for local execution.
 
     The authority must use this application's unprivileged API DSN. An outer
     membership transaction is deliberately not retained across object I/O:
