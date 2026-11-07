@@ -1,0 +1,608 @@
+{
+  "resource": {
+    "google_billing_budget": {
+      "sandbox": {
+        "all_updates_rule": [
+          {
+            "disable_default_iam_recipients": false
+          }
+        ],
+        "amount": [
+          {
+            "specified_amount": [
+              {
+                "currency_code": "USD",
+                "units": "${tostring(var.monthly_budget_usd)}"
+              }
+            ]
+          }
+        ],
+        "billing_account": "${var.billing_account_id}",
+        "budget_filter": [
+          {
+            "credit_types_treatment": "INCLUDE_ALL_CREDITS",
+            "projects": [
+              "projects/${var.project_number}"
+            ]
+          }
+        ],
+        "depends_on": [
+          "terraform_data.staging_authorization"
+        ],
+        "display_name": "G3B LTC sandbox ALERT ONLY",
+        "threshold_rules": [
+          {
+            "spend_basis": "CURRENT_SPEND",
+            "threshold_percent": 0.5
+          },
+          {
+            "spend_basis": "CURRENT_SPEND",
+            "threshold_percent": 0.9
+          },
+          {
+            "spend_basis": "CURRENT_SPEND",
+            "threshold_percent": 1.0
+          }
+        ]
+      }
+    },
+    "google_cloud_run_v2_job": {
+      "worker": {
+        "deletion_protection": true,
+        "depends_on": [
+          "terraform_data.staging_authorization",
+          "google_project_service.apis"
+        ],
+        "launch_stage": "GA",
+        "location": "${var.region}",
+        "name": "ltc-g3a-media-worker",
+        "project": "${var.project_id}",
+        "template": [
+          {
+            "parallelism": 1,
+            "task_count": 1,
+            "template": [
+              {
+                "containers": [
+                  {
+                    "args": [],
+                    "command": [
+                      "python",
+                      "-m",
+                      "engine.cloud_worker"
+                    ],
+                    "env": [
+                      {
+                        "name": "G3_WORKER_DSN",
+                        "value_source": [
+                          {
+                            "secret_key_ref": [
+                              {
+                                "secret": "${var.database_secret_ids[\"worker\"]}",
+                                "version": "${var.database_secret_versions[\"worker\"]}"
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "name": "G3_SCRATCH_ROOT",
+                        "value": "/tmp/g3a-scratch"
+                      },
+                      {
+                        "name": "G3_OBJECT_STORE",
+                        "value": "gcs"
+                      },
+                      {
+                        "name": "G3_GCS_BUCKET",
+                        "value": "${google_storage_bucket.media.name}"
+                      }
+                    ],
+                    "image": "${var.worker_image}",
+                    "name": "worker",
+                    "resources": [
+                      {
+                        "limits": {
+                          "cpu": "1",
+                          "memory": "2Gi"
+                        }
+                      }
+                    ]
+                  }
+                ],
+                "execution_environment": "EXECUTION_ENVIRONMENT_GEN2",
+                "max_retries": 0,
+                "service_account": "${google_service_account.worker.email}",
+                "timeout": "300s"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "google_cloud_run_v2_job_iam_member": {
+      "orchestrator_execution_observer": {
+        "depends_on": [
+          "terraform_data.staging_authorization"
+        ],
+        "location": "${var.region}",
+        "member": "serviceAccount:${google_service_account.orchestrator.email}",
+        "name": "${google_cloud_run_v2_job.worker.name}",
+        "project": "${var.project_id}",
+        "role": "${google_project_iam_custom_role.execution_observer.name}"
+      },
+      "orchestrator_launch": {
+        "depends_on": [
+          "terraform_data.staging_authorization"
+        ],
+        "location": "${var.region}",
+        "member": "serviceAccount:${google_service_account.orchestrator.email}",
+        "name": "${google_cloud_run_v2_job.worker.name}",
+        "project": "${var.project_id}",
+        "role": "roles/run.jobsExecutorWithOverrides"
+      }
+    },
+    "google_cloud_run_v2_service": {
+      "api": {
+        "deletion_protection": true,
+        "depends_on": [
+          "terraform_data.staging_authorization",
+          "google_project_service.apis"
+        ],
+        "ingress": "INGRESS_TRAFFIC_INTERNAL_ONLY",
+        "invoker_iam_disabled": false,
+        "location": "${var.region}",
+        "name": "ltc-g3a-api",
+        "project": "${var.project_id}",
+        "template": [
+          {
+            "containers": [
+              {
+                "env": [
+                  {
+                    "name": "G3_AUTH_DSN",
+                    "value_source": [
+                      {
+                        "secret_key_ref": [
+                          {
+                            "secret": "${var.database_secret_ids[\"api_auth\"]}",
+                            "version": "${var.database_secret_versions[\"api_auth\"]}"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "name": "G3_API_DSN",
+                    "value_source": [
+                      {
+                        "secret_key_ref": [
+                          {
+                            "secret": "${var.database_secret_ids[\"api_user\"]}",
+                            "version": "${var.database_secret_versions[\"api_user\"]}"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "image": "${var.api_image}",
+                "ports": [
+                  {
+                    "container_port": 8080
+                  }
+                ],
+                "resources": [
+                  {
+                    "cpu_idle": true,
+                    "limits": {
+                      "cpu": "1",
+                      "memory": "512Mi"
+                    },
+                    "startup_cpu_boost": false
+                  }
+                ]
+              }
+            ],
+            "execution_environment": "EXECUTION_ENVIRONMENT_GEN2",
+            "max_instance_request_concurrency": 4,
+            "scaling": [
+              {
+                "max_instance_count": 2,
+                "min_instance_count": 0
+              }
+            ],
+            "service_account": "${google_service_account.api.email}",
+            "timeout": "15s"
+          }
+        ]
+      },
+      "orchestrator": {
+        "deletion_protection": true,
+        "depends_on": [
+          "terraform_data.staging_authorization",
+          "google_project_service.apis"
+        ],
+        "ingress": "INGRESS_TRAFFIC_INTERNAL_ONLY",
+        "invoker_iam_disabled": false,
+        "location": "${var.region}",
+        "name": "ltc-g3a-orchestrator",
+        "project": "${var.project_id}",
+        "template": [
+          {
+            "containers": [
+              {
+                "env": [
+                  {
+                    "name": "G3_ORCHESTRATOR_DSN",
+                    "value_source": [
+                      {
+                        "secret_key_ref": [
+                          {
+                            "secret": "${var.database_secret_ids[\"orchestrator\"]}",
+                            "version": "${var.database_secret_versions[\"orchestrator\"]}"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "name": "G3_WORKER_JOB_NAME",
+                    "value": "${google_cloud_run_v2_job.worker.id}"
+                  },
+                  {
+                    "name": "G3_MAX_INFLIGHT_LAUNCHES",
+                    "value": "2"
+                  }
+                ],
+                "image": "${var.orchestrator_image}",
+                "ports": [
+                  {
+                    "container_port": 8080
+                  }
+                ],
+                "resources": [
+                  {
+                    "cpu_idle": true,
+                    "limits": {
+                      "cpu": "1",
+                      "memory": "512Mi"
+                    },
+                    "startup_cpu_boost": false
+                  }
+                ]
+              }
+            ],
+            "execution_environment": "EXECUTION_ENVIRONMENT_GEN2",
+            "max_instance_request_concurrency": 4,
+            "scaling": [
+              {
+                "max_instance_count": 2,
+                "min_instance_count": 0
+              }
+            ],
+            "service_account": "${google_service_account.orchestrator.email}",
+            "timeout": "15s"
+          }
+        ]
+      }
+    },
+    "google_cloud_run_v2_service_iam_member": {
+      "task_caller_only": {
+        "depends_on": [
+          "terraform_data.staging_authorization"
+        ],
+        "location": "${var.region}",
+        "member": "serviceAccount:${google_service_account.task_caller.email}",
+        "name": "${google_cloud_run_v2_service.orchestrator.name}",
+        "project": "${var.project_id}",
+        "role": "roles/run.invoker"
+      }
+    },
+    "google_cloud_tasks_queue": {
+      "media": {
+        "depends_on": [
+          "terraform_data.staging_authorization",
+          "google_project_service.apis"
+        ],
+        "location": "${var.region}",
+        "name": "ltc-g3a-media",
+        "project": "${var.project_id}",
+        "rate_limits": [
+          {
+            "max_concurrent_dispatches": 2,
+            "max_dispatches_per_second": 2
+          }
+        ],
+        "retry_config": [
+          {
+            "max_attempts": 5,
+            "max_backoff": "60s",
+            "max_doublings": 4,
+            "max_retry_duration": "300s",
+            "min_backoff": "1s"
+          }
+        ],
+        "stackdriver_logging_config": [
+          {
+            "sampling_ratio": 1
+          }
+        ]
+      }
+    },
+    "google_cloud_tasks_queue_iam_member": {
+      "dispatcher": {
+        "depends_on": [
+          "terraform_data.staging_authorization"
+        ],
+        "location": "${var.region}",
+        "member": "serviceAccount:${google_service_account.dispatcher.email}",
+        "name": "${google_cloud_tasks_queue.media.name}",
+        "project": "${var.project_id}",
+        "role": "roles/cloudtasks.enqueuer"
+      }
+    },
+    "google_project_iam_custom_role": {
+      "api_media": {
+        "depends_on": [
+          "terraform_data.staging_authorization"
+        ],
+        "permissions": [
+          "storage.objects.create",
+          "storage.objects.get"
+        ],
+        "project": "${var.project_id}",
+        "role_id": "ltcG3aApiMedia",
+        "title": "G3A upload create and bounded read"
+      },
+      "execution_observer": {
+        "depends_on": [
+          "terraform_data.staging_authorization"
+        ],
+        "permissions": [
+          "run.executions.get"
+        ],
+        "project": "${var.project_id}",
+        "role_id": "ltcG3aExecutionObserver",
+        "title": "G3A exact job execution terminal proof"
+      },
+      "operation_observer": {
+        "depends_on": [
+          "terraform_data.staging_authorization"
+        ],
+        "description": "Project-scoped read-only operations.get required because regional operation names have no Job parent. Dedicated sandbox only; effective IAM NOT_VALIDATED.",
+        "permissions": [
+          "run.operations.get"
+        ],
+        "project": "${var.project_id}",
+        "role_id": "ltcG3aOperationObserver",
+        "title": "G3A regional operation metadata observation"
+      },
+      "worker_media": {
+        "depends_on": [
+          "terraform_data.staging_authorization"
+        ],
+        "permissions": [
+          "storage.objects.create",
+          "storage.objects.get",
+          "storage.objects.list",
+          "storage.objects.delete"
+        ],
+        "project": "${var.project_id}",
+        "role_id": "ltcG3aWorkerMedia",
+        "title": "G3A immutable worker objects and reconciliation"
+      }
+    },
+    "google_project_iam_member": {
+      "orchestrator_operation_observer": {
+        "depends_on": [
+          "terraform_data.staging_authorization"
+        ],
+        "member": "serviceAccount:${google_service_account.orchestrator.email}",
+        "project": "${var.project_id}",
+        "role": "${google_project_iam_custom_role.operation_observer.name}"
+      }
+    },
+    "google_project_service": {
+      "apis": {
+        "depends_on": [
+          "terraform_data.staging_authorization"
+        ],
+        "disable_on_destroy": false,
+        "for_each": "${toset([\"run.googleapis.com\", \"cloudtasks.googleapis.com\", \"storage.googleapis.com\", \"secretmanager.googleapis.com\", \"iam.googleapis.com\", \"iamcredentials.googleapis.com\", \"billingbudgets.googleapis.com\", \"logging.googleapis.com\", \"monitoring.googleapis.com\"])}",
+        "project": "${var.project_id}",
+        "service": "${each.value}"
+      }
+    },
+    "google_secret_manager_secret_iam_member": {
+      "api_auth": {
+        "depends_on": [
+          "terraform_data.staging_authorization"
+        ],
+        "member": "serviceAccount:${google_service_account.api.email}",
+        "role": "roles/secretmanager.secretAccessor",
+        "secret_id": "${var.database_secret_ids[\"api_auth\"]}"
+      },
+      "api_user": {
+        "depends_on": [
+          "terraform_data.staging_authorization"
+        ],
+        "member": "serviceAccount:${google_service_account.api.email}",
+        "role": "roles/secretmanager.secretAccessor",
+        "secret_id": "${var.database_secret_ids[\"api_user\"]}"
+      },
+      "dispatcher": {
+        "depends_on": [
+          "terraform_data.staging_authorization"
+        ],
+        "member": "serviceAccount:${google_service_account.dispatcher.email}",
+        "role": "roles/secretmanager.secretAccessor",
+        "secret_id": "${var.database_secret_ids[\"dispatcher\"]}"
+      },
+      "orchestrator": {
+        "depends_on": [
+          "terraform_data.staging_authorization"
+        ],
+        "member": "serviceAccount:${google_service_account.orchestrator.email}",
+        "role": "roles/secretmanager.secretAccessor",
+        "secret_id": "${var.database_secret_ids[\"orchestrator\"]}"
+      },
+      "worker": {
+        "depends_on": [
+          "terraform_data.staging_authorization"
+        ],
+        "member": "serviceAccount:${google_service_account.worker.email}",
+        "role": "roles/secretmanager.secretAccessor",
+        "secret_id": "${var.database_secret_ids[\"worker\"]}"
+      }
+    },
+    "google_service_account": {
+      "api": {
+        "account_id": "ltc-g3a-api",
+        "depends_on": [
+          "terraform_data.staging_authorization",
+          "google_project_service.apis"
+        ],
+        "display_name": "G3A api - dedicated least privilege",
+        "project": "${var.project_id}"
+      },
+      "dispatcher": {
+        "account_id": "ltc-g3a-dispatcher",
+        "depends_on": [
+          "terraform_data.staging_authorization",
+          "google_project_service.apis"
+        ],
+        "display_name": "G3A dispatcher - dedicated least privilege",
+        "project": "${var.project_id}"
+      },
+      "orchestrator": {
+        "account_id": "ltc-g3a-orchestrator",
+        "depends_on": [
+          "terraform_data.staging_authorization",
+          "google_project_service.apis"
+        ],
+        "display_name": "G3A orchestrator - dedicated least privilege",
+        "project": "${var.project_id}"
+      },
+      "task_caller": {
+        "account_id": "ltc-g3a-task-caller",
+        "depends_on": [
+          "terraform_data.staging_authorization",
+          "google_project_service.apis"
+        ],
+        "display_name": "G3A task_caller - dedicated least privilege",
+        "project": "${var.project_id}"
+      },
+      "worker": {
+        "account_id": "ltc-g3a-worker",
+        "depends_on": [
+          "terraform_data.staging_authorization",
+          "google_project_service.apis"
+        ],
+        "display_name": "G3A worker - dedicated least privilege",
+        "project": "${var.project_id}"
+      }
+    },
+    "google_service_account_iam_member": {
+      "dispatcher_can_attach_task_caller": {
+        "depends_on": [
+          "terraform_data.staging_authorization"
+        ],
+        "member": "serviceAccount:${google_service_account.dispatcher.email}",
+        "role": "roles/iam.serviceAccountUser",
+        "service_account_id": "${google_service_account.task_caller.name}"
+      },
+      "tasks_agent_can_attach_task_caller": {
+        "depends_on": [
+          "terraform_data.staging_authorization",
+          "google_cloud_tasks_queue.media"
+        ],
+        "member": "serviceAccount:service-${var.project_number}@gcp-sa-cloudtasks.iam.gserviceaccount.com",
+        "role": "roles/iam.serviceAccountUser",
+        "service_account_id": "${google_service_account.task_caller.name}"
+      }
+    },
+    "google_storage_bucket": {
+      "media": {
+        "depends_on": [
+          "terraform_data.staging_authorization",
+          "google_project_service.apis"
+        ],
+        "force_destroy": false,
+        "labels": {
+          "data": "synthetic-only",
+          "gate": "g3b-proposal",
+          "product": "ltc-content-engine"
+        },
+        "lifecycle": {
+          "prevent_destroy": true
+        },
+        "lifecycle_rule": [
+          {
+            "action": [
+              {
+                "type": "AbortIncompleteMultipartUpload"
+              }
+            ],
+            "condition": [
+              {
+                "age": 1
+              }
+            ]
+          }
+        ],
+        "location": "${var.region}",
+        "name": "${var.bucket_name}",
+        "project": "${var.project_id}",
+        "public_access_prevention": "enforced",
+        "soft_delete_policy": [
+          {
+            "retention_duration_seconds": 604800
+          }
+        ],
+        "storage_class": "STANDARD",
+        "uniform_bucket_level_access": true,
+        "versioning": [
+          {
+            "enabled": true
+          }
+        ]
+      }
+    },
+    "google_storage_bucket_iam_member": {
+      "api": {
+        "bucket": "${google_storage_bucket.media.name}",
+        "depends_on": [
+          "terraform_data.staging_authorization"
+        ],
+        "member": "serviceAccount:${google_service_account.api.email}",
+        "role": "${google_project_iam_custom_role.api_media.name}"
+      },
+      "worker": {
+        "bucket": "${google_storage_bucket.media.name}",
+        "depends_on": [
+          "terraform_data.staging_authorization"
+        ],
+        "member": "serviceAccount:${google_service_account.worker.email}",
+        "role": "${google_project_iam_custom_role.worker_media.name}"
+      }
+    },
+    "terraform_data": {
+      "staging_authorization": {
+        "input": "G3A_REVIEW_ONLY_NO_PROVISION",
+        "lifecycle": {
+          "precondition": [
+            {
+              "condition": "${var.staging_authorized}",
+              "error_message": "BLOCKED: G3A authorizes review/local tests only; separate explicit human G3B authorization required."
+            },
+            {
+              "condition": "${var.cloud_runtime_images_approved}",
+              "error_message": "BLOCKED: reviewed/licensed executable cloud runtime images and HTTP adapters are not yet validated."
+            }
+          ]
+        }
+      }
+    }
+  }
+}

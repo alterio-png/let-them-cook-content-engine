@@ -1,0 +1,45 @@
+G3A REVIEW-ONLY IaC local evidence
+2026-11-07T12:51:01.835617+00:00
+Terraform/OpenTofu: absent; provider schema/fmt/cloud NOT_VALIDATED
+No plan/apply/build/deploy/cloud calls executed.
+$ python infra/g3a/audit_policy.py
+PASS: offline JSON security policy only; Terraform/provider/cloud NOT_VALIDATED
+exit_code=0
+$ python -m unittest discover -s cloud_tests/g3a -p test_iac.py -v
+test_api_cannot_gain_object_deletion_or_listing (test_iac.CloudInfrastructurePolicyTests.test_api_cannot_gain_object_deletion_or_listing) ... ok
+test_bucket_binding_cannot_be_elevated_to_storage_admin (test_iac.CloudInfrastructurePolicyTests.test_bucket_binding_cannot_be_elevated_to_storage_admin) ... ok
+test_budget_alerts_must_keep_all_three_thresholds (test_iac.CloudInfrastructurePolicyTests.test_budget_alerts_must_keep_all_three_thresholds) ... ok
+test_cloud_http_cannot_disable_iam_or_expose_public_ingress (test_iac.CloudInfrastructurePolicyTests.test_cloud_http_cannot_disable_iam_or_expose_public_ingress) ... ok
+test_container_proposal_is_nonroot_and_does_not_download_or_ship_binary (test_iac.CloudInfrastructurePolicyTests.test_container_proposal_is_nonroot_and_does_not_download_or_ship_binary) ... ok
+test_destructive_bucket_teardown_is_rejected (test_iac.CloudInfrastructurePolicyTests.test_destructive_bucket_teardown_is_rejected) ... ok
+test_expiry_must_not_blindly_delete_authoritative_objects (test_iac.CloudInfrastructurePolicyTests.test_expiry_must_not_blindly_delete_authoritative_objects) ... ok
+test_long_lived_cloud_keys_are_rejected (test_iac.CloudInfrastructurePolicyTests.test_long_lived_cloud_keys_are_rejected) ... ok
+test_native_worker_resource_ceiling_cannot_silently_increase (test_iac.CloudInfrastructurePolicyTests.test_native_worker_resource_ceiling_cannot_silently_increase) ... ok
+test_only_orchestrator_identity_can_launch_worker (test_iac.CloudInfrastructurePolicyTests.test_only_orchestrator_identity_can_launch_worker) ... ok
+test_plaintext_dsn_in_terraform_is_rejected (test_iac.CloudInfrastructurePolicyTests.test_plaintext_dsn_in_terraform_is_rejected) ... ok
+test_platform_retries_cannot_bypass_postgresql_retry_authority (test_iac.CloudInfrastructurePolicyTests.test_platform_retries_cannot_bypass_postgresql_retry_authority) ... ok
+test_project_observation_cannot_gain_list_or_mutation_permissions (test_iac.CloudInfrastructurePolicyTests.test_project_observation_cannot_gain_list_or_mutation_permissions) ... ok
+test_provider_credentials_and_remote_state_are_rejected (test_iac.CloudInfrastructurePolicyTests.test_provider_credentials_and_remote_state_are_rejected) ... ok
+test_provider_fanout_cannot_multiply_one_admitted_launch (test_iac.CloudInfrastructurePolicyTests.test_provider_fanout_cannot_multiply_one_admitted_launch) ... ok
+test_provider_pin_cannot_float_without_review (test_iac.CloudInfrastructurePolicyTests.test_provider_pin_cannot_float_without_review) ... ok
+test_public_invocation_and_broad_project_iam_are_rejected (test_iac.CloudInfrastructurePolicyTests.test_public_invocation_and_broad_project_iam_are_rejected) ... ok
+test_public_media_is_rejected (test_iac.CloudInfrastructurePolicyTests.test_public_media_is_rejected) ... ok
+test_queue_cannot_launch_unbounded_signals (test_iac.CloudInfrastructurePolicyTests.test_queue_cannot_launch_unbounded_signals) ... ok
+test_queue_provider_retries_remain_bounded (test_iac.CloudInfrastructurePolicyTests.test_queue_provider_retries_remain_bounded) ... ok
+test_review_guard_cannot_be_preapproved (test_iac.CloudInfrastructurePolicyTests.test_review_guard_cannot_be_preapproved) ... ok
+test_reviewable_topology_satisfies_local_security_policy (test_iac.CloudInfrastructurePolicyTests.test_reviewable_topology_satisfies_local_security_policy) ... ok
+test_runtime_image_cannot_bypass_digest_validation_variable (test_iac.CloudInfrastructurePolicyTests.test_runtime_image_cannot_bypass_digest_validation_variable) ... ok
+test_runtime_tags_and_default_images_are_rejected (test_iac.CloudInfrastructurePolicyTests.test_runtime_tags_and_default_images_are_rejected) ... ok
+test_service_instances_must_start_at_zero_and_remain_bounded (test_iac.CloudInfrastructurePolicyTests.test_service_instances_must_start_at_zero_and_remain_bounded) ... ok
+test_side_resource_cannot_bypass_authorization (test_iac.CloudInfrastructurePolicyTests.test_side_resource_cannot_bypass_authorization) ... ok
+test_token_minting_cannot_be_granted_to_api_or_worker (test_iac.CloudInfrastructurePolicyTests.test_token_minting_cannot_be_granted_to_api_or_worker) ... ok
+test_unreviewed_hcl_sidecar_cannot_bypass_json_policy (test_iac.CloudInfrastructurePolicyTests.test_unreviewed_hcl_sidecar_cannot_bypass_json_policy) ... ok
+test_unreviewed_runtime_artifact_gate_cannot_be_removed (test_iac.CloudInfrastructurePolicyTests.test_unreviewed_runtime_artifact_gate_cannot_be_removed) ... ok
+test_worker_cannot_receive_arbitrary_command_or_environment (test_iac.CloudInfrastructurePolicyTests.test_worker_cannot_receive_arbitrary_command_or_environment) ... ok
+test_worker_cannot_update_existing_objects (test_iac.CloudInfrastructurePolicyTests.test_worker_cannot_update_existing_objects) ... ok
+
+----------------------------------------------------------------------
+Ran 31 tests in 0.022s
+
+OK
+exit_code=0

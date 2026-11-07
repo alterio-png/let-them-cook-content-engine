@@ -1,0 +1,129 @@
+{
+  "variable": {
+    "api_image": {
+      "description": "Future reviewed image digest. G3A does not build/push/distribute this artifact.",
+      "type": "string",
+      "validation": [
+        {
+          "condition": "can(regex(\"^[a-z0-9.-]+/[A-Za-z0-9_./-]+@sha256:[a-f0-9]{64}$\", var.api_image))",
+          "error_message": "Immutable registry image sha256 digest required; tags/latest forbidden."
+        }
+      ]
+    },
+    "billing_account_id": {
+      "description": "Existing approved sandbox billing account ID; no account is created.",
+      "type": "string",
+      "validation": [
+        {
+          "condition": "can(regex(\"^[A-F0-9]{6}-[A-F0-9]{6}-[A-F0-9]{6}$\", var.billing_account_id))",
+          "error_message": "Existing billing account ID required."
+        }
+      ]
+    },
+    "bucket_name": {
+      "description": "Globally unique PRIVATE G3B media bucket name. No customer data.",
+      "type": "string"
+    },
+    "cloud_runtime_images_approved": {
+      "default": false,
+      "description": "Future independent security/license approval and executable cloud HTTP adapter evidence. G3A leaves false.",
+      "type": "bool"
+    },
+    "database_secret_ids": {
+      "description": "Existing Secret Manager resource IDs for api_auth, api_user, dispatcher, orchestrator, worker; distinct least-privilege DB logins. Secret payloads/versions are not provisioned.",
+      "type": "map(string)",
+      "validation": [
+        {
+          "condition": "alltrue([for k in [\"api_auth\", \"api_user\", \"dispatcher\", \"orchestrator\", \"worker\"] : can(regex(\"^projects/[^/]+/secrets/[^/]+$\", var.database_secret_ids[k]))])",
+          "error_message": "Supply existing Secret Manager resource IDs for all five DB roles."
+        },
+        {
+          "condition": "length(distinct([for k in [\"api_auth\", \"api_user\", \"dispatcher\", \"orchestrator\", \"worker\"] : var.database_secret_ids[k]])) == 5",
+          "error_message": "Each DB role must use a distinct existing secret reference."
+        }
+      ]
+    },
+    "database_secret_versions": {
+      "description": "Existing numeric secret versions for each DB role. No latest aliases; no values in Terraform.",
+      "type": "map(string)",
+      "validation": [
+        {
+          "condition": "alltrue([for k in [\"api_auth\", \"api_user\", \"dispatcher\", \"orchestrator\", \"worker\"] : can(regex(\"^[1-9][0-9]*$\", var.database_secret_versions[k]))])",
+          "error_message": "Pin numeric secret versions for all five DB roles."
+        }
+      ]
+    },
+    "monthly_budget_usd": {
+      "default": 10,
+      "description": "Alert threshold only, NOT a hard spending limit. Separate human-approved G3B budget required.",
+      "type": "number",
+      "validation": [
+        {
+          "condition": "var.monthly_budget_usd > 0 && var.monthly_budget_usd <= 100 && floor(var.monthly_budget_usd) == var.monthly_budget_usd",
+          "error_message": "G3B review budget must be an integer from1 to100 USD."
+        }
+      ]
+    },
+    "orchestrator_image": {
+      "description": "Future reviewed image digest. G3A does not build/push/distribute this artifact.",
+      "type": "string",
+      "validation": [
+        {
+          "condition": "can(regex(\"^[a-z0-9.-]+/[A-Za-z0-9_./-]+@sha256:[a-f0-9]{64}$\", var.orchestrator_image))",
+          "error_message": "Immutable registry image sha256 digest required; tags/latest forbidden."
+        }
+      ]
+    },
+    "output_retention_days": {
+      "default": 30,
+      "description": "Retention INTENT only. No lifecycle DELETE for authoritative output/input. Requires DB-aware expiry/tombstone implementation in G3B.",
+      "type": "number",
+      "validation": [
+        {
+          "condition": "var.output_retention_days >= 1 && var.output_retention_days <= 365",
+          "error_message": "Retention intent must be 1-365 days."
+        }
+      ]
+    },
+    "project_id": {
+      "description": "Existing dedicated G3B sandbox project; never a production project.",
+      "type": "string",
+      "validation": [
+        {
+          "condition": "can(regex(\"^[a-z][a-z0-9-]{4,28}[a-z0-9]$\", var.project_id))",
+          "error_message": "Provide an existing sandbox project ID."
+        }
+      ]
+    },
+    "project_number": {
+      "description": "Existing project numeric identity; supplied from approved inventory, no remote data lookup.",
+      "type": "string",
+      "validation": [
+        {
+          "condition": "can(regex(\"^[0-9]+$\", var.project_number))",
+          "error_message": "Project number must be numeric."
+        }
+      ]
+    },
+    "region": {
+      "default": "us-central1",
+      "description": "One region for queue, job, services, bucket; pricing/region remains a G3B decision.",
+      "type": "string"
+    },
+    "staging_authorized": {
+      "default": false,
+      "description": "Future G3B human authorization only. G3A MUST leave false; no provision/apply/plan authorized.",
+      "type": "bool"
+    },
+    "worker_image": {
+      "description": "Future reviewed image digest. G3A does not build/push/distribute this artifact.",
+      "type": "string",
+      "validation": [
+        {
+          "condition": "can(regex(\"^[a-z0-9.-]+/[A-Za-z0-9_./-]+@sha256:[a-f0-9]{64}$\", var.worker_image))",
+          "error_message": "Immutable registry image sha256 digest required; tags/latest forbidden."
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,78 @@
+{
+  "checked_at_utc": "2026-11-07",
+  "official_docs_read": [
+    {
+      "bytes": 265009,
+      "excerpts": [
+        "ice or instance. Cloud Run must be configured as a restricted service. VPC networks that are in the same project as your Cloud Run service or instance. Shared VPC ingress: the Shared VPC network that your service revision or Cloud Run instance is configured to send traffic to. For information about when Shared VPC traffic is recognized as \"internal\", see Spe",
+        "and if they're using the default run.app URL and not a custom URL or custom domain: Cloud Scheduler Cloud Tasks Dialogflow CX Eventarc Gemini Enterprise Pub/Sub subscriptions Synthetic monitors (including uptime checks) Workflows BigQuery Requests from these sources stay within the Google network, even if they access your service or instance at the run.app U"
+      ],
+      "title": "Restrict network endpoint ingress for Cloud Run services and instances \u00a0|\u00a0 Google Cloud Documentation",
+      "url": "https://cloud.google.com/run/docs/securing/ingress"
+    },
+    {
+      "bytes": 261666,
+      "excerpts": [
+        "e runtimes and base images Configure automatic base image updates Build environment variables Build service account Build worker pools Invoke and trigger services Invoke with HTTPS requests Host a webhook target Stream with WebSockets Overview Build a WebSocket Chat service tutorial Invoke asynchronously Invoke services on a schedule Create a workflow Invoke"
+      ],
+      "title": "Execute jobs \u00a0|\u00a0 Cloud Run \u00a0|\u00a0 Google Cloud Documentation",
+      "url": "https://cloud.google.com/run/docs/execute/jobs"
+    },
+    {
+      "bytes": 401674,
+      "excerpts": [
+        "asks to create authentication tokens using the service account you just created, you must grant the Service Account User ( roles/iam.serviceAccountUser ) role to the Cloud Tasks primary service agent on the service account you just created. In the Google Cloud console, go to the Service accounts page. Go to Service accounts In the row for the service account"
+      ],
+      "title": "Create HTTP target tasks programmatically \u00a0|\u00a0 Cloud Tasks \u00a0|\u00a0 Google Cloud Documentation",
+      "url": "https://cloud.google.com/tasks/docs/creating-http-target-tasks"
+    },
+    {
+      "bytes": 217975,
+      "excerpts": [
+        "owing table lists preconditions supported by the JSON API and XML API: JSON API XML API Description ifGenerationMatch query parameter x-goog-if-generation-match header Request proceeds if the generation of the target resource matches the value used in the precondition. If the values don't match, the request fails with a 412 Precondition Failed response. ifMe",
+        " the JSON API and XML API: JSON API XML API Description ifGenerationMatch query parameter x-goog-if-generation-match header Request proceeds if the generation of the target resource matches the value used in the precondition. If the values don't match, the request fails with a 412 Precondition Failed response. ifMetagenerationMatch query parameter x-goog-if-"
+      ],
+      "title": "Request preconditions \u00a0|\u00a0 Cloud Storage \u00a0|\u00a0 Google Cloud Documentation",
+      "url": "https://cloud.google.com/storage/docs/request-preconditions"
+    },
+    {
+      "bytes": 219958,
+      "excerpts": [
+        ", be judicious in sharing the session URI and only share it over HTTPS. A session URI expires after one week but can be cancelled prior to expiring. If you make a request using a session URI that is no longer valid, you receive one of the following errors: A 410 Gone status code if it's been less than a week since the upload was initiated. A 404 Not Found st"
+      ],
+      "title": "Resumable uploads \u00a0|\u00a0 Cloud Storage \u00a0|\u00a0 Google Cloud Documentation",
+      "url": "https://cloud.google.com/storage/docs/resumable-uploads"
+    },
+    {
+      "bytes": 228223,
+      "excerpts": [
+        "cle actions A lifecycle rule specifies exactly one of the following actions: Delete SetStorageClass AbortIncompleteMultipartUpload Delete The Delete action deletes an object when the object meets all conditions specified in the lifecycle rule. By default, when you delete a live object, it becomes soft-deleted , and Cloud Storage retains it for a duration of ",
+        "ity and durability Manage turbo replication Use cross-bucket replication Recover deleted data About soft delete Set and manage soft delete policies Restore soft-deleted objects Restore soft-deleted buckets Set a default soft delete retention duration Use soft delete recommendations Pause permanent (hard) deletions Disable soft delete Object Versioning About "
+      ],
+      "title": "Object Lifecycle Management \u00a0|\u00a0 Cloud Storage \u00a0|\u00a0 Google Cloud Documentation",
+      "url": "https://cloud.google.com/storage/docs/lifecycle"
+    },
+    {
+      "bytes": 250465,
+      "excerpts": [],
+      "title": "Create, edit, or delete budgets and budget alerts \u00a0|\u00a0 Cloud Billing \u00a0|\u00a0 Google Cloud Documentation",
+      "url": "https://cloud.google.com/billing/docs/how-to/budgets"
+    }
+  ],
+  "official_reference_version": "https://github.com/hashicorp/terraform-provider-google/tree/v8.10.0/website/docs/r",
+  "provider": {
+    "published_at": "2026-11-03T19:22:30Z",
+    "registry": "https://registry.terraform.io/v1/providers/hashicorp/google",
+    "source": "hashicorp/google",
+    "version": "8.10.0"
+  },
+  "provider_license": "MPL-2.0; provider not installed or redistributed",
+  "validation": {
+    "cloud_api": "NOT_VALIDATED: no credentials or resources used",
+    "json_policy": "RUN_BY_TESTS",
+    "terraform_apply": "NOT_EXECUTED: forbidden in G3A",
+    "terraform_fmt": "NOT_VALIDATED: terraform not installed",
+    "terraform_plan": "NOT_EXECUTED: forbidden in G3A",
+    "terraform_validate": "NOT_VALIDATED: terraform/provider not installed"
+  }
+}
