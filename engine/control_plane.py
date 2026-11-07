@@ -76,9 +76,16 @@ class ControlPlane:
             raise ValueError("scan_limit must be an integer in [1, 1000]")
         with self.transaction() as connection:
             candidates = connection.execute(
-                """SELECT id FROM public.render_jobs WHERE available_at <= clock_timestamp()
-                   AND (state='queued' OR (state='running' AND lease_expires_at <= clock_timestamp()))
-                   ORDER BY available_at,created_at,id LIMIT %s""", (scan_limit,)
+                """SELECT j.id FROM public.render_jobs j
+                   JOIN public.org_quotas q ON q.organization_id=j.organization_id
+                   WHERE j.available_at <= clock_timestamp()
+                   AND (j.state='queued' OR
+                        (j.state='running' AND j.lease_expires_at <= clock_timestamp()))
+                   AND (SELECT count(*) FROM public.render_jobs active
+                        WHERE active.organization_id=j.organization_id
+                        AND active.state='running'
+                        AND active.lease_expires_at > clock_timestamp()) < q.max_active_jobs
+                   ORDER BY j.available_at,j.created_at,j.id LIMIT %s""", (scan_limit,)
             ).fetchall()
         for candidate in candidates:
             claimed = self.claim_job(candidate["id"], lease_seconds)
@@ -86,21 +93,30 @@ class ControlPlane:
                 return claimed
         return None
 
+    @staticmethod
+    def _lock_organization(connection, job_id):
+        identity = connection.execute(
+            "SELECT organization_id FROM public.render_jobs WHERE id=%s", (job_id,)
+        ).fetchone()
+        if identity is None:
+            return False
+        # Claim and renewal take this lock before touching the job row. A renewal
+        # must commit before another claim counts live leases, including when the
+        # old visible lease expires while the renewal transaction is uncommitted.
+        connection.execute(
+            "SELECT pg_catalog.pg_advisory_xact_lock(pg_catalog.hashtextextended(%s, 1))",
+            (str(identity["organization_id"]),),
+        )
+        return True
+
     def claim_job(self, job_id, lease_seconds=60):
         seconds = _lease_seconds(lease_seconds)
         with self.transaction() as connection:
-            identity = connection.execute(
-                "SELECT organization_id FROM public.render_jobs WHERE id=%s", (job_id,)
-            ).fetchone()
-            if identity is None:
+            if not self._lock_organization(connection, job_id):
                 return None
             # All claimers for an organization take this lock before any job lock.
             # Quota rows remain read-only to the worker principal. Hash collisions
             # only serialize unrelated orgs; they cannot weaken the cap.
-            connection.execute(
-                "SELECT pg_catalog.pg_advisory_xact_lock(pg_catalog.hashtextextended(%s, 1))",
-                (str(identity["organization_id"]),),
-            )
             row = connection.execute(
                 """SELECT *, lease_expires_at > clock_timestamp() AS lease_live,
                    available_at <= clock_timestamp() AS ready
@@ -167,6 +183,8 @@ class ControlPlane:
     def renew_lease(self, job_id, token, fence, lease_seconds=60):
         seconds = _lease_seconds(lease_seconds)
         with self.transaction() as connection:
+            if not self._lock_organization(connection, job_id):
+                raise StaleLease("job does not exist")
             row = self._owned(connection, job_id, token, fence)
             if row["state"] != "running" or not row["lease_live"]:
                 raise StaleLease("cannot renew an expired or finished attempt")
