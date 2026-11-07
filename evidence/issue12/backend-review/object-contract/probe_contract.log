@@ -1,0 +1,11 @@
+test_committed_generation_cannot_be_dropped_or_changed (__main__.Probe.test_committed_generation_cannot_be_dropped_or_changed) ... ok
+test_conflicting_concurrent_creates_preserve_one_complete_object (__main__.Probe.test_conflicting_concurrent_creates_preserve_one_complete_object) ... ok
+test_missing_or_changed_provider_metadata_is_rejected (__main__.Probe.test_missing_or_changed_provider_metadata_is_rejected) ... ok
+test_original_path_replacement_after_freeze_does_not_change_publication (__main__.Probe.test_original_path_replacement_after_freeze_does_not_change_publication) ... ok
+test_self_consistent_wrong_download_cannot_bypass_expected_hash (__main__.Probe.test_self_consistent_wrong_download_cannot_bypass_expected_hash) ... ok
+test_wrong_original_body_and_oversize_rejected_before_publication (__main__.Probe.test_wrong_original_body_and_oversize_rejected_before_publication) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.069s
+
+OK

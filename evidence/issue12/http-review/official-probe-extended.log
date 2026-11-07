@@ -1,0 +1,26 @@
+Bootstrapped official Auth owner/roles only; no auth table fixture
+Applied unchanged sql/001_schema.sql
+Applied unchanged sql/002_g1_control_plane.sql
+Applied unchanged sql/003_media_execution.sql
+Applied new reviewed G3A migration supabase/migrations/20261107123845_g3a_cloud_contracts.sql
+Installed narrow session grant and non-bypass API login
+Applied shared authority after official Auth and unchanged engine migrations
+Official Supabase Auth component v2.197.0 + PostgreSQL 16.15, isolated local integration
+{"component": "official GoTrue 2.197.0/PostgreSQL 16.15", "diagnostic_pid": 190479, "event": "provenance", "replica_pids": [190546, 190571], "source_head": "e40357d08fa3c0b258b63c0d3a811cbab2b23206"}
+{"cross_org_statuses": [403, 403], "event": "real_auth_cross_org_and_fabricated_headers", "fabricated_header_statuses": [401, 401]}
+{"event": "real_auth_role_downgrade", "existing_grant_use_statuses": [403, 403], "reserve_statuses": [403, 403]}
+{"event": "real_auth_expired_retained_session", "session_checker_live": false, "statuses": [401, 401]}
+{"database_state": ["uploaded", 1, 6, 2], "event": "logout_committed_during_storage_before_receipt", "fresh_request_statuses": [401, 401], "response_state": "uploaded_pending_validation", "response_status": 201, "session_live_after_logout": false}
+{"event": "same_org_other_real_owner_denied", "grant_use_statuses": [400, 400], "receipt_statuses": [400, 400]}
+{"database_state": ["uploaded", 1, 6, 2], "event": "membership_revoked_during_existing_receipt_verification", "fresh_request_statuses": [403, 403], "method": "GET", "response_state": "uploaded_pending_validation", "response_status": 200}
+{"database_state": ["uploaded", 1, 6, 2], "event": "membership_revoked_during_existing_receipt_verification", "fresh_request_statuses": [403, 403], "method": "PUT", "response_state": "uploaded_pending_validation", "response_status": 201}
+{"database_state": ["publishing", 0, 9, 3], "event": "membership_revoked_during_new_publication", "response": {"error": "organization_access_denied"}, "response_status": 403}
+{"body": {"error": "invalid_body_framing"}, "case": "duplicate_content_length", "close": true, "event": "transport", "no_store": true, "status": 400}
+{"body": {"error": "invalid_body_framing"}, "case": "transfer_encoding", "close": true, "event": "transport", "no_store": true, "status": 400}
+{"body": {"error": "body_too_large"}, "case": "body_cap", "close": true, "event": "transport", "no_store": true, "status": 413}
+{"body": {"error": "authentication_required"}, "case": "duplicate_authorization", "close": true, "event": "transport", "no_store": true, "status": 401}
+{"event": "binding_rejected", "host": "0.0.0.0"}
+{"event": "binding_rejected", "host": "::1"}
+{"event": "binding_rejected", "host": "10.0.0.1"}
+{"case": "absolute_receive_deadline", "elapsed_seconds": 1.002, "event": "transport", "status": 408}
+{"event": "completed", "sqlite_files": 0}

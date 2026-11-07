@@ -1,0 +1,333 @@
+{
+  "version": "PostgreSQL 16.15 (Debian 16.15-1.pgdg12+2) on x86_64-pc-linux-gnu, compiled by gcc (Debian 12.2.0-14+deb12u1) 12.2.0, 64-bit",
+  "functions": [
+    [
+      "_claim_upload",
+      "p_org uuid, p_id uuid, p_lease integer, p_reconcile boolean, p_internal boolean",
+      "postgres",
+      false,
+      [
+        "search_path=\"\""
+      ],
+      "{postgres=X/postgres}"
+    ],
+    [
+      "_complete_upload",
+      "p_org uuid, p_id uuid, p_token uuid, p_fence bigint, p_key text, p_size bigint, p_sha text, p_generation text, p_internal boolean, p_operation_deadline timestamp with time zone",
+      "postgres",
+      false,
+      [
+        "search_path=\"\""
+      ],
+      "{postgres=X/postgres}"
+    ],
+    [
+      "_expire_unused",
+      "p_org uuid, p_limit integer",
+      "postgres",
+      false,
+      [
+        "search_path=\"\""
+      ],
+      "{postgres=X/postgres}"
+    ],
+    [
+      "_heartbeat_upload",
+      "p_org uuid, p_id uuid, p_token uuid, p_fence bigint, p_lease integer, p_internal boolean, p_operation_deadline timestamp with time zone",
+      "postgres",
+      false,
+      [
+        "search_path=\"\""
+      ],
+      "{postgres=X/postgres}"
+    ],
+    [
+      "_lock_org",
+      "p_org uuid, p_write boolean, p_internal boolean",
+      "postgres",
+      false,
+      [
+        "search_path=\"\""
+      ],
+      "{postgres=X/postgres}"
+    ],
+    [
+      "_mark_upload_uncertain",
+      "p_org uuid, p_id uuid, p_token uuid, p_fence bigint, p_error text, p_internal boolean",
+      "postgres",
+      false,
+      [
+        "search_path=\"\""
+      ],
+      "{postgres=X/postgres}"
+    ],
+    [
+      "_receipt_json",
+      "p_id uuid",
+      "postgres",
+      false,
+      [
+        "search_path=\"\""
+      ],
+      "{postgres=X/postgres}"
+    ],
+    [
+      "_reservation_json",
+      "p_id uuid",
+      "postgres",
+      false,
+      [
+        "search_path=\"\""
+      ],
+      "{postgres=X/postgres}"
+    ],
+    [
+      "claim_upload",
+      "p_org uuid, p_id uuid, p_lease integer",
+      "postgres",
+      true,
+      [
+        "search_path=\"\""
+      ],
+      "{postgres=X/postgres,authenticated=X/postgres}"
+    ],
+    [
+      "complete_upload",
+      "p_org uuid, p_id uuid, p_token uuid, p_fence bigint, p_key text, p_size bigint, p_sha text, p_generation text",
+      "postgres",
+      true,
+      [
+        "search_path=\"\""
+      ],
+      "{postgres=X/postgres,authenticated=X/postgres}"
+    ],
+    [
+      "complete_upload_before",
+      "p_org uuid, p_id uuid, p_token uuid, p_fence bigint, p_key text, p_size bigint, p_sha text, p_generation text, p_operation_deadline timestamp with time zone",
+      "postgres",
+      true,
+      [
+        "search_path=\"\""
+      ],
+      "{postgres=X/postgres,authenticated=X/postgres}"
+    ],
+    [
+      "expire_unused_uploads",
+      "p_org uuid, p_limit integer",
+      "postgres",
+      true,
+      [
+        "search_path=\"\""
+      ],
+      "{postgres=X/postgres,authenticated=X/postgres}"
+    ],
+    [
+      "get_upload",
+      "p_org uuid, p_id uuid",
+      "postgres",
+      true,
+      [
+        "search_path=\"\""
+      ],
+      "{postgres=X/postgres,authenticated=X/postgres}"
+    ],
+    [
+      "get_upload_receipt",
+      "p_org uuid, p_id uuid",
+      "postgres",
+      true,
+      [
+        "search_path=\"\""
+      ],
+      "{postgres=X/postgres,authenticated=X/postgres}"
+    ],
+    [
+      "guard_upload_reservation",
+      "",
+      "postgres",
+      false,
+      [
+        "search_path=\"\""
+      ],
+      "{postgres=X/postgres}"
+    ],
+    [
+      "heartbeat_upload",
+      "p_org uuid, p_id uuid, p_token uuid, p_fence bigint, p_lease integer",
+      "postgres",
+      true,
+      [
+        "search_path=\"\""
+      ],
+      "{postgres=X/postgres,authenticated=X/postgres}"
+    ],
+    [
+      "heartbeat_upload_before",
+      "p_org uuid, p_id uuid, p_token uuid, p_fence bigint, p_lease integer, p_operation_deadline timestamp with time zone",
+      "postgres",
+      true,
+      [
+        "search_path=\"\""
+      ],
+      "{postgres=X/postgres,authenticated=X/postgres}"
+    ],
+    [
+      "internal_claim_reconciliation",
+      "p_org uuid, p_id uuid, p_lease integer",
+      "postgres",
+      true,
+      [
+        "search_path=\"\""
+      ],
+      "{postgres=X/postgres,g3a1_upload_reconciler=X/postgres}"
+    ],
+    [
+      "internal_complete_upload",
+      "p_org uuid, p_id uuid, p_token uuid, p_fence bigint, p_key text, p_size bigint, p_sha text, p_generation text",
+      "postgres",
+      true,
+      [
+        "search_path=\"\""
+      ],
+      "{postgres=X/postgres,g3a1_upload_reconciler=X/postgres}"
+    ],
+    [
+      "internal_expire_unused_uploads",
+      "p_org uuid, p_limit integer",
+      "postgres",
+      true,
+      [
+        "search_path=\"\""
+      ],
+      "{postgres=X/postgres,g3a1_upload_reconciler=X/postgres}"
+    ],
+    [
+      "internal_heartbeat_upload",
+      "p_org uuid, p_id uuid, p_token uuid, p_fence bigint, p_lease integer",
+      "postgres",
+      true,
+      [
+        "search_path=\"\""
+      ],
+      "{postgres=X/postgres,g3a1_upload_reconciler=X/postgres}"
+    ],
+    [
+      "internal_mark_upload_uncertain",
+      "p_org uuid, p_id uuid, p_token uuid, p_fence bigint, p_error text",
+      "postgres",
+      true,
+      [
+        "search_path=\"\""
+      ],
+      "{postgres=X/postgres,g3a1_upload_reconciler=X/postgres}"
+    ],
+    [
+      "mark_upload_uncertain",
+      "p_org uuid, p_id uuid, p_token uuid, p_fence bigint, p_error text",
+      "postgres",
+      true,
+      [
+        "search_path=\"\""
+      ],
+      "{postgres=X/postgres,authenticated=X/postgres}"
+    ],
+    [
+      "reconcile_own_upload",
+      "p_org uuid, p_id uuid, p_lease integer",
+      "postgres",
+      true,
+      [
+        "search_path=\"\""
+      ],
+      "{postgres=X/postgres,authenticated=X/postgres}"
+    ],
+    [
+      "reject_upload_update",
+      "",
+      "postgres",
+      false,
+      [
+        "search_path=\"\""
+      ],
+      "{postgres=X/postgres}"
+    ],
+    [
+      "reserve_upload",
+      "p_org uuid, p_request_key text, p_size bigint, p_sha text, p_ttl integer",
+      "postgres",
+      true,
+      [
+        "search_path=\"\""
+      ],
+      "{postgres=X/postgres,authenticated=X/postgres}"
+    ],
+    [
+      "upload_metrics",
+      "p_org uuid",
+      "postgres",
+      true,
+      [
+        "search_path=\"\""
+      ],
+      "{postgres=X/postgres,authenticated=X/postgres}"
+    ]
+  ],
+  "tables": [
+    [
+      "upload_events",
+      true,
+      "postgres",
+      "{postgres=arwdDxt/postgres}"
+    ],
+    [
+      "upload_limits",
+      true,
+      "postgres",
+      "{postgres=arwdDxt/postgres,authenticated=r/postgres}"
+    ],
+    [
+      "upload_receipts",
+      true,
+      "postgres",
+      "{postgres=arwdDxt/postgres,authenticated=r/postgres}"
+    ],
+    [
+      "upload_reservations",
+      true,
+      "postgres",
+      "{postgres=arwdDxt/postgres,authenticated=r/postgres}"
+    ]
+  ],
+  "policies": [
+    [
+      "upload_limits",
+      "upload_limits_read",
+      [
+        "authenticated"
+      ],
+      "SELECT",
+      "is_org_member(organization_id)",
+      null
+    ],
+    [
+      "upload_receipts",
+      "upload_receipts_read",
+      [
+        "authenticated"
+      ],
+      "SELECT",
+      "((owner_user_id = ( SELECT auth.uid() AS uid)) AND is_org_member(organization_id))",
+      null
+    ],
+    [
+      "upload_reservations",
+      "upload_reservations_read",
+      [
+        "authenticated"
+      ],
+      "SELECT",
+      "((owner_user_id = ( SELECT auth.uid() AS uid)) AND is_org_member(organization_id))",
+      null
+    ]
+  ]
+}

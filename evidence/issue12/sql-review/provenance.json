@@ -1,0 +1,23 @@
+{
+  "reviewed_head": "e40357d08fa3c0b258b63c0d3a811cbab2b23206",
+  "tree_clean_after_checks": true,
+  "local_only": true,
+  "container_name": "issue12-sql-review",
+  "loopback_port": 55611,
+  "requested_image": "postgres@sha256:5264710be20f409750ac6dc4e5706dcef929c87e241605463f0f9aefa932a8d9",
+  "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+  "psycopg": "3.2.13",
+  "platform": "Linux-6.18.57-x86_64-with-glibc2.41",
+  "fresh_prepare_exit_code": 0,
+  "independent_adversarial_exit_code": 0,
+  "independent_constraint_quota_exit_code": 0,
+  "independent_check_count": 36,
+  "file_sha256": {
+    "supabase/migrations/20261107150813_shared_upload_authority.sql": "9d8521e9eed6a72c18942d6628b08dc2f53dd2ddc5d4bb3befbfb26705f08364",
+    "docs/G3A1_DESIGN.md": "aae6fa25d0bb8669cf862e3474a37a07c21a6df817c559aa1eaceb6d1cc8c4b0",
+    "docs/G3A1_SCHEMA.md": "2d4e626d177405de5fdd2a88d0802ab24a03d1a388fc833621795dacd4509184",
+    "docs/G3A1_DECISION.md": "863d955f1c8d8670c03a379ecc30aa5e916169611ff3b418290accc375e3f395",
+    "docs/G3A1_RUNBOOK.md": "1536fc2ffaf0c1db994988945c29536e02104f6b16ebaa68bbaef4229aa7844d"
+  },
+  "own_container_removed": true
+}

@@ -1,0 +1,57 @@
+{
+  "recorded_at": "2026-11-07T20:01:58.205440+00:00",
+  "main_sha": "7a271382487ac4d16e278e5ccb8c345279b3cc16",
+  "reviewed_pr9_sha": "e40357d08fa3c0b258b63c0d3a811cbab2b23206",
+  "pr11_sha": "eb507aff12fdfc16427aa958f46338855cf88d99",
+  "main_file_count": 114,
+  "pr9_file_count": 149,
+  "pr11_file_count": 120,
+  "baseline_manifest_entries_verified": 114,
+  "pr11_document_paths": [
+    "docs/G3B_P0_ARCHITECTURE.md",
+    "docs/G3B_P0_COST_MODEL.md",
+    "docs/G3B_P0_DECISION.md",
+    "docs/G3B_P0_PREFLIGHT.md",
+    "docs/G3B_P0_SECURITY_GATES.md",
+    "docs/G3B_P0_STAGING_RUNBOOK.md"
+  ],
+  "reviewed_source_clean_before": "fresh git clone --no-local, checked at setup",
+  "reviewed_source_clean_after": true,
+  "root_suite_counts": [
+    12,
+    36,
+    49,
+    118,
+    10,
+    44,
+    7
+  ],
+  "unique_test_ids": 276,
+  "skips": 0,
+  "root_completion_marker_present": true,
+  "runner_process_exit_code": "NOT_RETAINED_AFTER_TURN; success is evidenced by seven OK summaries and set-euo-pipefail final completion marker",
+  "python": "3.12.14",
+  "postgres": "16.15 (pinned image in runner)",
+  "gotrue": "2.197.0 (pinned official image in Auth runner)",
+  "ffmpeg": "ffmpeg version 7.1.5-0+deb13u1 Copyright (c) 2000-2026 the FFmpeg developers",
+  "docker": "29.9.2",
+  "cloud_services": "NOT_VALIDATED",
+  "monetary_cost": "UNKNOWN",
+  "source_file_sha256": {
+    "engine/shared_upload_authority.py": "670c43a6e6f7dae35e012c8fe4dc67d2c883f82e6db6e9fe878523beaafbcc3f",
+    "engine/shared_upload_http.py": "77708c3d7cf3cd9612e45f51b1820c3fecb9dbb5c1860ec081c28a9ba9515ae3",
+    "supabase/migrations/20261107150813_shared_upload_authority.sql": "9d8521e9eed6a72c18942d6628b08dc2f53dd2ddc5d4bb3befbfb26705f08364",
+    "scripts/run_g3a1_local.sh": "64d8d53927550bffbf9acd4b5cb5da4892e2b7981cbb2ec99b1e674937c56a54",
+    "scripts/run_g3a1_auth.sh": "0b64022e3fe7edb6dab541768cf92d7d306646f85191aa9b562e90f3efb70c04",
+    "scripts/benchmark_g3a1.py": "6a4e6664e5fb14b238554654a7a7e47f94ae9430e1731844e884e71d45370298"
+  },
+  "installed_locked_package_versions": {
+    "psycopg": "3.2.13",
+    "psycopg-binary": "3.2.13",
+    "typing-extensions": "4.16.0",
+    "PyJWT": "2.15.1",
+    "cryptography": "50.0.2",
+    "cffi": "2.1.1",
+    "pycparser": "3.12"
+  }
+}

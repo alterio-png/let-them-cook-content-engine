@@ -1,0 +1,6 @@
+test_sigkill_after_sql_commit_before_client_result_replays (__main__.Probe.test_sigkill_after_sql_commit_before_client_result_replays) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 0.372s
+
+OK

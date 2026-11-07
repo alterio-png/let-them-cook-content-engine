@@ -1,0 +1,9 @@
+test_actual_heartbeat_lock_failure_fails_closed_and_recovers (__main__.Probe.test_actual_heartbeat_lock_failure_fails_closed_and_recovers) ... ok
+test_claim_before_ttl_can_finish_under_live_lease_after_original_ttl (__main__.Probe.test_claim_before_ttl_can_finish_under_live_lease_after_original_ttl) ... ok
+test_old_object_writer_cannot_change_new_valid_receipt (__main__.Probe.test_old_object_writer_cannot_change_new_valid_receipt) ... ok
+test_sql_receipt_trigger_wait_expires_and_rolls_back (__main__.Probe.test_sql_receipt_trigger_wait_expires_and_rolls_back) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 7.509s
+
+OK

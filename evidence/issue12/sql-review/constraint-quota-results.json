@@ -1,0 +1,53 @@
+{
+  "checks": [
+    {
+      "check": "all 112 table privilege cells match explicit read-only owner policy boundary",
+      "status": "PASS"
+    },
+    {
+      "check": "already uploaded+uncertain+reserved cumulative count prevents new admission",
+      "status": "PASS",
+      "expected_sqlstate": "54000",
+      "observed_sqlstate": "54000"
+    },
+    {
+      "check": "composite receipt FK rejects mismatched owner",
+      "status": "PASS",
+      "expected_sqlstate": "23503",
+      "observed_sqlstate": "23503"
+    },
+    {
+      "check": "composite receipt FK rejects mismatched size",
+      "status": "PASS",
+      "expected_sqlstate": "23503",
+      "observed_sqlstate": "23503"
+    },
+    {
+      "check": "composite receipt FK rejects mismatched SHA",
+      "status": "PASS",
+      "expected_sqlstate": "23503",
+      "observed_sqlstate": "23503"
+    },
+    {
+      "check": "composite receipt FK rejects mismatched org",
+      "status": "PASS",
+      "expected_sqlstate": "23503",
+      "observed_sqlstate": "23503"
+    },
+    {
+      "check": "12 concurrent distinct SQL requests serialize on shared cap: 3 admitted, 9 denied, no byte/count overrun",
+      "status": "PASS",
+      "committed_bytes": 93,
+      "committed_count": 3
+    },
+    {
+      "check": "24 concurrent identical SQL requests preserve one grant, original expiry, immutable key, one byte/count charge",
+      "status": "PASS"
+    },
+    {
+      "check": "claimed uncertain operation remains charged after original TTL and lease; no unused expiry refund",
+      "status": "PASS"
+    }
+  ],
+  "count": 9
+}

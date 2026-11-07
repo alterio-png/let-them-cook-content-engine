@@ -1,0 +1,575 @@
+.github/workflows/ci.yml: OK
+.github/workflows/g1.yml: OK
+.github/workflows/g2.yml: OK
+.github/workflows/g3a.yml: OK
+.gitignore: OK
+AGENTS.md: OK
+G0_SHA256SUMS.txt: OK
+G2_BASELINE_SHA256SUMS.txt: OK
+G3A_BASELINE_SHA256SUMS.txt: OK
+README.md: OK
+auth_tests/g3auth/__init__.py: OK
+auth_tests/g3auth/test_official_auth.py: OK
+cloud_tests/g3a/__init__.py: OK
+cloud_tests/g3a/test_auth.py: OK
+cloud_tests/g3a/test_benchmark.py: OK
+cloud_tests/g3a/test_gcs.py: OK
+cloud_tests/g3a/test_http.py: OK
+cloud_tests/g3a/test_iac.py: OK
+cloud_tests/g3a/test_tasks_run.py: OK
+docs/ARCHITECTURE.md: OK
+docs/CODEX_NEXT_STEP.md: OK
+docs/EXECUTION_LOG.md: OK
+docs/G0_DECISION.md: OK
+docs/G0_RUN_LOG.txt: OK
+docs/G1_CONTROL_PLANE.md: OK
+docs/G1_DECISION.md: OK
+docs/G1_DEPENDENCIES.md: OK
+docs/G2_DECISION.md: OK
+docs/G2_PIPELINE.md: OK
+docs/G3A_ARCHITECTURE.md: OK
+docs/G3A_ASYNC.md: OK
+docs/G3A_AUTH.md: OK
+docs/G3A_BENCHMARK.md: OK
+docs/G3A_COSTS_AND_G3B.md: OK
+docs/G3A_DECISION.md: OK
+docs/G3A_GCS.md: OK
+docs/G3A_IAC.md: OK
+docs/G3A_TOOLING_REVIEW.md: OK
+docs/REFERENCES.md: OK
+docs/REPO_AUDIT.md: OK
+docs/SCALE_GATES.md: OK
+docs/SECURITY.md: OK
+docs/evidence/G1_LOCAL_RUN.txt: OK
+docs/evidence/G2_LOCAL_RUN.txt: OK
+docs/evidence/G2_SAMPLE_OUTPUTS.json: OK
+docs/evidence/G3A_BENCHMARK_SUMMARY.json: OK
+docs/evidence/G3A_CLEAN_RUN.txt: OK
+docs/evidence/G3A_IAC_RUN.txt: OK
+docs/evidence/G3A_SWEEP_RUN.txt: OK
+engine/__init__.py: OK
+engine/cli.py: OK
+engine/cloud_auth.py: OK
+engine/cloud_http.py: OK
+engine/cloud_run.py: OK
+engine/cloud_tasks.py: OK
+engine/cloud_transport.py: OK
+engine/cloud_worker.py: OK
+engine/control_plane.py: OK
+engine/core.py: OK
+engine/gcs_store.py: OK
+engine/handoff.py: OK
+engine/local_queue.py: OK
+engine/media_cli.py: OK
+engine/media_control.py: OK
+engine/media_ingest.py: OK
+engine/media_pipeline.py: OK
+engine/media_runtime.py: OK
+engine/media_sandbox.py: OK
+engine/object_store.py: OK
+engine/upload_authority.py: OK
+infra/Dockerfile.EXAMPLE: OK
+infra/g3a/.gitignore: OK
+infra/g3a/.terraform.lock.hcl: OK
+infra/g3a/Dockerfile.worker.PROPOSAL: OK
+infra/g3a/LOCAL_POLICY_RUN.txt: OK
+infra/g3a/TOOLCHAIN_CLEAN_RUN.txt: OK
+infra/g3a/TOOLCHAIN_VALIDATION.txt: OK
+infra/g3a/audit_policy.py: OK
+infra/g3a/main.tf.json: OK
+infra/g3a/outputs.tf.json: OK
+infra/g3a/provider_review.json: OK
+infra/g3a/validate_toolchain.sh: OK
+infra/g3a/variables.tf.json: OK
+infra/g3a/versions.tf.json: OK
+integration/g1/__init__.py: OK
+integration/g1/bootstrap.sql: OK
+integration/g1/support.py: OK
+integration/g1/test_submission.py: OK
+integration/g1/test_workers.py: OK
+media_tests/g2/__init__.py: OK
+media_tests/g2/support.py: OK
+media_tests/g2/test_contracts.py: OK
+media_tests/g2/test_local_queue.py: OK
+media_tests/g2/test_media_runtime.py: OK
+media_tests/g2/test_object_store.py: OK
+media_tests/g2/test_pipeline.py: OK
+requirements-g1.lock: OK
+requirements-g3a.lock: OK
+scripts/benchmark_g3a.py: OK
+scripts/prepare_auth_database.py: OK
+scripts/prepare_g1_database.py: OK
+scripts/prepare_g2_database.py: OK
+scripts/prepare_g3a_database.py: OK
+scripts/run_g1_local.sh: OK
+scripts/run_g2_local.sh: OK
+scripts/run_g3a_local.sh: OK
+scripts/run_local_auth.sh: OK
+scripts/run_smoke.sh: OK
+sql/001_schema.sql: OK
+sql/002_g1_control_plane.sql: OK
+sql/003_media_execution.sql: OK
+supabase/.gitignore: OK
+supabase/migrations/20261107123845_g3a_cloud_contracts.sql: OK
+tests/test_core.py: OK
+.github/workflows/ci.yml: OK
+.gitignore: OK
+AGENTS.md: OK
+README.md: OK
+docs/ARCHITECTURE.md: OK
+docs/CODEX_NEXT_STEP.md: OK
+docs/EXECUTION_LOG.md: OK
+docs/G0_DECISION.md: OK
+docs/G0_RUN_LOG.txt: OK
+docs/REFERENCES.md: OK
+docs/REPO_AUDIT.md: OK
+docs/SCALE_GATES.md: OK
+docs/SECURITY.md: OK
+engine/__init__.py: OK
+engine/cli.py: OK
+engine/core.py: OK
+infra/Dockerfile.EXAMPLE: OK
+scripts/run_smoke.sh: OK
+sql/001_schema.sql: OK
+tests/test_core.py: OK
+.github/workflows/ci.yml: OK
+.github/workflows/g1.yml: OK
+.gitignore: OK
+AGENTS.md: OK
+G0_SHA256SUMS.txt: OK
+README.md: OK
+docs/ARCHITECTURE.md: OK
+docs/CODEX_NEXT_STEP.md: OK
+docs/EXECUTION_LOG.md: OK
+docs/G0_DECISION.md: OK
+docs/G0_RUN_LOG.txt: OK
+docs/G1_CONTROL_PLANE.md: OK
+docs/G1_DECISION.md: OK
+docs/G1_DEPENDENCIES.md: OK
+docs/REFERENCES.md: OK
+docs/REPO_AUDIT.md: OK
+docs/SCALE_GATES.md: OK
+docs/SECURITY.md: OK
+docs/evidence/G1_LOCAL_RUN.txt: OK
+engine/__init__.py: OK
+engine/cli.py: OK
+engine/control_plane.py: OK
+engine/core.py: OK
+engine/handoff.py: OK
+infra/Dockerfile.EXAMPLE: OK
+integration/g1/__init__.py: OK
+integration/g1/bootstrap.sql: OK
+integration/g1/support.py: OK
+integration/g1/test_submission.py: OK
+integration/g1/test_workers.py: OK
+requirements-g1.lock: OK
+scripts/prepare_g1_database.py: OK
+scripts/run_g1_local.sh: OK
+scripts/run_smoke.sh: OK
+sql/001_schema.sql: OK
+sql/002_g1_control_plane.sql: OK
+tests/test_core.py: OK
+.github/workflows/ci.yml: OK
+.github/workflows/g1.yml: OK
+.github/workflows/g2.yml: OK
+.gitignore: OK
+AGENTS.md: OK
+G0_SHA256SUMS.txt: OK
+G2_BASELINE_SHA256SUMS.txt: OK
+README.md: OK
+docs/ARCHITECTURE.md: OK
+docs/CODEX_NEXT_STEP.md: OK
+docs/EXECUTION_LOG.md: OK
+docs/G0_DECISION.md: OK
+docs/G0_RUN_LOG.txt: OK
+docs/G1_CONTROL_PLANE.md: OK
+docs/G1_DECISION.md: OK
+docs/G1_DEPENDENCIES.md: OK
+docs/G2_DECISION.md: OK
+docs/G2_PIPELINE.md: OK
+docs/REFERENCES.md: OK
+docs/REPO_AUDIT.md: OK
+docs/SCALE_GATES.md: OK
+docs/SECURITY.md: OK
+docs/evidence/G1_LOCAL_RUN.txt: OK
+docs/evidence/G2_LOCAL_RUN.txt: OK
+docs/evidence/G2_SAMPLE_OUTPUTS.json: OK
+engine/__init__.py: OK
+engine/cli.py: OK
+engine/control_plane.py: OK
+engine/core.py: OK
+engine/handoff.py: OK
+engine/local_queue.py: OK
+engine/media_cli.py: OK
+engine/media_control.py: OK
+engine/media_ingest.py: OK
+engine/media_pipeline.py: OK
+engine/media_runtime.py: OK
+engine/media_sandbox.py: OK
+engine/object_store.py: OK
+infra/Dockerfile.EXAMPLE: OK
+integration/g1/__init__.py: OK
+integration/g1/bootstrap.sql: OK
+integration/g1/support.py: OK
+integration/g1/test_submission.py: OK
+integration/g1/test_workers.py: OK
+media_tests/g2/__init__.py: OK
+media_tests/g2/support.py: OK
+media_tests/g2/test_contracts.py: OK
+media_tests/g2/test_local_queue.py: OK
+media_tests/g2/test_media_runtime.py: OK
+media_tests/g2/test_object_store.py: OK
+media_tests/g2/test_pipeline.py: OK
+requirements-g1.lock: OK
+scripts/prepare_g1_database.py: OK
+scripts/prepare_g2_database.py: OK
+scripts/run_g1_local.sh: OK
+scripts/run_g2_local.sh: OK
+scripts/run_smoke.sh: OK
+sql/001_schema.sql: OK
+sql/002_g1_control_plane.sql: OK
+sql/003_media_execution.sql: OK
+tests/test_core.py: OK
+Applied integration/g1/bootstrap.sql
+Applied sql/001_schema.sql
+Applied sql/002_g1_control_plane.sql
+PostgreSQL 16.15 (Debian 16.15-1.pgdg12+2) on x86_64-pc-linux-gnu, compiled by gcc (Debian 12.2.0-14+deb12u1) 12.2.0, 64-bit
+Applied sql/003_media_execution.sql
+Applied supabase/migrations/20261107123845_g3a_cloud_contracts.sql
+test_bad_idempotency_key (test_core.ContractTests.test_bad_idempotency_key) ... ok
+test_bad_tenant (test_core.ContractTests.test_bad_tenant) ... ok
+test_missing_job (test_core.ContractTests.test_missing_job) ... ok
+test_no_cross_tenant (test_core.ContractTests.test_no_cross_tenant) ... ok
+test_no_symlink_escape (test_core.ContractTests.test_no_symlink_escape) ... ok
+test_sha (test_core.ContractTests.test_sha) ... ok
+test_sqlite_unique (test_core.ContractTests.test_sqlite_unique) ... ok
+test_01_three_render_formats_with_audio_and_captions (test_core.VideoRenderTests.test_01_three_render_formats_with_audio_and_captions) ... ok
+test_02_retry_same_key_is_cached (test_core.VideoRenderTests.test_02_retry_same_key_is_cached) ... ok
+test_03_conflicting_request_is_rejected (test_core.VideoRenderTests.test_03_conflicting_request_is_rejected) ... ok
+test_04_corrupted_artifact_requires_manual_reconcile (test_core.VideoRenderTests.test_04_corrupted_artifact_requires_manual_reconcile) ... ok
+test_05_parallel_duplicate_requests_do_not_duplicate_render (test_core.VideoRenderTests.test_05_parallel_duplicate_requests_do_not_duplicate_render) ... ok
+
+----------------------------------------------------------------------
+Ran 12 tests in 2.022s
+
+OK
+test_100_simultaneous_submissions_create_one_logical_operation (g1.test_submission.SubmissionTests.test_100_simultaneous_submissions_create_one_logical_operation) ... ok
+test_authenticated_direct_mutations_and_service_tables_forbidden (g1.test_submission.SubmissionTests.test_authenticated_direct_mutations_and_service_tables_forbidden) ... ok
+test_both_tenants_read_only_their_own_rows (g1.test_submission.SubmissionTests.test_both_tenants_read_only_their_own_rows) ... ok
+test_budget_is_atomic_under_concurrent_distinct_keys (g1.test_submission.SubmissionTests.test_budget_is_atomic_under_concurrent_distinct_keys) ... ok
+test_conflicting_key_and_lost_submission_response (g1.test_submission.SubmissionTests.test_conflicting_key_and_lost_submission_response) ... ok
+test_cumulative_budget_and_duplicate_do_not_charge_twice (g1.test_submission.SubmissionTests.test_cumulative_budget_and_duplicate_do_not_charge_twice) ... ok
+test_failure_in_any_transactional_insert_rolls_everything_back (g1.test_submission.SubmissionTests.test_failure_in_any_transactional_insert_rolls_everything_back) ... ok
+test_foreign_keys_enforce_org_boundary_even_for_trusted_writers (g1.test_submission.SubmissionTests.test_foreign_keys_enforce_org_boundary_even_for_trusted_writers) ... ok
+test_input_caps_and_rights_checked_before_reservation (g1.test_submission.SubmissionTests.test_input_caps_and_rights_checked_before_reservation) ... ok
+test_job_count_cap_is_atomic (g1.test_submission.SubmissionTests.test_job_count_cap_is_atomic) ... ok
+test_no_identity_anon_viewer_or_revoked_membership (g1.test_submission.SubmissionTests.test_no_identity_anon_viewer_or_revoked_membership) ... ok
+test_pixel_quota_bounds_output_presets_as_well_as_input (g1.test_submission.SubmissionTests.test_pixel_quota_bounds_output_presets_as_well_as_input) ... ok
+test_request_and_asset_fingerprints_are_immutable (g1.test_submission.SubmissionTests.test_request_and_asset_fingerprints_are_immutable) ... ok
+test_roles_are_not_superuser_or_rls_bypass (g1.test_submission.SubmissionTests.test_roles_are_not_superuser_or_rls_bypass) ... ok
+test_service_roles_and_function_grants_do_not_leak (g1.test_submission.SubmissionTests.test_service_roles_and_function_grants_do_not_leak) ... ok
+test_tenants_cannot_submit_to_or_reference_another_org (g1.test_submission.SubmissionTests.test_tenants_cannot_submit_to_or_reference_another_org) ... ok
+test_commit_response_lost_reconciles_without_second_completion (g1.test_workers.WorkerTests.test_commit_response_lost_reconciles_without_second_completion) ... ok
+test_concurrent_dispatchers_claim_one_event (g1.test_workers.WorkerTests.test_concurrent_dispatchers_claim_one_event) ... ok
+test_concurrent_duplicate_delivery_has_one_live_claim (g1.test_workers.WorkerTests.test_concurrent_duplicate_delivery_has_one_live_claim) ... ok
+test_crash_before_completion_commit_rolls_back_then_recovers (g1.test_workers.WorkerTests.test_crash_before_completion_commit_rolls_back_then_recovers) ... ok
+test_dispatch_crash_after_acceptance_before_ack_reconciles (g1.test_workers.WorkerTests.test_dispatch_crash_after_acceptance_before_ack_reconciles) ... ok
+test_dispatch_crash_before_acceptance_retries_same_id (g1.test_workers.WorkerTests.test_dispatch_crash_before_acceptance_retries_same_id) ... ok
+test_dispatch_exhaustion_requires_reconciliation (g1.test_workers.WorkerTests.test_dispatch_exhaustion_requires_reconciliation) ... ok
+test_durable_sweep_recovers_crash_after_initial_event_dispatched (g1.test_workers.WorkerTests.test_durable_sweep_recovers_crash_after_initial_event_dispatched) ... ok
+test_durable_sweep_recovers_retry_after_initial_event_dispatched (g1.test_workers.WorkerTests.test_durable_sweep_recovers_retry_after_initial_event_dispatched) ... ok
+test_expired_owner_cannot_commit_even_before_takeover (g1.test_workers.WorkerTests.test_expired_owner_cannot_commit_even_before_takeover) ... ok
+test_lease_expiring_during_validation_cannot_commit (g1.test_workers.WorkerTests.test_lease_expiring_during_validation_cannot_commit) ... ok
+test_manifest_validation_rejects_cross_tenant_keys_and_bad_checksum (g1.test_workers.WorkerTests.test_manifest_validation_rejects_cross_tenant_keys_and_bad_checksum) ... ok
+test_org_concurrency_cap_is_atomic_and_other_org_can_run (g1.test_workers.WorkerTests.test_org_concurrency_cap_is_atomic_and_other_org_can_run) ... ok
+test_repeated_crashes_exhaust_claims (g1.test_workers.WorkerTests.test_repeated_crashes_exhaust_claims) ... ok
+test_stale_dispatcher_cannot_ack_or_release_new_lease (g1.test_workers.WorkerTests.test_stale_dispatcher_cannot_ack_or_release_new_lease) ... ok
+test_sweep_skips_capped_org_before_scan_limit (g1.test_workers.WorkerTests.test_sweep_skips_capped_org_before_scan_limit) ... ok
+test_takeover_fences_old_owner_and_final_result_is_immutable (g1.test_workers.WorkerTests.test_takeover_fences_old_owner_and_final_result_is_immutable) ... ok
+test_timeout_429_lost_queue_response_never_multiply_effect (g1.test_workers.WorkerTests.test_timeout_429_lost_queue_response_never_multiply_effect) ... ok
+test_timeout_429_retries_have_backoff_and_bounded_attempts (g1.test_workers.WorkerTests.test_timeout_429_retries_have_backoff_and_bounded_attempts) ... ok
+test_uncommitted_renewal_cannot_oversubscribe_org_cap (g1.test_workers.WorkerTests.test_uncommitted_renewal_cannot_oversubscribe_org_cap) ... ok
+
+----------------------------------------------------------------------
+Ran 36 tests in 5.939s
+
+OK
+test_composite_binding_and_job_foreign_keys_reject_cross_org_writers (g2.test_contracts.MediaContractTests.test_composite_binding_and_job_foreign_keys_reject_cross_org_writers) ... ok
+test_g2_rls_and_direct_mutation_denials_both_tenants (g2.test_contracts.MediaContractTests.test_g2_rls_and_direct_mutation_denials_both_tenants) ... ok
+test_g2_submit_requires_identity_write_role_and_same_org_binding (g2.test_contracts.MediaContractTests.test_g2_submit_requires_identity_write_role_and_same_org_binding) ... ok
+test_concurrent_idempotent_tasks_persist_and_acknowledge (g2.test_local_queue.LocalQueueTests.test_concurrent_idempotent_tasks_persist_and_acknowledge) ... ok
+test_connection_descriptors_close_without_garbage_collection (g2.test_local_queue.LocalQueueTests.test_connection_descriptors_close_without_garbage_collection) ... ok
+test_unsafe_queue_paths_and_identifiers_are_rejected (g2.test_local_queue.LocalQueueTests.test_unsafe_queue_paths_and_identifiers_are_rejected) ... ok
+test_actual_three_profiles_match_bytes_dimensions_duration_and_audio (g2.test_media_runtime.MediaRuntimeTests.test_actual_three_profiles_match_bytes_dimensions_duration_and_audio) ... ok
+test_actual_timeout_kills_and_reaps_native_process (g2.test_media_runtime.MediaRuntimeTests.test_actual_timeout_kills_and_reaps_native_process) ... ok
+test_cancel_and_lost_heartbeat_kill_actual_subprocess (g2.test_media_runtime.MediaRuntimeTests.test_cancel_and_lost_heartbeat_kill_actual_subprocess) ... ok
+test_caption_pixels_differ_from_real_uncaptioned_decode (g2.test_media_runtime.MediaRuntimeTests.test_caption_pixels_differ_from_real_uncaptioned_decode) ... ok
+test_hard_killing_worker_terminates_active_real_ffmpeg (g2.test_media_runtime.MediaRuntimeTests.test_hard_killing_worker_terminates_active_real_ffmpeg) ... ok
+test_invalid_mp4_and_real_media_caps_are_rejected (g2.test_media_runtime.MediaRuntimeTests.test_invalid_mp4_and_real_media_caps_are_rejected) ... ok
+test_output_caps_and_failing_native_encoder_leave_no_partial_files (g2.test_media_runtime.MediaRuntimeTests.test_output_caps_and_failing_native_encoder_leave_no_partial_files) ... ok
+test_plain_srt_validation_rejects_markup_malformed_and_symlinks (g2.test_media_runtime.MediaRuntimeTests.test_plain_srt_validation_rejects_markup_malformed_and_symlinks) ... ok
+test_repeated_native_render_produces_equal_hashes (g2.test_media_runtime.MediaRuntimeTests.test_repeated_native_render_produces_equal_hashes) ... ok
+test_symlink_video_and_nonempty_output_are_rejected (g2.test_media_runtime.MediaRuntimeTests.test_symlink_video_and_nonempty_output_are_rejected) ... ok
+test_broad_root_permissions_rejected (g2.test_object_store.ObjectStoreTests.test_broad_root_permissions_rejected) ... ok
+test_byte_limits_bound_put_get_and_stat (g2.test_object_store.ObjectStoreTests.test_byte_limits_bound_put_get_and_stat) ... ok
+test_checksum_guarded_delete_and_missing_objects (g2.test_object_store.ObjectStoreTests.test_checksum_guarded_delete_and_missing_objects) ... ok
+test_concurrent_identical_puts_publish_one_immutable_object (g2.test_object_store.ObjectStoreTests.test_concurrent_identical_puts_publish_one_immutable_object) ... ok
+test_cross_organization_read_write_list_and_delete_denied (g2.test_object_store.ObjectStoreTests.test_cross_organization_read_write_list_and_delete_denied) ... ok
+test_download_never_overwrites_existing_file (g2.test_object_store.ObjectStoreTests.test_download_never_overwrites_existing_file) ... ok
+test_fifo_source_and_object_are_rejected_without_blocking (g2.test_object_store.ObjectStoreTests.test_fifo_source_and_object_are_rejected_without_blocking) ... ok
+test_immutable_replay_and_conflicting_content (g2.test_object_store.ObjectStoreTests.test_immutable_replay_and_conflicting_content) ... ok
+test_orphaned_private_upload_fragment_is_reported (g2.test_object_store.ObjectStoreTests.test_orphaned_private_upload_fragment_is_reported) ... ok
+test_persistent_private_round_trip_and_checksums (g2.test_object_store.ObjectStoreTests.test_persistent_private_round_trip_and_checksums) ... ok
+test_root_symlink_ancestor_and_replacement_rejected (g2.test_object_store.ObjectStoreTests.test_root_symlink_ancestor_and_replacement_rejected) ... ok
+test_source_and_download_parent_symlinks_rejected (g2.test_object_store.ObjectStoreTests.test_source_and_download_parent_symlinks_rejected) ... ok
+test_staging_cleanup_is_scoped_conditional_and_never_deletes_objects (g2.test_object_store.ObjectStoreTests.test_staging_cleanup_is_scoped_conditional_and_never_deletes_objects) ... ok
+test_staging_cleanup_rejects_symlink_fragment (g2.test_object_store.ObjectStoreTests.test_staging_cleanup_rejects_symlink_fragment) ... ok
+test_symlink_object_read_write_delete_and_listing_rejected (g2.test_object_store.ObjectStoreTests.test_symlink_object_read_write_delete_and_listing_rejected) ... ok
+test_symlink_tenant_or_parent_cannot_escape_on_write (g2.test_object_store.ObjectStoreTests.test_symlink_tenant_or_parent_cannot_escape_on_write) ... ok
+test_unsafe_keys_and_noncanonical_organizations_rejected (g2.test_object_store.ObjectStoreTests.test_unsafe_keys_and_noncanonical_organizations_rejected) ... ok
+test_write_interruption_cleans_unpublished_fragment (g2.test_object_store.ObjectStoreTests.test_write_interruption_cleans_unpublished_fragment) ... ok
+test_100_submissions_one_job_reservation_and_authoritative_manifest (g2.test_pipeline.PipelineTests.test_100_submissions_one_job_reservation_and_authoritative_manifest) ... ok
+test_actual_native_limits_and_cancellation_leave_no_authoritative_outputs (g2.test_pipeline.PipelineTests.test_actual_native_limits_and_cancellation_leave_no_authoritative_outputs) ... ok
+test_actual_sigkill_after_object_then_takeover_and_orphan_cleanup (g2.test_pipeline.PipelineTests.test_actual_sigkill_after_object_then_takeover_and_orphan_cleanup) ... ok
+test_corrupt_completed_object_requires_reconciliation_without_rerender (g2.test_pipeline.PipelineTests.test_corrupt_completed_object_requires_reconciliation_without_rerender) ... ok
+test_database_commit_failure_rolls_back_and_new_worker_recovers (g2.test_pipeline.PipelineTests.test_database_commit_failure_rolls_back_and_new_worker_recovers) ... ok
+test_download_object_manifest_failures_are_audited_and_recoverable (g2.test_pipeline.PipelineTests.test_download_object_manifest_failures_are_audited_and_recoverable) ... ok
+test_expired_worker_cannot_replace_newer_valid_generation (g2.test_pipeline.PipelineTests.test_expired_worker_cannot_replace_newer_valid_generation) ... ok
+test_full_dispatch_render_store_manifest_and_idempotent_repeat (g2.test_pipeline.PipelineTests.test_full_dispatch_render_store_manifest_and_idempotent_repeat) ... ok
+test_ingestion_requires_actor_membership_and_captions_are_immutable (g2.test_pipeline.PipelineTests.test_ingestion_requires_actor_membership_and_captions_are_immutable) ... ok
+test_ingestion_rollback_reports_private_unreferenced_input_objects (g2.test_pipeline.PipelineTests.test_ingestion_rollback_reports_private_unreferenced_input_objects) ... ok
+test_invalid_media_rights_and_caps_rejected_before_submission (g2.test_pipeline.PipelineTests.test_invalid_media_rights_and_caps_rejected_before_submission) ... ok
+test_lost_completion_response_reconciles_no_new_generation (g2.test_pipeline.PipelineTests.test_lost_completion_response_reconciles_no_new_generation) ... ok
+test_provided_srt_changes_actual_decoded_pixels (g2.test_pipeline.PipelineTests.test_provided_srt_changes_actual_decoded_pixels) ... ok
+test_same_immutable_input_reproduces_exact_bytes_in_two_operations (g2.test_pipeline.PipelineTests.test_same_immutable_input_reproduces_exact_bytes_in_two_operations) ... ok
+test_two_tenants_execute_concurrently_without_object_or_sql_escape (g2.test_pipeline.PipelineTests.test_two_tenants_execute_concurrently_without_object_or_sql_escape) ... ok
+
+----------------------------------------------------------------------
+Ran 49 tests in 46.274s
+
+OK
+test_algorithm_key_and_token_url_confusion_rejected_without_callback (g3a.test_auth.AuthContracts.test_algorithm_key_and_token_url_confusion_rejected_without_callback) ... ok
+test_es256_and_rs256_public_jwks (g3a.test_auth.AuthContracts.test_es256_and_rs256_public_jwks) ... ok
+test_issuer_audience_expiry_iat_required_claims_and_uuid (g3a.test_auth.AuthContracts.test_issuer_audience_expiry_iat_required_claims_and_uuid) ... ok
+test_metadata_never_grants_identity_or_organization (g3a.test_auth.AuthContracts.test_metadata_never_grants_identity_or_organization) ... ok
+test_public_jwk_rejects_secret_private_and_weak_keys (g3a.test_auth.AuthContracts.test_public_jwk_rejects_secret_private_and_weak_keys) ... ok
+test_service_role_and_anonymous_signin_rejected (g3a.test_auth.AuthContracts.test_service_role_and_anonymous_signin_rejected) ... ok
+test_session_store_unavailable_fails_closed (g3a.test_auth.AuthContracts.test_session_store_unavailable_fails_closed) ... ok
+test_signed_token_and_uncached_revocation (g3a.test_auth.AuthContracts.test_signed_token_and_uncached_revocation) ... ok
+test_size_bounds_and_malformed_tokens (g3a.test_auth.AuthContracts.test_size_bounds_and_malformed_tokens) ... ok
+test_percentiles_interpolate_actual_observations (g3a.test_benchmark.BenchmarkTests.test_percentiles_interpolate_actual_observations) ... ok
+test_production_or_ambiguous_dsn_is_rejected (g3a.test_benchmark.BenchmarkTests.test_production_or_ambiguous_dsn_is_rejected) ... ok
+test_rss_sampler_includes_live_descendant_memory (g3a.test_benchmark.BenchmarkTests.test_rss_sampler_includes_live_descendant_memory) ... ok
+test_small_real_queued_cohort_and_recovery (g3a.test_benchmark.BenchmarkTests.test_small_real_queued_cohort_and_recovery) ... ok
+test_actual_socket_timeout_queries_range_before_resuming (g3a.test_gcs.GCSLocalHTTPContractTests.test_actual_socket_timeout_queries_range_before_resuming) ... ok
+test_concurrent_identical_create_only_uploads_publish_one_generation (g3a.test_gcs.GCSLocalHTTPContractTests.test_concurrent_identical_create_only_uploads_publish_one_generation) ... ok
+test_destination_and_source_symlinks_cannot_replace_private_files (g3a.test_gcs.GCSLocalHTTPContractTests.test_destination_and_source_symlinks_cannot_replace_private_files) ... ok
+test_download_and_response_limits_do_not_publish_partial_files (g3a.test_gcs.GCSLocalHTTPContractTests.test_download_and_response_limits_do_not_publish_partial_files) ... ok
+test_empty_object_and_missing_completed_object_are_explicit (g3a.test_gcs.GCSLocalHTTPContractTests.test_empty_object_and_missing_completed_object_are_explicit) ... ok
+test_generation_conditional_delete_protects_replacement_race (g3a.test_gcs.GCSLocalHTTPContractTests.test_generation_conditional_delete_protects_replacement_race) ... ok
+test_immutable_same_bytes_replay_and_conflicting_bytes (g3a.test_gcs.GCSLocalHTTPContractTests.test_immutable_same_bytes_replay_and_conflicting_bytes) ... ok
+test_inventory_page_cycle_does_not_return_partial_orphans (g3a.test_gcs.GCSLocalHTTPContractTests.test_inventory_page_cycle_does_not_return_partial_orphans) ... ok
+test_loopback_transport_requires_explicit_test_capability (g3a.test_gcs.GCSLocalHTTPContractTests.test_loopback_transport_requires_explicit_test_capability) ... ok
+test_lost_chunk_response_queries_range_before_resuming (g3a.test_gcs.GCSLocalHTTPContractTests.test_lost_chunk_response_queries_range_before_resuming) ... ok
+test_lost_delete_response_is_retried_without_deleting_new_generation (g3a.test_gcs.GCSLocalHTTPContractTests.test_lost_delete_response_is_retried_without_deleting_new_generation) ... ok
+test_lost_success_and_expired_session_reconcile_named_verified_object (g3a.test_gcs.GCSLocalHTTPContractTests.test_lost_success_and_expired_session_reconcile_named_verified_object) ... ok
+test_malicious_session_urls_never_receive_credentials (g3a.test_gcs.GCSLocalHTTPContractTests.test_malicious_session_urls_never_receive_credentials) ... ok
+test_missing_checksum_metadata_and_stale_inventory_fail_closed (g3a.test_gcs.GCSLocalHTTPContractTests.test_missing_checksum_metadata_and_stale_inventory_fail_closed) ... ok
+test_paginated_inventory_is_tenant_scoped_and_fail_closed (g3a.test_gcs.GCSLocalHTTPContractTests.test_paginated_inventory_is_tenant_scoped_and_fail_closed) ... ok
+test_partial_acknowledgement_resends_only_remaining_bytes (g3a.test_gcs.GCSLocalHTTPContractTests.test_partial_acknowledgement_resends_only_remaining_bytes) ... ok
+test_private_resumable_roundtrip_actual_byte_hash_and_private_download (g3a.test_gcs.GCSLocalHTTPContractTests.test_private_resumable_roundtrip_actual_byte_hash_and_private_download) ... ok
+test_redirect_cannot_forward_bearer_to_second_endpoint (g3a.test_gcs.GCSLocalHTTPContractTests.test_redirect_cannot_forward_bearer_to_second_endpoint) ... ok
+test_remote_metadata_sha_is_untrusted_until_actual_bytes_match (g3a.test_gcs.GCSLocalHTTPContractTests.test_remote_metadata_sha_is_untrusted_until_actual_bytes_match) ... ok
+test_tenant_boundaries_and_unsafe_keys_fail_before_network (g3a.test_gcs.GCSLocalHTTPContractTests.test_tenant_boundaries_and_unsafe_keys_fail_before_network) ... ok
+test_transient_429_is_bounded_and_recovers (g3a.test_gcs.GCSLocalHTTPContractTests.test_transient_429_is_bounded_and_recovers) ... ok
+test_unchanged_g2_pipeline_real_postgresql_ffmpeg_with_local_gcs_http_contract (g3a.test_gcs.GCSLocalHTTPContractTests.test_unchanged_g2_pipeline_real_postgresql_ffmpeg_with_local_gcs_http_contract) ... ok
+test_unknown_session_does_not_overwrite_or_report_success (g3a.test_gcs.GCSLocalHTTPContractTests.test_unknown_session_does_not_overwrite_or_report_success) ... ok
+test_upload_size_bound_rejects_before_network (g3a.test_gcs.GCSLocalHTTPContractTests.test_upload_size_bound_rejects_before_network) ... ok
+test_body_timeout_and_bounded_http_concurrency (g3a.test_http.HTTPBoundaryTests.test_body_timeout_and_bounded_http_concurrency) ... ok
+test_concurrent_http_submission_one_job_outbox_and_reservation (g3a.test_http.HTTPBoundaryTests.test_concurrent_http_submission_one_job_outbox_and_reservation) ... ok
+test_concurrent_upload_capability_consumption_is_atomic (g3a.test_http.HTTPBoundaryTests.test_concurrent_upload_capability_consumption_is_atomic) ... ok
+test_database_connection_admission_is_bounded (g3a.test_http.HTTPBoundaryTests.test_database_connection_admission_is_bounded) ... ok
+test_download_expired_corrupt_or_uncompleted_never_served (g3a.test_http.HTTPBoundaryTests.test_download_expired_corrupt_or_uncompleted_never_served) ... ok
+test_forged_headers_metadata_service_role_and_revoked_session_rejected (g3a.test_http.HTTPBoundaryTests.test_forged_headers_metadata_service_role_and_revoked_session_rejected) ... ok
+test_post_rejects_untrusted_media_metadata_and_unknown_fields (g3a.test_http.HTTPBoundaryTests.test_post_rejects_untrusted_media_metadata_and_unknown_fields) ... ok
+test_private_download_serializes_with_concurrent_membership_revocation (g3a.test_http.HTTPBoundaryTests.test_private_download_serializes_with_concurrent_membership_revocation) ... ok
+test_private_upload_bytes_receipt_no_asset_promotion_and_no_reuse (g3a.test_http.HTTPBoundaryTests.test_private_upload_bytes_receipt_no_asset_promotion_and_no_reuse) ... ok
+test_progressing_slow_body_cannot_extend_absolute_receive_deadline (g3a.test_http.HTTPBoundaryTests.test_progressing_slow_body_cannot_extend_absolute_receive_deadline) ... ok
+test_real_media_worker_then_private_download_and_current_authority (g3a.test_http.HTTPBoundaryTests.test_real_media_worker_then_private_download_and_current_authority) ... ok
+test_render_requires_verified_binding_and_cross_org_isolation (g3a.test_http.HTTPBoundaryTests.test_render_requires_verified_binding_and_cross_org_isolation) ... ok
+test_restricted_database_login_and_loopback_only (g3a.test_http.HTTPBoundaryTests.test_restricted_database_login_and_loopback_only) ... ok
+test_upload_body_and_http_framing_are_bounded (g3a.test_http.HTTPBoundaryTests.test_upload_body_and_http_framing_are_bounded) ... ok
+test_upload_expiration_and_object_before_receipt_reconciliation (g3a.test_http.HTTPBoundaryTests.test_upload_expiration_and_object_before_receipt_reconciliation) ... ok
+test_upload_hash_size_tamper_cross_user_and_membership_revocation (g3a.test_http.HTTPBoundaryTests.test_upload_hash_size_tamper_cross_user_and_membership_revocation) ... ok
+test_upload_issuance_serializes_with_concurrent_membership_revocation (g3a.test_http.HTTPBoundaryTests.test_upload_issuance_serializes_with_concurrent_membership_revocation) ... ok
+test_upload_storage_reservation_count_and_bytes_persist_on_restart (g3a.test_http.HTTPBoundaryTests.test_upload_storage_reservation_count_and_bytes_persist_on_restart) ... ok
+test_viewer_can_read_but_cannot_submit_or_reserve (g3a.test_http.HTTPBoundaryTests.test_viewer_can_read_but_cannot_submit_or_reserve) ... ok
+test_api_cannot_gain_object_deletion_or_listing (g3a.test_iac.CloudInfrastructurePolicyTests.test_api_cannot_gain_object_deletion_or_listing) ... ok
+test_bucket_binding_cannot_be_elevated_to_storage_admin (g3a.test_iac.CloudInfrastructurePolicyTests.test_bucket_binding_cannot_be_elevated_to_storage_admin) ... ok
+test_budget_alerts_must_keep_all_three_thresholds (g3a.test_iac.CloudInfrastructurePolicyTests.test_budget_alerts_must_keep_all_three_thresholds) ... ok
+test_budget_default_email_recipients_cannot_be_disabled (g3a.test_iac.CloudInfrastructurePolicyTests.test_budget_default_email_recipients_cannot_be_disabled) ... ok
+test_cloud_http_cannot_disable_iam_or_expose_public_ingress (g3a.test_iac.CloudInfrastructurePolicyTests.test_cloud_http_cannot_disable_iam_or_expose_public_ingress) ... ok
+test_container_proposal_is_nonroot_and_does_not_download_or_ship_binary (g3a.test_iac.CloudInfrastructurePolicyTests.test_container_proposal_is_nonroot_and_does_not_download_or_ship_binary) ... ok
+test_destructive_bucket_teardown_is_rejected (g3a.test_iac.CloudInfrastructurePolicyTests.test_destructive_bucket_teardown_is_rejected) ... ok
+test_expiry_must_not_blindly_delete_authoritative_objects (g3a.test_iac.CloudInfrastructurePolicyTests.test_expiry_must_not_blindly_delete_authoritative_objects) ... ok
+test_long_lived_cloud_keys_are_rejected (g3a.test_iac.CloudInfrastructurePolicyTests.test_long_lived_cloud_keys_are_rejected) ... ok
+test_native_worker_resource_ceiling_cannot_silently_increase (g3a.test_iac.CloudInfrastructurePolicyTests.test_native_worker_resource_ceiling_cannot_silently_increase) ... ok
+test_only_orchestrator_identity_can_launch_worker (g3a.test_iac.CloudInfrastructurePolicyTests.test_only_orchestrator_identity_can_launch_worker) ... ok
+test_plaintext_dsn_in_terraform_is_rejected (g3a.test_iac.CloudInfrastructurePolicyTests.test_plaintext_dsn_in_terraform_is_rejected) ... ok
+test_platform_retries_cannot_bypass_postgresql_retry_authority (g3a.test_iac.CloudInfrastructurePolicyTests.test_platform_retries_cannot_bypass_postgresql_retry_authority) ... ok
+test_project_observation_cannot_gain_list_or_mutation_permissions (g3a.test_iac.CloudInfrastructurePolicyTests.test_project_observation_cannot_gain_list_or_mutation_permissions) ... ok
+test_provider_credentials_and_remote_state_are_rejected (g3a.test_iac.CloudInfrastructurePolicyTests.test_provider_credentials_and_remote_state_are_rejected) ... ok
+test_provider_fanout_cannot_multiply_one_admitted_launch (g3a.test_iac.CloudInfrastructurePolicyTests.test_provider_fanout_cannot_multiply_one_admitted_launch) ... ok
+test_provider_pin_cannot_float_without_review (g3a.test_iac.CloudInfrastructurePolicyTests.test_provider_pin_cannot_float_without_review) ... ok
+test_public_invocation_and_broad_project_iam_are_rejected (g3a.test_iac.CloudInfrastructurePolicyTests.test_public_invocation_and_broad_project_iam_are_rejected) ... ok
+test_public_media_is_rejected (g3a.test_iac.CloudInfrastructurePolicyTests.test_public_media_is_rejected) ... ok
+test_queue_cannot_launch_unbounded_signals (g3a.test_iac.CloudInfrastructurePolicyTests.test_queue_cannot_launch_unbounded_signals) ... ok
+test_queue_provider_retries_remain_bounded (g3a.test_iac.CloudInfrastructurePolicyTests.test_queue_provider_retries_remain_bounded) ... ok
+test_review_guard_cannot_be_preapproved (g3a.test_iac.CloudInfrastructurePolicyTests.test_review_guard_cannot_be_preapproved) ... ok
+test_reviewable_topology_satisfies_local_security_policy (g3a.test_iac.CloudInfrastructurePolicyTests.test_reviewable_topology_satisfies_local_security_policy) ... ok
+test_runtime_image_cannot_bypass_digest_validation_variable (g3a.test_iac.CloudInfrastructurePolicyTests.test_runtime_image_cannot_bypass_digest_validation_variable) ... ok
+test_runtime_tags_and_default_images_are_rejected (g3a.test_iac.CloudInfrastructurePolicyTests.test_runtime_tags_and_default_images_are_rejected) ... ok
+test_service_instances_must_start_at_zero_and_remain_bounded (g3a.test_iac.CloudInfrastructurePolicyTests.test_service_instances_must_start_at_zero_and_remain_bounded) ... ok
+test_side_resource_cannot_bypass_authorization (g3a.test_iac.CloudInfrastructurePolicyTests.test_side_resource_cannot_bypass_authorization) ... ok
+test_token_minting_cannot_be_granted_to_api_or_worker (g3a.test_iac.CloudInfrastructurePolicyTests.test_token_minting_cannot_be_granted_to_api_or_worker) ... ok
+test_unreviewed_hcl_sidecar_cannot_bypass_json_policy (g3a.test_iac.CloudInfrastructurePolicyTests.test_unreviewed_hcl_sidecar_cannot_bypass_json_policy) ... ok
+test_unreviewed_runtime_artifact_gate_cannot_be_removed (g3a.test_iac.CloudInfrastructurePolicyTests.test_unreviewed_runtime_artifact_gate_cannot_be_removed) ... ok
+test_variable_validation_must_not_be_a_literal_json_string (g3a.test_iac.CloudInfrastructurePolicyTests.test_variable_validation_must_not_be_a_literal_json_string) ... ok
+test_worker_cannot_receive_arbitrary_command_or_environment (g3a.test_iac.CloudInfrastructurePolicyTests.test_worker_cannot_receive_arbitrary_command_or_environment) ... ok
+test_worker_cannot_update_existing_objects (g3a.test_iac.CloudInfrastructurePolicyTests.test_worker_cannot_update_existing_objects) ... ok
+test_429_outbox_backoff_and_operation_history_loss_do_not_duplicate_launch (g3a.test_tasks_run.AsyncPostgresTests.test_429_outbox_backoff_and_operation_history_loss_do_not_duplicate_launch) ... ok
+test_claimed_worker_crash_requires_execution_terminal_before_new_fence_launch (g3a.test_tasks_run.AsyncPostgresTests.test_claimed_worker_crash_requires_execution_terminal_before_new_fence_launch) ... ok
+test_cloud_safe_sweep_and_task_delivery_concurrently_create_one_intent (g3a.test_tasks_run.AsyncPostgresTests.test_cloud_safe_sweep_and_task_delivery_concurrently_create_one_intent) ... ok
+test_cloud_safe_sweep_exhaustion_is_terminal_only_after_physical_slot_closed (g3a.test_tasks_run.AsyncPostgresTests.test_cloud_safe_sweep_exhaustion_is_terminal_only_after_physical_slot_closed) ... ok
+test_cloud_safe_sweep_never_retries_missing_operation_or_pre_network_crash (g3a.test_tasks_run.AsyncPostgresTests.test_cloud_safe_sweep_never_retries_missing_operation_or_pre_network_crash) ... ok
+test_cloud_safe_sweep_recovers_acked_lost_signal_after_provider_history_deleted (g3a.test_tasks_run.AsyncPostgresTests.test_cloud_safe_sweep_recovers_acked_lost_signal_after_provider_history_deleted) ... ok
+test_cloud_safe_sweep_recovers_claimed_crash_only_after_provider_terminal (g3a.test_tasks_run.AsyncPostgresTests.test_cloud_safe_sweep_recovers_claimed_crash_only_after_provider_terminal) ... ok
+test_cloud_safe_sweep_rotates_unknown_observations_with_limit_one (g3a.test_tasks_run.AsyncPostgresTests.test_cloud_safe_sweep_rotates_unknown_observations_with_limit_one) ... ok
+test_cloud_safe_sweep_skips_saturated_organization_before_candidate_limit (g3a.test_tasks_run.AsyncPostgresTests.test_cloud_safe_sweep_skips_saturated_organization_before_candidate_limit) ... ok
+test_cloud_safe_sweep_terminal_proof_cannot_exhaust_a_still_live_lease (g3a.test_tasks_run.AsyncPostgresTests.test_cloud_safe_sweep_terminal_proof_cannot_exhaust_a_still_live_lease) ... ok
+test_completed_fence_stops_keeper_before_slow_after_commit_metrics (g3a.test_tasks_run.AsyncPostgresTests.test_completed_fence_stops_keeper_before_slow_after_commit_metrics) ... ok
+test_concurrent_cloud_safe_sweeps_preserve_global_admission_cap (g3a.test_tasks_run.AsyncPostgresTests.test_concurrent_cloud_safe_sweeps_preserve_global_admission_cap) ... ok
+test_controller_crash_before_network_is_not_blindly_retried_and_pg_sweep_recovers (g3a.test_tasks_run.AsyncPostgresTests.test_controller_crash_before_network_is_not_blindly_retried_and_pg_sweep_recovers) ... ok
+test_cross_org_signal_fk_and_ledger_access_are_rejected (g3a.test_tasks_run.AsyncPostgresTests.test_cross_org_signal_fk_and_ledger_access_are_rejected) ... ok
+test_global_slots_cover_two_orgs_and_expired_leases_do_not_prove_stopped_compute (g3a.test_tasks_run.AsyncPostgresTests.test_global_slots_cover_two_orgs_and_expired_leases_do_not_prove_stopped_compute) ... ok
+test_independent_keeper_stops_at_job_deadline_and_never_commits_afterward (g3a.test_tasks_run.AsyncPostgresTests.test_independent_keeper_stops_at_job_deadline_and_never_commits_afterward) ... ok
+test_lost_task_response_retry_history_expiry_duplicates_no_extra_job_or_claim (g3a.test_tasks_run.AsyncPostgresTests.test_lost_task_response_retry_history_expiry_duplicates_no_extra_job_or_claim) ... ok
+test_operation_done_only_means_execution_created_not_worker_stopped (g3a.test_tasks_run.AsyncPostgresTests.test_operation_done_only_means_execution_created_not_worker_stopped) ... ok
+test_operation_error_alone_does_not_prove_no_physical_execution (g3a.test_tasks_run.AsyncPostgresTests.test_operation_error_alone_does_not_prove_no_physical_execution) ... ok
+test_pg_completion_does_not_free_physical_slot_until_provider_execution_terminal (g3a.test_tasks_run.AsyncPostgresTests.test_pg_completion_does_not_free_physical_slot_until_provider_execution_terminal) ... ok
+test_slow_real_loopback_io_longer_than_lease_keeps_same_fence_alive (g3a.test_tasks_run.AsyncPostgresTests.test_slow_real_loopback_io_longer_than_lease_keeps_same_fence_alive) ... ok
+test_stale_bound_worker_cannot_replace_valid_g2_takeover (g3a.test_tasks_run.AsyncPostgresTests.test_stale_bound_worker_cannot_replace_valid_g2_takeover) ... ok
+test_stopped_provider_execution_releases_slot_and_bounded_retry_uses_new_fence (g3a.test_tasks_run.AsyncPostgresTests.test_stopped_provider_execution_releases_slot_and_bounded_retry_uses_new_fence) ... ok
+test_twenty_concurrent_duplicate_signals_and_worker_claims (g3a.test_tasks_run.AsyncPostgresTests.test_twenty_concurrent_duplicate_signals_and_worker_claims) ... ok
+test_uncertain_run_reserves_intent_and_worker_recovers_without_repeat_call (g3a.test_tasks_run.AsyncPostgresTests.test_uncertain_run_reserves_intent_and_worker_recovers_without_repeat_call) ... ok
+test_callback_does_not_trust_queue_headers_or_enduser_identity (g3a.test_tasks_run.GoogleServiceContractTests.test_callback_does_not_trust_queue_headers_or_enduser_identity) ... ok
+test_local_rsa_signature_service_identity_and_rejections (g3a.test_tasks_run.GoogleServiceContractTests.test_local_rsa_signature_service_identity_and_rejections) ... ok
+test_run_acceptance_lost_is_uncertain_and_not_internally_retried (g3a.test_tasks_run.GoogleServiceContractTests.test_run_acceptance_lost_is_uncertain_and_not_internally_retried) ... ok
+test_tasks_request_oidc_name_and_cloud_run_fixed_overrides (g3a.test_tasks_run.GoogleServiceContractTests.test_tasks_request_oidc_name_and_cloud_run_fixed_overrides) ... ok
+
+----------------------------------------------------------------------
+Ran 118 tests in 56.034s
+
+OK
+{"events": "/workspace/issue12-evidence/full-run/historical/benchmark/events.jsonl", "status": "PASS_LOCAL_ONLY", "summary": "/workspace/issue12-evidence/full-run/historical/benchmark/summary.json"}
+Bootstrapped official Auth owner/roles only; no auth table fixture
+Applied unchanged sql/001_schema.sql
+Applied unchanged sql/002_g1_control_plane.sql
+Applied unchanged sql/003_media_execution.sql
+Applied new reviewed G3A migration supabase/migrations/20261107123845_g3a_cloud_contracts.sql
+Installed narrow session grant and non-bypass API login
+Official Supabase Auth component v2.197.0 + PostgreSQL 16.15, isolated local integration
+test_deleted_user_revokes_session (g3auth.test_official_auth.OfficialAuthIntegration.test_deleted_user_revokes_session) ... ok
+test_expired_retained_session_fails_closed (g3auth.test_official_auth.OfficialAuthIntegration.test_expired_retained_session_fails_closed) ... ok
+test_modified_real_token_signature_rejected (g3auth.test_official_auth.OfficialAuthIntegration.test_modified_real_token_signature_rejected) ... ok
+test_narrow_session_reader_cannot_read_passwords_or_metadata (g3auth.test_official_auth.OfficialAuthIntegration.test_narrow_session_reader_cannot_read_passwords_or_metadata) ... ok
+test_real_http_logout_and_service_role_rejected (g3auth.test_official_auth.OfficialAuthIntegration.test_real_http_logout_and_service_role_rejected) ... ok
+test_real_http_metadata_cross_tenant_and_membership_downgrade (g3auth.test_official_auth.OfficialAuthIntegration.test_real_http_metadata_cross_tenant_and_membership_downgrade) ... ok
+test_real_http_submit_idempotency_worker_status_and_private_download (g3auth.test_official_auth.OfficialAuthIntegration.test_real_http_submit_idempotency_worker_status_and_private_download) ... ok
+test_real_logout_revokes_still_unexpired_signed_access_token (g3auth.test_official_auth.OfficialAuthIntegration.test_real_logout_revokes_still_unexpired_signed_access_token) ... ok
+test_real_official_signup_signin_signature_and_session (g3auth.test_official_auth.OfficialAuthIntegration.test_real_official_signup_signin_signature_and_session) ... ok
+test_rls_uses_verified_identity_and_live_membership_not_user_metadata (g3auth.test_official_auth.OfficialAuthIntegration.test_rls_uses_verified_identity_and_live_membership_not_user_metadata) ... ok
+
+----------------------------------------------------------------------
+Ran 10 tests in 3.363s
+
+OK
+G3A local evidence: /workspace/issue12-evidence/full-run/historical
+Applied integration/g1/bootstrap.sql
+Applied sql/001_schema.sql
+Applied sql/002_g1_control_plane.sql
+PostgreSQL 16.15 (Debian 16.15-1.pgdg12+2) on x86_64-pc-linux-gnu, compiled by gcc (Debian 12.2.0-14+deb12u1) 12.2.0, 64-bit
+Applied sql/003_media_execution.sql
+Applied supabase/migrations/20261107123845_g3a_cloud_contracts.sql
+Applied supabase/migrations/20261107150813_shared_upload_authority.sql
+test_budget_rechecked_after_before_commit_failure_checkpoint (g3a1.test_deadline.UploadDeadlineTests.test_budget_rechecked_after_before_commit_failure_checkpoint) ... ok
+test_database_clamped_one_second_lease_is_renewed_from_effective_duration (g3a1.test_deadline.UploadDeadlineTests.test_database_clamped_one_second_lease_is_renewed_from_effective_duration) ... ok
+test_database_deadline_rechecked_after_real_quota_row_lock_wait (g3a1.test_deadline.UploadDeadlineTests.test_database_deadline_rechecked_after_real_quota_row_lock_wait) ... ok
+test_expired_operation_budget_stops_renewal_and_fences_late_writer (g3a1.test_deadline.UploadDeadlineTests.test_expired_operation_budget_stops_renewal_and_fences_late_writer) ... ok
+test_100_identical_requests_across_two_processes_one_grant_one_charge (g3a1.test_http_replicas.SharedHTTPReplicaTests.test_100_identical_requests_across_two_processes_one_grant_one_charge) ... ok
+test_20_distinct_requests_admit_exact_shared_count_and_byte_quota (g3a1.test_http_replicas.SharedHTTPReplicaTests.test_20_distinct_requests_admit_exact_shared_count_and_byte_quota) ... ok
+test_explicit_resume_uses_binary_cap_and_never_recharges_claimed_payload (g3a1.test_http_replicas.SharedHTTPReplicaTests.test_explicit_resume_uses_binary_cap_and_never_recharges_claimed_payload) ... ok
+test_fail_closed_backend_and_privileged_dsn (g3a1.test_http_replicas.SharedHTTPReplicaTests.test_fail_closed_backend_and_privileged_dsn) ... ok
+test_organizations_owners_revocation_and_forged_identity_headers (g3a1.test_http_replicas.SharedHTTPReplicaTests.test_organizations_owners_revocation_and_forged_identity_headers) ... ok
+test_publish_on_a_read_on_b_kill_a_restart_c_recover_same_grant_receipt (g3a1.test_http_replicas.SharedHTTPReplicaTests.test_publish_on_a_read_on_b_kill_a_restart_c_recover_same_grant_receipt) ... ok
+test_resume_transport_body_framing_limits_and_absolute_timeout (g3a1.test_http_replicas.SharedHTTPReplicaTests.test_resume_transport_body_framing_limits_and_absolute_timeout) ... ok
+test_revocation_during_real_http_write_has_no_nested_transaction_deadlock (g3a1.test_http_replicas.SharedHTTPReplicaTests.test_revocation_during_real_http_write_has_no_nested_transaction_deadlock) ... ok
+test_schema_validation_jwt_security_and_render_delegation (g3a1.test_http_replicas.SharedHTTPReplicaTests.test_schema_validation_jwt_security_and_render_delegation) ... ok
+test_unused_expiration_refunds_exactly_once_across_replicas (g3a1.test_http_replicas.SharedHTTPReplicaTests.test_unused_expiration_refunds_exactly_once_across_replicas) ... ok
+test_actual_database_counter_trigger_failure_rolls_back_entire_reservation (g3a1.test_ledger_failures.LedgerFailureTests.test_actual_database_counter_trigger_failure_rolls_back_entire_reservation) ... ok
+test_actual_database_receipt_and_audit_trigger_failures_rollback_completion (g3a1.test_ledger_failures.LedgerFailureTests.test_actual_database_receipt_and_audit_trigger_failures_rollback_completion) ... ok
+test_actual_sigkill_after_durable_object_recovers_in_fresh_process_authority (g3a1.test_ledger_failures.LedgerFailureTests.test_actual_sigkill_after_durable_object_recovers_in_fresh_process_authority) ... ok
+test_actual_sigkill_before_storage_expiry_never_refunds_claimed_quota (g3a1.test_ledger_failures.LedgerFailureTests.test_actual_sigkill_before_storage_expiry_never_refunds_claimed_quota) ... ok
+test_expiration_counter_failure_rolls_back_state_audit_and_refund (g3a1.test_ledger_failures.LedgerFailureTests.test_expiration_counter_failure_rolls_back_state_audit_and_refund) ... ok
+test_fault_after_claim_or_before_store_holds_quota_without_receipt (g3a1.test_ledger_failures.LedgerFailureTests.test_fault_after_claim_or_before_store_holds_quota_without_receipt) ... ok
+test_fault_before_claim_does_not_change_reservation (g3a1.test_ledger_failures.LedgerFailureTests.test_fault_before_claim_does_not_change_reservation) ... ok
+test_injected_storage_metadata_mismatch_cannot_commit_receipt (g3a1.test_ledger_failures.LedgerFailureTests.test_injected_storage_metadata_mismatch_cannot_commit_receipt) ... ok
+test_published_receipt_with_missing_or_corrupt_object_is_blocked_not_refunded (g3a1.test_ledger_failures.LedgerFailureTests.test_published_receipt_with_missing_or_corrupt_object_is_blocked_not_refunded) ... ok
+test_reconcile_during_live_publish_never_deletes_or_refunds (g3a1.test_ledger_failures.LedgerFailureTests.test_reconcile_during_live_publish_never_deletes_or_refunds) ... ok
+test_response_lost_after_commit_replay_returns_exact_immutable_receipt (g3a1.test_ledger_failures.LedgerFailureTests.test_response_lost_after_commit_replay_returns_exact_immutable_receipt) ... ok
+test_same_request_has_stable_hmac_and_immutable_fingerprint (g3a1.test_ledger_failures.LedgerFailureTests.test_same_request_has_stable_hmac_and_immutable_fingerprint) ... ok
+test_stale_fence_cannot_replace_new_valid_receipt (g3a1.test_ledger_failures.LedgerFailureTests.test_stale_fence_cannot_replace_new_valid_receipt) ... ok
+test_storage_complete_db_receipt_missing_is_reconciled_after_restart (g3a1.test_ledger_failures.LedgerFailureTests.test_storage_complete_db_receipt_missing_is_reconciled_after_restart) ... ok
+test_twenty_concurrent_publishes_have_one_object_receipt_and_charge (g3a1.test_ledger_failures.LedgerFailureTests.test_twenty_concurrent_publishes_have_one_object_receipt_and_charge) ... ok
+test_unused_expired_grant_refunded_once_across_independent_processes (g3a1.test_ledger_failures.LedgerFailureTests.test_unused_expired_grant_refunded_once_across_independent_processes) ... ok
+test_wrong_existing_bytes_cannot_become_valid_receipt (g3a1.test_ledger_failures.LedgerFailureTests.test_wrong_existing_bytes_cannot_become_valid_receipt) ... ok
+test_attempts_and_logical_operations_are_reported_separately (g3a1.test_measurements.SharedUploadMeasurementTests.test_attempts_and_logical_operations_are_reported_separately) ... ok
+test_counter_equality_does_not_hide_an_extra_uncharged_reservation (g3a1.test_measurements.SharedUploadMeasurementTests.test_counter_equality_does_not_hide_an_extra_uncharged_reservation) ... ok
+test_small_real_http_postgres_store_and_process_restart (g3a1.test_measurements.SharedUploadMeasurementTests.test_small_real_http_postgres_store_and_process_restart) ... ok
+test_cross_org_and_owner_receipt_foreign_keys_reject_even_trusted_writer (g3a1.test_permissions.LedgerPermissionTests.test_cross_org_and_owner_receipt_foreign_keys_reject_even_trusted_writer) ... ok
+test_current_membership_revocation_immediately_denies_all_user_paths (g3a1.test_permissions.LedgerPermissionTests.test_current_membership_revocation_immediately_denies_all_user_paths) ... ok
+test_dedicated_service_recovers_revoked_owner_without_raw_table_access (g3a1.test_permissions.LedgerPermissionTests.test_dedicated_service_recovers_revoked_owner_without_raw_table_access) ... ok
+test_internal_functions_not_callable_by_authenticated (g3a1.test_permissions.LedgerPermissionTests.test_internal_functions_not_callable_by_authenticated) ... ok
+test_nonprivileged_login_and_raw_mutations_denied_by_actual_roles (g3a1.test_permissions.LedgerPermissionTests.test_nonprivileged_login_and_raw_mutations_denied_by_actual_roles) ... ok
+test_receipt_payload_foreign_key_rejects_mismatched_size_or_hash (g3a1.test_permissions.LedgerPermissionTests.test_receipt_payload_foreign_key_rejects_mismatched_size_or_hash) ... ok
+test_reservation_identity_and_receipt_are_immutable_for_trusted_writer (g3a1.test_permissions.LedgerPermissionTests.test_reservation_identity_and_receipt_are_immutable_for_trusted_writer) ... ok
+test_rls_hides_other_owner_even_when_same_org_member (g3a1.test_permissions.LedgerPermissionTests.test_rls_hides_other_owner_even_when_same_org_member) ... ok
+test_security_definer_search_paths_and_function_acl_are_closed (g3a1.test_permissions.LedgerPermissionTests.test_security_definer_search_paths_and_function_acl_are_closed) ... ok
+test_subject_required_for_every_user_security_definer_entrypoint (g3a1.test_permissions.LedgerPermissionTests.test_subject_required_for_every_user_security_definer_entrypoint) ... ok
+
+----------------------------------------------------------------------
+Ran 44 tests in 33.619s
+
+OK
+{"events": "/workspace/issue12-evidence/full-run/shared-benchmark/events.jsonl", "status": "PASS_LOCAL_ONLY", "summary": "/workspace/issue12-evidence/full-run/shared-benchmark/summary.json"}
+Bootstrapped official Auth owner/roles only; no auth table fixture
+Applied unchanged sql/001_schema.sql
+Applied unchanged sql/002_g1_control_plane.sql
+Applied unchanged sql/003_media_execution.sql
+Applied new reviewed G3A migration supabase/migrations/20261107123845_g3a_cloud_contracts.sql
+Installed narrow session grant and non-bypass API login
+Applied shared authority after official Auth and unchanged engine migrations
+Official Supabase Auth component v2.197.0 + PostgreSQL 16.15, isolated local integration
+test_delete_real_auth_user_preserves_historical_upload_but_revokes_access (g3a1auth.test_official_shared.OfficialSharedUploadTests.test_delete_real_auth_user_preserves_historical_upload_but_revokes_access) ... ok
+test_membership_revocation_and_user_metadata_cannot_cross_organizations (g3a1auth.test_official_shared.OfficialSharedUploadTests.test_membership_revocation_and_user_metadata_cannot_cross_organizations) ... ok
+test_real_logout_revokes_both_replicas_while_jwt_signature_stays_valid (g3a1auth.test_official_shared.OfficialSharedUploadTests.test_real_logout_revokes_both_replicas_while_jwt_signature_stays_valid) ... ok
+test_real_token_cross_replica_receipt_and_restart_without_local_ledger (g3a1auth.test_official_shared.OfficialSharedUploadTests.test_real_token_cross_replica_receipt_and_restart_without_local_ledger) ... ok
+test_same_org_other_real_user_does_not_obtain_owner_grant_or_receipt (g3a1auth.test_official_shared.OfficialSharedUploadTests.test_same_org_other_real_user_does_not_obtain_owner_grant_or_receipt) ... ok
+test_service_role_and_fabricated_headers_do_not_bypass_shared_boundary (g3a1auth.test_official_shared.OfficialSharedUploadTests.test_service_role_and_fabricated_headers_do_not_bypass_shared_boundary) ... ok
+test_shared_application_preserves_real_render_status_and_private_download (g3a1auth.test_official_shared.OfficialSharedUploadTests.test_shared_application_preserves_real_render_status_and_private_download) ... ok
+
+----------------------------------------------------------------------
+Ran 7 tests in 4.059s
+
+OK
+G3A.1 local evidence: /workspace/issue12-evidence/full-run

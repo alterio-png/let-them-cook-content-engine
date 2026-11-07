@@ -1,0 +1,23 @@
+test_broad_root_permissions_rejected (media_tests.g2.test_object_store.ObjectStoreTests.test_broad_root_permissions_rejected) ... ok
+test_byte_limits_bound_put_get_and_stat (media_tests.g2.test_object_store.ObjectStoreTests.test_byte_limits_bound_put_get_and_stat) ... ok
+test_checksum_guarded_delete_and_missing_objects (media_tests.g2.test_object_store.ObjectStoreTests.test_checksum_guarded_delete_and_missing_objects) ... ok
+test_concurrent_identical_puts_publish_one_immutable_object (media_tests.g2.test_object_store.ObjectStoreTests.test_concurrent_identical_puts_publish_one_immutable_object) ... ok
+test_cross_organization_read_write_list_and_delete_denied (media_tests.g2.test_object_store.ObjectStoreTests.test_cross_organization_read_write_list_and_delete_denied) ... ok
+test_download_never_overwrites_existing_file (media_tests.g2.test_object_store.ObjectStoreTests.test_download_never_overwrites_existing_file) ... ok
+test_fifo_source_and_object_are_rejected_without_blocking (media_tests.g2.test_object_store.ObjectStoreTests.test_fifo_source_and_object_are_rejected_without_blocking) ... ok
+test_immutable_replay_and_conflicting_content (media_tests.g2.test_object_store.ObjectStoreTests.test_immutable_replay_and_conflicting_content) ... ok
+test_orphaned_private_upload_fragment_is_reported (media_tests.g2.test_object_store.ObjectStoreTests.test_orphaned_private_upload_fragment_is_reported) ... ok
+test_persistent_private_round_trip_and_checksums (media_tests.g2.test_object_store.ObjectStoreTests.test_persistent_private_round_trip_and_checksums) ... ok
+test_root_symlink_ancestor_and_replacement_rejected (media_tests.g2.test_object_store.ObjectStoreTests.test_root_symlink_ancestor_and_replacement_rejected) ... ok
+test_source_and_download_parent_symlinks_rejected (media_tests.g2.test_object_store.ObjectStoreTests.test_source_and_download_parent_symlinks_rejected) ... ok
+test_staging_cleanup_is_scoped_conditional_and_never_deletes_objects (media_tests.g2.test_object_store.ObjectStoreTests.test_staging_cleanup_is_scoped_conditional_and_never_deletes_objects) ... ok
+test_staging_cleanup_rejects_symlink_fragment (media_tests.g2.test_object_store.ObjectStoreTests.test_staging_cleanup_rejects_symlink_fragment) ... ok
+test_symlink_object_read_write_delete_and_listing_rejected (media_tests.g2.test_object_store.ObjectStoreTests.test_symlink_object_read_write_delete_and_listing_rejected) ... ok
+test_symlink_tenant_or_parent_cannot_escape_on_write (media_tests.g2.test_object_store.ObjectStoreTests.test_symlink_tenant_or_parent_cannot_escape_on_write) ... ok
+test_unsafe_keys_and_noncanonical_organizations_rejected (media_tests.g2.test_object_store.ObjectStoreTests.test_unsafe_keys_and_noncanonical_organizations_rejected) ... ok
+test_write_interruption_cleans_unpublished_fragment (media_tests.g2.test_object_store.ObjectStoreTests.test_write_interruption_cleans_unpublished_fragment) ... ok
+
+----------------------------------------------------------------------
+Ran 18 tests in 0.061s
+
+OK

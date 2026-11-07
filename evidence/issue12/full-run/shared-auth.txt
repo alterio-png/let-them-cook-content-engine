@@ -1,0 +1,20 @@
+Bootstrapped official Auth owner/roles only; no auth table fixture
+Applied unchanged sql/001_schema.sql
+Applied unchanged sql/002_g1_control_plane.sql
+Applied unchanged sql/003_media_execution.sql
+Applied new reviewed G3A migration supabase/migrations/20261107123845_g3a_cloud_contracts.sql
+Installed narrow session grant and non-bypass API login
+Applied shared authority after official Auth and unchanged engine migrations
+Official Supabase Auth component v2.197.0 + PostgreSQL 16.15, isolated local integration
+test_delete_real_auth_user_preserves_historical_upload_but_revokes_access (g3a1auth.test_official_shared.OfficialSharedUploadTests.test_delete_real_auth_user_preserves_historical_upload_but_revokes_access) ... ok
+test_membership_revocation_and_user_metadata_cannot_cross_organizations (g3a1auth.test_official_shared.OfficialSharedUploadTests.test_membership_revocation_and_user_metadata_cannot_cross_organizations) ... ok
+test_real_logout_revokes_both_replicas_while_jwt_signature_stays_valid (g3a1auth.test_official_shared.OfficialSharedUploadTests.test_real_logout_revokes_both_replicas_while_jwt_signature_stays_valid) ... ok
+test_real_token_cross_replica_receipt_and_restart_without_local_ledger (g3a1auth.test_official_shared.OfficialSharedUploadTests.test_real_token_cross_replica_receipt_and_restart_without_local_ledger) ... ok
+test_same_org_other_real_user_does_not_obtain_owner_grant_or_receipt (g3a1auth.test_official_shared.OfficialSharedUploadTests.test_same_org_other_real_user_does_not_obtain_owner_grant_or_receipt) ... ok
+test_service_role_and_fabricated_headers_do_not_bypass_shared_boundary (g3a1auth.test_official_shared.OfficialSharedUploadTests.test_service_role_and_fabricated_headers_do_not_bypass_shared_boundary) ... ok
+test_shared_application_preserves_real_render_status_and_private_download (g3a1auth.test_official_shared.OfficialSharedUploadTests.test_shared_application_preserves_real_render_status_and_private_download) ... ok
+
+----------------------------------------------------------------------
+Ran 7 tests in 4.059s
+
+OK
