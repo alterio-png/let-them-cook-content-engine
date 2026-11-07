@@ -10,6 +10,7 @@ validated G2 asset. All database operations use the caller's current membership.
 from __future__ import annotations
 
 from contextlib import contextmanager
+from datetime import datetime, timedelta
 import base64
 import hashlib
 import hmac
@@ -74,22 +75,26 @@ class _Lease:
         self.lease_seconds = grant.get("lease_seconds")
         if type(self.lease_seconds) is not int or self.lease_seconds <= 0:
             raise UploadBusy("database upload lease is no longer usable")
+        database_now = datetime.fromisoformat(grant["database_now"])
+        if database_now.tzinfo is None:
+            raise UploadBusy("database upload clock is not timezone aware")
+        self.database_deadline = database_now + timedelta(seconds=authority.operation_timeout_seconds)
         self.stop = threading.Event()
         self.lost = threading.Event()
         self.deadline = time.monotonic() + authority.operation_timeout_seconds
         self.thread = threading.Thread(target=self._run, name="upload-lease", daemon=True)
 
     def _run(self):
-        interval = max(0.1, min(5, self.lease_seconds / 3))
+        interval = max(0.1, min(5, self.lease_seconds / 3, self.authority.operation_timeout_seconds / 3))
         while not self.stop.wait(min(interval, max(0, self.deadline - time.monotonic()))):
             if time.monotonic() >= self.deadline:
                 self.lost.set()
                 return
             try:
-                valid = self.authority._call(self.user, "heartbeat_upload",
+                valid = self.authority._call(self.user, "heartbeat_upload_before",
                                              self.grant["organization_id"], self.grant["id"],
                                              self.grant["lease_token"], self.grant["fence"],
-                                             self.authority.lease_seconds)
+                                             self.authority.lease_seconds, self.database_deadline)
                 if not valid:
                     self.lost.set()
                     return
@@ -119,9 +124,11 @@ class PostgresUploadAuthority:
     organization limits provisioned by a trusted administrator in PostgreSQL.
     ``receipt`` is a database view; HTTP callers must use ``verified_receipt``
     or ``reconcile`` to verify that a completed receipt still has its bytes.
-    Lease renewal has a wall-clock budget; after it elapses, this attempt cannot
-    commit. A process supervisor is still needed to terminate blocked kernel or
-    provider I/O: Python cannot safely interrupt an arbitrary storage call.
+    Lease renewal and SQL completion have a deadline derived from the database
+    clock. SQL rechecks it after admission locks and before receipt insertion;
+    its statement timeout also bounds time spent inside completion. A process
+    supervisor is still needed for blocked kernel/provider I/O. Commit/fsync
+    acknowledgement is not a hard real-time deadline guarantee.
     Fault hooks receive a checkpoint and non-secret identifiers, and are meant
     only for isolated process-kill tests. No exceptions inheriting directly
     from BaseException are intercepted.
@@ -201,11 +208,19 @@ class PostgresUploadAuthority:
     def _call(self, user_id, function, *arguments):
         # Every name is supplied by this module, never by an HTTP request.
         if function not in {"reserve_upload", "claim_upload", "complete_upload", "heartbeat_upload",
+                            "complete_upload_before", "heartbeat_upload_before",
                             "mark_upload_uncertain", "get_upload", "reconcile_own_upload",
                             "expire_unused_uploads", "upload_metrics"}:
             raise ValueError("unknown shared upload operation")
         try:
             with self._connection(user_id) as db:
+                if function in {"complete_upload_before", "heartbeat_upload_before"}:
+                    remaining = db.execute("SELECT floor(extract(epoch FROM (%s::timestamptz-"
+                                           "clock_timestamp()))*1000)::bigint AS ms",
+                                           (arguments[-1],)).fetchone()["ms"]
+                    if remaining <= 0:
+                        raise UploadBusy("upload operation deadline expired")
+                    db.execute("SELECT set_config('statement_timeout',%s,true)", (str(min(5000, remaining)),))
                 result = db.execute(sql.SQL("SELECT {}.{}({}) AS value").format(
                     sql.Identifier("g3a1_private"), sql.Identifier(function),
                     sql.SQL(",").join(sql.Placeholder() for _ in arguments)), arguments).fetchone()["value"]
@@ -215,6 +230,8 @@ class PostgresUploadAuthority:
                 raise UploadQuotaExceeded("organization upload quota exceeded") from error
             if error.sqlstate in {"55P03", "40001"}:
                 raise UploadBusy("upload is leased or a newer fence superseded this attempt") from error
+            if error.sqlstate == "57014" and function in {"complete_upload_before", "heartbeat_upload_before"}:
+                raise UploadBusy("upload SQL completion deadline exceeded") from error
             if error.sqlstate == "23505":
                 raise UploadAlreadyUsed("upload request key conflicts with its immutable payload") from error
             if error.sqlstate in {"22023", "23514", "P0002"}:
@@ -382,9 +399,10 @@ class PostgresUploadAuthority:
                 lease.check()
                 self._checkpoint("before_commit", grant)
                 lease.check()
-                receipt = self._call(user_id, "complete_upload", grant["organization_id"], grant["id"],
+                receipt = self._call(user_id, "complete_upload_before", grant["organization_id"], grant["id"],
                                      grant["lease_token"], grant["fence"], grant["object_key"],
-                                     verified["size_bytes"], verified["sha256"], verified.get("generation"))
+                                     verified["size_bytes"], verified["sha256"], verified.get("generation"),
+                                     lease.database_deadline)
                 self._checkpoint("after_commit", grant)
                 return receipt
         except Exception:
@@ -447,9 +465,10 @@ class PostgresUploadAuthority:
                     grant["state"] = "uncertain"
                     return self._view(grant)
                 lease.check()
-                return self._call(user_id, "complete_upload", org_id, grant_id,
+                return self._call(user_id, "complete_upload_before", org_id, grant_id,
                                   grant["lease_token"], grant["fence"], grant["object_key"],
-                                  verified["size_bytes"], verified["sha256"], verified.get("generation"))
+                                  verified["size_bytes"], verified["sha256"], verified.get("generation"),
+                                  lease.database_deadline)
         except Exception:
             self._mark_uncertain(user_id, grant)
             raise

@@ -107,6 +107,45 @@ class UploadDeadlineTests(unittest.TestCase):
         self.assertEqual("uploaded_pending_validation", recovered["state"])
         self.assertEqual(1, self.assert_conservation())
 
+    def test_database_deadline_rechecked_after_real_quota_row_lock_wait(self):
+        entered, release = threading.Event(), threading.Event()
+        def checkpoint(stage, _):
+            if stage == "before_commit":
+                entered.set()
+                if not release.wait(5):
+                    raise TimeoutError("isolated commit barrier exceeded bound")
+        authority = self.authority(lease_seconds=30, operation_timeout_seconds=1, fault_hook=checkpoint)
+        grant = self.reserve(authority)
+        with ThreadPoolExecutor(max_workers=1) as pool:
+            attempt = pool.submit(authority.publish, grant["authorization"], self.user, self.source, self.fx.store)
+            try:
+                self.assertTrue(entered.wait(3), "publisher did not reach pre-commit boundary")
+                with connect() as blocker:
+                    blocker.execute("SELECT used_count FROM g3a1_private.upload_limits "
+                                    "WHERE organization_id=%s FOR UPDATE", (self.org,))
+                    release.set()
+                    # PostgreSQL, rather than a fake adapter, blocks completion.
+                    wait_deadline = time.monotonic() + .5
+                    observed = False
+                    while time.monotonic() < wait_deadline:
+                        blocker.execute("SELECT pg_stat_clear_snapshot()")
+                        observed = blocker.execute("SELECT EXISTS(SELECT 1 FROM pg_stat_activity "
+                            "WHERE usename=%s AND wait_event_type='Lock' "
+                            "AND query LIKE '%%complete_upload_before%%') AS waiting", (self.fx.login,)).fetchone()["waiting"]
+                        if observed:
+                            break
+                        time.sleep(.01)
+                    self.assertTrue(observed, "actual SQL completion did not wait on the quota row")
+                    time.sleep(1.1)
+                with self.assertRaises(UploadBusy):
+                    attempt.result(timeout=4)
+            finally:
+                release.set()
+        self.assertEqual(0, self.assert_conservation())
+        recovered = self.authority(lease_seconds=1).reconcile(self.org, self.user, grant["id"], self.fx.store)
+        self.assertEqual("uploaded_pending_validation", recovered["state"])
+        self.assertEqual(1, self.assert_conservation())
+
     def test_database_clamped_one_second_lease_is_renewed_from_effective_duration(self):
         with connect() as db:
             db.execute("UPDATE g3a1_private.upload_limits SET max_lease_seconds=1 WHERE organization_id=%s", (self.org,))
