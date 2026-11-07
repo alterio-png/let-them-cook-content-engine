@@ -1,0 +1,197 @@
+{"at": "2026-11-07T15:30:36.120630+00:00", "event": "resource_sample", "ffmpeg_processes": 0, "native_media_processes": 0, "processes": 1, "rss_bytes": 49999872}
+{"at": "2026-11-07T15:30:36.175019+00:00", "event": "resource_sample", "ffmpeg_processes": 0, "native_media_processes": 0, "processes": 2, "rss_bytes": 53800960}
+{"at": "2026-11-07T15:30:36.228383+00:00", "event": "resource_sample", "ffmpeg_processes": 0, "native_media_processes": 0, "processes": 3, "rss_bytes": 77393920}
+{"at": "2026-11-07T15:30:36.281983+00:00", "event": "resource_sample", "ffmpeg_processes": 0, "native_media_processes": 0, "processes": 3, "rss_bytes": 91770880}
+{"at": "2026-11-07T15:30:36.335421+00:00", "event": "resource_sample", "ffmpeg_processes": 0, "native_media_processes": 0, "processes": 3, "rss_bytes": 109924352}
+{"at": "2026-11-07T15:30:36.388908+00:00", "event": "resource_sample", "ffmpeg_processes": 0, "native_media_processes": 0, "processes": 4, "rss_bytes": 124342272}
+{"at": "2026-11-07T15:30:36.441962+00:00", "event": "resource_sample", "ffmpeg_processes": 0, "native_media_processes": 0, "processes": 4, "rss_bytes": 139972608}
+{"at": "2026-11-07T15:30:36.495736+00:00", "event": "resource_sample", "ffmpeg_processes": 0, "native_media_processes": 0, "processes": 4, "rss_bytes": 159039488}
+{"at": "2026-11-07T15:30:36.561072+00:00", "event": "resource_sample", "ffmpeg_processes": 0, "native_media_processes": 0, "processes": 4, "rss_bytes": 166612992}
+{"at": "2026-11-07T15:30:36.564455+00:00", "attempt": 1, "case": "same_key", "elapsed_seconds": 0.044434485000238055, "event": "http_attempt", "operation": 6, "replica_pid": 166900, "status": 201}
+{"at": "2026-11-07T15:30:36.572313+00:00", "attempt": 1, "case": "same_key", "elapsed_seconds": 0.051711234998947475, "event": "http_attempt", "operation": 9, "replica_pid": 166905, "status": 201}
+{"at": "2026-11-07T15:30:36.579398+00:00", "attempt": 1, "case": "same_key", "elapsed_seconds": 0.05921502400087775, "event": "http_attempt", "operation": 5, "replica_pid": 166905, "status": 201}
+{"at": "2026-11-07T15:30:36.584420+00:00", "attempt": 1, "case": "same_key", "elapsed_seconds": 0.06337716799862392, "event": "http_attempt", "operation": 14, "replica_pid": 166900, "status": 201}
+{"at": "2026-11-07T15:30:36.598626+00:00", "attempt": 1, "case": "same_key", "elapsed_seconds": 0.07936366200010525, "event": "http_attempt", "operation": 99, "replica_pid": 166905, "status": 201}
+{"at": "2026-11-07T15:30:36.601662+00:00", "attempt": 1, "case": "same_key", "elapsed_seconds": 0.08027316500010784, "event": "http_attempt", "operation": 18, "replica_pid": 166900, "status": 201}
+{"at": "2026-11-07T15:30:36.606438+00:00", "attempt": 1, "case": "same_key", "elapsed_seconds": 0.08270301399898017, "event": "http_attempt", "operation": 46, "replica_pid": 166900, "status": 201}
+{"at": "2026-11-07T15:30:36.610837+00:00", "attempt": 1, "case": "same_key", "elapsed_seconds": 0.0910268219995487, "event": "http_attempt", "operation": 2, "replica_pid": 166900, "status": 201}
+{"at": "2026-11-07T15:30:36.611293+00:00", "attempt": 1, "case": "same_key", "elapsed_seconds": 0.0909878189995652, "event": "http_attempt", "operation": 7, "replica_pid": 166905, "status": 201}
+{"at": "2026-11-07T15:30:36.618671+00:00", "event": "resource_sample", "ffmpeg_processes": 0, "native_media_processes": 0, "processes": 4, "rss_bytes": 169496576}
+{"at": "2026-11-07T15:30:36.620056+00:00", "attempt": 1, "case": "same_key", "elapsed_seconds": 0.0992707050008903, "event": "http_attempt", "operation": 11, "replica_pid": 166905, "status": 201}
+{"at": "2026-11-07T15:30:36.627474+00:00", "attempt": 1, "case": "same_key", "elapsed_seconds": 0.10246795399871189, "event": "http_attempt", "operation": 73, "replica_pid": 166905, "status": 201}
+{"at": "2026-11-07T15:30:36.629548+00:00", "attempt": 1, "case": "same_key", "elapsed_seconds": 0.10908059400026104, "event": "http_attempt", "operation": 10, "replica_pid": 166900, "status": 201}
+{"at": "2026-11-07T15:30:36.636773+00:00", "attempt": 1, "case": "same_key", "elapsed_seconds": 0.114155445000506, "event": "http_attempt", "operation": 30, "replica_pid": 166900, "status": 201}
+{"at": "2026-11-07T15:30:36.638167+00:00", "attempt": 1, "case": "same_key", "elapsed_seconds": 0.1172505699996691, "event": "http_attempt", "operation": 13, "replica_pid": 166905, "status": 201}
+{"at": "2026-11-07T15:30:36.640715+00:00", "attempt": 1, "case": "same_key", "elapsed_seconds": 0.1188386289995833, "event": "http_attempt", "operation": 23, "replica_pid": 166905, "status": 201}
+{"at": "2026-11-07T15:30:36.645716+00:00", "attempt": 1, "case": "same_key", "elapsed_seconds": 0.12411756599976798, "event": "http_attempt", "operation": 22, "replica_pid": 166900, "status": 201}
+{"at": "2026-11-07T15:30:36.650838+00:00", "attempt": 1, "case": "same_key", "elapsed_seconds": 0.12885228300001472, "event": "http_attempt", "operation": 25, "replica_pid": 166905, "status": 201}
+{"at": "2026-11-07T15:30:36.653160+00:00", "attempt": 1, "case": "same_key", "elapsed_seconds": 0.13106982899989816, "event": "http_attempt", "operation": 26, "replica_pid": 166900, "status": 201}
+{"at": "2026-11-07T15:30:36.657169+00:00", "attempt": 1, "case": "same_key", "elapsed_seconds": 0.1343571380002686, "event": "http_attempt", "operation": 36, "replica_pid": 166900, "status": 201}
+{"at": "2026-11-07T15:30:36.662243+00:00", "attempt": 1, "case": "same_key", "elapsed_seconds": 0.1409666580002522, "event": "http_attempt", "operation": 17, "replica_pid": 166905, "status": 201}
+{"at": "2026-11-07T15:30:36.668345+00:00", "attempt": 1, "case": "same_key", "elapsed_seconds": 0.14658139799939818, "event": "http_attempt", "operation": 21, "replica_pid": 166905, "status": 201}
+{"at": "2026-11-07T15:30:36.676582+00:00", "event": "resource_sample", "ffmpeg_processes": 0, "native_media_processes": 0, "processes": 4, "rss_bytes": 169758720}
+{"at": "2026-11-07T15:30:36.677488+00:00", "attempt": 1, "case": "same_key", "elapsed_seconds": 0.15514414900098927, "event": "http_attempt", "operation": 28, "replica_pid": 166900, "status": 201}
+{"at": "2026-11-07T15:30:36.680125+00:00", "attempt": 1, "case": "same_key", "elapsed_seconds": 0.1567969740008266, "event": "http_attempt", "operation": 42, "replica_pid": 166900, "status": 201}
+{"at": "2026-11-07T15:30:36.681734+00:00", "attempt": 1, "case": "same_key", "elapsed_seconds": 0.15863058000104502, "event": "http_attempt", "operation": 40, "replica_pid": 166900, "status": 201}
+{"at": "2026-11-07T15:30:36.690314+00:00", "attempt": 1, "case": "same_key", "elapsed_seconds": 0.16805697000017972, "event": "http_attempt", "operation": 27, "replica_pid": 166905, "status": 201}
+{"at": "2026-11-07T15:30:36.691828+00:00", "attempt": 1, "case": "same_key", "elapsed_seconds": 0.16939474299942958, "event": "http_attempt", "operation": 29, "replica_pid": 166905, "status": 201}
+{"at": "2026-11-07T15:30:36.697507+00:00", "attempt": 1, "case": "same_key", "elapsed_seconds": 0.17449296899940236, "event": "http_attempt", "operation": 39, "replica_pid": 166905, "status": 201}
+{"at": "2026-11-07T15:30:36.698847+00:00", "attempt": 1, "case": "same_key", "elapsed_seconds": 0.17524397499983024, "event": "http_attempt", "operation": 44, "replica_pid": 166900, "status": 201}
+{"at": "2026-11-07T15:30:36.699296+00:00", "attempt": 1, "case": "same_key", "elapsed_seconds": 0.17658040700007405, "event": "http_attempt", "operation": 35, "replica_pid": 166905, "status": 201}
+{"at": "2026-11-07T15:30:36.703542+00:00", "attempt": 1, "case": "same_key", "elapsed_seconds": 0.17961378000109107, "event": "http_attempt", "operation": 48, "replica_pid": 166900, "status": 201}
+{"at": "2026-11-07T15:30:36.706282+00:00", "attempt": 1, "case": "same_key", "elapsed_seconds": 0.18185133099905215, "event": "http_attempt", "operation": 82, "replica_pid": 166900, "status": 201}
+{"at": "2026-11-07T15:30:36.717001+00:00", "attempt": 1, "case": "same_key", "elapsed_seconds": 0.19289706500057946, "event": "http_attempt", "operation": 50, "replica_pid": 166900, "status": 201}
+{"at": "2026-11-07T15:30:36.719819+00:00", "attempt": 1, "case": "same_key", "elapsed_seconds": 0.19727893399976892, "event": "http_attempt", "operation": 31, "replica_pid": 166905, "status": 201}
+{"at": "2026-11-07T15:30:36.724655+00:00", "attempt": 1, "case": "same_key", "elapsed_seconds": 0.20175184900108434, "event": "http_attempt", "operation": 37, "replica_pid": 166905, "status": 201}
+{"at": "2026-11-07T15:30:36.725231+00:00", "attempt": 1, "case": "same_key", "elapsed_seconds": 0.20182899499923224, "event": "http_attempt", "operation": 43, "replica_pid": 166905, "status": 201}
+{"at": "2026-11-07T15:30:36.731764+00:00", "event": "resource_sample", "ffmpeg_processes": 0, "native_media_processes": 0, "processes": 4, "rss_bytes": 170020864}
+{"at": "2026-11-07T15:30:36.738936+00:00", "attempt": 1, "case": "same_key", "elapsed_seconds": 0.21570690099906642, "event": "http_attempt", "operation": 41, "replica_pid": 166905, "status": 201}
+{"at": "2026-11-07T15:30:36.739359+00:00", "attempt": 1, "case": "same_key", "elapsed_seconds": 0.2178666460004024, "event": "http_attempt", "operation": 20, "replica_pid": 166900, "status": 503}
+{"at": "2026-11-07T15:30:36.739797+00:00", "attempt": 1, "case": "same_key", "elapsed_seconds": 0.21863789099916175, "event": "http_attempt", "operation": 15, "replica_pid": 166905, "status": 503}
+{"at": "2026-11-07T15:30:36.747878+00:00", "attempt": 1, "case": "same_key", "elapsed_seconds": 0.2232135140002356, "event": "http_attempt", "operation": 84, "replica_pid": 166900, "status": 201}
+{"at": "2026-11-07T15:30:36.752805+00:00", "attempt": 1, "case": "same_key", "elapsed_seconds": 0.22805077900011383, "event": "http_attempt", "operation": 0, "replica_pid": 166900, "status": 201}
+{"at": "2026-11-07T15:30:36.755158+00:00", "attempt": 1, "case": "same_key", "elapsed_seconds": 0.23084811000080663, "event": "http_attempt", "operation": 80, "replica_pid": 166900, "status": 201}
+{"at": "2026-11-07T15:30:36.756832+00:00", "attempt": 1, "case": "same_key", "elapsed_seconds": 0.23281024899915792, "event": "http_attempt", "operation": 49, "replica_pid": 166905, "status": 201}
+{"at": "2026-11-07T15:30:36.760441+00:00", "attempt": 1, "case": "same_key", "elapsed_seconds": 0.23660927899982198, "event": "http_attempt", "operation": 47, "replica_pid": 166905, "status": 201}
+{"at": "2026-11-07T15:30:36.768998+00:00", "attempt": 1, "case": "same_key", "elapsed_seconds": 0.24479492899990873, "event": "http_attempt", "operation": 51, "replica_pid": 166905, "status": 201}
+{"at": "2026-11-07T15:30:36.769243+00:00", "attempt": 1, "case": "same_key", "elapsed_seconds": 0.2438225980004063, "event": "http_attempt", "operation": 62, "replica_pid": 166900, "status": 503}
+{"at": "2026-11-07T15:30:36.769707+00:00", "attempt": 1, "case": "same_key", "elapsed_seconds": 0.24621636900155863, "event": "http_attempt", "operation": 45, "replica_pid": 166905, "status": 201}
+{"at": "2026-11-07T15:30:36.769859+00:00", "attempt": 1, "case": "same_key", "elapsed_seconds": 0.24410859599993273, "event": "http_attempt", "operation": 60, "replica_pid": 166900, "status": 503}
+{"at": "2026-11-07T15:30:36.772003+00:00", "attempt": 1, "case": "same_key", "elapsed_seconds": 0.24746067300111463, "event": "http_attempt", "operation": 86, "replica_pid": 166900, "status": 201}
+{"at": "2026-11-07T15:30:36.776133+00:00", "attempt": 1, "case": "same_key", "elapsed_seconds": 0.2509655119993113, "event": "http_attempt", "operation": 71, "replica_pid": 166905, "status": 503}
+{"at": "2026-11-07T15:30:36.776530+00:00", "attempt": 1, "case": "same_key", "elapsed_seconds": 0.2512440490008885, "event": "http_attempt", "operation": 57, "replica_pid": 166905, "status": 503}
+{"at": "2026-11-07T15:30:36.777340+00:00", "attempt": 1, "case": "same_key", "elapsed_seconds": 0.25223756699961086, "event": "http_attempt", "operation": 72, "replica_pid": 166900, "status": 201}
+{"at": "2026-11-07T15:30:36.777621+00:00", "attempt": 1, "case": "same_key", "elapsed_seconds": 0.2513711699994019, "event": "http_attempt", "operation": 94, "replica_pid": 166900, "status": 503}
+{"at": "2026-11-07T15:30:36.777953+00:00", "attempt": 1, "case": "same_key", "elapsed_seconds": 0.25150600600136386, "event": "http_attempt", "operation": 92, "replica_pid": 166900, "status": 503}
+{"at": "2026-11-07T15:30:36.778485+00:00", "attempt": 1, "case": "same_key", "elapsed_seconds": 0.2526788029990712, "event": "http_attempt", "operation": 74, "replica_pid": 166900, "status": 503}
+{"at": "2026-11-07T15:30:36.779298+00:00", "attempt": 1, "case": "same_key", "elapsed_seconds": 0.25272923900047317, "event": "http_attempt", "operation": 76, "replica_pid": 166900, "status": 503}
+{"at": "2026-11-07T15:30:36.781313+00:00", "attempt": 1, "case": "same_key", "elapsed_seconds": 0.2543359100000089, "event": "http_attempt", "operation": 78, "replica_pid": 166900, "status": 503}
+{"at": "2026-11-07T15:30:36.781380+00:00", "attempt": 1, "case": "same_key", "elapsed_seconds": 0.2539775039986125, "event": "http_attempt", "operation": 66, "replica_pid": 166900, "status": 503}
+{"at": "2026-11-07T15:30:36.782341+00:00", "attempt": 1, "case": "same_key", "elapsed_seconds": 0.2568155539993313, "event": "http_attempt", "operation": 69, "replica_pid": 166905, "status": 503}
+{"at": "2026-11-07T15:30:36.783577+00:00", "attempt": 1, "case": "same_key", "elapsed_seconds": 0.2577143460002844, "event": "http_attempt", "operation": 75, "replica_pid": 166905, "status": 503}
+{"at": "2026-11-07T15:30:36.783854+00:00", "attempt": 1, "case": "same_key", "elapsed_seconds": 0.2558165579994238, "event": "http_attempt", "operation": 64, "replica_pid": 166900, "status": 503}
+{"at": "2026-11-07T15:30:36.783998+00:00", "attempt": 1, "case": "same_key", "elapsed_seconds": 0.25778374999936204, "event": "http_attempt", "operation": 59, "replica_pid": 166905, "status": 503}
+{"at": "2026-11-07T15:30:36.785131+00:00", "attempt": 1, "case": "same_key", "elapsed_seconds": 0.257745161999992, "event": "http_attempt", "operation": 79, "replica_pid": 166905, "status": 503}
+{"at": "2026-11-07T15:30:36.786618+00:00", "attempt": 1, "case": "same_key", "elapsed_seconds": 0.2564464719998796, "event": "http_attempt", "operation": 52, "replica_pid": 166900, "status": 503}
+{"at": "2026-11-07T15:30:36.786849+00:00", "attempt": 1, "case": "same_key", "elapsed_seconds": 0.25885442300022987, "event": "http_attempt", "operation": 77, "replica_pid": 166905, "status": 503}
+{"at": "2026-11-07T15:30:36.788694+00:00", "attempt": 1, "case": "same_key", "elapsed_seconds": 0.2593346779995045, "event": "http_attempt", "operation": 61, "replica_pid": 166905, "status": 503}
+{"at": "2026-11-07T15:30:36.788746+00:00", "attempt": 1, "case": "same_key", "elapsed_seconds": 0.2586555199995928, "event": "http_attempt", "operation": 89, "replica_pid": 166905, "status": 503}
+{"at": "2026-11-07T15:30:36.788782+00:00", "attempt": 1, "case": "same_key", "elapsed_seconds": 0.2616738020005869, "event": "http_attempt", "operation": 83, "replica_pid": 166905, "status": 201}
+{"at": "2026-11-07T15:30:36.789430+00:00", "attempt": 1, "case": "same_key", "elapsed_seconds": 0.2621084719994542, "event": "http_attempt", "operation": 67, "replica_pid": 166905, "status": 503}
+{"at": "2026-11-07T15:30:36.789853+00:00", "attempt": 1, "case": "same_key", "elapsed_seconds": 0.26136819800012745, "event": "http_attempt", "operation": 56, "replica_pid": 166900, "status": 503}
+{"at": "2026-11-07T15:30:36.789895+00:00", "attempt": 1, "case": "same_key", "elapsed_seconds": 0.26128451299882727, "event": "http_attempt", "operation": 54, "replica_pid": 166900, "status": 503}
+{"at": "2026-11-07T15:30:36.790062+00:00", "attempt": 1, "case": "same_key", "elapsed_seconds": 0.26127133299996785, "event": "http_attempt", "operation": 38, "replica_pid": 166900, "status": 503}
+{"at": "2026-11-07T15:30:36.790892+00:00", "attempt": 1, "case": "same_key", "elapsed_seconds": 0.2645285580001655, "event": "http_attempt", "operation": 95, "replica_pid": 166905, "status": 503}
+{"at": "2026-11-07T15:30:36.792909+00:00", "attempt": 1, "case": "same_key", "elapsed_seconds": 0.26061321799897996, "event": "http_attempt", "operation": 90, "replica_pid": 166900, "status": 503}
+{"at": "2026-11-07T15:30:36.793173+00:00", "attempt": 1, "case": "same_key", "elapsed_seconds": 0.2639261249987612, "event": "http_attempt", "operation": 97, "replica_pid": 166905, "status": 503}
+{"at": "2026-11-07T15:30:36.793235+00:00", "attempt": 1, "case": "same_key", "elapsed_seconds": 0.26560900600088644, "event": "http_attempt", "operation": 65, "replica_pid": 166905, "status": 503}
+{"at": "2026-11-07T15:30:36.793367+00:00", "attempt": 1, "case": "same_key", "elapsed_seconds": 0.2637972570009879, "event": "http_attempt", "operation": 16, "replica_pid": 166900, "status": 503}
+{"at": "2026-11-07T15:30:36.797083+00:00", "attempt": 1, "case": "same_key", "elapsed_seconds": 0.2641325989989127, "event": "http_attempt", "operation": 34, "replica_pid": 166900, "status": 503}
+{"at": "2026-11-07T15:30:36.797142+00:00", "attempt": 1, "case": "same_key", "elapsed_seconds": 0.2641170150000107, "event": "http_attempt", "operation": 32, "replica_pid": 166900, "status": 503}
+{"at": "2026-11-07T15:30:36.798190+00:00", "attempt": 1, "case": "same_key", "elapsed_seconds": 0.2650323620000563, "event": "http_attempt", "operation": 19, "replica_pid": 166905, "status": 503}
+{"at": "2026-11-07T15:30:36.798325+00:00", "attempt": 1, "case": "same_key", "elapsed_seconds": 0.2664615819994651, "event": "http_attempt", "operation": 93, "replica_pid": 166905, "status": 503}
+{"at": "2026-11-07T15:30:36.798422+00:00", "attempt": 1, "case": "same_key", "elapsed_seconds": 0.2649750109994784, "event": "http_attempt", "operation": 88, "replica_pid": 166900, "status": 503}
+{"at": "2026-11-07T15:30:36.799365+00:00", "attempt": 1, "case": "same_key", "elapsed_seconds": 0.2712662489993818, "event": "http_attempt", "operation": 63, "replica_pid": 166905, "status": 503}
+{"at": "2026-11-07T15:30:36.799594+00:00", "attempt": 1, "case": "same_key", "elapsed_seconds": 0.270332795998911, "event": "http_attempt", "operation": 4, "replica_pid": 166900, "status": 503}
+{"at": "2026-11-07T15:30:36.799636+00:00", "attempt": 1, "case": "same_key", "elapsed_seconds": 0.2649897119990783, "event": "http_attempt", "operation": 53, "replica_pid": 166905, "status": 503}
+{"at": "2026-11-07T15:30:36.799691+00:00", "attempt": 1, "case": "same_key", "elapsed_seconds": 0.2651442650003446, "event": "http_attempt", "operation": 12, "replica_pid": 166900, "status": 503}
+{"at": "2026-11-07T15:30:36.799726+00:00", "attempt": 1, "case": "same_key", "elapsed_seconds": 0.2692824080004357, "event": "http_attempt", "operation": 68, "replica_pid": 166900, "status": 201}
+{"at": "2026-11-07T15:30:36.799764+00:00", "attempt": 1, "case": "same_key", "elapsed_seconds": 0.2711488229997485, "event": "http_attempt", "operation": 81, "replica_pid": 166905, "status": 201}
+{"at": "2026-11-07T15:30:36.799796+00:00", "attempt": 1, "case": "same_key", "elapsed_seconds": 0.2683573370013619, "event": "http_attempt", "operation": 55, "replica_pid": 166905, "status": 503}
+{"at": "2026-11-07T15:30:36.799821+00:00", "attempt": 1, "case": "same_key", "elapsed_seconds": 0.26762625200171897, "event": "http_attempt", "operation": 1, "replica_pid": 166905, "status": 503}
+{"at": "2026-11-07T15:30:36.800796+00:00", "attempt": 1, "case": "same_key", "elapsed_seconds": 0.26423308899939, "event": "http_attempt", "operation": 8, "replica_pid": 166900, "status": 503}
+{"at": "2026-11-07T15:30:36.800842+00:00", "attempt": 1, "case": "same_key", "elapsed_seconds": 0.27358216700122284, "event": "http_attempt", "operation": 85, "replica_pid": 166905, "status": 201}
+{"at": "2026-11-07T15:30:36.800935+00:00", "attempt": 1, "case": "same_key", "elapsed_seconds": 0.2669842100003734, "event": "http_attempt", "operation": 87, "replica_pid": 166905, "status": 503}
+{"at": "2026-11-07T15:30:36.801024+00:00", "event": "resource_sample", "ffmpeg_processes": 0, "native_media_processes": 0, "processes": 4, "rss_bytes": 169885696}
+{"at": "2026-11-07T15:30:36.802294+00:00", "attempt": 1, "case": "same_key", "elapsed_seconds": 0.27325695600120525, "event": "http_attempt", "operation": 24, "replica_pid": 166900, "status": 503}
+{"at": "2026-11-07T15:30:36.806562+00:00", "attempt": 1, "case": "same_key", "elapsed_seconds": 0.28058412999962457, "event": "http_attempt", "operation": 58, "replica_pid": 166900, "status": 201}
+{"at": "2026-11-07T15:30:36.807102+00:00", "attempt": 1, "case": "same_key", "elapsed_seconds": 0.2822125490001781, "event": "http_attempt", "operation": 3, "replica_pid": 166905, "status": 201}
+{"at": "2026-11-07T15:30:36.814294+00:00", "attempt": 1, "case": "same_key", "elapsed_seconds": 0.28906400699997903, "event": "http_attempt", "operation": 70, "replica_pid": 166900, "status": 201}
+{"at": "2026-11-07T15:30:36.814754+00:00", "attempt": 1, "case": "same_key", "elapsed_seconds": 0.2882888959993579, "event": "http_attempt", "operation": 96, "replica_pid": 166900, "status": 201}
+{"at": "2026-11-07T15:30:36.822327+00:00", "attempt": 1, "case": "same_key", "elapsed_seconds": 0.2941197239997564, "event": "http_attempt", "operation": 98, "replica_pid": 166900, "status": 201}
+{"at": "2026-11-07T15:30:36.832423+00:00", "attempt": 1, "case": "same_key", "elapsed_seconds": 0.3056340799994359, "event": "http_attempt", "operation": 91, "replica_pid": 166905, "status": 201}
+{"at": "2026-11-07T15:30:36.841295+00:00", "attempt": 1, "case": "same_key", "elapsed_seconds": 0.3123706999995193, "event": "http_attempt", "operation": 33, "replica_pid": 166905, "status": 201}
+{"at": "2026-11-07T15:30:36.845728+00:00", "attempt": 2, "case": "same_key", "elapsed_seconds": 0.07783216800089576, "event": "http_attempt", "operation": 15, "replica_pid": 166905, "status": 201}
+{"at": "2026-11-07T15:30:36.852136+00:00", "attempt": 2, "case": "same_key", "elapsed_seconds": 0.042708068000138155, "event": "http_attempt", "operation": 78, "replica_pid": 166900, "status": 201}
+{"at": "2026-11-07T15:30:36.854355+00:00", "attempt": 2, "case": "same_key", "elapsed_seconds": 0.050102154000342125, "event": "http_attempt", "operation": 71, "replica_pid": 166905, "status": 201}
+{"at": "2026-11-07T15:30:36.856868+00:00", "event": "resource_sample", "ffmpeg_processes": 0, "native_media_processes": 0, "processes": 4, "rss_bytes": 170016768}
+{"at": "2026-11-07T15:30:36.858218+00:00", "attempt": 2, "case": "same_key", "elapsed_seconds": 0.05105443000138621, "event": "http_attempt", "operation": 60, "replica_pid": 166900, "status": 201}
+{"at": "2026-11-07T15:30:36.858578+00:00", "attempt": 2, "case": "same_key", "elapsed_seconds": 0.05195770300088043, "event": "http_attempt", "operation": 92, "replica_pid": 166900, "status": 201}
+{"at": "2026-11-07T15:30:36.863002+00:00", "attempt": 2, "case": "same_key", "elapsed_seconds": 0.07895154399921012, "event": "http_attempt", "operation": 20, "replica_pid": 166900, "status": 201}
+{"at": "2026-11-07T15:30:36.863218+00:00", "attempt": 2, "case": "same_key", "elapsed_seconds": 0.034400325999740744, "event": "http_attempt", "operation": 89, "replica_pid": 166905, "status": 201}
+{"at": "2026-11-07T15:30:36.870325+00:00", "attempt": 2, "case": "same_key", "elapsed_seconds": 0.06555219999972905, "event": "http_attempt", "operation": 57, "replica_pid": 166905, "status": 201}
+{"at": "2026-11-07T15:30:36.875299+00:00", "attempt": 2, "case": "same_key", "elapsed_seconds": 0.05713703099900158, "event": "http_attempt", "operation": 59, "replica_pid": 166905, "status": 201}
+{"at": "2026-11-07T15:30:36.877765+00:00", "attempt": 2, "case": "same_key", "elapsed_seconds": 0.06217252299938991, "event": "http_attempt", "operation": 74, "replica_pid": 166900, "status": 201}
+{"at": "2026-11-07T15:30:36.881135+00:00", "attempt": 2, "case": "same_key", "elapsed_seconds": 0.06900252300147258, "event": "http_attempt", "operation": 94, "replica_pid": 166900, "status": 201}
+{"at": "2026-11-07T15:30:36.887533+00:00", "attempt": 2, "case": "same_key", "elapsed_seconds": 0.0492290670008515, "event": "http_attempt", "operation": 19, "replica_pid": 166905, "status": 201}
+{"at": "2026-11-07T15:30:36.891379+00:00", "attempt": 2, "case": "same_key", "elapsed_seconds": 0.07699635599965404, "event": "http_attempt", "operation": 62, "replica_pid": 166900, "status": 201}
+{"at": "2026-11-07T15:30:36.895969+00:00", "attempt": 2, "case": "same_key", "elapsed_seconds": 0.07134102600139158, "event": "http_attempt", "operation": 63, "replica_pid": 166905, "status": 201}
+{"at": "2026-11-07T15:30:36.902324+00:00", "attempt": 2, "case": "same_key", "elapsed_seconds": 0.08962200699897949, "event": "http_attempt", "operation": 64, "replica_pid": 166900, "status": 201}
+{"at": "2026-11-07T15:30:36.903223+00:00", "attempt": 2, "case": "same_key", "elapsed_seconds": 0.07825252899965562, "event": "http_attempt", "operation": 65, "replica_pid": 166905, "status": 201}
+{"at": "2026-11-07T15:30:36.906542+00:00", "attempt": 2, "case": "same_key", "elapsed_seconds": 0.09065454399933515, "event": "http_attempt", "operation": 56, "replica_pid": 166900, "status": 201}
+{"at": "2026-11-07T15:30:36.911704+00:00", "attempt": 2, "case": "same_key", "elapsed_seconds": 0.08629786900019099, "event": "http_attempt", "operation": 75, "replica_pid": 166905, "status": 201}
+{"at": "2026-11-07T15:30:36.912202+00:00", "event": "resource_sample", "ffmpeg_processes": 0, "native_media_processes": 0, "processes": 4, "rss_bytes": 170278912}
+{"at": "2026-11-07T15:30:36.920859+00:00", "attempt": 2, "case": "same_key", "elapsed_seconds": 0.10482976599996618, "event": "http_attempt", "operation": 66, "replica_pid": 166900, "status": 201}
+{"at": "2026-11-07T15:30:36.921470+00:00", "attempt": 2, "case": "same_key", "elapsed_seconds": 0.09592248999979347, "event": "http_attempt", "operation": 69, "replica_pid": 166905, "status": 201}
+{"at": "2026-11-07T15:30:36.922934+00:00", "attempt": 2, "case": "same_key", "elapsed_seconds": 0.10208318300101382, "event": "http_attempt", "operation": 52, "replica_pid": 166900, "status": 201}
+{"at": "2026-11-07T15:30:36.927841+00:00", "attempt": 2, "case": "same_key", "elapsed_seconds": 0.10116796599868394, "event": "http_attempt", "operation": 67, "replica_pid": 166905, "status": 201}
+{"at": "2026-11-07T15:30:36.930987+00:00", "attempt": 2, "case": "same_key", "elapsed_seconds": 0.10298474299997906, "event": "http_attempt", "operation": 95, "replica_pid": 166905, "status": 201}
+{"at": "2026-11-07T15:30:36.932421+00:00", "attempt": 2, "case": "same_key", "elapsed_seconds": 0.10518996600148967, "event": "http_attempt", "operation": 16, "replica_pid": 166900, "status": 201}
+{"at": "2026-11-07T15:30:36.943993+00:00", "attempt": 2, "case": "same_key", "elapsed_seconds": 0.11577382900031807, "event": "http_attempt", "operation": 1, "replica_pid": 166905, "status": 201}
+{"at": "2026-11-07T15:30:36.945321+00:00", "attempt": 2, "case": "same_key", "elapsed_seconds": 0.13333943799989356, "event": "http_attempt", "operation": 77, "replica_pid": 166905, "status": 201}
+{"at": "2026-11-07T15:30:36.950552+00:00", "attempt": 2, "case": "same_key", "elapsed_seconds": 0.1262347880001471, "event": "http_attempt", "operation": 38, "replica_pid": 166900, "status": 201}
+{"at": "2026-11-07T15:30:36.959561+00:00", "attempt": 2, "case": "same_key", "elapsed_seconds": 0.13440303199968184, "event": "http_attempt", "operation": 76, "replica_pid": 166900, "status": 201}
+{"at": "2026-11-07T15:30:36.962916+00:00", "attempt": 2, "case": "same_key", "elapsed_seconds": 0.13340387500102224, "event": "http_attempt", "operation": 93, "replica_pid": 166905, "status": 201}
+{"at": "2026-11-07T15:30:36.968733+00:00", "attempt": 2, "case": "same_key", "elapsed_seconds": 0.1396801160008181, "event": "http_attempt", "operation": 8, "replica_pid": 166900, "status": 201}
+{"at": "2026-11-07T15:30:36.969465+00:00", "attempt": 2, "case": "same_key", "elapsed_seconds": 0.1389998070008005, "event": "http_attempt", "operation": 54, "replica_pid": 166900, "status": 201}
+{"at": "2026-11-07T15:30:36.972775+00:00", "attempt": 2, "case": "same_key", "elapsed_seconds": 0.143565515998489, "event": "http_attempt", "operation": 61, "replica_pid": 166905, "status": 201}
+{"at": "2026-11-07T15:30:36.975951+00:00", "attempt": 2, "case": "same_key", "elapsed_seconds": 0.1416626760001236, "event": "http_attempt", "operation": 32, "replica_pid": 166900, "status": 201}
+{"at": "2026-11-07T15:30:36.976821+00:00", "event": "resource_sample", "ffmpeg_processes": 0, "native_media_processes": 0, "processes": 4, "rss_bytes": 170409984}
+{"at": "2026-11-07T15:30:36.983546+00:00", "attempt": 2, "case": "same_key", "elapsed_seconds": 0.14724300400121137, "event": "http_attempt", "operation": 97, "replica_pid": 166905, "status": 201}
+{"at": "2026-11-07T15:30:36.990947+00:00", "attempt": 2, "case": "same_key", "elapsed_seconds": 0.15588789799949154, "event": "http_attempt", "operation": 87, "replica_pid": 166905, "status": 201}
+{"at": "2026-11-07T15:30:36.994282+00:00", "attempt": 2, "case": "same_key", "elapsed_seconds": 0.15822481299983338, "event": "http_attempt", "operation": 90, "replica_pid": 166900, "status": 201}
+{"at": "2026-11-07T15:30:36.996944+00:00", "attempt": 2, "case": "same_key", "elapsed_seconds": 0.16013405199919362, "event": "http_attempt", "operation": 53, "replica_pid": 166905, "status": 201}
+{"at": "2026-11-07T15:30:37.002824+00:00", "attempt": 2, "case": "same_key", "elapsed_seconds": 0.1658857580005133, "event": "http_attempt", "operation": 4, "replica_pid": 166900, "status": 201}
+{"at": "2026-11-07T15:30:37.004626+00:00", "attempt": 2, "case": "same_key", "elapsed_seconds": 0.1681014559999312, "event": "http_attempt", "operation": 88, "replica_pid": 166900, "status": 201}
+{"at": "2026-11-07T15:30:37.008090+00:00", "attempt": 2, "case": "same_key", "elapsed_seconds": 0.1904313130016817, "event": "http_attempt", "operation": 79, "replica_pid": 166905, "status": 201}
+{"at": "2026-11-07T15:30:37.010533+00:00", "attempt": 2, "case": "same_key", "elapsed_seconds": 0.17388387699975283, "event": "http_attempt", "operation": 24, "replica_pid": 166900, "status": 201}
+{"at": "2026-11-07T15:30:37.014809+00:00", "attempt": 2, "case": "same_key", "elapsed_seconds": 0.17459957899882284, "event": "http_attempt", "operation": 34, "replica_pid": 166900, "status": 201}
+{"at": "2026-11-07T15:30:37.014918+00:00", "attempt": 2, "case": "same_key", "elapsed_seconds": 0.17095110499940347, "event": "http_attempt", "operation": 55, "replica_pid": 166905, "status": 201}
+{"at": "2026-11-07T15:30:37.019887+00:00", "attempt": 2, "case": "same_key", "elapsed_seconds": 0.18009351799992146, "event": "http_attempt", "operation": 12, "replica_pid": 166900, "status": 201}
+{"at": "2026-11-07T15:30:37.030841+00:00", "event": "resource_sample", "ffmpeg_processes": 0, "native_media_processes": 0, "processes": 4, "rss_bytes": 169476096}
+{"at": "2026-11-07T15:30:37.070296+00:00", "attempt": 1, "case": "distinct_keys_quota_race", "elapsed_seconds": 0.03318894100084435, "event": "http_attempt", "operation": 19, "replica_pid": 166905, "status": 201}
+{"at": "2026-11-07T15:30:37.075727+00:00", "attempt": 1, "case": "distinct_keys_quota_race", "elapsed_seconds": 0.03525411499867914, "event": "http_attempt", "operation": 13, "replica_pid": 166905, "status": 201}
+{"at": "2026-11-07T15:30:37.077335+00:00", "attempt": 1, "case": "distinct_keys_quota_race", "elapsed_seconds": 0.03765682299854234, "event": "http_attempt", "operation": 0, "replica_pid": 166900, "status": 201}
+{"at": "2026-11-07T15:30:37.086895+00:00", "attempt": 1, "case": "distinct_keys_quota_race", "elapsed_seconds": 0.04898689400033618, "event": "http_attempt", "operation": 15, "replica_pid": 166905, "status": 201}
+{"at": "2026-11-07T15:30:37.088536+00:00", "event": "resource_sample", "ffmpeg_processes": 0, "native_media_processes": 0, "processes": 4, "rss_bytes": 169738240}
+{"at": "2026-11-07T15:30:37.092985+00:00", "attempt": 1, "case": "distinct_keys_quota_race", "elapsed_seconds": 0.053912360999675, "event": "http_attempt", "operation": 14, "replica_pid": 166900, "status": 201}
+{"at": "2026-11-07T15:30:37.098250+00:00", "attempt": 1, "case": "distinct_keys_quota_race", "elapsed_seconds": 0.06015778499931912, "event": "http_attempt", "operation": 6, "replica_pid": 166900, "status": 201}
+{"at": "2026-11-07T15:30:37.102101+00:00", "attempt": 1, "case": "distinct_keys_quota_race", "elapsed_seconds": 0.06286695299968414, "event": "http_attempt", "operation": 17, "replica_pid": 166905, "status": 201}
+{"at": "2026-11-07T15:30:37.107280+00:00", "attempt": 1, "case": "distinct_keys_quota_race", "elapsed_seconds": 0.06738874599977862, "event": "http_attempt", "operation": 12, "replica_pid": 166900, "status": 201}
+{"at": "2026-11-07T15:30:37.111301+00:00", "attempt": 1, "case": "distinct_keys_quota_race", "elapsed_seconds": 0.07043595100003586, "event": "http_attempt", "operation": 8, "replica_pid": 166900, "status": 201}
+{"at": "2026-11-07T15:30:37.113846+00:00", "attempt": 1, "case": "distinct_keys_quota_race", "elapsed_seconds": 0.07494523499917705, "event": "http_attempt", "operation": 11, "replica_pid": 166905, "status": 201}
+{"at": "2026-11-07T15:30:37.116000+00:00", "attempt": 1, "case": "distinct_keys_quota_race", "elapsed_seconds": 0.07742560500082618, "event": "http_attempt", "operation": 9, "replica_pid": 166905, "status": 429}
+{"at": "2026-11-07T15:30:37.121711+00:00", "attempt": 1, "case": "distinct_keys_quota_race", "elapsed_seconds": 0.08394697800031281, "event": "http_attempt", "operation": 18, "replica_pid": 166900, "status": 429}
+{"at": "2026-11-07T15:30:37.123481+00:00", "attempt": 1, "case": "distinct_keys_quota_race", "elapsed_seconds": 0.08394890099953045, "event": "http_attempt", "operation": 2, "replica_pid": 166900, "status": 429}
+{"at": "2026-11-07T15:30:37.125465+00:00", "attempt": 1, "case": "distinct_keys_quota_race", "elapsed_seconds": 0.08716763200027344, "event": "http_attempt", "operation": 3, "replica_pid": 166905, "status": 429}
+{"at": "2026-11-07T15:30:37.129466+00:00", "attempt": 1, "case": "distinct_keys_quota_race", "elapsed_seconds": 0.0920837150006264, "event": "http_attempt", "operation": 1, "replica_pid": 166905, "status": 429}
+{"at": "2026-11-07T15:30:37.133169+00:00", "attempt": 1, "case": "distinct_keys_quota_race", "elapsed_seconds": 0.0929279800002405, "event": "http_attempt", "operation": 10, "replica_pid": 166900, "status": 429}
+{"at": "2026-11-07T15:30:37.133713+00:00", "attempt": 1, "case": "distinct_keys_quota_race", "elapsed_seconds": 0.0961656290000974, "event": "http_attempt", "operation": 7, "replica_pid": 166905, "status": 429}
+{"at": "2026-11-07T15:30:37.134808+00:00", "attempt": 1, "case": "distinct_keys_quota_race", "elapsed_seconds": 0.09605753699906927, "event": "http_attempt", "operation": 4, "replica_pid": 166900, "status": 429}
+{"at": "2026-11-07T15:30:37.138573+00:00", "attempt": 1, "case": "distinct_keys_quota_race", "elapsed_seconds": 0.10008482900047966, "event": "http_attempt", "operation": 5, "replica_pid": 166905, "status": 429}
+{"at": "2026-11-07T15:30:37.142292+00:00", "attempt": 1, "case": "distinct_keys_quota_race", "elapsed_seconds": 0.09950218700032565, "event": "http_attempt", "operation": 16, "replica_pid": 166900, "status": 429}
+{"at": "2026-11-07T15:30:37.145065+00:00", "event": "resource_sample", "ffmpeg_processes": 0, "native_media_processes": 0, "processes": 4, "rss_bytes": 169734144}
+{"at": "2026-11-07T15:30:37.194391+00:00", "attempt": 1, "case": "publish_cross_replica_and_restart", "elapsed_seconds": 0.04218121000121755, "event": "http_attempt", "operation": 0, "replica_pid": 166900, "status": 201}
+{"at": "2026-11-07T15:30:37.198799+00:00", "event": "resource_sample", "ffmpeg_processes": 0, "native_media_processes": 0, "processes": 4, "rss_bytes": 169734144}
+{"at": "2026-11-07T15:30:37.207005+00:00", "attempt": 1, "case": "publish_cross_replica_and_restart", "elapsed_seconds": 0.012548605000120006, "event": "http_attempt", "operation": 0, "replica_pid": 166905, "status": 200}
+{"at": "2026-11-07T15:30:37.251929+00:00", "event": "resource_sample", "ffmpeg_processes": 0, "native_media_processes": 0, "processes": 4, "rss_bytes": 130088960}
+{"at": "2026-11-07T15:30:37.305030+00:00", "event": "resource_sample", "ffmpeg_processes": 0, "native_media_processes": 0, "processes": 4, "rss_bytes": 145670144}
+{"at": "2026-11-07T15:30:37.358150+00:00", "event": "resource_sample", "ffmpeg_processes": 0, "native_media_processes": 0, "processes": 4, "rss_bytes": 162852864}
+{"at": "2026-11-07T15:30:37.400127+00:00", "attempt": 1, "case": "publish_cross_replica_and_restart", "elapsed_seconds": 0.013852678999683121, "event": "http_attempt", "operation": 0, "replica_pid": 167619, "status": 200}
+{"at": "2026-11-07T15:30:37.411535+00:00", "event": "resource_sample", "ffmpeg_processes": 0, "native_media_processes": 0, "processes": 4, "rss_bytes": 166768640}
+{"at": "2026-11-07T15:30:37.412277+00:00", "attempt": 1, "case": "publish_cross_replica_and_restart", "elapsed_seconds": 0.012082828001439339, "event": "http_attempt", "operation": 0, "replica_pid": 167619, "status": 201}
+{"at": "2026-11-07T15:30:37.422080+00:00", "attempt": 1, "case": "publish_cross_replica_and_restart", "elapsed_seconds": 0.009762301999217016, "event": "http_attempt", "operation": 0, "replica_pid": 167619, "status": 403}
+{"at": "2026-11-07T15:30:37.465113+00:00", "event": "resource_sample", "ffmpeg_processes": 0, "native_media_processes": 0, "processes": 4, "rss_bytes": 166899712}
+{"at": "2026-11-07T15:30:37.518284+00:00", "event": "resource_sample", "ffmpeg_processes": 0, "native_media_processes": 0, "processes": 3, "rss_bytes": 114020352}
+{"at": "2026-11-07T15:30:37.573758+00:00", "event": "resource_sample", "ffmpeg_processes": 0, "native_media_processes": 0, "processes": 2, "rss_bytes": 64233472}
+{"at": "2026-11-07T15:30:37.581138+00:00", "event": "benchmark_finished", "status": "PASS_LOCAL_ONLY"}

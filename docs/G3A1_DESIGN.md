@@ -46,7 +46,7 @@ for roles, RLS, constraints and SQL lock order.
 | `GET /v1/orgs/{org}/uploads/{id}` | Owner-scoped reconciliation and verified receipt; a receipt alone never bypasses actual object verification. |
 | `POST /v1/orgs/{org}/uploads/{id}/reconcile` | Bounded recovery with a new fence after the old lease expires. |
 | `POST /v1/orgs/{org}/uploads/{id}/resume` | Fresh owner session and exact original bytes; permits an already claimed operation to resume after its original expiry, without a second charge. |
-| `GET /v1/orgs/{org}/uploads/metrics` | Authorized organization counters, states/backlog and reconciliation events. |
+| `GET /v1/orgs/{org}/uploads/metrics` | Authorized organization counters and state backlog; audit events remain in the private SQL event table. |
 
 Changed owner/body/hash for a reused key conflicts. Expired keys remain
 tombstones. Successful responses use `uploaded_pending_validation`: these
