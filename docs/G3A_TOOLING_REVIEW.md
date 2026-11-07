@@ -5,7 +5,9 @@ containers. No cloud principal, production credential or paid service was used.
 `requirements-g3a.lock` includes the unchanged G1 lock by reference and exact
 binary-wheel hashes; installation uses `--require-hashes --only-binary=:all:`.
 The Auth source/image/Python dependency review is in G3A_AUTH.md. The Terraform
-provider proposal/restrictions are in G3A_IAC.md; provider validation was not run.
+tool/provider pins and restrictions are in G3A_IAC.md. Local `init -backend=false`
+and provider schema validation were executed without cloud credentials, plan,
+apply or Google API calls. This does not validate effective deployed IAM.
 
 The official Supabase CLI was used only for local migration generation/advisor
 inspection. The current GitHub release reported **v3.0.0**. Before execution,

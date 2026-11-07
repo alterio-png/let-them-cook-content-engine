@@ -18,6 +18,10 @@ jobs:
           python -m pip install --require-hashes --only-binary=:all: -r requirements-g3a.lock
           sudo apt-get update -qq
           sudo apt-get install -y --no-install-recommends ffmpeg
+      - name: Validate proposed IaC locally without plan or apply
+        run: |
+          set -o pipefail
+          sh infra/g3a/validate_toolchain.sh 2>&1 | tee g3a-iac.txt
       - name: Local regressions, contracts, official Auth and benchmarks
         run: |
           set -o pipefail
@@ -29,4 +33,5 @@ jobs:
           name: g3a-local-evidence-${{ github.sha }}
           path: |
             g3a-tests.txt
+            g3a-iac.txt
             /tmp/ltc-g3a-evidence/

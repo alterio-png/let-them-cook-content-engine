@@ -14,7 +14,7 @@ remain runnable independently; G3A adds files rather than changing their contrac
 | Scheduling | Cloud Tasks as a short wake-up signal | PostgreSQL polling/sweep without a queue | PostgreSQL is always authoritative. For low volume, polling alone can avoid queue/IAM complexity. Provider dedup/history is temporary. |
 | Compute | Cloud Run Jobs, one bounded render per execution | A bounded CPU worker on one private VM | Ephemeral Jobs avoid a permanent render fleet but add startup/IAM uncertainty. VM utilization and operational cost must be compared with real workloads. |
 | Web boundary | Minimal authenticated API, separate from render | Local loopback HTTP for this gate | No FFmpeg in HTTP request handlers; an audited production HTTP runtime/TLS/rate limiter remains a G3B prerequisite. |
-| IaC | Reviewable Terraform JSON | Explicit manual staging checklist | Declarative files are not applied. Static policy checks do not prove provider schema validity or deployed IAM behavior. |
+| IaC | Reviewable Terraform JSON | Explicit manual staging checklist | Declarative files are not applied. Static checks and actual local provider schema validation are separate from deployed IAM behavior. |
 
 No vendor is approved for production by G3A. Kubernetes, GPU, social APIs,
 payment systems and AI add no value to this validation and are excluded.

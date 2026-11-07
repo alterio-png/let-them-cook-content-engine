@@ -49,7 +49,7 @@ or obtain a different explicit budget. Do not create a project first and estimat
 afterward. Use no customer footage or production secrets/accounts.
 
 Budget alerts are delayed notifications, not an immediate hard cap. Pair alerts
-at 50/80/100% with explicit bounded executions, global admission limits, a wall
+at 50/90/100% with explicit bounded executions, global admission limits, a wall
 deadline, an operator watching billing/usage and a tested stop procedure. Stop
 new admission at USD 5 measured or USD 8 forecast (including delayed usage), or
 earlier if the approved ceiling/window is at risk. A billing estimate with unknown
