@@ -223,4 +223,3 @@ class LedgerPermissionTests(unittest.TestCase):
                 self.assertFalse(function["public_execute"])
                 if function["prosecdef"]:
                     self.assertIn('search_path=""', function["proconfig"])
-
