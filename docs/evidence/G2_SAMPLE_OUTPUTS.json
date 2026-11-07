@@ -1,0 +1,64 @@
+{
+  "dispatch": {
+    "event_id": "296cc469-2086-4921-92d3-117887552ee6",
+    "state": "dispatched"
+  },
+  "job_id": "c90683b8-56f8-423e-a9aa-76695864cbd9",
+  "manifest": {
+    "caption_hash": "86bf0296d17a3371ae117361359332b595c5b2fb99b9ee387d7d335081db3652",
+    "caption_mode": "supplied-srt-burned",
+    "generation": "b0021903-411e-464e-b533-d2acab2aea24/c90683b8-56f8-423e-a9aa-76695864cbd9/1",
+    "media_digest": "bc5c575292365f262642f5b905c071bb9f4aece2df25ff4c69dde0076929d4e0",
+    "outputs": [
+      {
+        "duration_seconds": 1.2,
+        "has_audio": true,
+        "height": 480,
+        "key": "b0021903-411e-464e-b533-d2acab2aea24/c90683b8-56f8-423e-a9aa-76695864cbd9/1/vertical.mp4",
+        "preset": "vertical",
+        "sha256": "779bf746fa8ced463a9e3318a968f7cc40de9e0dc56ba5fd772f4818c1d2d4d6",
+        "size_bytes": 34094,
+        "width": 270
+      },
+      {
+        "duration_seconds": 1.2,
+        "has_audio": true,
+        "height": 320,
+        "key": "b0021903-411e-464e-b533-d2acab2aea24/c90683b8-56f8-423e-a9aa-76695864cbd9/1/square.mp4",
+        "preset": "square",
+        "sha256": "30e361c7a0e02db0fd6882b31d3981069d484e8e78405205c6265dc001dc1fd9",
+        "size_bytes": 36684,
+        "width": 320
+      },
+      {
+        "duration_seconds": 1.2,
+        "has_audio": true,
+        "height": 400,
+        "key": "b0021903-411e-464e-b533-d2acab2aea24/c90683b8-56f8-423e-a9aa-76695864cbd9/1/feed.mp4",
+        "preset": "feed",
+        "sha256": "bed83208cd907baf571ddf252c038cdb50f5235d97de2731b30601e9ae699876",
+        "size_bytes": 36659,
+        "width": 320
+      }
+    ],
+    "schema_version": 2,
+    "source_has_audio": true,
+    "source_hash": "a8b0b07dacd329ec61a7bcf08811173498dd978e9e5c0667d6bf2d5b7d174c66",
+    "stats": {
+      "attempt": 1,
+      "bytes_read": 504123,
+      "bytes_written": 107437,
+      "cpu_seconds_limit_per_process": 120,
+      "elapsed_ms": 1111,
+      "estimate_model": "output_pixels_times_requested_frames_not_billing",
+      "estimated_output_pixel_frames": 12960000
+    }
+  },
+  "organization_id": "b0021903-411e-464e-b533-d2acab2aea24",
+  "output_files": [
+    "/workspace/g2-final-demo/objects/b0021903-411e-464e-b533-d2acab2aea24/c90683b8-56f8-423e-a9aa-76695864cbd9/1/vertical.mp4",
+    "/workspace/g2-final-demo/objects/b0021903-411e-464e-b533-d2acab2aea24/c90683b8-56f8-423e-a9aa-76695864cbd9/1/square.mp4",
+    "/workspace/g2-final-demo/objects/b0021903-411e-464e-b533-d2acab2aea24/c90683b8-56f8-423e-a9aa-76695864cbd9/1/feed.mp4"
+  ],
+  "state": "completed"
+}

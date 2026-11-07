@@ -1,0 +1,238 @@
+.github/workflows/ci.yml: OK
+.gitignore: OK
+AGENTS.md: OK
+README.md: OK
+docs/ARCHITECTURE.md: OK
+docs/CODEX_NEXT_STEP.md: OK
+docs/EXECUTION_LOG.md: OK
+docs/G0_DECISION.md: OK
+docs/G0_RUN_LOG.txt: OK
+docs/REFERENCES.md: OK
+docs/REPO_AUDIT.md: OK
+docs/SCALE_GATES.md: OK
+docs/SECURITY.md: OK
+engine/__init__.py: OK
+engine/cli.py: OK
+engine/core.py: OK
+infra/Dockerfile.EXAMPLE: OK
+scripts/run_smoke.sh: OK
+sql/001_schema.sql: OK
+tests/test_core.py: OK
+.github/workflows/ci.yml: OK
+.github/workflows/g1.yml: OK
+.gitignore: OK
+AGENTS.md: OK
+G0_SHA256SUMS.txt: OK
+README.md: OK
+docs/ARCHITECTURE.md: OK
+docs/CODEX_NEXT_STEP.md: OK
+docs/EXECUTION_LOG.md: OK
+docs/G0_DECISION.md: OK
+docs/G0_RUN_LOG.txt: OK
+docs/G1_CONTROL_PLANE.md: OK
+docs/G1_DECISION.md: OK
+docs/G1_DEPENDENCIES.md: OK
+docs/REFERENCES.md: OK
+docs/REPO_AUDIT.md: OK
+docs/SCALE_GATES.md: OK
+docs/SECURITY.md: OK
+docs/evidence/G1_LOCAL_RUN.txt: OK
+engine/__init__.py: OK
+engine/cli.py: OK
+engine/control_plane.py: OK
+engine/core.py: OK
+engine/handoff.py: OK
+infra/Dockerfile.EXAMPLE: OK
+integration/g1/__init__.py: OK
+integration/g1/bootstrap.sql: OK
+integration/g1/support.py: OK
+integration/g1/test_submission.py: OK
+integration/g1/test_workers.py: OK
+requirements-g1.lock: OK
+scripts/prepare_g1_database.py: OK
+scripts/run_g1_local.sh: OK
+scripts/run_smoke.sh: OK
+sql/001_schema.sql: OK
+sql/002_g1_control_plane.sql: OK
+tests/test_core.py: OK
+Applied integration/g1/bootstrap.sql
+Applied sql/001_schema.sql
+Applied sql/002_g1_control_plane.sql
+PostgreSQL 16.15 (Debian 16.15-1.pgdg12+2) on x86_64-pc-linux-gnu, compiled by gcc (Debian 12.2.0-14+deb12u1) 12.2.0, 64-bit
+Applied sql/003_media_execution.sql
+test_bad_idempotency_key (test_core.ContractTests.test_bad_idempotency_key) ... ok
+test_bad_tenant (test_core.ContractTests.test_bad_tenant) ... ok
+test_missing_job (test_core.ContractTests.test_missing_job) ... ok
+test_no_cross_tenant (test_core.ContractTests.test_no_cross_tenant) ... ok
+test_no_symlink_escape (test_core.ContractTests.test_no_symlink_escape) ... ok
+test_sha (test_core.ContractTests.test_sha) ... ok
+test_sqlite_unique (test_core.ContractTests.test_sqlite_unique) ... ok
+test_01_three_render_formats_with_audio_and_captions (test_core.VideoRenderTests.test_01_three_render_formats_with_audio_and_captions) ... ok
+test_02_retry_same_key_is_cached (test_core.VideoRenderTests.test_02_retry_same_key_is_cached) ... ok
+test_03_conflicting_request_is_rejected (test_core.VideoRenderTests.test_03_conflicting_request_is_rejected) ... ok
+test_04_corrupted_artifact_requires_manual_reconcile (test_core.VideoRenderTests.test_04_corrupted_artifact_requires_manual_reconcile) ... ok
+test_05_parallel_duplicate_requests_do_not_duplicate_render (test_core.VideoRenderTests.test_05_parallel_duplicate_requests_do_not_duplicate_render) ... ok
+
+----------------------------------------------------------------------
+Ran 12 tests in 1.736s
+
+OK
+test_100_simultaneous_submissions_create_one_logical_operation (g1.test_submission.SubmissionTests.test_100_simultaneous_submissions_create_one_logical_operation) ... ok
+test_authenticated_direct_mutations_and_service_tables_forbidden (g1.test_submission.SubmissionTests.test_authenticated_direct_mutations_and_service_tables_forbidden) ... ok
+test_both_tenants_read_only_their_own_rows (g1.test_submission.SubmissionTests.test_both_tenants_read_only_their_own_rows) ... ok
+test_budget_is_atomic_under_concurrent_distinct_keys (g1.test_submission.SubmissionTests.test_budget_is_atomic_under_concurrent_distinct_keys) ... ok
+test_conflicting_key_and_lost_submission_response (g1.test_submission.SubmissionTests.test_conflicting_key_and_lost_submission_response) ... ok
+test_cumulative_budget_and_duplicate_do_not_charge_twice (g1.test_submission.SubmissionTests.test_cumulative_budget_and_duplicate_do_not_charge_twice) ... ok
+test_failure_in_any_transactional_insert_rolls_everything_back (g1.test_submission.SubmissionTests.test_failure_in_any_transactional_insert_rolls_everything_back) ... ok
+test_foreign_keys_enforce_org_boundary_even_for_trusted_writers (g1.test_submission.SubmissionTests.test_foreign_keys_enforce_org_boundary_even_for_trusted_writers) ... ok
+test_input_caps_and_rights_checked_before_reservation (g1.test_submission.SubmissionTests.test_input_caps_and_rights_checked_before_reservation) ... ok
+test_job_count_cap_is_atomic (g1.test_submission.SubmissionTests.test_job_count_cap_is_atomic) ... ok
+test_no_identity_anon_viewer_or_revoked_membership (g1.test_submission.SubmissionTests.test_no_identity_anon_viewer_or_revoked_membership) ... ok
+test_pixel_quota_bounds_output_presets_as_well_as_input (g1.test_submission.SubmissionTests.test_pixel_quota_bounds_output_presets_as_well_as_input) ... ok
+test_request_and_asset_fingerprints_are_immutable (g1.test_submission.SubmissionTests.test_request_and_asset_fingerprints_are_immutable) ... ok
+test_roles_are_not_superuser_or_rls_bypass (g1.test_submission.SubmissionTests.test_roles_are_not_superuser_or_rls_bypass) ... ok
+test_service_roles_and_function_grants_do_not_leak (g1.test_submission.SubmissionTests.test_service_roles_and_function_grants_do_not_leak) ... ok
+test_tenants_cannot_submit_to_or_reference_another_org (g1.test_submission.SubmissionTests.test_tenants_cannot_submit_to_or_reference_another_org) ... ok
+test_commit_response_lost_reconciles_without_second_completion (g1.test_workers.WorkerTests.test_commit_response_lost_reconciles_without_second_completion) ... ok
+test_concurrent_dispatchers_claim_one_event (g1.test_workers.WorkerTests.test_concurrent_dispatchers_claim_one_event) ... ok
+test_concurrent_duplicate_delivery_has_one_live_claim (g1.test_workers.WorkerTests.test_concurrent_duplicate_delivery_has_one_live_claim) ... ok
+test_crash_before_completion_commit_rolls_back_then_recovers (g1.test_workers.WorkerTests.test_crash_before_completion_commit_rolls_back_then_recovers) ... ok
+test_dispatch_crash_after_acceptance_before_ack_reconciles (g1.test_workers.WorkerTests.test_dispatch_crash_after_acceptance_before_ack_reconciles) ... ok
+test_dispatch_crash_before_acceptance_retries_same_id (g1.test_workers.WorkerTests.test_dispatch_crash_before_acceptance_retries_same_id) ... ok
+test_dispatch_exhaustion_requires_reconciliation (g1.test_workers.WorkerTests.test_dispatch_exhaustion_requires_reconciliation) ... ok
+test_durable_sweep_recovers_crash_after_initial_event_dispatched (g1.test_workers.WorkerTests.test_durable_sweep_recovers_crash_after_initial_event_dispatched) ... ok
+test_durable_sweep_recovers_retry_after_initial_event_dispatched (g1.test_workers.WorkerTests.test_durable_sweep_recovers_retry_after_initial_event_dispatched) ... ok
+test_expired_owner_cannot_commit_even_before_takeover (g1.test_workers.WorkerTests.test_expired_owner_cannot_commit_even_before_takeover) ... ok
+test_lease_expiring_during_validation_cannot_commit (g1.test_workers.WorkerTests.test_lease_expiring_during_validation_cannot_commit) ... ok
+test_manifest_validation_rejects_cross_tenant_keys_and_bad_checksum (g1.test_workers.WorkerTests.test_manifest_validation_rejects_cross_tenant_keys_and_bad_checksum) ... ok
+test_org_concurrency_cap_is_atomic_and_other_org_can_run (g1.test_workers.WorkerTests.test_org_concurrency_cap_is_atomic_and_other_org_can_run) ... ok
+test_repeated_crashes_exhaust_claims (g1.test_workers.WorkerTests.test_repeated_crashes_exhaust_claims) ... ok
+test_stale_dispatcher_cannot_ack_or_release_new_lease (g1.test_workers.WorkerTests.test_stale_dispatcher_cannot_ack_or_release_new_lease) ... ok
+test_sweep_skips_capped_org_before_scan_limit (g1.test_workers.WorkerTests.test_sweep_skips_capped_org_before_scan_limit) ... ok
+test_takeover_fences_old_owner_and_final_result_is_immutable (g1.test_workers.WorkerTests.test_takeover_fences_old_owner_and_final_result_is_immutable) ... ok
+test_timeout_429_lost_queue_response_never_multiply_effect (g1.test_workers.WorkerTests.test_timeout_429_lost_queue_response_never_multiply_effect) ... ok
+test_timeout_429_retries_have_backoff_and_bounded_attempts (g1.test_workers.WorkerTests.test_timeout_429_retries_have_backoff_and_bounded_attempts) ... ok
+test_uncommitted_renewal_cannot_oversubscribe_org_cap (g1.test_workers.WorkerTests.test_uncommitted_renewal_cannot_oversubscribe_org_cap) ... ok
+
+----------------------------------------------------------------------
+Ran 36 tests in 5.921s
+
+OK
+test_composite_binding_and_job_foreign_keys_reject_cross_org_writers (g2.test_contracts.MediaContractTests.test_composite_binding_and_job_foreign_keys_reject_cross_org_writers) ... ok
+test_g2_rls_and_direct_mutation_denials_both_tenants (g2.test_contracts.MediaContractTests.test_g2_rls_and_direct_mutation_denials_both_tenants) ... ok
+test_g2_submit_requires_identity_write_role_and_same_org_binding (g2.test_contracts.MediaContractTests.test_g2_submit_requires_identity_write_role_and_same_org_binding) ... ok
+test_concurrent_idempotent_tasks_persist_and_acknowledge (g2.test_local_queue.LocalQueueTests.test_concurrent_idempotent_tasks_persist_and_acknowledge) ... ok
+test_connection_descriptors_close_without_garbage_collection (g2.test_local_queue.LocalQueueTests.test_connection_descriptors_close_without_garbage_collection) ... ok
+test_unsafe_queue_paths_and_identifiers_are_rejected (g2.test_local_queue.LocalQueueTests.test_unsafe_queue_paths_and_identifiers_are_rejected) ... ok
+test_actual_three_profiles_match_bytes_dimensions_duration_and_audio (g2.test_media_runtime.MediaRuntimeTests.test_actual_three_profiles_match_bytes_dimensions_duration_and_audio) ... ok
+test_actual_timeout_kills_and_reaps_native_process (g2.test_media_runtime.MediaRuntimeTests.test_actual_timeout_kills_and_reaps_native_process) ... ok
+test_cancel_and_lost_heartbeat_kill_actual_subprocess (g2.test_media_runtime.MediaRuntimeTests.test_cancel_and_lost_heartbeat_kill_actual_subprocess) ... ok
+test_caption_pixels_differ_from_real_uncaptioned_decode (g2.test_media_runtime.MediaRuntimeTests.test_caption_pixels_differ_from_real_uncaptioned_decode) ... ok
+test_hard_killing_worker_terminates_active_real_ffmpeg (g2.test_media_runtime.MediaRuntimeTests.test_hard_killing_worker_terminates_active_real_ffmpeg) ... ok
+test_invalid_mp4_and_real_media_caps_are_rejected (g2.test_media_runtime.MediaRuntimeTests.test_invalid_mp4_and_real_media_caps_are_rejected) ... ok
+test_output_caps_and_failing_native_encoder_leave_no_partial_files (g2.test_media_runtime.MediaRuntimeTests.test_output_caps_and_failing_native_encoder_leave_no_partial_files) ... ok
+test_plain_srt_validation_rejects_markup_malformed_and_symlinks (g2.test_media_runtime.MediaRuntimeTests.test_plain_srt_validation_rejects_markup_malformed_and_symlinks) ... ok
+test_repeated_native_render_produces_equal_hashes (g2.test_media_runtime.MediaRuntimeTests.test_repeated_native_render_produces_equal_hashes) ... ok
+test_symlink_video_and_nonempty_output_are_rejected (g2.test_media_runtime.MediaRuntimeTests.test_symlink_video_and_nonempty_output_are_rejected) ... ok
+test_broad_root_permissions_rejected (g2.test_object_store.ObjectStoreTests.test_broad_root_permissions_rejected) ... ok
+test_byte_limits_bound_put_get_and_stat (g2.test_object_store.ObjectStoreTests.test_byte_limits_bound_put_get_and_stat) ... ok
+test_checksum_guarded_delete_and_missing_objects (g2.test_object_store.ObjectStoreTests.test_checksum_guarded_delete_and_missing_objects) ... ok
+test_concurrent_identical_puts_publish_one_immutable_object (g2.test_object_store.ObjectStoreTests.test_concurrent_identical_puts_publish_one_immutable_object) ... ok
+test_cross_organization_read_write_list_and_delete_denied (g2.test_object_store.ObjectStoreTests.test_cross_organization_read_write_list_and_delete_denied) ... ok
+test_download_never_overwrites_existing_file (g2.test_object_store.ObjectStoreTests.test_download_never_overwrites_existing_file) ... ok
+test_fifo_source_and_object_are_rejected_without_blocking (g2.test_object_store.ObjectStoreTests.test_fifo_source_and_object_are_rejected_without_blocking) ... ok
+test_immutable_replay_and_conflicting_content (g2.test_object_store.ObjectStoreTests.test_immutable_replay_and_conflicting_content) ... ok
+test_orphaned_private_upload_fragment_is_reported (g2.test_object_store.ObjectStoreTests.test_orphaned_private_upload_fragment_is_reported) ... ok
+test_persistent_private_round_trip_and_checksums (g2.test_object_store.ObjectStoreTests.test_persistent_private_round_trip_and_checksums) ... ok
+test_root_symlink_ancestor_and_replacement_rejected (g2.test_object_store.ObjectStoreTests.test_root_symlink_ancestor_and_replacement_rejected) ... ok
+test_source_and_download_parent_symlinks_rejected (g2.test_object_store.ObjectStoreTests.test_source_and_download_parent_symlinks_rejected) ... ok
+test_staging_cleanup_is_scoped_conditional_and_never_deletes_objects (g2.test_object_store.ObjectStoreTests.test_staging_cleanup_is_scoped_conditional_and_never_deletes_objects) ... ok
+test_staging_cleanup_rejects_symlink_fragment (g2.test_object_store.ObjectStoreTests.test_staging_cleanup_rejects_symlink_fragment) ... ok
+test_symlink_object_read_write_delete_and_listing_rejected (g2.test_object_store.ObjectStoreTests.test_symlink_object_read_write_delete_and_listing_rejected) ... ok
+test_symlink_tenant_or_parent_cannot_escape_on_write (g2.test_object_store.ObjectStoreTests.test_symlink_tenant_or_parent_cannot_escape_on_write) ... ok
+test_unsafe_keys_and_noncanonical_organizations_rejected (g2.test_object_store.ObjectStoreTests.test_unsafe_keys_and_noncanonical_organizations_rejected) ... ok
+test_write_interruption_cleans_unpublished_fragment (g2.test_object_store.ObjectStoreTests.test_write_interruption_cleans_unpublished_fragment) ... ok
+test_100_submissions_one_job_reservation_and_authoritative_manifest (g2.test_pipeline.PipelineTests.test_100_submissions_one_job_reservation_and_authoritative_manifest) ... ok
+test_actual_native_limits_and_cancellation_leave_no_authoritative_outputs (g2.test_pipeline.PipelineTests.test_actual_native_limits_and_cancellation_leave_no_authoritative_outputs) ... ok
+test_actual_sigkill_after_object_then_takeover_and_orphan_cleanup (g2.test_pipeline.PipelineTests.test_actual_sigkill_after_object_then_takeover_and_orphan_cleanup) ... ok
+test_corrupt_completed_object_requires_reconciliation_without_rerender (g2.test_pipeline.PipelineTests.test_corrupt_completed_object_requires_reconciliation_without_rerender) ... ok
+test_database_commit_failure_rolls_back_and_new_worker_recovers (g2.test_pipeline.PipelineTests.test_database_commit_failure_rolls_back_and_new_worker_recovers) ... ok
+test_download_object_manifest_failures_are_audited_and_recoverable (g2.test_pipeline.PipelineTests.test_download_object_manifest_failures_are_audited_and_recoverable) ... ok
+test_expired_worker_cannot_replace_newer_valid_generation (g2.test_pipeline.PipelineTests.test_expired_worker_cannot_replace_newer_valid_generation) ... ok
+test_full_dispatch_render_store_manifest_and_idempotent_repeat (g2.test_pipeline.PipelineTests.test_full_dispatch_render_store_manifest_and_idempotent_repeat) ... ok
+test_ingestion_requires_actor_membership_and_captions_are_immutable (g2.test_pipeline.PipelineTests.test_ingestion_requires_actor_membership_and_captions_are_immutable) ... ok
+test_ingestion_rollback_reports_private_unreferenced_input_objects (g2.test_pipeline.PipelineTests.test_ingestion_rollback_reports_private_unreferenced_input_objects) ... ok
+test_invalid_media_rights_and_caps_rejected_before_submission (g2.test_pipeline.PipelineTests.test_invalid_media_rights_and_caps_rejected_before_submission) ... ok
+test_lost_completion_response_reconciles_no_new_generation (g2.test_pipeline.PipelineTests.test_lost_completion_response_reconciles_no_new_generation) ... ok
+test_provided_srt_changes_actual_decoded_pixels (g2.test_pipeline.PipelineTests.test_provided_srt_changes_actual_decoded_pixels) ... ok
+test_same_immutable_input_reproduces_exact_bytes_in_two_operations (g2.test_pipeline.PipelineTests.test_same_immutable_input_reproduces_exact_bytes_in_two_operations) ... ok
+test_two_tenants_execute_concurrently_without_object_or_sql_escape (g2.test_pipeline.PipelineTests.test_two_tenants_execute_concurrently_without_object_or_sql_escape) ... ok
+
+----------------------------------------------------------------------
+Ran 49 tests in 46.206s
+
+OK
+{
+  "dispatch": {
+    "event_id": "296cc469-2086-4921-92d3-117887552ee6",
+    "state": "dispatched"
+  },
+  "job_id": "c90683b8-56f8-423e-a9aa-76695864cbd9",
+  "manifest": {
+    "caption_hash": "86bf0296d17a3371ae117361359332b595c5b2fb99b9ee387d7d335081db3652",
+    "caption_mode": "supplied-srt-burned",
+    "generation": "b0021903-411e-464e-b533-d2acab2aea24/c90683b8-56f8-423e-a9aa-76695864cbd9/1",
+    "media_digest": "bc5c575292365f262642f5b905c071bb9f4aece2df25ff4c69dde0076929d4e0",
+    "outputs": [
+      {
+        "duration_seconds": 1.2,
+        "has_audio": true,
+        "height": 480,
+        "key": "b0021903-411e-464e-b533-d2acab2aea24/c90683b8-56f8-423e-a9aa-76695864cbd9/1/vertical.mp4",
+        "preset": "vertical",
+        "sha256": "779bf746fa8ced463a9e3318a968f7cc40de9e0dc56ba5fd772f4818c1d2d4d6",
+        "size_bytes": 34094,
+        "width": 270
+      },
+      {
+        "duration_seconds": 1.2,
+        "has_audio": true,
+        "height": 320,
+        "key": "b0021903-411e-464e-b533-d2acab2aea24/c90683b8-56f8-423e-a9aa-76695864cbd9/1/square.mp4",
+        "preset": "square",
+        "sha256": "30e361c7a0e02db0fd6882b31d3981069d484e8e78405205c6265dc001dc1fd9",
+        "size_bytes": 36684,
+        "width": 320
+      },
+      {
+        "duration_seconds": 1.2,
+        "has_audio": true,
+        "height": 400,
+        "key": "b0021903-411e-464e-b533-d2acab2aea24/c90683b8-56f8-423e-a9aa-76695864cbd9/1/feed.mp4",
+        "preset": "feed",
+        "sha256": "bed83208cd907baf571ddf252c038cdb50f5235d97de2731b30601e9ae699876",
+        "size_bytes": 36659,
+        "width": 320
+      }
+    ],
+    "schema_version": 2,
+    "source_has_audio": true,
+    "source_hash": "a8b0b07dacd329ec61a7bcf08811173498dd978e9e5c0667d6bf2d5b7d174c66",
+    "stats": {
+      "attempt": 1,
+      "bytes_read": 504123,
+      "bytes_written": 107437,
+      "cpu_seconds_limit_per_process": 120,
+      "elapsed_ms": 1111,
+      "estimate_model": "output_pixels_times_requested_frames_not_billing",
+      "estimated_output_pixel_frames": 12960000
+    }
+  },
+  "organization_id": "b0021903-411e-464e-b533-d2acab2aea24",
+  "output_files": [
+    "/workspace/g2-final-demo/objects/b0021903-411e-464e-b533-d2acab2aea24/c90683b8-56f8-423e-a9aa-76695864cbd9/1/vertical.mp4",
+    "/workspace/g2-final-demo/objects/b0021903-411e-464e-b533-d2acab2aea24/c90683b8-56f8-423e-a9aa-76695864cbd9/1/square.mp4",
+    "/workspace/g2-final-demo/objects/b0021903-411e-464e-b533-d2acab2aea24/c90683b8-56f8-423e-a9aa-76695864cbd9/1/feed.mp4"
+  ],
+  "state": "completed"
+}
