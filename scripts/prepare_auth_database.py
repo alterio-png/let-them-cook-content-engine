@@ -54,6 +54,9 @@ def main():
         for name in ("sql/001_schema.sql", "sql/002_g1_control_plane.sql", "sql/003_media_execution.sql"):
             db.execute((root / name).read_text())
             print(f"Applied unchanged {name}", flush=True)
+        name = "supabase/migrations/20261107123845_g3a_cloud_contracts.sql"
+        db.execute((root / name).read_text())
+        print(f"Applied new reviewed G3A migration {name}", flush=True)
         db.execute("""
             CREATE ROLE g3a_session_reader NOLOGIN NOINHERIT NOSUPERUSER
               NOCREATEDB NOCREATEROLE NOREPLICATION NOBYPASSRLS;

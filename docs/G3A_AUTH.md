@@ -39,8 +39,9 @@ at the second stage. It creates only the Auth owner/schema/roles before starting
 GoTrue. **The official image performs 75 Auth migrations**, supplying real
 `auth.users`, password hashing, `auth.sessions`, refresh tokens, RLS and
 `auth.uid()`. No G1 Auth fixture is applied. The second stage applies unchanged
-G0/G1/G2 SQL and provisions the narrow API/session roles. The bootstrap is a local
-test harness, not an approved hosted Supabase migration.
+G0/G1/G2 SQL, the new reviewed G3A cloud-contract migration, and provisions the
+narrow API/session roles. The bootstrap is a local test harness, not an approved
+hosted Supabase migration.
 
 ## Verification and authorization
 
@@ -64,8 +65,11 @@ not custom signature cryptography, and requires:
 role, identity or quota decisions. The HTTP boundary installs only the verified
 subject into a transaction, switches to the non-bypass `authenticated` role,
 and checks current PostgreSQL membership/RLS. The unchanged G1 submission
-function holds membership locks during the transaction. Upload and download
-authorization rechecks membership on use. A revocation after a request's liveness
+function holds membership locks during the transaction. The new narrowly granted
+`g3a_private.lock_api_membership` helper also locks only the verified caller's
+membership until an API transaction commits, serializing membership revocation
+with upload/download operations without granting membership UPDATE to the API.
+Upload and download authorization rechecks membership on use. A revocation after a request's liveness
 check does not cancel an already running HTTP operation; there is no claim of
 distributed atomic cancellation. Subsequent requests reject revoked sessions.
 
