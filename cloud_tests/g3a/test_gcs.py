@@ -456,6 +456,49 @@ class GCSLocalHTTPContractTests(unittest.TestCase):
         with self.assertRaises(ObjectMissing):
             self.store.stat(self.org, self.key)
 
+    @unittest.skipUnless(os.environ.get("G1_TEST_DSN"), "PostgreSQL integration requires G1_TEST_DSN; not cloud proof")
+    def test_unchanged_g2_pipeline_real_postgresql_ffmpeg_with_local_gcs_http_contract(self):
+        from engine.cli import demo
+        from engine.handoff import Dispatcher
+        from engine.local_queue import LocalQueue
+        from engine.media_runtime import Limits, inspect_media
+        from g2.support import PipelineFixture
+
+        paths = demo(self.base / "native-source", "gcs-contract-synthetic")
+        fixture = PipelineFixture(paths["video"], paths["caption"])
+        self.addCleanup(fixture.cleanup)
+        fixture.store = self.store
+        asset = fixture.ingest()
+        job = fixture.submit_media(asset, "gcs-http-native-contract")
+        queue = LocalQueue(fixture.root / "queue.sqlite3")
+        self.assertEqual("dispatched", Dispatcher(fixture.dsn).dispatch_one(queue)["state"])
+        self.assertEqual(str(job["id"]), str(queue.pending()[0]["job_id"]))
+        self.state.faults["lost_final"] = 1
+        worker = fixture.worker()
+        complete = worker.run(job["id"])
+        self.assertEqual("completed", complete["state"])
+        manifest = complete["output_manifest"]
+        self.assertEqual("supplied-srt-burned", manifest["caption_mode"])
+        expected = {"vertical": (270, 480), "square": (320, 320), "feed": (320, 400)}
+        self.assertEqual(set(expected), {output["preset"] for output in manifest["outputs"]})
+        for output in manifest["outputs"]:
+            target = fixture.root / (output["preset"] + "-verified.mp4")
+            metadata = self.store.get_file(fixture.org_a, output["key"], target, max_bytes=2 * 1024 * 1024)
+            self.assertEqual(output["sha256"], hashlib.sha256(target.read_bytes()).hexdigest())
+            self.assertEqual(output["sha256"], metadata["sha256"])
+            info = inspect_media(target, Limits())
+            self.assertEqual(expected[output["preset"]], (info["input_width"], info["input_height"]))
+            self.assertTrue(info["has_audio"])
+            self.assertAlmostEqual(0.8, info["duration_seconds"], delta=0.15)
+        target = fixture.root / "verified-manifest.json"
+        self.store.get_file(fixture.org_a, manifest["generation"] + "/manifest.json", target, max_bytes=65536)
+        self.assertEqual(manifest, json.loads(target.read_text()))
+        replay = worker.run(job["id"])
+        self.assertEqual(manifest, replay["output_manifest"])
+        self.assertEqual(1, replay["attempt_count"])
+        with self.assertRaises(InvalidObjectKey):
+            self.store.stat(fixture.org_b, manifest["outputs"][0]["key"])
+
     def test_destination_and_source_symlinks_cannot_replace_private_files(self):
         linked = self.base / "linked-source"
         linked.symlink_to(self.source)

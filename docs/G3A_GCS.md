@@ -20,7 +20,8 @@ is the caller's responsibility; no credentials are accepted from API users.
 No Google SDK or new package is required.
 
 Organization UUIDs and each key component use the original G2 validation rules.
-Inputs retain `<org>/assets/<asset>/...`; outputs retain
+Validated inputs retain `<org>/assets/<asset>/...`; API uploads remain
+`<org>/uploads/<grant>/unvalidated.bin` pending trusted ingestion; outputs retain
 `<org>/<job>/<fence>/{vertical,square,feed}.mp4` and `manifest.json`. A tenant cannot
 supply another tenant's prefix, unscoped path, encoded slash, traversal or unsafe
 component. The organization passed to this adapter is already authenticated and
@@ -104,6 +105,14 @@ round trip, resumable chunks/partial acknowledgements, lost chunk/final response
 private destination modes, malformed keys, malicious Location URLs, redirects,
 loopback opt-in, conditional deletion races, lost DELETE response, paginated
 orphan inventory, limit/cycle/cross-tenant failure and missing completed objects.
+With `G1_TEST_DSN` and the historical `integration:media_tests` PYTHONPATH,
+one additional integration test executes unchanged G2 ingestion, PostgreSQL
+submission/outbox, durable local dispatcher, real FFmpeg, this REST adapter,
+three byte/probe-verified outputs, final manifest and completed replay through
+the local HTTP server, including a lost upload success. Without PostgreSQL this
+test explicitly skips; it must run in the complete blocking runner. This is
+local adapter/pipeline evidence, still not remote GCS evidence.
+
 The checked-in runner's raw logs and final exact-commit CI are the execution
 record; this document does not replace that evidence.
 
@@ -112,7 +121,7 @@ uploads hold one bounded chunk in memory (8 MiB default). Configuration must fit
 worker memory and FFmpeg limits. `stat()` deliberately reads the whole generation
 for integrity; repeated verification incurs GET/egress cost and latency. Cloud
 performance, resource use, provider retry behavior, object versioning/retention,
-end-to-end G2 execution against GCS and costs remain **NOT_VALIDATED**. A remote
+end-to-end G2 execution against remote GCS and costs remain **NOT_VALIDATED**. A remote
 metadata SHA-256 claim, fake-server success or local concurrency run supplies no
 cloud scalability evidence.
 
