@@ -17,7 +17,7 @@ staging gates, not successful integration claims. The deliverable remains DRAFT.
 - Exact final PR SHA, checks and artifact links are recorded in the PR description;
   this committed record cannot contain its own future commit hash.
 
-## Complete clean-clone execution
+## Initial complete clean-clone execution
 
 Source `4cc282befdd6e6b44c52e5b66f6e58ff3173b19a` was cloned without local changes.
 Only this decision/evidence addition follows that tested code. The final PR HEAD
@@ -37,6 +37,27 @@ The 109 comprise 9 crypto, 4 benchmark, 24 GCS, 19 HTTP, 33 IaC policy and 20
 async/launch tests. No integration was silently skipped in the complete runner.
 Local PostgreSQL and FFmpeg are real, with the original pinned dependencies.
 Python 3.12.14, PostgreSQL 16.15 and FFmpeg 7.1.5-0+deb13u1 were observed.
+
+## Final cloud recovery addendum
+
+The final review required a cloud-specific sweep, rather than permitting the
+unrestricted G2 local sweep as a cloud fallback. Commit
+`c51708f` adds `LaunchController.sweep_once`: bounded rotating observation,
+queue-independent due-job discovery and launch only through the physical
+admission ledger. A per-job unresolved physical intent blocks a newer fence
+even when its PostgreSQL lease expires and another global slot is available.
+Exhausted jobs become terminal only after physical reservations are closed and
+no live lease remains. Concurrent sweep/callback reports count only new launch
+attempts; existing intents do not inflate provider-call metrics.
+
+[Focused real PostgreSQL/FFmpeg log](evidence/G3A_SWEEP_RUN.txt): **29 async tests
+passed**, including nine additional recovery/fairness/concurrency cases. Eight
+concurrent sweeps over nine jobs/two organizations admitted exactly two provider
+calls and two unresolved reservations. Unknown acceptance was not relaunched.
+The final runner therefore contains **225 cases: 97 historical + 118 G3A + 10
+official Auth**. Final integrated pass/fail and the exact final HEAD's artifacts
+are recorded in PR #7 after execution; the earlier 216-case log above is retained
+as dated initial evidence, not relabeled as a run of the new sweep.
 
 Official Supabase Auth/GoTrue **v2.197.0** ran 75 real Auth migrations in its own
 isolated PostgreSQL database. Tests called real signup, password sign-in and

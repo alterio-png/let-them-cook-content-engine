@@ -85,6 +85,12 @@ must not start cloud workers outside launch admission or free an unresolved
 physical slot: a logical PostgreSQL retry is not permission to create another
 provider execution. Route every staging wake-up/retry through the launch ledger
 and terminal-execution reconciliation, with IAM denying direct bypass.
+`LaunchController.sweep_once(limit)` implements that cloud-safe path: rotating
+bounded launch observations, due PostgreSQL media/outbox discovery independent of
+task history, and all launches through the same admission transaction. Unknown
+physical executions remain blocked; a later fence for the same job is forbidden
+until the previous physical reservation is closed. Exhausted attempts are
+terminalized only when no physical reservation or live lease remains.
 Direct GCS/Tasks/Run calls remain NOT_VALIDATED until separately authorized G3B.
 
 ## Storage and retention
