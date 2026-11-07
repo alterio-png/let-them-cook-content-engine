@@ -42,7 +42,7 @@ class ControlPlane:
     @contextmanager
     def transaction(self):
         """Close every connection and commit/rollback the whole state transition."""
-        with psycopg.connect(self.dsn, row_factory=dict_row) as connection:
+        with psycopg.connect(self.dsn, row_factory=dict_row, connect_timeout=10) as connection:
             connection.execute("SET LOCAL ROLE engine_worker")
             connection.execute("SET LOCAL statement_timeout = '15s'")
             connection.execute("SET LOCAL lock_timeout = '10s'")
@@ -63,6 +63,28 @@ class ControlPlane:
             return connection.execute(
                 "SELECT * FROM public.render_jobs WHERE id=%s", (job_id,)
             ).fetchone()
+
+    def claim_next_job(self, lease_seconds=60, scan_limit=100):
+        """Bounded durable sweep for retries and crashed workers.
+
+        A scheduler must poll this entry point even after queue delivery was
+        acknowledged: queued retries and expired attempts live in PostgreSQL.
+        Queue redelivery is an acceleration, not the recovery source of truth.
+        """
+        _lease_seconds(lease_seconds)
+        if type(scan_limit) is not int or not 1 <= scan_limit <= 1000:
+            raise ValueError("scan_limit must be an integer in [1, 1000]")
+        with self.transaction() as connection:
+            candidates = connection.execute(
+                """SELECT id FROM public.render_jobs WHERE available_at <= clock_timestamp()
+                   AND (state='queued' OR (state='running' AND lease_expires_at <= clock_timestamp()))
+                   ORDER BY available_at,created_at,id LIMIT %s""", (scan_limit,)
+            ).fetchall()
+        for candidate in candidates:
+            claimed = self.claim_job(candidate["id"], lease_seconds)
+            if claimed is not None and claimed["state"] == "running":
+                return claimed
+        return None
 
     def claim_job(self, job_id, lease_seconds=60):
         seconds = _lease_seconds(lease_seconds)
@@ -151,8 +173,12 @@ class ControlPlane:
             renewed = connection.execute(
                 """UPDATE public.render_jobs SET lease_expires_at=
                    clock_timestamp()+make_interval(secs => %s),updated_at=clock_timestamp()
-                   WHERE id=%s RETURNING *""", (seconds, job_id)
+                   WHERE id=%s AND state='running' AND lease_token=%s AND fence=%s
+                   AND lease_expires_at > clock_timestamp() RETURNING *""",
+                (seconds, job_id, token, fence)
             ).fetchone()
+            if renewed is None:
+                raise StaleLease("lease expired before renewal")
             connection.execute(
                 """UPDATE public.render_attempts SET lease_expires_at=%s
                    WHERE job_id=%s AND fence=%s AND ended_at IS NULL""",
@@ -199,9 +225,13 @@ class ControlPlane:
                 raise StaleLease("expired or finished attempt")
             finished = connection.execute(
                 """UPDATE public.render_jobs SET state='completed',output_manifest=%s,
-                   updated_at=clock_timestamp() WHERE id=%s RETURNING *""",
-                (Jsonb(manifest), job_id),
+                   updated_at=clock_timestamp() WHERE id=%s AND state='running'
+                   AND lease_token=%s AND fence=%s AND lease_expires_at > clock_timestamp()
+                   RETURNING *""",
+                (Jsonb(manifest), job_id, token, fence),
             ).fetchone()
+            if finished is None:
+                raise StaleLease("lease expired before completion")
             connection.execute(
                 """UPDATE public.render_attempts SET result='completed',ended_at=clock_timestamp()
                    WHERE job_id=%s AND fence=%s AND lease_token=%s AND ended_at IS NULL""",
@@ -223,9 +253,13 @@ class ControlPlane:
                 """UPDATE public.render_jobs SET state=%s,last_error=%s,
                    lease_token=NULL,lease_expires_at=NULL,
                    available_at=clock_timestamp()+make_interval(secs => %s),
-                   updated_at=clock_timestamp() WHERE id=%s RETURNING *""",
-                (state, error_code, 2 ** min(row["attempt_count"], 6), job_id),
+                   updated_at=clock_timestamp() WHERE id=%s AND state='running'
+                   AND lease_token=%s AND fence=%s AND lease_expires_at > clock_timestamp()
+                   RETURNING *""",
+                (state, error_code, 2 ** min(row["attempt_count"], 6), job_id, token, fence),
             ).fetchone()
+            if updated is None:
+                raise StaleLease("lease expired before retry transition")
             connection.execute(
                 """UPDATE public.render_attempts SET result='failed',ended_at=clock_timestamp()
                    WHERE job_id=%s AND fence=%s AND lease_token=%s AND ended_at IS NULL""",

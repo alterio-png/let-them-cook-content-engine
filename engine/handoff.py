@@ -62,9 +62,13 @@ class Dispatcher(ControlPlane):
             row = self._owned_outbox(connection, event)
             updated = connection.execute(
                 """UPDATE public.render_outbox SET state='dispatched',dispatched_at=clock_timestamp(),
-                   lease_token=NULL,lease_expires_at=NULL,last_error=NULL WHERE id=%s RETURNING *""",
-                (row["id"],),
+                   lease_token=NULL,lease_expires_at=NULL,last_error=NULL
+                   WHERE id=%s AND state='pending' AND lease_token=%s AND fence=%s
+                   AND lease_expires_at > clock_timestamp() RETURNING *""",
+                (row["id"], event["lease_token"], event["fence"]),
             ).fetchone()
+            if updated is None:
+                raise StaleLease("outbox lease expired before acknowledgment")
             _audit(connection, updated, "outbox_dispatched", {"event_id": str(row["id"])})
             return updated
 
@@ -79,9 +83,13 @@ class Dispatcher(ControlPlane):
                 """UPDATE public.render_outbox SET state=%s,last_error=%s,
                    lease_token=NULL,lease_expires_at=NULL,
                    available_at=clock_timestamp()+make_interval(secs => %s)
-                   WHERE id=%s RETURNING *""",
-                (state, error_code, 2 ** min(row["attempt_count"], 6), row["id"]),
+                   WHERE id=%s AND state='pending' AND lease_token=%s AND fence=%s
+                   AND lease_expires_at > clock_timestamp() RETURNING *""",
+                (state, error_code, 2 ** min(row["attempt_count"], 6), row["id"],
+                 event["lease_token"], event["fence"]),
             ).fetchone()
+            if updated is None:
+                raise StaleLease("outbox lease expired before retry transition")
             _audit(connection, updated, "outbox_reconcile" if terminal else "outbox_retry",
                    {"event_id": str(row["id"]), "error": error_code})
             return updated
