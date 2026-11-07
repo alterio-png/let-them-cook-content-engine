@@ -55,7 +55,7 @@ docker run -d --name "$postgres_name" --network "$network_name" --network-alias 
 export G3A_AUTH_ADMIN_DSN="postgresql://postgres:${G3A_AUTH_DB_PASSWORD}@127.0.0.1:${pg_port}/${db_name}"
 export G3A_API_DSN="postgresql://g3a_api_login:${G3A_API_PASSWORD}@127.0.0.1:${pg_port}/${db_name}"
 for attempt in $(seq 1 60); do
-    if docker exec "$postgres_name" pg_isready -U postgres >/dev/null 2>&1; then break; fi
+    if docker exec "$postgres_name" pg_isready -h 127.0.0.1 -p 5432 -U postgres >/dev/null 2>&1; then break; fi
     sleep 0.5
 done
 "$python_bin" scripts/prepare_auth_database.py bootstrap
