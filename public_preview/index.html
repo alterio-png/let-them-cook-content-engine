@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#112724">
+  <meta name="color-scheme" content="light">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="description" content="Explore os três formatos reais do LetThemCook Content Engine em uma demonstração com mídia sintética.">
+  <title>LetThemCook — Content Engine</title>
+  <link rel="icon" href="./icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./styles.css">
+  <script src="./app.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Ir para o conteúdo</a>
+  <header class="mobile-header"><a href="#studio" class="wordmark">LetThemCook<span>®</span></a><span class="mobile-label">CONTENT ENGINE</span></header>
+  <aside class="sidebar" aria-label="Navegação principal">
+    <a href="#studio" class="wordmark">LetThemCook<span>®</span></a>
+    <p class="product-label">CONTENT ENGINE <span>PREVIEW 01</span></p>
+    <nav>
+      <a href="#studio" class="nav-active"><span aria-hidden="true">◫</span> Estúdio <span class="nav-index">01</span></a>
+      <a href="#pipeline"><span aria-hidden="true">↳</span> O fluxo <span class="nav-index">02</span></a>
+      <a href="#capabilities"><span aria-hidden="true">◎</span> O que funciona <span class="nav-index">03</span></a>
+    </nav>
+    <div class="sidebar-bottom"><span class="availability"><i aria-hidden="true"></i> Ambiente demonstrativo</span><p>Uma base real.<br>Espaço para criar.</p><a href="https://github.com/alterio-png/let-them-cook-content-engine/pull/16" target="_blank" rel="noopener noreferrer">Ver desenvolvimento ↗</a><small>BY BRABA / 2026</small></div>
+  </aside>
+  <div class="app-shell">
+    <div class="topbar"><span>WORKSPACE <span class="slash">/</span> <strong>Estúdio de teste</strong></span><a href="#capabilities" class="mode-badge"><i aria-hidden="true"></i> Demo pública <span aria-hidden="true">↗</span></a></div>
+    <main id="main">
+      <section id="studio" class="studio-section" aria-labelledby="page-title">
+        <div class="intro"><div><p class="eyebrow">MENOS REPETIÇÃO. MAIS CRIAÇÃO.</p><h1 id="page-title">Uma origem.<br>Novos <em>formatos.</em></h1><p class="lead">O mesmo vídeo, preparado para cada tela.<br>Explore as saídas reais do Content Engine.</p><a href="#outputs" class="hero-link">Testar os 3 formatos <span aria-hidden="true">↓</span></a></div><div class="edition"><span>01—03</span><p>VÍDEO + ÁUDIO + LEGENDA<br>UM FLUXO, TRÊS ENTREGAS</p></div></div>
+        <div class="scope-strip"><span class="scope-tag">NESTE PREVIEW</span><p>MP4 reais de um teste sintético. Reprodução, download e integridade funcionam aqui. Novos uploads e renders exigem o laboratório local.</p><a href="#capabilities" aria-label="Ver o que funciona neste preview">Entenda o escopo <span aria-hidden="true">↗</span></a></div>
+        <div class="studio-grid">
+          <section class="source-card" aria-labelledby="source-title">
+            <div class="card-top"><span class="eyebrow">01 / ORIGEM</span><span class="small-badge">AMOSTRA SINTÉTICA</span></div>
+            <div class="source-art" aria-hidden="true"><div class="art-orbit orbit-one"></div><div class="art-orbit orbit-two"></div><img class="art-asterisk" src="./star.svg" alt=""><span class="art-caption">LET THE<br>FORMATS COOK.</span><span class="art-corner">LTC / 001</span></div>
+            <div class="source-info"><h2 id="source-title">Feito para testar.</h2><p>Vídeo de 2,3 segundos, tom de referência e legenda SRT fornecida. Sem mídia de clientes.</p><div class="file-line"><span class="file-icon" aria-hidden="true">▶</span><div><strong>synthetic_demo.mp4</strong><small>Amostra usada no laboratório local</small></div><span class="file-check" aria-hidden="true">✓</span></div><div class="file-line"><span class="file-icon" aria-hidden="true">≡</span><div><strong>synthetic_demo.srt</strong><small>Legenda incorporada pelo FFmpeg</small></div><span class="file-check" aria-hidden="true">✓</span></div><a class="text-link" href="#pipeline">Explorar o fluxo demonstrativo <span aria-hidden="true">↗</span></a></div>
+          </section>
+          <section id="outputs" class="output-card" aria-labelledby="output-title">
+            <div class="card-top"><h2 id="output-title" class="eyebrow">02 / RESULTADO REAL</h2><span class="ready-badge"><i aria-hidden="true"></i> PRÉ-GERADO</span></div>
+            <div class="format-picker" role="group" aria-label="Formato do vídeo"><button type="button" data-format="vertical" aria-pressed="true"><span class="format-shape vertical-shape" aria-hidden="true"></span>9:16 <small>Vertical</small></button><button type="button" data-format="square" aria-pressed="false"><span class="format-shape square-shape" aria-hidden="true"></span>1:1 <small>Quadrado</small></button><button type="button" data-format="feed" aria-pressed="false"><span class="format-shape feed-shape" aria-hidden="true"></span>4:5 <small>Feed</small></button></div>
+            <noscript><p class="inline-note">O JavaScript está desativado. O vídeo vertical funciona abaixo; todos os formatos estão nos links de arquivos.</p></noscript>
+            <div class="video-stage"><span class="stage-label">FFMPEG OUTPUT / <span id="format-label">9:16</span></span><video id="output-video" controls playsinline preload="metadata" poster="./media/vertical.jpg" aria-label="Vídeo sintético de teste do Content Engine"><source id="video-source" src="./media/vertical.mp4" type="video/mp4">Seu navegador não reproduz este vídeo. Use o link para abrir o MP4.</video><span class="stage-footer">ÁUDIO DE TESTE · ATIVE O SOM PARA ESCUTAR</span></div>
+            <div class="output-details"><div><h3 id="format-description">Vertical, pronto para conferir.</h3><p><span id="format-dimensions">270 × 480</span> px <span aria-hidden="true">·</span> 2,3 s <span aria-hidden="true">·</span> H.264 / AAC <span aria-hidden="true">·</span> <span id="output-size">59,1 KiB</span></p></div><span class="srt-badge">SRT INCORPORADA</span></div>
+            <div class="output-actions"><a id="download-link" href="./media/vertical.mp4" target="_blank" rel="noopener" class="button button-primary">Abrir MP4 de teste <span aria-hidden="true">↗</span></a><button id="verify-button" type="button" class="button button-secondary">Verificar integridade <span aria-hidden="true">✓</span></button></div>
+            <p id="integrity-status" class="integrity-note" role="status">Arquivo público de teste. Confira o SHA-256 antes de salvar uma cópia verificada.</p>
+            <details class="all-files"><summary>Todos os arquivos e manifesto <span aria-hidden="true">+</span></summary><div><a href="./media/vertical.mp4" target="_blank" rel="noopener">MP4 9:16 ↗</a><a href="./media/square.mp4" target="_blank" rel="noopener">MP4 1:1 ↗</a><a href="./media/feed.mp4" target="_blank" rel="noopener">MP4 4:5 ↗</a><a href="./media/manifest.json" target="_blank" rel="noopener">Manifesto SHA-256 ↗</a></div></details>
+          </section>
+        </div>
+      </section>
+      <section id="pipeline" class="pipeline-section" aria-labelledby="pipeline-title"><div class="section-heading"><div><p class="eyebrow">POR DENTRO DO ENGINE</p><h2 id="pipeline-title">Um fluxo com fundamento.</h2></div><span class="outline-tag">PERCURSO DEMONSTRATIVO</span></div><p class="section-description">Explore as etapas do pipeline implementado no PR #16. Este percurso explica a execução local; os botões não enviam arquivos nem iniciam jobs.</p><ol id="pipeline-steps" class="pipeline-steps"><li data-step="0" aria-current="step"><span>01</span><strong>Preparar</strong><small>MP4 + SRT sintéticos</small></li><li data-step="1"><span>02</span><strong>Validar</strong><small>Upload privado + ingestão</small></li><li data-step="2"><span>03</span><strong>Processar</strong><small>Job + outbox + FFmpeg</small></li><li data-step="3"><span>04</span><strong>Conferir</strong><small>Manifesto + downloads</small></li></ol><div class="walkthrough"><div><span id="walkthrough-state" class="eyebrow">ETAPA 1 DE 4 · DEMONSTRAÇÃO</span><h3 id="walkthrough-title">Tudo começa com uma amostra aprovada.</h3><p id="walkthrough-copy">No laboratório, uma sessão GoTrue real identifica a organização. O par de vídeo e SRT sintéticos precisa estar previamente autorizado pelo ambiente.</p></div><div class="walkthrough-actions"><button id="walkthrough-next" class="button button-dark" type="button">Próxima etapa →</button><button id="walkthrough-reset" class="reset-button" type="button">Voltar ao início</button></div></div></section>
+      <section id="capabilities" class="capabilities-section" aria-labelledby="capabilities-title"><div class="section-heading"><div><p class="eyebrow">TRANSPARÊNCIA DE PRODUTO</p><h2 id="capabilities-title">Saiba o que está em suas mãos.</h2></div></div><div class="capability-grid"><article><span class="capability-label live-label">● FUNCIONA NESTE LINK</span><h3>Explore os resultados.</h3><ul><li>Reproduzir três MP4 sintéticos reais</li><li>Abrir e salvar os arquivos de teste</li><li>Conferir bytes com SHA-256 no navegador</li><li>Explorar o fluxo de forma demonstrativa</li></ul></article><article><span class="capability-label">◉ FUNCIONA NO LABORATÓRIO</span><h3>Execute o pipeline local.</h3><ul><li>Login GoTrue e isolamento por organização</li><li>Upload privado e ingestão validada</li><li>PostgreSQL, outbox e worker FFmpeg</li><li>Downloads privados, sessão e hashes</li></ul><a href="https://github.com/alterio-png/let-them-cook-content-engine/blob/5d6e3da15b88edde79b67d71c089656cfa222cda/docs/G3BR0_RUNBOOK.md" target="_blank" rel="noopener noreferrer" class="text-link">Abrir runbook local ↗</a></article><article><span class="capability-label future-label">○ AINDA NÃO DISPONÍVEL</span><h3>Os próximos ingredientes.</h3><ul><li>Backend remoto e novos renders neste link</li><li>Transcrição por IA e reenquadramento inteligente</li><li>Publicação em redes sociais</li><li>Staging privado e operação comercial</li></ul></article></div><p class="evidence-note">Base: PR #16 · <code>5d6e3da</code> · 307 testes e E2E Chromium registrados no GitHub. Smoke humano parcialmente documentado na issue #17. Amostras em resolução de teste; sem validação de capacidade de produção.</p></section>
+      <p id="live-status" class="sr-only" role="status" aria-live="polite"></p>
+    </main>
+    <footer><a href="#studio" class="footer-brand">LetThemCook.</a><span>CONTENT ENGINE / PREVIEW 01</span><a href="./release.json" target="_blank" rel="noopener">Versão e proveniência ↗</a></footer>
+  </div>
+</body>
+</html>

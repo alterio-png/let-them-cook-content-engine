@@ -1,0 +1,275 @@
+{
+  "scope": "static synthetic preview only; no physical iPhone acceptance",
+  "engines": [
+    {
+      "name": "chromium",
+      "version": "156.0.8078.79",
+      "chromiumSandbox": true
+    },
+    {
+      "name": "webkit",
+      "version": "26.5"
+    }
+  ],
+  "tests": [
+    {
+      "engine": "chromium",
+      "name": "actual MP4 metadata and playback",
+      "result": "PASS",
+      "width": 270,
+      "height": 480,
+      "duration": 2.3
+    },
+    {
+      "engine": "chromium",
+      "name": "actual vertical MP4 playback",
+      "result": "PASS",
+      "width": 270,
+      "height": 480
+    },
+    {
+      "engine": "chromium",
+      "name": "verified downloaded vertical",
+      "result": "PASS",
+      "bytes": 60531,
+      "sha256": "54f3dfc95a8ff255993b8f94ccddff3c2f3ee74a4646bf5cedafd5da9879bfcf"
+    },
+    {
+      "engine": "chromium",
+      "name": "actual square MP4 playback",
+      "result": "PASS",
+      "width": 320,
+      "height": 320
+    },
+    {
+      "engine": "chromium",
+      "name": "verified downloaded square",
+      "result": "PASS",
+      "bytes": 65956,
+      "sha256": "471d81f1c9adce91574a26f6023af30fd4984808c736e2152bc5a941408b81e0"
+    },
+    {
+      "engine": "chromium",
+      "name": "actual feed MP4 playback",
+      "result": "PASS",
+      "width": 320,
+      "height": 400
+    },
+    {
+      "engine": "chromium",
+      "name": "verified downloaded feed",
+      "result": "PASS",
+      "bytes": 65998,
+      "sha256": "4b8c57965fd9fddce2d405f5313864765878eea51cc818daa5ccea4882ac5bf5"
+    },
+    {
+      "engine": "chromium",
+      "name": "walkthrough is explanatory and resettable",
+      "result": "PASS"
+    },
+    {
+      "engine": "chromium",
+      "name": "no horizontal overflow 320x568",
+      "result": "PASS"
+    },
+    {
+      "engine": "chromium",
+      "name": "no horizontal overflow 844x390",
+      "result": "PASS"
+    },
+    {
+      "engine": "chromium",
+      "name": "no horizontal overflow 1440x1000",
+      "result": "PASS"
+    },
+    {
+      "engine": "chromium",
+      "name": "back navigation remains interactive",
+      "result": "PASS"
+    },
+    {
+      "engine": "chromium",
+      "name": "clean same-origin-only GET requests; zero application JS/console errors",
+      "result": "PASS"
+    },
+    {
+      "engine": "chromium",
+      "name": "JavaScript disabled leaves useful HTML and three raw MP4 links",
+      "result": "PASS"
+    },
+    {
+      "engine": "chromium",
+      "name": "blocked bootstrap script never hides initial content",
+      "result": "PASS"
+    },
+    {
+      "engine": "chromium",
+      "name": "blocked storage does not prevent selection or verification",
+      "result": "PASS"
+    },
+    {
+      "engine": "chromium",
+      "name": "same-size media corruption blocks verified download; retry recovers",
+      "result": "PASS"
+    },
+    {
+      "engine": "chromium",
+      "name": "manifest 404 clears previous verification and supports retry",
+      "result": "PASS"
+    },
+    {
+      "engine": "chromium",
+      "name": "hung manifest request times out at 8 seconds and retry recovers",
+      "result": "PASS"
+    },
+    {
+      "engine": "chromium",
+      "name": "format switch cancels pending verification without stale verified state",
+      "result": "PASS"
+    },
+    {
+      "engine": "webkit",
+      "name": "actual MP4 metadata and playback",
+      "result": "PASS",
+      "width": 270,
+      "height": 480,
+      "duration": 2.3
+    },
+    {
+      "engine": "webkit",
+      "name": "actual vertical MP4 playback",
+      "result": "PASS",
+      "width": 270,
+      "height": 480
+    },
+    {
+      "engine": "webkit",
+      "name": "verified downloaded vertical",
+      "result": "PASS",
+      "bytes": 60531,
+      "sha256": "54f3dfc95a8ff255993b8f94ccddff3c2f3ee74a4646bf5cedafd5da9879bfcf"
+    },
+    {
+      "engine": "webkit",
+      "name": "actual square MP4 playback",
+      "result": "PASS",
+      "width": 320,
+      "height": 320
+    },
+    {
+      "engine": "webkit",
+      "name": "verified downloaded square",
+      "result": "PASS",
+      "bytes": 65956,
+      "sha256": "471d81f1c9adce91574a26f6023af30fd4984808c736e2152bc5a941408b81e0"
+    },
+    {
+      "engine": "webkit",
+      "name": "actual feed MP4 playback",
+      "result": "PASS",
+      "width": 320,
+      "height": 400
+    },
+    {
+      "engine": "webkit",
+      "name": "verified downloaded feed",
+      "result": "PASS",
+      "bytes": 65998,
+      "sha256": "4b8c57965fd9fddce2d405f5313864765878eea51cc818daa5ccea4882ac5bf5"
+    },
+    {
+      "engine": "webkit",
+      "name": "walkthrough is explanatory and resettable",
+      "result": "PASS"
+    },
+    {
+      "engine": "webkit",
+      "name": "no horizontal overflow 320x568",
+      "result": "PASS"
+    },
+    {
+      "engine": "webkit",
+      "name": "no horizontal overflow 844x390",
+      "result": "PASS"
+    },
+    {
+      "engine": "webkit",
+      "name": "no horizontal overflow 1440x1000",
+      "result": "PASS"
+    },
+    {
+      "engine": "webkit",
+      "name": "back navigation remains interactive",
+      "result": "PASS"
+    },
+    {
+      "engine": "webkit",
+      "name": "clean same-origin-only GET requests; zero application JS/console errors",
+      "result": "PASS"
+    },
+    {
+      "engine": "webkit",
+      "name": "JavaScript disabled leaves useful HTML and three raw MP4 links",
+      "result": "PASS"
+    },
+    {
+      "engine": "webkit",
+      "name": "blocked bootstrap script never hides initial content",
+      "result": "PASS"
+    },
+    {
+      "engine": "webkit",
+      "name": "blocked storage does not prevent selection or verification",
+      "result": "PASS"
+    },
+    {
+      "engine": "webkit",
+      "name": "same-size media corruption blocks verified download; retry recovers",
+      "result": "PASS"
+    },
+    {
+      "engine": "webkit",
+      "name": "manifest 404 clears previous verification and supports retry",
+      "result": "PASS"
+    },
+    {
+      "engine": "webkit",
+      "name": "hung manifest request times out at 8 seconds and retry recovers",
+      "result": "PASS"
+    },
+    {
+      "engine": "webkit",
+      "name": "format switch cancels pending verification without stale verified state",
+      "result": "PASS"
+    }
+  ],
+  "harnessDiagnostics": [
+    {
+      "engine": "webkit",
+      "message": "Refused to apply a stylesheet because its hash, its nonce, or 'unsafe-inline' does not appear in the style-src directive of the Content Security Policy.",
+      "location": {
+        "url": "http://127.0.0.1:34987/",
+        "line": 0,
+        "column": 0,
+        "lineNumber": 0,
+        "columnNumber": 0
+      },
+      "phase": "mobile screenshot",
+      "classification": "Playwright screenshot helper inline style blocked by unchanged strict CSP"
+    },
+    {
+      "engine": "webkit",
+      "message": "Refused to apply a stylesheet because its hash, its nonce, or 'unsafe-inline' does not appear in the style-src directive of the Content Security Policy.",
+      "location": {
+        "url": "http://127.0.0.1:34987/",
+        "line": 0,
+        "column": 0,
+        "lineNumber": 0,
+        "columnNumber": 0
+      },
+      "phase": "desktop screenshot",
+      "classification": "Playwright screenshot helper inline style blocked by unchanged strict CSP"
+    }
+  ],
+  "result": "PASS"
+}

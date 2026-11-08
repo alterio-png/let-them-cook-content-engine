@@ -1,0 +1,25 @@
+{
+  "engine": "chromium",
+  "console": [],
+  "errors": [],
+  "requests": [
+    {
+      "url": "https://letthemcook-ux-preview.netlify.app/",
+      "method": "GET"
+    },
+    {
+      "url": "https://letthemcook-ux-preview.netlify.app/assets/index-CQpW72G9.js",
+      "method": "GET"
+    },
+    {
+      "url": "https://letthemcook-ux-preview.netlify.app/assets/index-Dm8eSrAx.css",
+      "method": "GET"
+    },
+    {
+      "url": "https://letthemcook-ux-preview.netlify.app/brand/paper-on-transparent.png",
+      "method": "GET"
+    }
+  ],
+  "failed": [],
+  "text": "CREATOR INTELLIGENCE PLATFORM\nStart with the brief.\nMake culture count.\n\nLetThemCook is owned and licensed by BRABA. Private workspaces; invitation required. No public directory.\n\nEmail address\nPassword\nSign in\nUser accounts are provisioned by a workspace administrator. Self-registration is intentionally disabled."
+}
