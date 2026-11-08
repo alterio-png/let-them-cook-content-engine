@@ -1,0 +1,256 @@
+{
+  "gate": "LOCAL_BROWSER_E2E",
+  "status": "PASS",
+  "started_at": "2026-11-08T08:45:28.910Z",
+  "node": "v24.22.1",
+  "browser_dependency": "1.62.1",
+  "remote_staging": "NOT_VALIDATED",
+  "manual_smoke": "NOT_EXECUTED_BY_AUTOMATED_DRIVER",
+  "fixture": {
+    "video_sha256": "a8b0b07dacd329ec61a7bcf08811173498dd978e9e5c0667d6bf2d5b7d174c66",
+    "caption_sha256": "86bf0296d17a3371ae117361359332b595c5b2fb99b9ee387d7d335081db3652",
+    "video_bytes": 504062,
+    "caption_bytes": 61,
+    "duration_ms": 2300
+  },
+  "assertions": [
+    "Official local Auth password grant through same-origin API; signed JWT accepted",
+    "Browser file inputs upload the verified synthetic MP4 and supplied SRT; real asynchronous ingestion completes",
+    "Three browser MP4 downloads match final manifest bytes and SHA-256; ffprobe verifies dimensions/duration/AAC",
+    "Decoded audio retains audible synthetic 440 Hz tone; each downloaded frame matches supplied-SRT reference and differs from plain control",
+    "No browser persistent token storage or external requests; actual logout revokes the previously signed session"
+  ],
+  "outputs": [
+    {
+      "preset": "vertical",
+      "file": "vertical.mp4",
+      "sha256": "54f3dfc95a8ff255993b8f94ccddff3c2f3ee74a4646bf5cedafd5da9879bfcf",
+      "size_bytes": 60531,
+      "width": 270,
+      "height": 480,
+      "duration_seconds": 2.3,
+      "audio": {
+        "samples": 16976,
+        "sample_rate": 8000,
+        "rms": 0.08833332421710258,
+        "reference_440hz_energy_ratio": 0.9995186922472014
+      },
+      "caption": {
+        "at_seconds": 1,
+        "actual_rgb_sha256": "28c474df0c918b743d7fa36993d1d570e8929f487bff609373b48f541870cb25",
+        "reference_rgb_sha256": "28c474df0c918b743d7fa36993d1d570e8929f487bff609373b48f541870cb25",
+        "supplied_srt_sha256": "86bf0296d17a3371ae117361359332b595c5b2fb99b9ee387d7d335081db3652",
+        "mean_absolute_error_to_supplied_srt_reference": 0,
+        "lower_half_changed_pixels_vs_without_srt": 2165,
+        "scope": "pixel evidence against an independently encoded captioned/plain reference, not OCR or aesthetic quality"
+      }
+    },
+    {
+      "preset": "square",
+      "file": "square.mp4",
+      "sha256": "471d81f1c9adce91574a26f6023af30fd4984808c736e2152bc5a941408b81e0",
+      "size_bytes": 65956,
+      "width": 320,
+      "height": 320,
+      "duration_seconds": 2.3,
+      "audio": {
+        "samples": 16976,
+        "sample_rate": 8000,
+        "rms": 0.08833332421710258,
+        "reference_440hz_energy_ratio": 0.9995186922472014
+      },
+      "caption": {
+        "at_seconds": 1,
+        "actual_rgb_sha256": "3005ab5a47148aa6ca269d7381cfc28fd4a15665a9a8282ceafb26055291e4cc",
+        "reference_rgb_sha256": "3005ab5a47148aa6ca269d7381cfc28fd4a15665a9a8282ceafb26055291e4cc",
+        "supplied_srt_sha256": "86bf0296d17a3371ae117361359332b595c5b2fb99b9ee387d7d335081db3652",
+        "mean_absolute_error_to_supplied_srt_reference": 0,
+        "lower_half_changed_pixels_vs_without_srt": 1079,
+        "scope": "pixel evidence against an independently encoded captioned/plain reference, not OCR or aesthetic quality"
+      }
+    },
+    {
+      "preset": "feed",
+      "file": "feed.mp4",
+      "sha256": "4b8c57965fd9fddce2d405f5313864765878eea51cc818daa5ccea4882ac5bf5",
+      "size_bytes": 65998,
+      "width": 320,
+      "height": 400,
+      "duration_seconds": 2.3,
+      "audio": {
+        "samples": 16976,
+        "sample_rate": 8000,
+        "rms": 0.08833332421710258,
+        "reference_440hz_energy_ratio": 0.9995186922472014
+      },
+      "caption": {
+        "at_seconds": 1,
+        "actual_rgb_sha256": "649b05ef5c9a8bc692a9ea83fdc0b06a8468633523d098c8d9efaefff309c709",
+        "reference_rgb_sha256": "649b05ef5c9a8bc692a9ea83fdc0b06a8468633523d098c8d9efaefff309c709",
+        "supplied_srt_sha256": "86bf0296d17a3371ae117361359332b595c5b2fb99b9ee387d7d335081db3652",
+        "mean_absolute_error_to_supplied_srt_reference": 0,
+        "lower_half_changed_pixels_vs_without_srt": 1568,
+        "scope": "pixel evidence against an independently encoded captioned/plain reference, not OCR or aesthetic quality"
+      }
+    }
+  ],
+  "network": [
+    {
+      "method": "GET",
+      "route": "/",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "route": "/styles.css",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "route": "/app.js",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "route": "/local/v1/auth/login",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "route": "/local/v1/me",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "route": "/local/v1/fixtures",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "route": "/local/v1/fixtures",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "route": "/v1/orgs/[id]/uploads",
+      "status": 201
+    },
+    {
+      "method": "PUT",
+      "route": "/v1/uploads/[CAPABILITY_REDACTED]",
+      "status": 201
+    },
+    {
+      "method": "POST",
+      "route": "/v1/orgs/[id]/uploads",
+      "status": 201
+    },
+    {
+      "method": "PUT",
+      "route": "/v1/uploads/[CAPABILITY_REDACTED]",
+      "status": 201
+    },
+    {
+      "method": "POST",
+      "route": "/local/v1/orgs/[id]/ingestions",
+      "status": 202
+    },
+    {
+      "method": "GET",
+      "route": "/local/v1/orgs/[id]/ingestions/[id]",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "route": "/local/v1/orgs/[id]/ingestions/[id]",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "route": "/v1/orgs/[id]/renders",
+      "status": 202
+    },
+    {
+      "method": "GET",
+      "route": "/v1/orgs/[id]/renders/[id]",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "route": "/v1/orgs/[id]/renders/[id]",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "route": "/v1/orgs/[id]/renders/[id]",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "route": "/v1/orgs/[id]/renders/[id]",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "route": "/v1/orgs/[id]/renders/[id]",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "route": "/local/v1/orgs/[id]/renders/[id]/manifest",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "route": "/v1/orgs/[id]/renders/[id]/downloads",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "route": "/v1/downloads/[CAPABILITY_REDACTED]",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "route": "/v1/orgs/[id]/renders/[id]/downloads",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "route": "/v1/downloads/[CAPABILITY_REDACTED]",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "route": "/v1/orgs/[id]/renders/[id]/downloads",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "route": "/v1/downloads/[CAPABILITY_REDACTED]",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "route": "/local/v1/auth/logout",
+      "status": 200
+    }
+  ],
+  "browser_binary": "/usr/bin/chromium",
+  "browser_version": "Chromium 156.0.8078.79 built on Debian GNU/Linux 13 (trixie)",
+  "ffmpeg_version": "ffmpeg version 7.1.5-0+deb13u1 Copyright (c) 2000-2026 the FFmpeg developers",
+  "ffprobe_version": "ffprobe version 7.1.5-0+deb13u1 Copyright (c) 2007-2026 the FFmpeg developers",
+  "git_head": "e418760bd998e97272f12fdeefc1487108c9a8c3",
+  "browser_sandbox": "ENABLED",
+  "production_browser_sandbox": "NOT_VALIDATED",
+  "source_audio": {
+    "samples": 16976,
+    "sample_rate": 8000,
+    "rms": 0.08838307225815073,
+    "reference_440hz_energy_ratio": 0.9995186684459253
+  },
+  "external_requests": 0,
+  "uncaught_page_errors": 0,
+  "finished_at": "2026-11-08T08:45:36.814Z",
+  "elapsed_ms": 7903
+}

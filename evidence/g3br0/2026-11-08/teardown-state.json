@@ -1,0 +1,16 @@
+{
+  "states": {
+    "public.render_jobs": {
+      "completed": 3
+    },
+    "g3br0_private.ingest_requests": {
+      "completed": 4,
+      "failed": 4
+    },
+    "g3a1_private.upload_reservations": {
+      "uploaded": 17,
+      "reserved": 13
+    }
+  },
+  "unresolved": true
+}

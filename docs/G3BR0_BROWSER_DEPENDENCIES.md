@@ -54,6 +54,13 @@ installed system browser and FFmpeg distribution remain environment binaries,
 not redistributed or commercially cleared product components. A future binary
 download or container image requires its own provenance/license/hash review.
 
+Discovery prefers the installed Google Chrome binary before distribution
+Chromium wrapper paths, checks its version and records the resolved path/UID.
+Sandbox stays enabled for a non-root operator. A launch failure is a failed
+gate; there is no automatic sandbox-disabling fallback. Only pre-login startup
+failures retain a bounded, sanitized diagnostic and a message-pattern category;
+later HTTP errors remain opaque to avoid logging session/capability material.
+
 The browser proof never records a HAR, Playwright trace or request headers:
 those could capture passwords, JWTs and capability URLs. It writes sanitized
 route/status events, screenshots, downloaded synthetic outputs, hashes and

@@ -37,6 +37,9 @@ only `127.0.0.1`; Auth and PostgreSQL published ports are loopback too. CSP uses
 local external scripts/styles, no inline script or third-party assets. Auth
 requests cannot follow redirects or environment proxies. This is a development
 HTTP service without TLS, public ingress, production hardening or cloud IAM.
+Local processes share the operator's OS user. Mode 0600 files protect against
+other users; they do not establish process isolation against a compromised
+process running under that same user. No production sandbox claim is made.
 
 The PostgreSQL upload authority from G3A.1 remains authoritative across API
 replicas. A receipt is still `uploaded_pending_validation`, never an asset.

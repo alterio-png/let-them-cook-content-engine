@@ -47,14 +47,49 @@ function command(executable, params, options = {}) {
   });
 }
 function executable() {
-  if (process.env.R0_CHROMIUM) {
-    fs.accessSync(process.env.R0_CHROMIUM, fs.constants.X_OK);
-    return process.env.R0_CHROMIUM;
-  }
-  for (const candidate of ['/usr/bin/chromium', '/usr/bin/chromium-browser', '/usr/bin/google-chrome', '/opt/google/chrome/chrome']) {
-    try { fs.accessSync(candidate, fs.constants.X_OK); return candidate; } catch { /* try next installed binary */ }
+  // Prefer the installed Chrome binary over distro Chromium wrapper/stub paths.
+  // An explicit operator choice is never silently replaced after a failure.
+  const candidates = process.env.R0_CHROMIUM ? [process.env.R0_CHROMIUM] : [
+    '/opt/google/chrome/chrome', '/usr/bin/google-chrome', '/usr/bin/chromium', '/usr/bin/chromium-browser',
+  ];
+  for (const candidate of candidates) {
+    try {
+      fs.accessSync(candidate, fs.constants.X_OK);
+      const version = command(candidate, ['--version'], { timeout: 5000 }).toString().trim();
+      assert(/^(?:Google Chrome|Chromium)\s/.test(version), 'Executable must identify as Chrome or Chromium');
+      return { path: candidate, resolved: fs.realpathSync(candidate), version: version.slice(0, 200) };
+    } catch (error) {
+      if (process.env.R0_CHROMIUM) throw error;
+    }
   }
   throw new Error('Installed Chromium/Chrome is required; no browser download or skipped PASS');
+}
+function startupDiagnostic(error) {
+  // Only called before login. Never emit a later request error or stack, which
+  // could contain bearer tokens, request bodies or capability URLs.
+  let message = String(error.message ?? error);
+  const secrets = [
+    ...ready.users.map(item => item.password),
+    ...Object.entries(process.env).filter(([key]) => /PASSWORD|SECRET|TOKEN|CREDENTIAL|SIGNING_KEY|_DSN|DATABASE_URL/i.test(key)).map(([, value]) => value),
+  ];
+  for (const secret of secrets.filter(value => typeof value === 'string' && value.length >= 4).sort((a, b) => b.length - a.length)) {
+    message = message.split(secret).join('[REDACTED]');
+  }
+  message = message.replace(/eyJ[A-Za-z0-9_-]+\.[A-Za-z0-9_-]+\.[A-Za-z0-9_-]+/g, '[JWT_REDACTED]')
+    .replace(/postgres(?:ql)?:\/\/[^\s"'<>]+/g, '[DATABASE_URL_REDACTED]')
+    .replace(/Bearer\s+[^\s"'<>]+/gi, 'Bearer [REDACTED]')
+    .replace(/\/v1\/(uploads|downloads)\/[^\s"'<>]+/g, '/v1/$1/[CAPABILITY_REDACTED]')
+    .replace(/\u001b\[[0-9;]*m/g, '').replace(/[\u0000-\u0008\u000b\u000c\u000e-\u001f\u007f]/g, '');
+  let classifier = 'UNCLASSIFIED_STARTUP_ERROR';
+  if (/no usable sandbox|sandbox[^\n]*(?:fail|error|denied|not supported)|failed to[^\n]*namespace|apparmor|operation not permitted|permission denied/i.test(message)) classifier = 'SANDBOX_OR_PERMISSION_PATTERN';
+  else if (/error while loading shared libraries|missing dependencies/i.test(message)) classifier = 'SYSTEM_DEPENDENCY_PATTERN';
+  else if (/enoent|executable.*(?:not found|doesn.t exist)/i.test(message)) classifier = 'EXECUTABLE_UNAVAILABLE_PATTERN';
+  else if (/timeout|timed out/i.test(message)) classifier = 'STARTUP_TIMEOUT_PATTERN';
+  else if (/browser.*closed|target.*closed|process.*exit|exitcode/i.test(message)) classifier = 'BROWSER_EXIT_PATTERN';
+  const limit = 6144;
+  const truncated = message.length > limit;
+  if (truncated) message = message.slice(0, 2048) + '\n[TRUNCATED]\n' + message.slice(-(limit - 2061));
+  return { classifier, message, truncated, classification_scope: 'message pattern only; root cause is not established' };
 }
 function sanitizedRoute(url) {
   const pathname = new URL(url).pathname;
@@ -153,17 +188,22 @@ let authToken;
 let stage = 'startup';
 const started = Date.now();
 try {
-  const browserPath = executable();
-  report.browser_binary = browserPath;
-  report.browser_version = command(browserPath, ['--version']).toString().trim();
+  report.startup_step = 'select-executable';
+  const selectedBrowser = executable();
+  report.browser_binary = selectedBrowser.path;
+  report.browser_binary_resolved = selectedBrowser.resolved;
+  report.browser_version = selectedBrowser.version;
   report.ffmpeg_version = command('ffmpeg', ['-version']).toString().split('\n')[0];
   report.ffprobe_version = command('ffprobe', ['-version']).toString().split('\n')[0];
   try { report.git_head = command('git', ['rev-parse', 'HEAD'], { cwd: fileURLToPath(new URL('..', import.meta.url)) }).toString().trim(); } catch { report.git_head = 'UNAVAILABLE'; }
   const sandboxEnabled = process.getuid?.() !== 0;
+  report.browser_os_uid = process.getuid?.() ?? null;
   report.browser_sandbox = sandboxEnabled ? 'ENABLED' : 'DISABLED_ROOT_CONTAINER';
   report.production_browser_sandbox = 'NOT_VALIDATED';
-  browser = await chromium.launch({ executablePath: browserPath, headless: true,
-    chromiumSandbox: sandboxEnabled, args: ['--disable-dev-shm-usage'] });
+  report.startup_step = 'browser-launch';
+  browser = await chromium.launch({ executablePath: selectedBrowser.path, headless: true,
+    timeout: 30000, chromiumSandbox: sandboxEnabled, args: ['--disable-dev-shm-usage'] });
+  report.startup_step = 'browser-context';
   const context = await browser.newContext({ acceptDownloads: true, viewport: { width: 1440, height: 1000 } });
   let externalRequests = 0, pageErrors = 0;
   await context.route('**/*', async route => {
@@ -173,7 +213,9 @@ try {
     }
     await route.continue();
   });
+  report.startup_step = 'browser-page';
   page = await context.newPage();
+  report.startup_step = 'complete';
   page.setDefaultTimeout(15000);
   page.on('pageerror', () => { pageErrors++; });
   page.on('response', response => {
@@ -283,10 +325,12 @@ try {
 } catch (error) {
   report.status = 'FAIL';
   report.failure = { stage, type: error.name, code: error.code ?? null };
+  if (stage === 'startup') report.failure.startup_diagnostic = startupDiagnostic(error);
   if (page) {
     try { await page.screenshot({ path: path.join(output, 'failure.png'), fullPage: true, mask: [page.locator('#password')] }); } catch { /* preserve primary failure */ }
   }
-  // Error messages/stacks can contain capability URLs or credentials. Keep them out of artifacts/stdout.
+  // Later request messages/stacks can contain credentials: retain only the
+  // bounded, sanitized diagnostic from the pre-login startup boundary above.
   process.exitCode = 1;
 } finally {
   authToken = undefined;
