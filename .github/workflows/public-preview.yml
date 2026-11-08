@@ -1,0 +1,46 @@
+name: Content Engine static preview QA
+on:
+  push:
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  static-preview:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install reviewed browser test dependency and official browser binaries
+        run: |
+          npm ci --prefix browser_tests --ignore-scripts --omit=optional
+          cd browser_tests
+          npx playwright-core install --with-deps webkit
+          sudo apt-get install -y --no-install-recommends ffmpeg
+      - name: Build synthetic-only static preview
+        run: python3 scripts/build_public_preview.py
+      - name: Chromium and WebKit responsive and failure-mode QA
+        env:
+          PREVIEW_QA_OUTPUT: /tmp/ltc-preview-qa
+          PREVIEW_QA_WEBKIT: '1'
+        run: |
+          export BROWSER_PATH="$(command -v google-chrome || command -v chromium)"
+          node browser_tests/public_preview_e2e.mjs
+      - name: Retain static QA and deployable artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: content-engine-static-preview-${{ github.sha }}-${{ github.event_name }}
+          path: |
+            /tmp/ltc-preview-qa/
+            public_preview/dist/
+          if-no-files-found: error
+          retention-days: 14

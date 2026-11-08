@@ -1,0 +1,6 @@
+{
+  "baseline": "5d6e3da15b88edde79b67d71c089656cfa222cda",
+  "tracked_files_checked": 209,
+  "changed_files": [],
+  "scope": "All historical files including backend, local UI and CI remain byte-identical"
+}

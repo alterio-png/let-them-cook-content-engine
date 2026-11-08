@@ -1,0 +1,14 @@
+{
+  "fault": "blocked_module",
+  "errors": [],
+  "requests": [
+    "https://letthemcook-ux-preview.netlify.app/",
+    "https://letthemcook-ux-preview.netlify.app/assets/index-CQpW72G9.js",
+    "https://letthemcook-ux-preview.netlify.app/assets/index-Dm8eSrAx.css"
+  ],
+  "console": [
+    "error: Failed to load resource: net::ERR_FAILED"
+  ],
+  "text": "LetThemCook / Loading workspace...",
+  "auth_request_intercepted": false
+}
