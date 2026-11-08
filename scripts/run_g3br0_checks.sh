@@ -30,7 +30,7 @@ G3A1_PYTHON="$python_bin" G3A1_EVIDENCE_DIR="$evidence/historical" \
 result=0
 G3BR0_PYTHON="$python_bin" bash scripts/run_g3br0_local.sh --test --output "$evidence/local" \
     >"$evidence/local-supervisor.log" 2>&1 || result=$?
-"$python_bin" scripts/collect_g3br0_evidence.py --lab "$evidence/local" --output "$export_dir"
+"$python_bin" scripts/collect_g3br0_evidence.py --lab "$evidence/local" --output "$export_dir" \
+    --historical-log "$evidence/historical.log"
 cp "$evidence/baseline.txt" "$export_dir/baseline.txt"
-cp "$evidence/historical.log" "$export_dir/historical.log"
 exit "$result"

@@ -4,12 +4,13 @@ import fcntl
 import os
 from pathlib import Path
 import tempfile
+import time
 import unittest
 
 import psycopg
 from psycopg.rows import dict_row
 
-from engine.local_runtime import event, local_dsn, private_json
+from engine.local_runtime import event, local_dsn, private_json, sample_resources
 
 
 class RuntimeFileSafetyTests(unittest.TestCase):
@@ -86,8 +87,30 @@ class RuntimePostgresSafetyTests(unittest.TestCase):
         for row in rows:
             for flag in ("rolsuper", "rolbypassrls", "rolcreatedb", "rolcreaterole"):
                 self.assertFalse(row[flag], (row["rolname"], flag))
-            if row["rolname"] != "g3br0_monitor_login":
-                self.assertFalse(row["rolinherit"])
+            self.assertFalse(row["rolinherit"])
+
+    def test_monitor_observes_known_real_api_connection(self):
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / "samples.jsonl"
+            config = {"monitor_dsn": self.config["monitor_dsn"], "events_path": str(path),
+                      "parent_pid": os.getpid()}
+            # A known simultaneously open component connection is the witness;
+            # monitoring only its own connection must fail this test.
+            with psycopg.connect(local_dsn(self.config["api_dsn"])) as probe:
+                probe.execute("SELECT 1")
+                for attempt in range(5):
+                    sample_resources(config, once=True)
+                    samples = [json.loads(line) for line in path.read_text().splitlines()]
+                    valid = [row for row in samples if row["outcome"] == "sample"]
+                    if valid:
+                        break
+                    # The dedicated monitor login has a global cap of one;
+                    # the continuously running sampler can briefly occupy it.
+                    time.sleep(0.05)
+            self.assertTrue(valid, samples)
+            visible = {row["usename"]: row["connections"] for row in valid[-1]["postgres_clients"]}
+            self.assertGreaterEqual(visible.get("g3a_api_login", 0), 1)
+            self.assertGreaterEqual(valid[-1]["postgres_client_total"], 2)
 
     def test_api_login_cannot_assume_internal_worker_or_ingester(self):
         for role in ("engine_worker", "g3br0_ingester", "g3br0_monitor_login"):

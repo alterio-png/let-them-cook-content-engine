@@ -229,6 +229,11 @@ def sample_resources(config, *, stop=None, once=False):
         started = time.monotonic()
         try:
             with psycopg.connect(dsn, row_factory=dict_row, connect_timeout=3) as db:
+                # PostgreSQL 16 membership inheritance is recorded per grant.
+                # A grant made while this login was NOINHERIT cannot be made
+                # effective merely by altering its later rolinherit flag.
+                # Select the explicitly granted read-only statistics role.
+                db.execute("SET LOCAL ROLE pg_read_all_stats")
                 db.execute("SET LOCAL statement_timeout='2s'")
                 db.execute("SET LOCAL lock_timeout='1s'")
                 counts = db.execute("SELECT usename,count(*) AS connections,"

@@ -115,8 +115,8 @@ def prepare(output, api_port, parent_pid, fixture_database=None):
             component_dsns[login] = make_conninfo(**{**admin_info, "user": login, "password": password})
         for login, maximum in ROLE_LIMITS.items():
             db.execute(sql.SQL("ALTER ROLE {} CONNECTION LIMIT {}").format(sql.Identifier(login), sql.Literal(maximum)))
-        # Monitoring needs visibility, never write/worker/schema-owner access.
-        db.execute("ALTER ROLE g3br0_monitor_login INHERIT")
+        # Monitor explicitly SET LOCAL ROLE pg_read_all_stats per transaction;
+        # no implicit inheritance, write/worker/schema-owner access is needed.
     for directory in ("objects", "scratch", "ingest-scratch", "synthetic", "logs"):
         (output / directory).mkdir(mode=0o700)
     LocalObjectStore(output / "objects")

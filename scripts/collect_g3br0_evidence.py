@@ -12,6 +12,7 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--lab', type=Path, required=True)
     parser.add_argument('--output', type=Path, required=True)
+    parser.add_argument('--historical-log', type=Path)
     args = parser.parse_args()
     source, output = args.lab.resolve(), args.output.resolve()
     if output.exists() or output == source or source in output.parents:
@@ -65,6 +66,8 @@ def main():
         file = source / name
         if file.is_file():
             (output / name).write_text(redact(file.read_text()))
+    if args.historical_log and args.historical_log.is_file():
+        (output / 'historical.log').write_text(redact(args.historical_log.read_text(errors='replace')))
     versions = {}
     for key, command in {'python': ['python3', '--version'], 'node': ['node', '--version'],
                          'ffmpeg': ['ffmpeg', '-version'], 'ffprobe': ['ffprobe', '-version']}.items():
