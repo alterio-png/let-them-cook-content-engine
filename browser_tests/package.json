@@ -1,0 +1,10 @@
+{
+  "name": "let-them-cook-local-browser-proof",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Isolated real-browser proof for the local G3B-R0 video pipeline",
+  "type": "module",
+  "engines": { "node": ">=20" },
+  "scripts": { "test": "node r0_e2e.mjs" },
+  "devDependencies": { "playwright-core": "1.62.1" }
+}
