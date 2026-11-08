@@ -13,6 +13,8 @@ def main():
     parser.add_argument('--lab', type=Path, required=True)
     parser.add_argument('--output', type=Path, required=True)
     parser.add_argument('--historical-log', type=Path)
+    parser.add_argument('--exit-code', type=int)
+    parser.add_argument('--phase', choices=('historical', 'local-browser'))
     args = parser.parse_args()
     source, output = args.lab.resolve(), args.output.resolve()
     if output.exists() or output == source or source in output.parents:
@@ -76,6 +78,11 @@ def main():
     versions['working_tree_clean'] = not subprocess.check_output(['git', 'status', '--porcelain'], text=True).strip()
     versions['scope'] = 'LOCAL_ONLY; cloud NOT_VALIDATED; monetary cost UNKNOWN'
     (output / 'environment.json').write_text(json.dumps(versions, indent=2) + '\n')
+    if args.exit_code is not None:
+        (output / 'pipeline-result.json').write_text(json.dumps({
+            'exit_code': args.exit_code, 'last_phase': args.phase,
+            'outcome': 'commands_completed' if args.exit_code == 0 else 'FAILED',
+            'scope': 'LOCAL_ONLY; inspect actual test and browser evidence before approval'}, indent=2) + '\n')
     checksums = {str(file.relative_to(output)): hashlib.sha256(file.read_bytes()).hexdigest()
                  for file in sorted(output.rglob('*')) if file.is_file()}
     (output / 'SHA256SUMS.json').write_text(json.dumps(checksums, indent=2) + '\n')

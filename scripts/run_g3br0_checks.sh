@@ -25,12 +25,32 @@ PY
 mkdir -m 700 -p "$evidence"
 sha256sum -c G3BR0_BASELINE_SHA256SUMS.txt >"$evidence/baseline.txt"
 npm ci --prefix browser_tests --ignore-scripts --omit=optional >"$evidence/npm-ci.log" 2>&1
-G3A1_PYTHON="$python_bin" G3A1_EVIDENCE_DIR="$evidence/historical" \
-    bash scripts/run_g3a1_local.sh >"$evidence/historical.log" 2>&1
+# Avoid inherited fixed ports and recently-used rootless Docker publications.
+read -r G3A_PORT G3A1_PORT < <("$python_bin" - <<'PY'
+import secrets,socket
+ports=[]
+while len(ports)<2:
+    candidate=12000+secrets.randbelow(12000)
+    if candidate in ports: continue
+    try:
+        with socket.socket() as probe: probe.bind(('127.0.0.1',candidate))
+    except OSError: continue
+    ports.append(candidate)
+print(*ports)
+PY
+)
+export G3A_PORT G3A1_PORT
 result=0
-G3BR0_PYTHON="$python_bin" bash scripts/run_g3br0_local.sh --test --output "$evidence/local" \
-    >"$evidence/local-supervisor.log" 2>&1 || result=$?
+phase=historical
+if G3A1_PYTHON="$python_bin" G3A1_EVIDENCE_DIR="$evidence/historical" \
+    bash scripts/run_g3a1_local.sh >"$evidence/historical.log" 2>&1; then
+    phase=local-browser
+    G3BR0_PYTHON="$python_bin" bash scripts/run_g3br0_local.sh --test --output "$evidence/local" \
+        >"$evidence/local-supervisor.log" 2>&1 || result=$?
+else
+    result=$?
+fi
 "$python_bin" scripts/collect_g3br0_evidence.py --lab "$evidence/local" --output "$export_dir" \
-    --historical-log "$evidence/historical.log"
+    --historical-log "$evidence/historical.log" --exit-code "$result" --phase "$phase"
 cp "$evidence/baseline.txt" "$export_dir/baseline.txt"
 exit "$result"
