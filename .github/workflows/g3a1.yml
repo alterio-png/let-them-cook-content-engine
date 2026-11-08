@@ -1,0 +1,37 @@
+name: G3A.1 shared PostgreSQL upload authority
+on:
+  push:
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  g3a1:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install existing reviewed dependencies and FFmpeg
+        run: |
+          python -m pip install --require-hashes --only-binary=:all: -r requirements-g3a.lock
+          sudo apt-get update -qq
+          sudo apt-get install -y --no-install-recommends ffmpeg
+      - name: Historical IaC validation without provisioning
+        run: |
+          set -o pipefail
+          mkdir -p /tmp/ltc-g3a1-ci
+          sh infra/g3a/validate_toolchain.sh 2>&1 | tee /tmp/ltc-g3a1-ci/g3a1-iac.txt
+      - name: Historical regressions and shared authority multiprocess proof
+        run: |
+          set -o pipefail
+          G3A1_PYTHON=python G3A1_EVIDENCE_DIR=/tmp/ltc-g3a1-evidence bash scripts/run_g3a1_local.sh 2>&1 | tee /tmp/ltc-g3a1-ci/g3a1-tests.txt
+      - name: Retain reproducible local evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: g3a1-local-evidence-${{ github.sha }}
+          path: |
+            /tmp/ltc-g3a1-ci/
+            /tmp/ltc-g3a1-evidence/

@@ -1,0 +1,180 @@
+{
+  "authentication": "LOCAL_CRYPTO_CONTRACT; official Auth integration is a separate gate",
+  "cases": [
+    {
+      "actual_postgres_counters": {
+        "charged_bytes": 128,
+        "charged_rows": 1,
+        "max_bytes": 1280,
+        "max_count": 10,
+        "receipts": 0,
+        "used_bytes": 128,
+        "used_count": 1
+      },
+      "backpressure_retries": 44,
+      "case": "same_key",
+      "elapsed_seconds": 0.5143759989987302,
+      "final_status_counts": {
+        "201": 100
+      },
+      "http_attempt_latency_seconds": {
+        "observations": 144,
+        "p50": 0.17985364900050627,
+        "p95": 0.2735333853512202,
+        "p99": 0.30068290691957367
+      },
+      "http_attempts": 144,
+      "http_status_counts": {
+        "201": 100,
+        "503": 44
+      },
+      "initial_status_counts": {
+        "201": 56,
+        "503": 44
+      },
+      "logical_operation_latency_seconds": {
+        "observations": 100,
+        "p50": 0.2814365669992185,
+        "p95": 0.47653326664994894,
+        "p99": 0.4864497637499335
+      },
+      "logical_operations": 100,
+      "one_grant_key_expiry_and_capability": true,
+      "simultaneous_barrier_participants": 100
+    },
+    {
+      "accepted": 10,
+      "actual_postgres_counters": {
+        "charged_bytes": 1280,
+        "charged_rows": 10,
+        "max_bytes": 1280,
+        "max_count": 10,
+        "receipts": 0,
+        "used_bytes": 1280,
+        "used_count": 10
+      },
+      "backpressure_retries": 0,
+      "case": "distinct_keys_quota_race",
+      "elapsed_seconds": 0.11005134700099006,
+      "final_committed_quota_matches_live_reservations": true,
+      "final_status_counts": {
+        "201": 10,
+        "429": 10
+      },
+      "http_attempt_latency_seconds": {
+        "observations": 20,
+        "p50": 0.07618542000000161,
+        "p95": 0.09953131910033335,
+        "p99": 0.0999741270204504
+      },
+      "http_attempts": 20,
+      "http_status_counts": {
+        "201": 10,
+        "429": 10
+      },
+      "initial_status_counts": {
+        "201": 10,
+        "429": 10
+      },
+      "logical_operation_latency_seconds": {
+        "observations": 20,
+        "p50": 0.07622181949864171,
+        "p95": 0.10298271065130393,
+        "p99": 0.10361856692998117
+      },
+      "logical_operations": 20,
+      "quota_denied": 10,
+      "simultaneous_barrier_participants": 20
+    },
+    {
+      "actual_postgres_counters": {
+        "charged_bytes": 128,
+        "charged_rows": 1,
+        "max_bytes": 1280,
+        "max_count": 10,
+        "receipts": 1,
+        "used_bytes": 128,
+        "used_count": 1
+      },
+      "actual_private_object_hash_and_size_verified": true,
+      "backpressure_retries": 0,
+      "case": "publish_cross_replica_and_restart",
+      "cross_organization_receipt_denied": true,
+      "final_status_counts": {
+        "200": 2,
+        "201": 2,
+        "403": 1
+      },
+      "fresh_process_recovers_identical_grant_and_receipt": true,
+      "hard_termination_after_valid_receipt": true,
+      "http_attempt_latency_seconds": {
+        "observations": 5,
+        "p50": 0.012548605000120006,
+        "p95": 0.03651550380091066,
+        "p99": 0.04104806876115617
+      },
+      "http_attempts": 5,
+      "http_status_counts": {
+        "200": 2,
+        "201": 2,
+        "403": 1
+      },
+      "initial_status_counts": {
+        "200": 2,
+        "201": 2,
+        "403": 1
+      },
+      "logical_operation_latency_seconds": {
+        "observations": 5,
+        "p50": 0.012586651999299647,
+        "p95": 0.036573256398696685,
+        "p99": 0.041104927278502144
+      },
+      "logical_operations": 5,
+      "sha256": "c03b12a5b58ca125e0c1b35297bab5400ddbe372c314aaa9643b18d27f6e9240",
+      "size_bytes": 128,
+      "uploaded_on_a_receipt_on_b": true
+    }
+  ],
+  "cloud_services": "NOT_VALIDATED",
+  "failure_scope": "Replica hard termination after committed receipt; mid-publication crash, stale fence and reconciliation require the separate real PostgreSQL fault suite",
+  "finished_at": "2026-11-07T15:30:37.581125+00:00",
+  "measurement_bounds": "CPU client plus reaped descendants; sampled summed RSS includes independent HTTP servers and Python helpers, excludes separate PostgreSQL container and kernel/cgroup overhead; shared pages may count repeatedly and short peaks may be missed",
+  "monetary_cost": "UNKNOWN",
+  "own_rows_roles_and_private_files_cleaned": true,
+  "replicas": {
+    "api_login": "restricted_nonowner",
+    "database_connections_max_per_replica": 4,
+    "initial_pids": [
+      166900,
+      166905
+    ],
+    "postgres_authority_backend": "PostgresUploadAuthority",
+    "private_workdirs_distinct": true,
+    "restarted_pid": 167619,
+    "sqlite_ledger_files_created": 0
+  },
+  "resources": {
+    "aggregate_process_rss_peak_bytes": 170409984,
+    "elapsed_seconds": 1.464640395999595,
+    "process_count_peak": 4,
+    "reaped_children_system_seconds": 0.20094099999999998,
+    "reaped_children_user_seconds": 1.014149,
+    "samples": 27,
+    "sampling_interval_seconds": 0.05,
+    "self_system_seconds": 0.06870599999999999,
+    "self_user_seconds": 0.198165
+  },
+  "runtime": {
+    "logical_cpus": 5,
+    "platform": "Linux-6.18.57-x86_64-with-glibc2.41",
+    "postgres": "PostgreSQL 16.15 (Debian 16.15-1.pgdg12+2) on x86_64-pc-linux-gnu, compiled by gcc (Debian 12.2.0-14+deb12u1) 12.2.0, 64-bit",
+    "python": "3.12.14",
+    "source_sha": "1eacb889fbef95650998f7136e1d481e97c9f047",
+    "source_worktree_clean": true
+  },
+  "schema_version": 1,
+  "scope": "REAL_LOCAL_POSTGRESQL_TWO_HTTP_PROCESSES_AND_LOCAL_OBJECT_STORE",
+  "started_at": "2026-11-07T15:30:36.103206+00:00",
+  "status": "PASS_LOCAL_ONLY"
+}

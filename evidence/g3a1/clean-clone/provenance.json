@@ -1,0 +1,28 @@
+{
+  "source_sha": "1eacb889fbef95650998f7136e1d481e97c9f047",
+  "source_clone": "git clone --no-local --branch feat/g3a1-shared-upload-ledger-01 /workspace/content-engine /workspace/g3a1-clean",
+  "source_worktree_clean": true,
+  "baseline_main_sha": "7a271382487ac4d16e278e5ccb8c345279b3cc16",
+  "historical_files_unchanged": 114,
+  "regression_counts": {
+    "G0": 12,
+    "G1": 36,
+    "G2": 49,
+    "G3A_contracts": 118,
+    "G3A_official_Auth": 10,
+    "G3A1_upload": 44,
+    "G3A1_official_Auth": 7
+  },
+  "total_tests": 276,
+  "full_runner_exit_code": 0,
+  "full_runner_command": "G3A_PORT=55472 G3A1_PORT=55473 G3A1_PYTHON=/workspace/g3a-venv/bin/python G3A1_EVIDENCE_DIR=/workspace/g3a1-evidence/local bash scripts/run_g3a1_local.sh",
+  "iac_command": "sh infra/g3a/validate_toolchain.sh",
+  "iac_exit_code": 0,
+  "failures_before_successful_run": [
+    "Initial runner aborted before tests: default historical port55450 unavailable. No PASS assigned. Repeated from same clean source on free loopback ports55472/55473. See attempt-port-conflict.txt."
+  ],
+  "scope": "Real local PostgreSQL, FFmpeg, official GoTrue, independent HTTP OS processes and private disk. No cloud, deployment, merge or G3B.",
+  "cloud_services": "NOT_VALIDATED",
+  "monetary_cost": "UNKNOWN",
+  "final_head_ci": "Required and linked in PR; this source proof predates the documentation/evidence commit."
+}
