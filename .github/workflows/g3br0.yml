@@ -1,0 +1,39 @@
+name: G3B-R0 real local browser vertical slice
+on:
+  push:
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  local-browser:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Install hash-locked existing Python dependencies and system FFmpeg
+        run: |
+          python -m pip install --require-hashes --only-binary=:all: -r requirements-g3a.lock
+          sudo apt-get update -qq
+          sudo apt-get install -y --no-install-recommends ffmpeg
+      - name: Historical suites, official PostgreSQL/Auth, native FFmpeg and actual browser
+        env:
+          G3BR0_PYTHON: python
+          G3BR0_EVIDENCE_DIR: /tmp/g3br0-private
+          G3BR0_EXPORT_DIR: /tmp/g3br0-public-evidence
+        run: bash scripts/run_g3br0_checks.sh
+      - name: Retain sanitized proof only
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: g3br0-local-browser-${{ github.sha }}-${{ github.event_name }}
+          path: /tmp/g3br0-public-evidence/
+          if-no-files-found: warn
+          retention-days: 14

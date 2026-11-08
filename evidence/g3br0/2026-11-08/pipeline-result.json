@@ -1,0 +1,6 @@
+{
+  "exit_code": 0,
+  "last_phase": "local-browser",
+  "outcome": "commands_completed",
+  "scope": "LOCAL_ONLY; inspect actual test and browser evidence before approval"
+}

@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <title>LetThemCook — Content Engine local</title>
+  <link rel="stylesheet" href="/styles.css">
+  <script src="/app.js" defer></script>
+</head>
+<body data-session="anonymous">
+  <a class="skip-link" href="#main">Ir para o conteúdo</a>
+  <header class="site-header">
+    <a class="wordmark" href="/" aria-label="LetThemCook, início">LetThemCook<span aria-hidden="true">.</span></a>
+    <span class="environment"><span class="status-dot" aria-hidden="true"></span>LOCAL · LOOPBACK</span>
+  </header>
+  <main id="main" class="page-shell">
+    <section class="intro" aria-labelledby="page-title">
+      <div>
+        <p class="eyebrow">CONTENT ENGINE / G3B-R0</p>
+        <h1 id="page-title">Uma amostra.<br>Três formatos.</h1>
+        <p class="lead">Envie um vídeo sintético com legenda SRT, acompanhe o processamento e baixe os arquivos verificados.</p>
+      </div>
+      <p class="scope-note">Demonstração funcional local<br><strong>PostgreSQL · Auth · FFmpeg</strong></p>
+    </section>
+
+    <div id="error-panel" data-testid="error-panel" class="notice notice-error" role="alert" tabindex="-1" hidden></div>
+
+    <section id="login-panel" class="panel login-panel" aria-labelledby="login-title">
+      <div class="section-heading"><span class="step-number" aria-hidden="true">01</span><h2 id="login-title">Entre na sua sessão local</h2></div>
+      <p class="muted">Use a conta de demonstração informada pelo script de inicialização. Esta página acessa somente o ambiente local.</p>
+      <form id="login-form" data-testid="login-form">
+        <div class="form-row">
+          <div class="field"><label for="email">E-mail</label><input id="email" data-testid="email" name="email" type="email" autocomplete="username" required placeholder="demo-a@example.invalid"></div>
+          <div class="field"><label for="password">Senha</label><input id="password" data-testid="password" name="password" type="password" autocomplete="current-password" required></div>
+        </div>
+        <button id="login-button" data-testid="login-button" class="button button-primary" type="submit">Entrar</button>
+      </form>
+    </section>
+
+    <div id="workspace" hidden>
+      <section class="session-bar" aria-label="Sessão autenticada">
+        <div class="session-identity"><span class="status-dot" aria-hidden="true"></span><span id="session-label">Sessão autenticada</span></div>
+        <div class="session-actions"><label for="org-select">Organização</label><select id="org-select" data-testid="org-select"></select><button id="logout-button" data-testid="logout-button" class="button button-quiet" type="button">Sair</button></div>
+      </section>
+
+      <div class="workspace-grid">
+        <section class="panel upload-panel" aria-labelledby="upload-title">
+          <div class="section-heading"><span class="step-number" aria-hidden="true">02</span><h2 id="upload-title">Prepare a amostra</h2></div>
+          <p class="muted">Apenas arquivos sintéticos aprovados pelo ambiente. Cada arquivo deve ter até 1 MiB.</p>
+          <button id="sample-button" data-testid="sample-button" class="button button-secondary sample-button" type="button">Usar amostra sintética</button>
+          <div class="file-fields">
+            <div class="field file-field"><label for="video-file">Vídeo MP4 <span>H.264 + áudio AAC</span></label><input id="video-file" data-testid="video-file" type="file" aria-label="Vídeo MP4" aria-describedby="video-description" accept="video/mp4,.mp4"><p id="video-description" class="file-description">Nenhum vídeo selecionado.</p></div>
+            <div class="field file-field"><label for="caption-file">Legenda SRT <span>Incorporada aos três vídeos</span></label><input id="caption-file" data-testid="caption-file" type="file" aria-label="Legenda SRT" aria-describedby="caption-description" accept=".srt,application/x-subrip,text/plain"><p id="caption-description" class="file-description">Nenhuma legenda selecionada.</p></div>
+          </div>
+          <p id="selection-note" class="muted small">A validação acontece no serviço interno antes da criação do asset.</p>
+          <div class="button-row"><button id="upload-button" data-testid="upload-button" class="button button-primary" type="button" disabled>Enviar e validar</button><button id="recover-button" data-testid="recover-button" class="button button-secondary" type="button" hidden>Consultar / retomar a mesma operação</button></div>
+        </section>
+
+        <section class="panel execution-panel" aria-labelledby="execution-title">
+          <div class="section-heading"><span class="step-number" aria-hidden="true">03</span><h2 id="execution-title">Acompanhe a execução</h2></div>
+          <p class="muted">Os estados abaixo vêm das operações reais do backend.</p>
+          <ol class="phases">
+            <li><span class="phase-icon" aria-hidden="true">1</span><div><strong>Upload privado</strong><p id="upload-state" data-state="idle">Aguardando arquivos</p></div></li>
+            <li><span class="phase-icon" aria-hidden="true">2</span><div><strong>Ingestão validada</strong><p id="ingest-state" data-testid="ingest-state" data-state="idle">Aguardando upload</p></div></li>
+            <li><span class="phase-icon" aria-hidden="true">3</span><div><strong>Worker FFmpeg</strong><p id="render-state" data-testid="render-state" data-state="idle">Aguardando ingestão</p></div></li>
+            <li><span class="phase-icon" aria-hidden="true">4</span><div><strong>Arquivos verificados</strong><p id="verification-state" data-state="idle">Aguardando renderização</p></div></li>
+          </ol>
+          <p id="job-reference" class="reference" hidden></p>
+          <button id="render-button" data-testid="render-button" class="button button-primary render-button" type="button" disabled>Renderizar 3 vídeos</button>
+        </section>
+      </div>
+
+      <section id="outputs-panel" class="outputs-section" aria-labelledby="outputs-title" hidden>
+        <div class="outputs-heading"><div><p class="eyebrow">SAÍDAS / VERIFICADAS</p><h2 id="outputs-title">Prontos para baixar.</h2></div><a id="manifest-download" data-testid="manifest-download" class="button button-secondary" download="manifesto-sha256.json">Baixar manifesto SHA-256</a></div>
+        <div id="output-grid" data-testid="output-grid" class="output-grid"></div>
+        <p class="muted small">O navegador confere o SHA-256 dos bytes recebidos antes de liberar os downloads.</p>
+      </section>
+
+      <details class="activity-panel" open><summary>Atividade da sessão <span id="network-count">0 operações · 0 tentativas HTTP</span></summary><ol id="status-log" data-testid="status-log" class="activity-log" aria-live="polite" aria-relevant="additions"></ol></details>
+    </div>
+    <p id="live-status" class="sr-only" role="status" aria-live="polite"></p>
+  </main>
+  <footer class="site-footer"><span>LetThemCook Content Engine</span><span>LOCAL_BROWSER_E2E · Ambiente sintético · Sem publicação</span></footer>
+</body>
+</html>

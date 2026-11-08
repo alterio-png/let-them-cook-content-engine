@@ -1,0 +1,154 @@
+{
+  "503_retries": 57,
+  "auth": "official local GoTrue",
+  "cases": [
+    {
+      "case": "test_01_real_logout_and_expired_session_are_denied",
+      "elapsed_seconds": 0.485,
+      "outcome": "PASS"
+    },
+    {
+      "case": "test_02_cross_org_peer_receipt_and_revocation_fail_closed",
+      "elapsed_seconds": 0.559,
+      "outcome": "PASS"
+    },
+    {
+      "case": "test_03_host_origin_framing_and_browser_promotion_denied",
+      "elapsed_seconds": 0.231,
+      "outcome": "PASS"
+    },
+    {
+      "case": "test_04_oversize_and_hash_mismatch_never_create_receipt",
+      "elapsed_seconds": 0.262,
+      "outcome": "PASS"
+    },
+    {
+      "case": "test_05_invalid_video_srt_and_unapproved_pair_cannot_be_promoted",
+      "elapsed_seconds": 1.596,
+      "outcome": "PASS"
+    },
+    {
+      "case": "test_06_100_duplicate_reservations_and_20_distinct_quota_race",
+      "elapsed_seconds": 1.415,
+      "outcome": "PASS"
+    },
+    {
+      "case": "test_07_lost_upload_response_and_100_ingest_render_replays",
+      "elapsed_seconds": 3.779,
+      "outcome": "PASS"
+    },
+    {
+      "case": "test_08_ingester_sigkill_durable_objects_recovery_and_stale_fence",
+      "elapsed_seconds": 3.033,
+      "outcome": "PASS"
+    },
+    {
+      "case": "test_09_render_sigkill_fenced_recovery_and_orphan_reconciliation",
+      "elapsed_seconds": 6.126,
+      "outcome": "PASS"
+    },
+    {
+      "case": "test_10_receipt_readback_detects_corrupted_private_object",
+      "elapsed_seconds": 0.571,
+      "outcome": "PASS"
+    }
+  ],
+  "cloud": "NOT_VALIDATED",
+  "media": "real local FFmpeg",
+  "physical_http_attempts": 478,
+  "postgres": "real local PostgreSQL",
+  "replicas": 2,
+  "retry_exhausted": 0,
+  "statuses_observed": {
+    "200": 46,
+    "201": 143,
+    "202": 208,
+    "400": 4,
+    "401": 3,
+    "403": 5,
+    "409": 1,
+    "413": 1,
+    "429": 10,
+    "503": 57
+  },
+  "suite": "r0-independent-negative",
+  "transport_uncertain_retries": 0,
+  "workloads": [
+    {
+      "caller_concurrency": 8,
+      "distinct_admitted": 10,
+      "distinct_quota": [
+        10,
+        390
+      ],
+      "distinct_quota_denied": 10,
+      "distinct_responses": 20,
+      "duplicate_quota": [
+        1,
+        39
+      ],
+      "duplicate_reservation_ids": 1,
+      "duplicate_responses": 100,
+      "duplicate_statuses": {
+        "201": 100
+      },
+      "elapsed_seconds": 1.213,
+      "independent_http_replicas": 2,
+      "logical_distinct_requests": 20,
+      "logical_duplicate_requests": 100,
+      "probe": "upload_admission",
+      "state": "assertions_passed"
+    },
+    {
+      "assets": 1,
+      "caller_concurrency": 8,
+      "independent_http_replicas": 2,
+      "ingest_ids": 1,
+      "ingest_responses": 100,
+      "ingest_statuses": {
+        "202": 100
+      },
+      "initial_ingest_requests": 1,
+      "jobs": 1,
+      "logical_ingest_replays": 100,
+      "logical_render_requests": 100,
+      "outbox_events": 1,
+      "probe": "ingest_render_replay",
+      "render_ids": 1,
+      "render_responses": 100,
+      "render_statuses": {
+        "202": 100
+      },
+      "response_abandoned_on_real_socket": true,
+      "state": "assertions_passed",
+      "verified_private_downloads": 3
+    },
+    {
+      "authoritative_assets": 1,
+      "checkpoint": "after_publish",
+      "destructive_gc": false,
+      "fence_after": 2,
+      "fence_before": 1,
+      "probe": "ingester_sigkill",
+      "quota_retained": true,
+      "returncode": -9,
+      "signal": "SIGKILL",
+      "stale_completion_sqlstate": "55000",
+      "state": "assertions_passed"
+    },
+    {
+      "authoritative_outputs_verified": 3,
+      "checkpoint": "after_object",
+      "destructive_gc": false,
+      "fence_after": 2,
+      "fence_before": 1,
+      "obsolete_objects_retained": 1,
+      "probe": "renderer_sigkill",
+      "quota_retained": true,
+      "returncode": -9,
+      "signal": "SIGKILL",
+      "stale_completion": "StaleLease",
+      "state": "assertions_passed"
+    }
+  ]
+}

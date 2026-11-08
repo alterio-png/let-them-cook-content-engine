@@ -1,0 +1,50 @@
+{
+  "stats": {
+    "attempt": 1,
+    "bytes_read": 504123,
+    "elapsed_ms": 1220,
+    "bytes_written": 192485,
+    "estimate_model": "output_pixels_times_requested_frames_not_billing",
+    "cpu_seconds_limit_per_process": 120,
+    "estimated_output_pixel_frames": 24840000
+  },
+  "outputs": [
+    {
+      "key": "c4d0c7db-3db1-4bc8-9c5b-eb924bcfae18/e9be2b35-fc3c-46b5-a88d-c7f03f5d1f48/1/vertical.mp4",
+      "width": 270,
+      "height": 480,
+      "preset": "vertical",
+      "sha256": "54f3dfc95a8ff255993b8f94ccddff3c2f3ee74a4646bf5cedafd5da9879bfcf",
+      "has_audio": true,
+      "size_bytes": 60531,
+      "duration_seconds": 2.3
+    },
+    {
+      "key": "c4d0c7db-3db1-4bc8-9c5b-eb924bcfae18/e9be2b35-fc3c-46b5-a88d-c7f03f5d1f48/1/square.mp4",
+      "width": 320,
+      "height": 320,
+      "preset": "square",
+      "sha256": "471d81f1c9adce91574a26f6023af30fd4984808c736e2152bc5a941408b81e0",
+      "has_audio": true,
+      "size_bytes": 65956,
+      "duration_seconds": 2.3
+    },
+    {
+      "key": "c4d0c7db-3db1-4bc8-9c5b-eb924bcfae18/e9be2b35-fc3c-46b5-a88d-c7f03f5d1f48/1/feed.mp4",
+      "width": 320,
+      "height": 400,
+      "preset": "feed",
+      "sha256": "4b8c57965fd9fddce2d405f5313864765878eea51cc818daa5ccea4882ac5bf5",
+      "has_audio": true,
+      "size_bytes": 65998,
+      "duration_seconds": 2.3
+    }
+  ],
+  "generation": "c4d0c7db-3db1-4bc8-9c5b-eb924bcfae18/e9be2b35-fc3c-46b5-a88d-c7f03f5d1f48/1",
+  "source_hash": "a8b0b07dacd329ec61a7bcf08811173498dd978e9e5c0667d6bf2d5b7d174c66",
+  "caption_hash": "86bf0296d17a3371ae117361359332b595c5b2fb99b9ee387d7d335081db3652",
+  "caption_mode": "supplied-srt-burned",
+  "media_digest": "892c77cdc63e0ffd13766a484d2f82de9a53a7fa4c4ae200813f66fb5c6717db",
+  "schema_version": 2,
+  "source_has_audio": true
+}

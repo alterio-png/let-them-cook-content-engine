@@ -1,0 +1,20 @@
+{
+  "samples": 117,
+  "unavailable": 0,
+  "pg_peak_sampled_clients": 7,
+  "pg_login_sampled_maxima": {
+    "g3br0_monitor_login": 1,
+    "r0_api_669f3e8f930a411a891a326c206590dc": 1,
+    "postgres": 1,
+    "g3br0_worker_login": 1,
+    "r0_api_44bf2a42ef594b2a851c24608a1a40b4": 1,
+    "supabase_auth_admin": 1,
+    "g3a_api_login": 6,
+    "g3br0_ingest_login": 1
+  },
+  "descendant_rss_bytes_peak": 1074819072,
+  "descendant_live_cpu_seconds_peak": 7.72,
+  "scope": "all dedicated-cluster client backends; parent/descendant Linux RSS and live CPU; PG/Auth container CPU/RSS excluded",
+  "container_cgroup_enforcement": "NOT_VALIDATED",
+  "cloud": "NOT_VALIDATED"
+}

@@ -1,0 +1,17 @@
+{
+  "503_retries": 17,
+  "claim": "No PASS claimed for initial diagnostic; retained for review",
+  "cloud": "NOT_VALIDATED",
+  "elapsed_seconds": 15.37,
+  "errors": 2,
+  "errors_summary": [
+    "test06 BrokenPipe during bounded early503 request-body write",
+    "test07 BrokenPipe during bounded early503 request-body write"
+  ],
+  "log_sha256": "cf8d1e3fb9f7933dd51d26db473b50bb758a982443aaaaa762e27d6244284545",
+  "outcome": "FAIL",
+  "passed": 8,
+  "physical_http_attempts": 217,
+  "run": "initial diagnostic",
+  "tests_run": 10
+}

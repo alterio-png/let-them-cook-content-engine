@@ -1,0 +1,6 @@
+{
+  "exit_code": 125,
+  "last_phase": "historical",
+  "outcome": "FAILED",
+  "scope": "LOCAL_ONLY; inspect actual test and browser evidence before approval"
+}

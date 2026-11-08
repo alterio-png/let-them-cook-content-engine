@@ -1,0 +1,9 @@
+{
+  "python": "Python 3.12.14",
+  "node": "v24.22.1",
+  "ffmpeg": "ffmpeg version 7.1.5-0+deb13u1 Copyright (c) 2000-2026 the FFmpeg developers",
+  "ffprobe": "ffprobe version 7.1.5-0+deb13u1 Copyright (c) 2007-2026 the FFmpeg developers",
+  "git_head": "e418760bd998e97272f12fdeefc1487108c9a8c3",
+  "working_tree_clean": true,
+  "scope": "LOCAL_ONLY; cloud NOT_VALIDATED; monetary cost UNKNOWN"
+}
